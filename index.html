@@ -3,11 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>LIKAtech | Security Camera - Kamera Sigurie </title>
+    <title>LIKAtech | Security Camera - Kamera Sigurie</title>
     <!-- Google Fonts & Font Awesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        :root {
+            --primary: #e11d1d;
+            --primary-hover: #b31414;
+            --dark: #111111;
+            --text-main: #2c2c3a;
+            --text-light: #5a5a70;
+            --bg-light: #f8f9ff;
+            --white: #ffffff;
+            --border-color: #eef2f6;
+            --transition: all 0.3s ease;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -16,9 +28,9 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #ffffff;
-            color: #1e1e2f;
-            line-height: 1.5;
+            background-color: var(--white);
+            color: var(--text-main);
+            line-height: 1.6;
             scroll-behavior: smooth;
             overflow-x: hidden;
         }
@@ -31,8 +43,14 @@
             background: #f1f1f1;
         }
         ::-webkit-scrollbar-thumb {
-            background: #c00;
+            background: var(--primary);
             border-radius: 10px;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            color: var(--dark);
+            line-height: 1.2;
         }
 
         /* Navigation */
@@ -40,11 +58,11 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
             padding: 1rem 2rem;
-            transition: all 0.3s;
+            transition: var(--transition);
         }
         .nav-container {
             max-width: 1280px;
@@ -52,8 +70,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
         }
         .logo {
             font-size: 1.9rem;
@@ -62,376 +78,489 @@
             text-decoration: none;
         }
         .logo-red {
-            color: #e11d1d;
+            color: var(--primary);
         }
         .logo-dark {
-            color: #111;
+            color: var(--dark);
         }
+        
+        /* Nav Links */
         .nav-links {
             display: flex;
             gap: 2rem;
             align-items: center;
-            flex-wrap: wrap;
         }
         .nav-links a {
             text-decoration: none;
             font-weight: 600;
-            color: #2c2c3a;
-            transition: 0.2s;
+            color: var(--text-main);
+            transition: var(--transition);
             font-size: 1rem;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary);
+            transition: var(--transition);
         }
         .nav-links a:hover {
-            color: #e11d1d;
+            color: var(--primary);
         }
-        .lang-switch {
-            background: #f0f0f0;
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            background: none;
             border: none;
-            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+
+        .lang-switch {
+            background: #f0f0f4;
+            border: none;
+            padding: 0.6rem 1.2rem;
             border-radius: 40px;
             font-weight: 600;
             cursor: pointer;
             font-family: inherit;
             display: flex;
             align-items: center;
-            gap: 6px;
-            transition: 0.2s;
+            gap: 8px;
+            transition: var(--transition);
         }
         .lang-switch i {
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
         .lang-switch:hover {
-            background: #e11d1d;
+            background: var(--primary);
             color: white;
+            box-shadow: 0 4px 10px rgba(225, 29, 29, 0.2);
         }
 
         /* Buttons */
-        .btn-primary {
+        .btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
-            background-color: #e11d1d;
-            color: white;
             padding: 0.9rem 2rem;
             border-radius: 60px;
             text-decoration: none;
             font-weight: 700;
-            transition: all 0.25s ease;
-            box-shadow: 0 8px 18px rgba(225, 29, 29, 0.2);
-            border: none;
+            transition: var(--transition);
             cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 8px 20px rgba(225, 29, 29, 0.25);
         }
         .btn-primary:hover {
-            background-color: #b31414;
+            background-color: var(--primary-hover);
             transform: translateY(-3px);
-            box-shadow: 0 15px 25px rgba(225, 29, 29, 0.25);
+            box-shadow: 0 12px 25px rgba(225, 29, 29, 0.35);
         }
         .btn-outline {
             background: transparent;
-            border: 2px solid #e11d1d;
-            color: #e11d1d;
-            padding: 0.7rem 1.6rem;
-            border-radius: 40px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            border: 2px solid var(--border-color);
+            color: var(--dark);
         }
         .btn-outline:hover {
-            background: #e11d1d;
-            color: white;
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-3px);
         }
-        .btn-call {
-            background: #111;
-            color: white;
-            border: none;
-            padding: 0.8rem 1.8rem;
-            border-radius: 50px;
-            font-weight: 700;
-            display: inline-flex;
+        
+        /* New LIKAservice Button & Animations */
+        .service-cta-wrapper {
+            display: flex;
+            flex-direction: column;
             align-items: center;
             gap: 8px;
-            transition: 0.2s;
-            text-decoration: none;
+            position: relative;
         }
-        .btn-call:hover {
-            background: #e11d1d;
-            transform: scale(1.02);
+        .service-question {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-light);
+            background: #ffffff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+            border: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+        .text-highlight {
+            color: var(--primary);
+            font-weight: 800;
+            display: inline-block;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .text-highlight.hide {
+            opacity: 0;
+            transform: translateY(-5px);
+        }
+        
+        .btn-likaservice {
+            background: linear-gradient(135deg, var(--dark), #333);
+            color: white;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 100%;
+        }
+        .btn-likaservice:hover {
+            background: linear-gradient(135deg, #333, var(--dark));
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+        @keyframes pulseIcon {
+            0% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.15) rotate(5deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+        .btn-likaservice i {
+            animation: pulseIcon 2s infinite ease-in-out;
+            color: var(--primary);
         }
 
-        /* sections */
+        /* Sections */
         section {
-            padding: 5rem 2rem;
+            padding: 6rem 2rem;
         }
         .container {
             max-width: 1280px;
             margin: 0 auto;
         }
         .section-title {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
             text-align: center;
             position: relative;
         }
         .section-title:after {
             content: '';
-            width: 70px;
-            height: 4px;
-            background: #e11d1d;
+            width: 80px;
+            height: 5px;
+            background: var(--primary);
             display: block;
-            margin: 0.8rem auto 0;
-            border-radius: 4px;
+            margin: 1rem auto 0;
+            border-radius: 5px;
         }
 
-        /* service grid */
+        /* Hero Section */
+        #home {
+            background: linear-gradient(180deg, var(--bg-light) 0%, var(--white) 100%);
+            padding: 8rem 2rem 6rem;
+            text-align: center;
+        }
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+        .hero-desc {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin: 0 auto 2.5rem;
+            max-width: 700px;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        /* Service Grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 2rem;
-            margin-top: 1rem;
         }
         .service-card {
-            background: #f9fafc;
-            padding: 1.8rem 1rem;
+            background: var(--white);
+            padding: 2.5rem 1.5rem;
             text-align: center;
-            border-radius: 28px;
-            transition: all 0.3s;
-            box-shadow: 0 5px 12px rgba(0,0,0,0.02);
-            border: 1px solid #eee;
+            border-radius: 24px;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover::before {
+            transform: scaleX(1);
         }
         .service-card i {
-            font-size: 2.5rem;
-            color: #e11d1d;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
         }
         .service-card h3 {
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
         }
         .service-card:hover {
-            transform: translateY(-8px);
-            border-color: #e11d1d40;
-            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+        .service-card:hover i {
+            transform: scale(1.1);
         }
 
-        /* price cards */
+        /* Price Cards */
+        #packages {
+            background-color: #fafbfc;
+        }
         .packages-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
         }
         .price-card {
-            background: white;
+            background: var(--white);
             border-radius: 32px;
-            padding: 2rem 1.5rem;
-            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.1);
-            transition: 0.25s;
-            border: 1px solid #eef2f6;
+            padding: 3rem 2rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         .price-card:hover {
-            transform: scale(1.02);
-            border-color: #e11d1d;
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 25px 50px rgba(225, 29, 29, 0.1);
         }
         .price-card h3 {
             font-size: 1.8rem;
             font-weight: 800;
-            margin-bottom: 0.5rem;
         }
         .price {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            color: #e11d1d;
-            margin: 1rem 0;
+            color: var(--primary);
+            margin: 1.5rem 0;
         }
         .price small {
-            font-size: 0.9rem;
-            font-weight: 400;
-            color: #5a5a70;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-light);
+            display: block;
         }
         .feature-list {
             list-style: none;
-            margin: 1.5rem 0;
+            margin: 1.5rem 0 2.5rem;
             text-align: left;
-            padding-left: 0.5rem;
+            flex-grow: 1;
         }
         .feature-list li {
-            margin: 0.6rem 0;
+            margin: 1rem 0;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
+            font-weight: 500;
         }
         .feature-list i {
-            color: #e11d1d;
-            width: 22px;
+            color: var(--primary);
+            font-size: 1.2rem;
         }
 
-        /* business special */
+        /* Business Special */
         .business-highlight {
-            background: #fef6f6;
-            border: 1px solid #ffcdcd;
+            background: linear-gradient(180deg, var(--dark) 0%, #222 100%);
+            color: var(--white);
+            border: none;
         }
-        .phone-number {
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            background: #111;
-            display: inline-block;
-            padding: 0.4rem 1.2rem;
-            border-radius: 50px;
-            color: white;
-            margin: 0.5rem 0;
+        .business-highlight h3, .business-highlight .price small {
+            color: var(--white);
         }
-
-        /* contact & cta */
-        .contact-card {
-            background: linear-gradient(135deg, #f8f9ff, #ffffff);
-            border-radius: 40px;
-            padding: 3rem 2rem;
-            text-align: center;
-            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.05);
-            border: 1px solid #eaeef5;
+        .business-highlight .feature-list i {
+            color: #4ade80;
         }
-        .big-number {
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin: 1rem 0;
+        .business-highlight .btn-primary {
+            background-color: var(--white);
+            color: var(--dark);
+        }
+        .business-highlight .btn-primary:hover {
+            background-color: var(--primary);
+            color: var(--white);
         }
 
-        /* warranty badge */
+        /* Warranty Badge */
         .warranty-badge {
-            background: #e11d1d10;
-            border-left: 4px solid #e11d1d;
-            padding: 0.8rem 1.2rem;
-            border-radius: 16px;
+            background: rgba(225, 29, 29, 0.05);
+            border: 1px solid rgba(225, 29, 29, 0.1);
+            padding: 1rem 1.5rem;
+            border-radius: 20px;
             display: inline-flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
             font-weight: 600;
-            margin-top: 1rem;
+            color: var(--dark);
         }
 
-        /* social & location row */
+        /* Contact Section */
+        .contact-wrapper {
+            background: linear-gradient(135deg, var(--bg-light), var(--white));
+            border-radius: 40px;
+            padding: 4rem 2rem;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+        }
+        .big-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin: 1.5rem 0;
+            display: block;
+        }
+        .big-number a {
+            text-decoration: none;
+            color: var(--dark);
+            transition: var(--transition);
+        }
+        .big-number a:hover {
+            color: var(--primary);
+        }
+
+        /* Social & Location Row */
         .info-row {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
             align-items: center;
         }
         .social-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
         }
         .social-links a {
-            background: #111;
+            background: var(--dark);
             color: white;
-            width: 48px;
-            height: 48px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.6rem;
-            transition: 0.2s;
+            font-size: 1.5rem;
+            transition: var(--transition);
             text-decoration: none;
         }
         .social-links a:hover {
-            background: #e11d1d;
-            transform: translateY(-4px);
+            background: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(225, 29, 29, 0.3);
         }
         .location-link {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: #f0f0f0;
-            padding: 0.6rem 1.4rem;
+            background: var(--white);
+            border: 2px solid var(--border-color);
+            padding: 0.8rem 1.5rem;
             border-radius: 60px;
             text-decoration: none;
-            color: #111;
+            color: var(--dark);
             font-weight: 600;
-            transition: 0.2s;
-        }
-        .location-link i {
-            color: #e11d1d;
-            font-size: 1.2rem;
+            transition: var(--transition);
         }
         .location-link:hover {
-            background: #e11d1d;
-            color: white;
-        }
-        .location-link:hover i {
-            color: white;
+            border-color: var(--primary);
+            color: var(--primary);
         }
 
-        /* animations */
+        /* Animations */
         .fade-up {
             opacity: 0;
-            transform: translateY(35px);
-            transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s ease;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
         .fade-up.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
+        /* Footer */
         footer {
-            background: #111;
-            color: #ddd;
+            background: var(--dark);
+            color: #a0a0a0;
             text-align: center;
-            padding: 2rem;
-            font-size: 0.9rem;
+            padding: 3rem 2rem;
+            font-size: 0.95rem;
         }
-        .footer-social {
-            margin-top: 1rem;
-            display: flex;
-            justify-content: center;
-            gap: 1.2rem;
-        }
-        .footer-social a {
-            color: #ddd;
-            font-size: 1.3rem;
-            transition: 0.2s;
-        }
-        .footer-social a:hover {
-            color: #e11d1d;
+        footer .logo-red {
+            font-weight: 800;
         }
 
-        /* mobile */
+        /* ====== MOBILE RESPONSIVENESS ====== */
+        @media (max-width: 992px) {
+            .hero-title { font-size: 2.8rem; }
+            .section-title { font-size: 2.2rem; }
+            .packages-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+        }
+
         @media (max-width: 768px) {
-            .navbar {
-                padding: 1rem;
-            }
-            .nav-container {
-                flex-direction: column;
-                align-items: center;
+            .menu-toggle {
+                display: block; 
             }
             .nav-links {
-                justify-content: center;
-                gap: 1.2rem;
-            }
-            section {
-                padding: 3rem 1.2rem;
-            }
-            .section-title {
-                font-size: 1.8rem;
-            }
-            .price-card h3 {
-                font-size: 1.5rem;
-            }
-            .phone-number {
-                font-size: 1.2rem;
-            }
-            .info-row {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--white);
                 flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: clip-path 0.4s ease-in-out;
             }
+            .nav-links.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+            .btn { width: 100%; max-width: 300px; }
+            .service-cta-wrapper { width: 100%; max-width: 300px; }
+            .big-number { font-size: 2.2rem; }
+            section { padding: 4rem 1.5rem; }
         }
 
-        /* scroll margin offset */
         section {
             scroll-margin-top: 90px;
         }
@@ -441,10 +570,13 @@
 
 <nav class="navbar">
     <div class="nav-container">
-        <a href="#" class="logo" id="logoLink">
+        <a href="#" class="logo">
             <span class="logo-red">LIKA</span><span class="logo-dark">tech</span>
         </a>
-        <div class="nav-links">
+        <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links" id="nav-links">
             <a href="#home" data-i18n="nav_home">Ballina</a>
             <a href="#services" data-i18n="nav_services">Shërbimet</a>
             <a href="#packages" data-i18n="nav_packages">Pakot</a>
@@ -458,143 +590,137 @@
     <!-- Hero Section -->
     <section id="home">
         <div class="container fade-up">
-            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <h1 style="font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem;">
+            <div style="max-width: 850px; margin: 0 auto;">
+                <h1 class="hero-title">
                     <span class="logo-red">LIKA</span><span>tech</span><br>
                     <span data-i18n="hero_tagline">Siguri e zgjuar për shtëpinë dhe biznesin</span>
                 </h1>
-                <p style="font-size: 1.2rem; color: #4a4a5a; margin: 1.5rem 0;" data-i18n="hero_desc">
-                    Instalime profesionale të kamerave të sigurisë, alarmeve, smart home dhe rrjeteve. Cilësi e garantuar.
+                <p class="hero-desc" data-i18n="hero_desc">
+                    Instalime profesionale të kamerave të sigurisë, alarmeve, smart home dhe rrjeteve. Cilësi e garantuar dhe teknologji e fjalës së fundit.
                 </p>
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                    <a href="tel:+38349585195" class="btn-primary"><i class="fas fa-phone-alt"></i> <span data-i18n="hero_call_btn">Thirrni Tani</span></a>
-                    <a href="#packages" class="btn-outline"><i class="fas fa-camera"></i> <span data-i18n="hero_packages_btn">Shiko Pakot</span></a>
+                
+                <div class="hero-buttons">
+                    <!-- Standard Call Button -->
+                    <a href="tel:+38349585195" class="btn btn-primary" style="margin-bottom: 5px;"><i class="fas fa-phone-alt"></i> <span data-i18n="hero_call_btn">Thirrni Tani</span></a>
+                    
+                    <!-- NEW LIKAservice Animated Wrapper -->
+                    <div class="service-cta-wrapper">
+                        <div class="service-question">
+                            <span data-i18n="service_ask">A të duhet servisim për</span> <span id="changing-text" class="text-highlight">pajisje?</span>
+                        </div>
+                        <a href="https://likaservice.pages.dev/" target="_blank" class="btn btn-likaservice">
+                            <i class="fas fa-tools"></i> <span>LIKAservice</span>
+                        </a>
+                    </div>
+
+                    <!-- Packages Button -->
+                    <a href="#packages" class="btn btn-outline" style="margin-bottom: 5px;"><i class="fas fa-box-open"></i> <span data-i18n="hero_packages_btn">Shiko Pakot</span></a>
                 </div>
+
                 <div class="warranty-badge">
-                    <i class="fas fa-shield-alt" style="color:#e11d1d; font-size: 1.5rem;"></i>
-                    <span data-i18n="warranty_text"> GARANCION PËR TË GJITHA PAJISJET DHE INSTALIMET</span>
+                    <i class="fas fa-shield-check" style="color:var(--primary); font-size: 1.5rem;"></i>
+                    <span data-i18n="warranty_text">GARANCION PËR TË GJITHA PAJISJET DHE INSTALIMET</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" style="background: #fefefe;">
+    <section id="services">
         <div class="container">
             <h2 class="section-title fade-up" data-i18n="services_title">Shërbimet Tona</h2>
             <div class="services-grid">
-                <div class="service-card fade-up"><i class="fas fa-video"></i><h3 data-i18n="service1">Kamera sigurie</h3></div>
-                <div class="service-card fade-up"><i class="fas fa-bell"></i><h3 data-i18n="service2">Alarme</h3></div>
-                <div class="service-card fade-up"><i class="fas fa-microchip"></i><h3 data-i18n="service3">Smart Home</h3></div>
-                <div class="service-card fade-up"><i class="fas fa-network-wired"></i><h3 data-i18n="service4">Networking</h3></div>
-                <div class="service-card fade-up"><i class="fas fa-wifi"></i><h3 data-i18n="service5">WiFi</h3></div>
-                <div class="service-card fade-up"><i class="fas fa-door-open"></i><h3 data-i18n="service6">Video Interfon</h3></div>
-                <div class="service-card fade-up"><i class="fas fa-tools"></i><h3 data-i18n="service7">Instalim & mirëmbajtje</h3></div>
+                <div class="service-card fade-up" style="transition-delay: 0.1s;"><i class="fas fa-video"></i><h3 data-i18n="service1">Kamera sigurie</h3></div>
+                <div class="service-card fade-up" style="transition-delay: 0.2s;"><i class="fas fa-bell"></i><h3 data-i18n="service2">Alarme</h3></div>
+                <div class="service-card fade-up" style="transition-delay: 0.3s;"><i class="fas fa-microchip"></i><h3 data-i18n="service3">Smart Home</h3></div>
+                <div class="service-card fade-up" style="transition-delay: 0.4s;"><i class="fas fa-network-wired"></i><h3 data-i18n="service4">Networking</h3></div>
+                <div class="service-card fade-up" style="transition-delay: 0.5s;"><i class="fas fa-wifi"></i><h3 data-i18n="service5">WiFi</h3></div>
+                <div class="service-card fade-up" style="transition-delay: 0.6s;"><i class="fas fa-door-open"></i><h3 data-i18n="service6">Video Interfon</h3></div>
             </div>
         </div>
     </section>
 
-    <!-- Packages (House + Business) -->
+    <!-- Packages Section -->
     <section id="packages">
         <div class="container">
             <h2 class="section-title fade-up" data-i18n="packages_main_title">Pakot për Shtëpi & Biznes</h2>
             <div class="packages-grid">
                 <!-- 4 Cameras -->
-                <div class="price-card fade-up">
-                    <h3><i class="fas fa-home"></i> <span data-i18n="pack4_title">4 Kamera</span></h3>
-                    <div class="price"><span data-i18n="pack4_price_prefix">fillon nga</span> 450€</div>
+                <div class="price-card fade-up" style="transition-delay: 0.1s;">
+                    <h3><i class="fas fa-home" style="color: var(--text-light);"></i> <span data-i18n="pack4_title">4 Kamera</span></h3>
+                    <div class="price"><small data-i18n="pack4_price_prefix">fillon nga</small>450€</div>
                     <ul class="feature-list">
                         <li><i class="fas fa-check-circle"></i> <span data-i18n="pack4_feat1">4x Kamera HD 1080p</span></li>
                         <li><i class="fas fa-check-circle"></i> <span data-i18n="pack4_feat2">Regjistrim 24/7</span></li>
                         <li><i class="fas fa-check-circle"></i> <span data-i18n="pack4_feat3">Aplikacion celular</span></li>
                         <li><i class="fas fa-check-circle"></i> <span data-i18n="pack4_feat4">Instalim & konfigurim</span></li>
                     </ul>
-                    <a href="tel:+38349585195" class="btn-outline" style="margin-top: 0.5rem;"><i class="fas fa-phone"></i> <span data-i18n="pack4_btn">Porosit tani</span></a>
+                    <a href="tel:+38349585195" class="btn btn-outline"><i class="fas fa-shopping-cart"></i> <span data-i18n="pack4_btn">Porosit tani</span></a>
                 </div>
+                
                 <!-- 8 Cameras -->
-                <div class="price-card fade-up">
-                    <h3><i class="fas fa-building"></i> <span data-i18n="pack8_title">8 Kamera</span></h3>
-                    <div class="price"><span data-i18n="pack8_price_prefix">fillon nga</span> 800€</div>
+                <div class="price-card fade-up" style="border-color: var(--primary); box-shadow: 0 15px 35px rgba(225,29,29,0.1);" style="transition-delay: 0.2s;">
+                    <div style="background: var(--primary); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; position: absolute; top: -15px; left: 50%; transform: translateX(-50%);">
+                        MË E KËRKUARA
+                    </div>
+                    <h3><i class="fas fa-building" style="color: var(--primary);"></i> <span data-i18n="pack8_title">8 Kamera</span></h3>
+                    <div class="price"><small data-i18n="pack8_price_prefix">fillon nga</small>800€</div>
                     <ul class="feature-list">
                         <li><i class="fas fa-check-circle"></i> <span data-i18n="pack8_feat1">8x Kamera 4MP/HD</span></li>
                         <li><i class="fas fa-check-circle"></i> <span data-i18n="pack8_feat2">NVR me HDD 1TB</span></li>
                         <li><i class="fas fa-check-circle"></i> <span data-i18n="pack8_feat3">Shikim në distancë</span></li>
                         <li><i class="fas fa-check-circle"></i> <span data-i18n="pack8_feat4">Kabllot & instalim</span></li>
                     </ul>
-                    <a href="tel:+38349585195" class="btn-outline" style="margin-top: 0.5rem;"><i class="fas fa-phone"></i> <span data-i18n="pack8_btn">Kërko ofertë</span></a>
+                    <a href="tel:+38349585195" class="btn btn-primary"><i class="fas fa-file-invoice"></i> <span data-i18n="pack8_btn">Kërko ofertë</span></a>
                 </div>
-                <!-- Business Solutions + other prices / ring us -->
-                <div class="price-card business-highlight fade-up">
+
+                <!-- Business Solutions -->
+                <div class="price-card business-highlight fade-up" style="transition-delay: 0.3s;">
                     <h3><i class="fas fa-chart-line"></i> <span data-i18n="business_title">Për Biznese</span></h3>
-                    <div class="price"><span data-i18n="business_price_label">Çmime fleksibël</span></div>
+                    <div class="price"><span style="font-size: 2rem;" data-i18n="business_price_label">Çmime fleksibël</span></div>
                     <ul class="feature-list">
                         <li><i class="fas fa-check-circle"></i> <span data-i18n="business_feat1">Sisteme IP profesionale</span></li>
                         <li><i class="fas fa-check-circle"></i> <span data-i18n="business_feat2">Mbikëqyrje pa humbje cilësie</span></li>
                         <li><i class="fas fa-check-circle"></i> <span data-i18n="business_feat3">Integrim me alarme & akses</span></li>
                         <li><i class="fas fa-check-circle"></i> <span data-i18n="business_feat4">Mirëmbajtje vjetore</span></li>
                     </ul>
-                    <div style="margin: 1rem 0;">
-                        <span class="phone-number"><i class="fas fa-phone-alt"></i> +383 49 585 195</span>
-                        <p style="margin-top: 0.6rem; font-weight: 500;" data-i18n="business_call_hint">Thirrni për çmime të personalizuara</p>
-                    </div>
-                    <a href="tel:+38349585195" class="btn-primary" style="background: #111; box-shadow: none;"><i class="fas fa-phone-volume"></i> <span data-i18n="business_btn">Na telefononi</span></a>
-                </div>
-            </div>
-            <div class="fade-up" style="text-align: center; margin-top: 3rem;">
-                <p data-i18n="custom_note" style="font-size: 1rem; background: #f3f3f3; display: inline-block; padding: 0.5rem 1.5rem; border-radius: 60px;"><i class="fas fa-headset"></i> Për zgjidhje të tjera ose projekte të mëdha, na kontaktoni direkt!</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Us + Warranty & Location Preview -->
-    <section style="background: #fafafc;">
-        <div class="container">
-            <h2 class="section-title fade-up" data-i18n="features_title">Pse të zgjidhni LIKAtech?</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 2rem;">
-                <div class="fade-up" style="text-align: center;"><i class="fas fa-medal" style="font-size: 2.5rem; color:#e11d1d;"></i><h3 style="margin: 1rem 0 0.5rem;" data-i18n="feature1_title">Profesionalizëm</h3><p data-i18n="feature1_desc">Teknikë të certifikuar, instalim preciz.</p></div>
-                <div class="fade-up" style="text-align: center;"><i class="fas fa-clock" style="font-size: 2.5rem; color:#e11d1d;"></i><h3 style="margin: 1rem 0 0.5rem;" data-i18n="feature2_title">Mbështetje 24/7</h3><p data-i18n="feature2_desc">Asistencë teknike dhe mirëmbajtje pas instalimit.</p></div>
-                <div class="fade-up" style="text-align: center;"><i class="fas fa-shield-alt" style="font-size: 2.5rem; color:#e11d1d;"></i><h3 style="margin: 1rem 0 0.5rem;" data-i18n="feature3_title">Cilësi & Siguri</h3><p data-i18n="feature3_desc">Pajisje të markave lider me garanci.</p></div>
-            </div>
-            <!-- warranty explicit + location quick -->
-            <div class="fade-up" style="text-align: center; margin-top: 2.5rem;">
-                <div class="warranty-badge" style="background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-                    <i class="fas fa-check-circle" style="color:#e11d1d; font-size: 1.8rem;"></i>
-                    <span style="font-size: 1rem;" data-i18n="warranty_full">✔️ Garanci 12 muaj për materialet dhe punën. Mbështetje pas shitjes.</span>
+                    <a href="tel:+38349585195" class="btn btn-primary"><i class="fas fa-phone-volume"></i> <span data-i18n="business_btn">Na telefononi</span></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact / Call to Action with location, socials & updated hours -->
-    <section id="contact">
+    <!-- Contact & Action Section -->
+    <section id="contact" style="background: var(--white);">
         <div class="container">
-            <div class="contact-card fade-up">
-                <i class="fas fa-headset" style="font-size: 3rem; color: #e11d1d;"></i>
-                <h2 style="font-size: 2rem; margin: 0.8rem 0;" data-i18n="contact_title">Jemi të gatshëm t'ju ndihmojmë</h2>
-                <p style="font-size: 1.2rem; margin-bottom: 1rem;" data-i18n="contact_subtitle">Për çdo pyetje, çmim të veçantë apo konsultim falas, na telefononi.</p>
-                <div class="big-number">
-                    <a href="tel:+38349585195" style="text-decoration: none; color:#111; font-weight:800;">+383 49 585 195</a>
+            <div class="contact-wrapper fade-up">
+                <div style="background: white; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; box-shadow: 0 10px 20px rgba(0,0,0,0.05);">
+                    <i class="fas fa-headset" style="font-size: 2.5rem; color: var(--primary);"></i>
                 </div>
-                <!-- Updated working hours: Mon-Fri 08:00 - 16:00 -->
-                <p style="margin-top: 0.5rem; background: #f0f0f0; display: inline-block; padding: 0.3rem 1rem; border-radius: 30px;">
-                    <i class="far fa-calendar-alt"></i> <span data-i18n="working_hours_label">Orari zyrtar:</span> <strong data-i18n="working_hours">E hënë – E premte: 08:00 – 16:00</strong>
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;" data-i18n="contact_title">Jemi të gatshëm t'ju ndihmojmë</h2>
+                <p style="font-size: 1.2rem; color: var(--text-light); max-width: 600px; margin: 0 auto 2rem;" data-i18n="contact_subtitle">
+                    Për çdo pyetje, projekt të veçantë, ose për të kërkuar shërbimin <strong style="color:var(--dark);">LIKAservice</strong>, na kontaktoni tani.
                 </p>
+                
+                <div class="big-number">
+                    <a href="tel:+38349585195">+383 49 585 195</a>
+                </div>
 
-                <!-- Social Media & Location Row -->
+                <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
+                    <span style="background: #fff; padding: 0.5rem 1.2rem; border-radius: 30px; border: 1px solid var(--border-color); font-weight: 500;">
+                        <i class="far fa-clock" style="color: var(--primary);"></i> <span data-i18n="working_hours">E hënë – E premte: 08:00 – 16:00</span>
+                    </span>
+                </div>
+
+                <!-- Info Row -->
                 <div class="info-row">
                     <div class="social-links">
                         <a href="https://www.tiktok.com/@lika.tech" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                         <a href="https://www.instagram.com/lika.tech" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                     <a href="https://maps.app.goo.gl/HzyiEpASAriAv5w87" target="_blank" class="location-link">
-                        <i class="fas fa-map-marker-alt"></i> <span data-i18n="location_text">📍 Fushë Kosovë | Shërbim në gjithë Kosovën</span>
+                        <i class="fas fa-map-marker-alt" style="color: var(--primary);"></i> <span data-i18n="location_text">📍 Fushë Kosovë | Shërbim në gjithë Kosovën</span>
                     </a>
-                </div>
-                <p style="margin-top: 1rem; font-size: 0.85rem; color: #5a5a70;">
-                    <i class="fas fa-check-circle" style="color:#e11d1d;"></i> <span data-i18n="operation_note">Operojmë në të gjitha qytetet e Kosovës — Prishtinë, Prizren, Pejë, Gjakovë, Mitrovicë, Gjilan, Ferizaj dhe më gjerë.</span>
-                </p>
-                <div style="margin-top: 1.5rem;">
-                    <a href="tel:+38349585195" class="btn-primary" style="background: #e11d1d;"><i class="fas fa-phone-alt"></i> <span data-i18n="contact_btn">Thirrni Tani</span></a>
                 </div>
             </div>
         </div>
@@ -602,15 +728,36 @@
 </main>
 
 <footer>
-    <p>© <span id="currentYear"></span> <span class="logo-red">LIKA</span><span style="color:white;">tech</span> | <span data-i18n="footer_rights">Të gjitha të drejtat e rezervuara</span> | <i class="fas fa-phone-alt"></i> +383 49 585 195</p>
-    <div class="footer-social">
-        <a href="https://www.tiktok.com/@lika.tech" target="_blank"><i class="fab fa-tiktok"></i></a>
-        <a href="https://www.instagram.com/lika.tech" target="_blank"><i class="fab fa-instagram"></i></a>
+    <div class="container">
+        <p style="margin-bottom: 1rem; font-size: 1.2rem;">
+            <span class="logo-red">LIKA</span><span style="color:white;">tech</span>
+        </p>
+        <p>© <span id="currentYear"></span> | <span data-i18n="footer_rights">Të gjitha të drejtat e rezervuara</span></p>
+        <p style="margin-top: 0.5rem;"><i class="fas fa-check-circle" style="color: var(--primary);"></i> Operojmë në të gjitha qytetet e Kosovës.</p>
     </div>
 </footer>
 
 <script>
-    // translations dictionary (sq & en) with updated fields
+    // Text Animation Logic for Service Question
+    const serviceItemsSQ = ["pajisje?", "kamera?", "telefon?", "kompjuter?", "servera?", "rrjet?"];
+    const serviceItemsEN = ["devices?", "cameras?", "phones?", "computers?", "servers?", "network?"];
+    let serviceIndex = 0;
+    const changingText = document.getElementById('changing-text');
+
+    setInterval(() => {
+        if(changingText) {
+            changingText.classList.add('hide');
+            setTimeout(() => {
+                serviceIndex = (serviceIndex + 1) % serviceItemsSQ.length;
+                // Check current language to show the right array
+                const activeLang = document.documentElement.lang || 'sq';
+                changingText.innerText = activeLang === 'sq' ? serviceItemsSQ[serviceIndex] : serviceItemsEN[serviceIndex];
+                changingText.classList.remove('hide');
+            }, 400); // Wait for CSS opacity transition to finish
+        }
+    }, 3000); // Change text every 3 seconds
+
+    // Translations Data
     const translations = {
         sq: {
             nav_home: "Ballina",
@@ -618,9 +765,10 @@
             nav_packages: "Pakot",
             nav_contact: "Kontakt",
             hero_tagline: "Siguri e zgjuar për shtëpinë dhe biznesin",
-            hero_desc: "Instalime profesionale të kamerave të sigurisë, alarmeve, smart home dhe rrjeteve. Cilësi e garantuar.",
+            hero_desc: "Instalime profesionale të kamerave të sigurisë, alarmeve, smart home dhe rrjeteve. Cilësi e garantuar dhe teknologji e fjalës së fundit.",
             hero_call_btn: "Thirrni Tani",
             hero_packages_btn: "Shiko Pakot",
+            service_ask: "A të duhet servisim për",
             warranty_text: "GARANCION PËR TË GJITHA PAJISJET DHE INSTALIMET",
             services_title: "Shërbimet Tona",
             service1: "Kamera sigurie",
@@ -629,17 +777,16 @@
             service4: "Networking",
             service5: "WiFi",
             service6: "Video Interfon",
-            service7: "Instalim & mirëmbajtje",
             packages_main_title: "Pakot për Shtëpi & Biznes",
             pack4_title: "4 Kamera",
-            pack4_price_prefix: "fillon nga",
+            pack4_price_prefix: "fillon nga ",
             pack4_feat1: "4x Kamera HD 1080p",
             pack4_feat2: "Regjistrim 24/7",
             pack4_feat3: "Aplikacion celular",
             pack4_feat4: "Instalim & konfigurim",
             pack4_btn: "Porosit tani",
             pack8_title: "8 Kamera",
-            pack8_price_prefix: "fillon nga",
+            pack8_price_prefix: "fillon nga ",
             pack8_feat1: "8x Kamera 4MP/HD",
             pack8_feat2: "NVR me HDD 1TB",
             pack8_feat3: "Shikim në distancë",
@@ -651,24 +798,11 @@
             business_feat2: "Mbikëqyrje pa humbje cilësie",
             business_feat3: "Integrim me alarme & akses",
             business_feat4: "Mirëmbajtje vjetore",
-            business_call_hint: "Thirrni për çmime të personalizuara",
             business_btn: "Na telefononi",
-            custom_note: "Për zgjidhje të tjera ose projekte të mëdha, na kontaktoni direkt!",
-            features_title: "Pse të zgjidhni LIKAtech?",
-            feature1_title: "Profesionalizëm",
-            feature1_desc: "Teknikë të certifikuar, instalim preciz.",
-            feature2_title: "Mbështetje 24/7",
-            feature2_desc: "Asistencë teknike dhe mirëmbajtje pas instalimit.",
-            feature3_title: "Cilësi & Siguri",
-            feature3_desc: "Pajisje të markave lider me garanci.",
-            warranty_full: "Garanci për materialet dhe punën. Mbështetje pas shitjes.",
             contact_title: "Jemi të gatshëm t'ju ndihmojmë",
-            contact_subtitle: "Për çdo pyetje, çmim të veçantë apo konsultim falas, na telefononi.",
-            contact_btn: "Thirrni Tani",
-            working_hours_label: "Orari zyrtar:",
+            contact_subtitle: "Për çdo pyetje, projekt të veçantë, ose për të kërkuar shërbimin LIKAservice, na kontaktoni tani.",
             working_hours: "E hënë – E premte: 08:00 – 16:00",
-            location_text: "📍 Fushë Kosovë | Shërbim në gjithë Kosovën",
-            operation_note: "Operojmë në të gjitha qytetet e Kosovës — Prishtinë, Prizren, Pejë, Gjakovë, Mitrovicë, Gjilan, Ferizaj dhe më gjerë.",
+            location_text: "Fushë Kosovë | Shërbim në gjithë Kosovën",
             footer_rights: "Të gjitha të drejtat e rezervuara"
         },
         en: {
@@ -677,9 +811,10 @@
             nav_packages: "Packages",
             nav_contact: "Contact",
             hero_tagline: "Smart Security for Home & Business",
-            hero_desc: "Professional installations of security cameras, alarms, smart home and networking. Guaranteed quality.",
+            hero_desc: "Professional installations of security cameras, alarms, smart home and networking. Guaranteed quality and latest technology.",
             hero_call_btn: "Call Now",
             hero_packages_btn: "View Packages",
+            service_ask: "Need servicing for",
             warranty_text: "WARRANTY ON ALL EQUIPMENT AND INSTALLATION",
             services_title: "Our Services",
             service1: "Security Cameras",
@@ -688,17 +823,16 @@
             service4: "Networking",
             service5: "WiFi",
             service6: "Video Intercom",
-            service7: "Installation & Maintenance",
             packages_main_title: "Home & Business Packages",
             pack4_title: "4 Cameras",
-            pack4_price_prefix: "starting from",
+            pack4_price_prefix: "starting from ",
             pack4_feat1: "4x HD 1080p Cameras",
             pack4_feat2: "24/7 Recording",
             pack4_feat3: "Mobile App Access",
             pack4_feat4: "Installation & Setup",
             pack4_btn: "Order Now",
             pack8_title: "8 Cameras",
-            pack8_price_prefix: "starting from",
+            pack8_price_prefix: "starting from ",
             pack8_feat1: "8x 4MP/HD Cameras",
             pack8_feat2: "NVR with 1TB HDD",
             pack8_feat3: "Remote Viewing",
@@ -710,24 +844,11 @@
             business_feat2: "High-quality surveillance",
             business_feat3: "Alarm & access integration",
             business_feat4: "Annual maintenance",
-            business_call_hint: "Call for custom pricing",
             business_btn: "Call us",
-            custom_note: "For other solutions or large projects, contact us directly!",
-            features_title: "Why choose LIKAtech?",
-            feature1_title: "Professionalism",
-            feature1_desc: "Certified technicians, precise installation.",
-            feature2_title: "24/7 Support",
-            feature2_desc: "Technical assistance & post-installation maintenance.",
-            feature3_title: "Quality & Security",
-            feature3_desc: "Top-brand devices with warranty.",
-            warranty_full: " warranty on materials and labor. After-sales support.",
             contact_title: "We're ready to help you",
-            contact_subtitle: "For any questions, custom pricing or free consultation, call us.",
-            contact_btn: "Call Now",
-            working_hours_label: "Office hours:",
+            contact_subtitle: "For any questions, special projects, or to request LIKAservice, contact us now.",
             working_hours: "Monday – Friday: 08:00 – 16:00",
-            location_text: "📍 Fushe Kosova | Service across all Kosovo",
-            operation_note: "We operate in all cities of Kosovo — Prishtina, Prizren, Peja, Gjakova, Mitrovica, Gjilan, Ferizaj and beyond.",
+            location_text: "Fushe Kosova | Service across all Kosovo",
             footer_rights: "All rights reserved"
         }
     };
@@ -738,18 +859,20 @@
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) {
-                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                    el.placeholder = translations[lang][key];
-                } else {
-                    el.innerText = translations[lang][key];
-                }
+                el.innerHTML = translations[lang][key];
             }
         });
-        document.documentElement.lang = lang === 'sq' ? 'sq' : 'en';
+        document.documentElement.lang = lang;
         const langToggleSpan = document.getElementById('langText');
         if (langToggleSpan) langToggleSpan.innerText = lang === 'sq' ? 'Shqip' : 'English';
+        
+        // Update animated text language instantly
+        if(changingText) {
+            changingText.innerText = lang === 'sq' ? serviceItemsSQ[serviceIndex] : serviceItemsEN[serviceIndex];
+        }
     }
 
+    // Language Toggle
     const toggleBtn = document.getElementById('langToggle');
     if (toggleBtn) {
         toggleBtn.addEventListener('click', () => {
@@ -758,20 +881,46 @@
         });
     }
 
-    // Intersection Observer for fade-up animations
+    // Mobile Menu Toggle
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const navLinks = document.getElementById('nav-links');
+    
+    menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        const icon = menuBtn.querySelector('i');
+        if (navLinks.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            menuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
+        });
+    });
+
+    // Intersection Observer for Animations
     const fadeElements = document.querySelectorAll('.fade-up');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
+                observer.unobserve(entry.target); 
             }
         });
-    }, { threshold: 0.15, rootMargin: "0px 0px -20px 0px" });
+    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+    
     fadeElements.forEach(el => observer.observe(el));
 
+    // Dynamic Year Update
     document.getElementById('currentYear').innerText = new Date().getFullYear();
 
+    // Smooth Scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
@@ -784,6 +933,7 @@
         });
     });
 
+    // Initialize default language
     applyLanguage('sq');
 </script>
 </body>
