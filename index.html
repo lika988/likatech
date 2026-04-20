@@ -52,6 +52,7 @@
                         'float-delay-3': 'float 5s ease-in-out 4.5s infinite',
                         'slow-zoom': 'slowZoom 20s ease-in-out infinite alternate',
                         'shimmer': 'shimmer 2.5s infinite linear',
+                        'ring': 'ring 2s ease-in-out infinite',
                     },
                     keyframes: {
                         fadeInUp: {
@@ -81,6 +82,15 @@
                         shimmer: {
                             '0%': { backgroundPosition: '-200% 0' },
                             '100%': { backgroundPosition: '200% 0' },
+                        },
+                        ring: {
+                            '0%': { transform: 'rotate(0)' },
+                            '10%': { transform: 'rotate(20deg)' },
+                            '20%': { transform: 'rotate(-15deg)' },
+                            '30%': { transform: 'rotate(20deg)' },
+                            '40%': { transform: 'rotate(-15deg)' },
+                            '50%': { transform: 'rotate(0)' },
+                            '100%': { transform: 'rotate(0)' }
                         }
                     }
                 }
@@ -207,7 +217,7 @@
     <nav class="fixed w-full z-50 transition-all duration-500 bg-transparent" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-24 sm:h-28 md:h-32">
-                <!-- Logo me Fade In/Out rregulluar -->
+                <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="#" class="cursor-pointer block relative group h-20 sm:h-24 md:h-28 lg:h-32 w-32 sm:w-40 md:w-48 transform scale-110 sm:scale-125 origin-left transition-transform duration-500 hover:scale-[1.3] hover:drop-shadow-xl mt-4 md:mt-0">
                         <img id="logo-white" src="https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/LOGO/LOGO%20White+RED?updatedAt=1776285031190" alt="LIKA TECH" class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-full object-contain object-left transition-opacity duration-500 opacity-100">
@@ -216,35 +226,40 @@
                 </div>
 
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8 animate-fade-in-up" style="animation-delay: 0.2s;">
-                    <div class="flex space-x-2 items-center bg-white/80 backdrop-blur-xl px-2 py-2 rounded-full border border-gray-200/50 shadow-lg shadow-gray-200/20">
-                        <a href="#" class="px-5 py-2 text-sm font-bold text-gray-600 hover:text-lika-red hover:bg-red-50 rounded-full transition-all duration-300" data-i18n="nav_home">Kryefaqja</a>
-                        <a href="#offers" class="px-5 py-2 text-sm font-bold text-gray-600 hover:text-lika-red hover:bg-red-50 rounded-full transition-all duration-300" data-i18n="nav_offers">Ofertat</a>
-                        <a href="https://service.likaapps.com/" target="_blank" class="px-5 py-2 text-sm font-bold text-gray-600 hover:text-lika-red hover:bg-red-50 rounded-full transition-all duration-300" data-i18n="nav_service">Servisim</a>
-                        <a href="#contact" class="px-5 py-2 text-sm font-bold text-gray-600 hover:text-lika-red hover:bg-red-50 rounded-full transition-all duration-300" data-i18n="nav_contact">Kontakt</a>
+                <div class="hidden lg:flex items-center space-x-6 xl:space-x-8 animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="flex space-x-1 xl:space-x-2 items-center bg-white/80 backdrop-blur-xl px-2 py-2 rounded-full border border-gray-200/50 shadow-lg shadow-gray-200/20">
+                        <a href="index.html" class="px-4 xl:px-5 py-2 text-sm font-bold text-gray-600 hover:text-lika-red hover:bg-red-50 rounded-full transition-all duration-300" data-i18n="nav_home">Kryefaqja</a>
+                        <a href="index.html#offers" class="px-4 xl:px-5 py-2 text-sm font-bold text-gray-600 hover:text-lika-red hover:bg-red-50 rounded-full transition-all duration-300" data-i18n="nav_offers">Ofertat</a>
+                        <!-- New Pricing Button in Nav -->
+                        <a href="cmimet.html" class="px-4 xl:px-5 py-2 text-sm font-bold text-lika-red bg-red-50/80 hover:bg-red-100 rounded-full transition-all duration-300 flex items-center gap-1.5 shadow-sm border border-red-100/50">
+                            <i data-lucide="badge-euro" class="w-4 h-4"></i>
+                            <span data-i18n="nav_pricing">Çmimet</span>
+                        </a>
+                        <a href="https://service.likaapps.com/" target="_blank" class="px-4 xl:px-5 py-2 text-sm font-bold text-gray-600 hover:text-lika-red hover:bg-red-50 rounded-full transition-all duration-300" data-i18n="nav_service">Servisim</a>
+                        <a href="#contact" class="px-4 xl:px-5 py-2 text-sm font-bold text-gray-600 hover:text-lika-red hover:bg-red-50 rounded-full transition-all duration-300" data-i18n="nav_contact">Kontakt</a>
                     </div>
                 </div>
 
-                <!-- Actions (Thirr Tani) -->
-                <div class="hidden md:flex items-center space-x-4 animate-fade-in-up" style="animation-delay: 0.3s;">
+                <!-- Actions -->
+                <div class="hidden md:flex items-center space-x-3 xl:space-x-4 animate-fade-in-up" style="animation-delay: 0.3s;">
                     <!-- Language Toggle -->
                     <button onclick="toggleLanguage()" class="w-11 h-11 flex items-center justify-center rounded-full bg-white hover:bg-gray-50 transition-all duration-300 border border-gray-200 font-black text-xs text-gray-800 shadow-sm hover:shadow-md hover:-translate-y-0.5 active:scale-95" id="lang-toggle">
                         EN
                     </button>
                     <!-- Call Button -->
-                    <a href="tel:+38349585195" class="px-6 py-2.5 btn-shimmer text-white rounded-full flex items-center gap-3 transition-all shadow-lg hover:-translate-y-1 group">
-                        <div class="p-2 bg-white/20 rounded-full group-hover:animate-pulse">
-                            <i data-lucide="phone-call" class="w-4 h-4"></i>
+                    <a href="tel:+38349585195" class="px-5 xl:px-6 py-2.5 btn-shimmer text-white rounded-full flex items-center gap-3 transition-all shadow-lg hover:-translate-y-1 group">
+                        <div class="p-2 bg-white/20 rounded-full">
+                            <i data-lucide="phone-call" class="w-4 h-4 animate-ring"></i>
                         </div>
                         <div class="flex flex-col text-left">
                             <span class="text-[10px] uppercase tracking-wider opacity-90 font-bold" data-i18n="btn_call_now">Thirr Tani</span>
-                            <span class="text-sm font-black leading-none">+383 49 585 195</span>
+                            <span class="text-xs xl:text-sm font-black leading-none">+383 49 585 195</span>
                         </div>
                     </a>
                 </div>
 
                 <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center space-x-3">
+                <div class="lg:hidden flex items-center space-x-3">
                     <button onclick="toggleLanguage()" class="w-9 h-9 flex items-center justify-center rounded-full bg-white/90 backdrop-blur-md border border-gray-200 font-black text-[10px] text-gray-800 shadow-sm transition-transform active:scale-90" id="lang-toggle-mob">
                         EN
                     </button>
@@ -256,13 +271,17 @@
         </div>
 
         <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="md:hidden hidden absolute w-full bg-white/95 backdrop-blur-2xl border-b border-gray-100 shadow-2xl animate-slide-down">
+        <div id="mobile-menu" class="lg:hidden hidden absolute w-full bg-white/95 backdrop-blur-2xl border-b border-gray-100 shadow-2xl animate-slide-down">
             <div class="px-6 pt-4 pb-8 space-y-2">
-                <a href="#" onclick="toggleMobileMenu()" class="flex items-center justify-between px-4 py-4 rounded-2xl text-base font-bold text-gray-800 hover:bg-red-50 hover:text-lika-red transition-all" data-i18n="nav_home">
+                <a href="index.html" onclick="toggleMobileMenu()" class="flex items-center justify-between px-4 py-4 rounded-2xl text-base font-bold text-gray-800 hover:bg-red-50 hover:text-lika-red transition-all" data-i18n="nav_home">
                     <span>Kryefaqja</span> <i data-lucide="chevron-right" class="w-4 h-4 opacity-50"></i>
                 </a>
-                <a href="#offers" onclick="toggleMobileMenu()" class="flex items-center justify-between px-4 py-4 rounded-2xl text-base font-bold text-gray-800 hover:bg-red-50 hover:text-lika-red transition-all" data-i18n="nav_offers">
+                <a href="index.html#offers" onclick="toggleMobileMenu()" class="flex items-center justify-between px-4 py-4 rounded-2xl text-base font-bold text-gray-800 hover:bg-red-50 hover:text-lika-red transition-all" data-i18n="nav_offers">
                     <span>Ofertat</span> <i data-lucide="chevron-right" class="w-4 h-4 opacity-50"></i>
+                </a>
+                <!-- New Pricing Button in Mobile Nav -->
+                <a href="cmimet.html" class="flex items-center justify-between px-4 py-4 rounded-2xl text-base font-black text-lika-red bg-red-50/50 hover:bg-red-50 transition-all border border-red-100/50">
+                    <div class="flex items-center gap-2"><i data-lucide="badge-euro" class="w-5 h-5"></i> <span data-i18n="nav_pricing">Çmimet e Shërbimeve</span></div> <i data-lucide="chevron-right" class="w-4 h-4 opacity-50"></i>
                 </a>
                 <a href="https://service.likaapps.com/" target="_blank" onclick="toggleMobileMenu()" class="flex items-center justify-between px-4 py-4 rounded-2xl text-base font-bold text-gray-800 hover:bg-red-50 hover:text-lika-red transition-all" data-i18n="nav_service">
                     <span>Servisim</span> <i data-lucide="chevron-right" class="w-4 h-4 opacity-50"></i>
@@ -271,8 +290,8 @@
                     <span>Kontakt</span> <i data-lucide="chevron-right" class="w-4 h-4 opacity-50"></i>
                 </a>
                 <div class="pt-6 mt-4 border-t border-gray-100">
-                    <a href="tel:+38349585195" class="w-full flex items-center justify-center gap-3 px-4 py-4 rounded-2xl text-white btn-shimmer shadow-xl shadow-red-600/20 transition-all">
-                        <i data-lucide="phone-call" class="w-5 h-5"></i>
+                    <a href="tel:+38349585195" class="w-full flex items-center justify-center gap-3 px-4 py-4 rounded-2xl text-white btn-shimmer shadow-xl shadow-red-600/20 transition-all group">
+                        <i data-lucide="phone-call" class="w-5 h-5 animate-ring"></i>
                         <div class="flex flex-col text-left">
                             <span class="text-[10px] uppercase tracking-wider opacity-90 font-bold" data-i18n="btn_call_now">Thirr Tani</span>
                             <span class="text-sm font-black leading-none">+383 49 585 195</span>
@@ -299,25 +318,32 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center w-full">
             <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold text-[10px] md:text-xs mb-8 animate-fade-in-up uppercase tracking-widest shadow-xl">
                 <i data-lucide="shield-check" class="w-3.5 h-3.5 text-lika-red"></i> 
-                Ekspertët e Sigurisë
+                Mjeshtri i sigurisë
             </div>
 
             <h1 class="text-[3rem] leading-[1.05] sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6 animate-fade-in-up" style="animation-delay: 0.1s;">
-                <span class="block text-white drop-shadow-xl" data-i18n="hero_title1">Siguria Juaj,</span>
+                <span class="block text-white drop-shadow-xl" data-i18n="hero_title1">Siguria Juaj</span>
                 <span class="block text-transparent bg-clip-text bg-gradient-to-r from-lika-red via-red-500 to-orange-400 drop-shadow-2xl pb-2" data-i18n="hero_title2">Prioriteti Ynë.</span>
             </h1>
             
             <p class="mt-6 max-w-2xl text-sm md:text-lg text-gray-300 mx-auto animate-fade-in-up font-medium leading-relaxed px-4" style="animation-delay: 0.2s;" data-i18n="hero_subtitle">
-                Zgjidhje teknologjike premium për kamera sigurie, sisteme alarmi dhe servisim profesional. Besueshmëri që vlen.
+                Zgjidhje teknologjike premium për kamera sigurie, sisteme alarmi, video interfon dhe servisim profesional. Besueshmëri që vlen.
             </p>
             
-            <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4 animate-fade-in-up w-full max-w-[280px] sm:max-w-none mx-auto px-4 sm:px-0" style="animation-delay: 0.3s;">
-                <a href="#offers" class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 text-sm md:text-base font-black rounded-2xl text-white btn-shimmer group relative overflow-hidden">
+            <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4 animate-fade-in-up w-full max-w-[300px] sm:max-w-none mx-auto px-4 sm:px-0 flex-wrap" style="animation-delay: 0.3s;">
+                <a href="#offers" class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 text-sm md:text-base font-black rounded-2xl text-white btn-shimmer group relative overflow-hidden flex-1 sm:flex-none">
                     <span class="relative z-10" data-i18n="btn_view_offers">Shiko Ofertat</span>
                     <i data-lucide="arrow-right" class="w-4 h-4 md:w-5 md:h-5 relative z-10 group-hover:translate-x-1.5 transition-transform"></i>
                 </a>
-                <a href="tel:+38349585195" class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 text-sm md:text-base font-bold rounded-2xl text-gray-900 bg-white hover:bg-gray-50 transition-all shadow-xl hover:-translate-y-1 active:scale-95 group border border-gray-100">
-                    <i data-lucide="phone-call" class="w-4 h-4 md:w-5 md:h-5 text-lika-red group-hover:rotate-12 transition-transform"></i>
+                
+                <!-- Hero Pricing Button -->
+                <a href="cmimet.html" class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 text-sm md:text-base font-bold rounded-2xl text-white bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 transition-all shadow-xl hover:-translate-y-1 active:scale-95 group flex-1 sm:flex-none">
+                    <i data-lucide="badge-euro" class="w-4 h-4 md:w-5 md:h-5 text-red-400"></i>
+                    <span data-i18n="pricing_title">Çmimet e Shërbimeve</span>
+                </a>
+
+                <a href="tel:+38349585195" class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 text-sm md:text-base font-bold rounded-2xl text-gray-900 bg-white hover:bg-gray-50 transition-all shadow-xl hover:-translate-y-1 active:scale-95 group border border-gray-100 flex-1 sm:flex-none">
+                    <i data-lucide="phone-call" class="w-4 h-4 md:w-5 md:h-5 text-lika-red animate-ring"></i>
                     <span data-i18n="btn_call_now">Thirr Tani</span>
                 </a>
             </div>
@@ -341,6 +367,10 @@
                 <div class="marquee-content">
                     <!-- SET 1 -->
                     <div class="flex items-center justify-center gap-12 sm:gap-16 md:gap-24 px-6 sm:px-8">
+                        <div onclick="openBrandModal('professional_alarm')" class="brand-item cursor-pointer relative flex justify-center items-center group p-2">
+                            <div class="absolute inset-0 bg-blue-500/0 rounded-full blur-xl group-hover:bg-blue-500/10 transition-colors duration-500 scale-125"></div>
+                            <img src="https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/Brands/ProfessionalAlarm_Logo_Variations-03-scaled_LnWHtdjRw.png?updatedAt=null&ik-s=64bb31b2117e7a992c10d4e46a727ad91d049670" alt="Professional Alarm" class="h-6 sm:h-7 md:h-8 lg:h-9 w-auto object-contain relative z-10 transition-transform duration-500 group-hover:scale-110 drop-shadow-sm">
+                        </div>
                         <div onclick="openBrandModal('hikvision')" class="brand-item cursor-pointer relative flex justify-center items-center group p-2">
                             <div class="absolute inset-0 bg-red-500/0 rounded-full blur-xl group-hover:bg-red-500/10 transition-colors duration-500 scale-125"></div>
                             <img src="https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/Brands/Hikvision@3x_7t75oY_3F.png?updatedAt=null&ik-s=e0c0bde328bb86f8b811eed956f9ebc6a2db8c88" alt="Hikvision" class="h-5 sm:h-6 md:h-7 lg:h-8 w-auto object-contain relative z-10 transition-transform duration-500 group-hover:scale-110 drop-shadow-sm">
@@ -368,11 +398,19 @@
                         <div onclick="openBrandModal('tplink')" class="brand-item cursor-pointer relative flex justify-center items-center group p-2">
                             <div class="absolute inset-0 bg-teal-500/0 rounded-full blur-xl group-hover:bg-teal-500/10 transition-colors duration-500 scale-125"></div>
                             <img src="https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/Brands/TpLink@3x_emNwemXu7.png?updatedAt=null&ik-s=ca002b3c39d4fe066240ea987f5787f290b0ea8a" alt="TP-Link" class="h-5 sm:h-6 md:h-7 lg:h-8 w-auto object-contain relative z-10 transition-transform duration-500 group-hover:scale-110 drop-shadow-sm">
+                        </div>
+                        <div onclick="openBrandModal('tenda')" class="brand-item cursor-pointer relative flex justify-center items-center group p-2">
+                            <div class="absolute inset-0 bg-orange-500/0 rounded-full blur-xl group-hover:bg-orange-500/10 transition-colors duration-500 scale-125"></div>
+                            <img src="https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/Brands/Tenda_LOGO_ryAi73BQP.png?updatedAt=null&ik-s=dc4287adc12524515d3de7f46e9a72cd6e295343" alt="Tenda" class="h-5 sm:h-6 md:h-7 lg:h-8 w-auto object-contain relative z-10 transition-transform duration-500 group-hover:scale-110 drop-shadow-sm">
                         </div>
                     </div>
 
                     <!-- SET 2 (Duplicate for infinite loop) -->
                     <div class="flex items-center justify-center gap-12 sm:gap-16 md:gap-24 px-6 sm:px-8">
+                        <div onclick="openBrandModal('professional_alarm')" class="brand-item cursor-pointer relative flex justify-center items-center group p-2">
+                            <div class="absolute inset-0 bg-blue-500/0 rounded-full blur-xl group-hover:bg-blue-500/10 transition-colors duration-500 scale-125"></div>
+                            <img src="https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/Brands/ProfessionalAlarm_Logo_Variations-03-scaled_LnWHtdjRw.png?updatedAt=null&ik-s=64bb31b2117e7a992c10d4e46a727ad91d049670" alt="Professional Alarm" class="h-6 sm:h-7 md:h-8 lg:h-9 w-auto object-contain relative z-10 transition-transform duration-500 group-hover:scale-110 drop-shadow-sm">
+                        </div>
                         <div onclick="openBrandModal('hikvision')" class="brand-item cursor-pointer relative flex justify-center items-center group p-2">
                             <div class="absolute inset-0 bg-red-500/0 rounded-full blur-xl group-hover:bg-red-500/10 transition-colors duration-500 scale-125"></div>
                             <img src="https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/Brands/Hikvision@3x_7t75oY_3F.png?updatedAt=null&ik-s=e0c0bde328bb86f8b811eed956f9ebc6a2db8c88" alt="Hikvision" class="h-5 sm:h-6 md:h-7 lg:h-8 w-auto object-contain relative z-10 transition-transform duration-500 group-hover:scale-110 drop-shadow-sm">
@@ -400,6 +438,10 @@
                         <div onclick="openBrandModal('tplink')" class="brand-item cursor-pointer relative flex justify-center items-center group p-2">
                             <div class="absolute inset-0 bg-teal-500/0 rounded-full blur-xl group-hover:bg-teal-500/10 transition-colors duration-500 scale-125"></div>
                             <img src="https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/Brands/TpLink@3x_emNwemXu7.png?updatedAt=null&ik-s=ca002b3c39d4fe066240ea987f5787f290b0ea8a" alt="TP-Link" class="h-5 sm:h-6 md:h-7 lg:h-8 w-auto object-contain relative z-10 transition-transform duration-500 group-hover:scale-110 drop-shadow-sm">
+                        </div>
+                        <div onclick="openBrandModal('tenda')" class="brand-item cursor-pointer relative flex justify-center items-center group p-2">
+                            <div class="absolute inset-0 bg-orange-500/0 rounded-full blur-xl group-hover:bg-orange-500/10 transition-colors duration-500 scale-125"></div>
+                            <img src="https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/Brands/Tenda_LOGO_ryAi73BQP.png?updatedAt=null&ik-s=dc4287adc12524515d3de7f46e9a72cd6e295343" alt="Tenda" class="h-5 sm:h-6 md:h-7 lg:h-8 w-auto object-contain relative z-10 transition-transform duration-500 group-hover:scale-110 drop-shadow-sm">
                         </div>
                     </div>
                 </div>
@@ -427,75 +469,147 @@
                 <p class="text-base md:text-xl text-gray-600 max-w-2xl mx-auto font-medium px-2 leading-relaxed" data-i18n="section_offers_sub">Pako të kompletuara për sigurinë maksimale. Modele të dizajnuara për t'iu përshtatur çdo buxheti dhe nevoje.</p>
             </div>
 
+            <!-- Category Filters -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mb-10 md:mb-16 animate-fade-in-up" style="animation-delay: 0.1s;" id="category-filters">
+                <button onclick="setFilter('all')" class="filter-btn active px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-xs sm:text-sm font-black transition-all shadow-sm flex items-center gap-2 bg-lika-red text-white border border-transparent hover:-translate-y-0.5 active:scale-95" data-filter="all">
+                    <i data-lucide="layers" class="w-4 h-4"></i> <span data-i18n="filter_all">Të Gjitha</span>
+                </button>
+                <button onclick="setFilter('camera')" class="filter-btn px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-xs sm:text-sm font-bold text-gray-600 bg-white border border-gray-200 hover:border-lika-red/50 hover:text-lika-red transition-all shadow-sm flex items-center gap-2 hover:-translate-y-0.5 active:scale-95" data-filter="camera">
+                    <i data-lucide="cctv" class="w-4 h-4"></i> <span data-i18n="cat_camera">Kamera Sigurie</span>
+                </button>
+                <button onclick="setFilter('alarm')" class="filter-btn px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-xs sm:text-sm font-bold text-gray-600 bg-white border border-gray-200 hover:border-lika-red/50 hover:text-lika-red transition-all shadow-sm flex items-center gap-2 hover:-translate-y-0.5 active:scale-95" data-filter="alarm">
+                    <i data-lucide="bell-ring" class="w-4 h-4"></i> <span data-i18n="cat_alarm">Sistem Alarmi</span>
+                </button>
+                <button onclick="setFilter('intercom')" class="filter-btn px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-xs sm:text-sm font-bold text-gray-600 bg-white border border-gray-200 hover:border-lika-red/50 hover:text-lika-red transition-all shadow-sm flex items-center gap-2 hover:-translate-y-0.5 active:scale-95" data-filter="intercom">
+                    <i data-lucide="monitor-smartphone" class="w-4 h-4"></i> <span data-i18n="cat_intercom">Video Interfon</span>
+                </button>
+            </div>
+
             <div id="dynamic-offers-container">
                 <!-- Injected via JS -->
             </div>
         </div>
     </section>
 
-    <!-- Product Modal (Responsive & Scrollable) -->
+    <!-- Product Modal (Mobile Optimized) -->
     <div id="lightbox" class="modal-overlay fixed inset-0 z-[100] hidden flex items-center justify-center p-0 sm:p-6 md:p-12">
-        <div class="absolute inset-0 bg-gray-900/60 backdrop-blur-md transition-opacity" onclick="closeModal()"></div>
+        <div class="absolute inset-0 bg-gray-900/80 backdrop-blur-md transition-opacity" onclick="closeModal()"></div>
         
-        <div class="relative w-full sm:max-w-6xl bg-white sm:rounded-[2.5rem] shadow-2xl overflow-hidden transform transition-all h-[100dvh] md:h-[85vh] animate-slide-down">
+        <!-- Desktop Navigation Arrows -->
+        <button onclick="navigateModal(event, -1)" class="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-[110] bg-white/10 hover:bg-white text-white hover:text-lika-red w-12 h-12 lg:w-16 lg:h-16 rounded-full items-center justify-center shadow-2xl backdrop-blur-md transition-all group border border-white/20 hover:border-white hover:scale-110">
+            <i data-lucide="chevron-left" class="w-6 h-6 lg:w-8 lg:h-8 group-hover:-translate-x-1 transition-transform"></i>
+        </button>
+        <button onclick="navigateModal(event, 1)" class="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-[110] bg-white/10 hover:bg-white text-white hover:text-lika-red w-12 h-12 lg:w-16 lg:h-16 rounded-full items-center justify-center shadow-2xl backdrop-blur-md transition-all group border border-white/20 hover:border-white hover:scale-110">
+            <i data-lucide="chevron-right" class="w-6 h-6 lg:w-8 lg:h-8 group-hover:translate-x-1 transition-transform"></i>
+        </button>
+
+        <!-- Modal Box -->
+        <div class="relative w-full sm:max-w-5xl bg-white sm:rounded-[2.5rem] shadow-2xl overflow-hidden transform transition-all h-[100dvh] md:h-[90vh] md:max-h-[850px] animate-slide-down flex flex-col md:flex-row z-50">
             
             <!-- Close Button -->
-            <button onclick="closeModal()" class="absolute top-4 right-4 md:top-6 md:right-6 z-20 bg-gray-100/80 backdrop-blur hover:bg-lika-red hover:text-white text-gray-600 p-2.5 rounded-full transition-all duration-300 shadow-sm hover:shadow-md hover:rotate-90">
+            <button onclick="closeModal()" class="absolute top-4 right-4 md:top-6 md:right-6 z-[60] bg-white/80 md:bg-gray-100/80 backdrop-blur hover:bg-lika-red hover:text-white text-gray-800 md:text-gray-600 p-2.5 rounded-full transition-all duration-300 shadow-md md:shadow-sm hover:shadow-md hover:rotate-90">
                 <i data-lucide="x" class="w-5 h-5 md:w-6 md:h-6"></i>
             </button>
 
-            <!-- Inner Scroll Wrapper (Vertical on mobile, Horizontal split on desktop) -->
-            <div class="w-full h-full flex flex-col md:flex-row overflow-y-auto md:overflow-hidden custom-scrollbar">
+            <!-- Left / Top Column (Image) -->
+            <div class="w-full md:w-1/2 bg-gray-50 flex flex-col relative h-[40vh] md:h-full shrink-0 group border-b md:border-b-0 md:border-r border-gray-100 touch-pan-x touch-pan-y">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.8)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
                 
-                <!-- Left Column (Image & Desc) -->
-                <div class="w-full md:w-1/2 flex flex-col bg-gray-50 border-b md:border-b-0 md:border-r border-gray-100 md:overflow-y-auto custom-scrollbar shrink-0">
-                    <div class="w-full h-64 sm:h-72 md:h-[400px] bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center relative overflow-hidden shrink-0 p-8 md:p-12 group">
-                        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.8)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                        <img id="modal-img" src="" alt="Product" class="w-full h-full object-contain drop-shadow-2xl transition-transform duration-700 group-hover:scale-110 relative z-10">
+                <!-- Double Tap Hint Indicator -->
+                <div class="absolute top-5 left-5 z-20 bg-black/50 backdrop-blur text-white text-[10px] md:text-xs px-3 py-1.5 rounded-full flex items-center gap-1.5 pointer-events-none shadow-sm animate-pulse-soft">
+                    <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i> <span data-i18n="hint_double_tap">Prek 2 herë për zmadhim</span>
+                </div>
+
+                <!-- Image Wrapper -->
+                <div class="w-full h-full flex items-center justify-center p-8 overflow-hidden relative">
+                    <img id="modal-img" src="" alt="Product" class="w-full h-full object-contain drop-shadow-2xl transition-transform duration-500 relative z-10 cursor-zoom-in select-none group-hover:scale-105 md:group-hover:scale-110">
+                </div>
+                
+                <!-- Download Image Button -->
+                <button id="modal-download-btn" class="absolute bottom-4 right-4 z-20 bg-white/80 backdrop-blur hover:bg-lika-red hover:text-white text-gray-700 p-2 rounded-full shadow-md border border-gray-200/50 hover:border-lika-red transition-all duration-300 flex items-center justify-center group cursor-pointer active:scale-95" title="Shkarko Foton">
+                    <i data-lucide="download" class="w-4 h-4 md:w-5 md:h-5 group-hover:-translate-y-0.5 transition-transform"></i>
+                </button>
+            </div>
+
+            <!-- Right / Bottom Column (Details) -->
+            <div class="w-full md:w-1/2 flex flex-col h-[60vh] md:h-full bg-white relative">
+                
+                <!-- Scrollable Contents -->
+                <div id="modal-scroll-area" class="flex-grow overflow-y-auto custom-scrollbar p-6 md:p-10 pb-28 md:pb-32 relative">
+                    <div class="uppercase tracking-[0.2em] text-[10px] md:text-xs font-black text-lika-red mb-2" id="modal-category">Kategori</div>
+                    <h3 class="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 mb-3 leading-tight tracking-tight" id="modal-title">Titulli</h3>
+                    
+                    <div class="flex items-baseline gap-2 mb-6 border-b border-gray-100 pb-5">
+                        <span class="text-4xl sm:text-5xl md:text-6xl font-black text-gray-900 tracking-tighter" id="modal-price">0<sup>€</sup></span>
+                        <span class="text-xs sm:text-sm text-gray-400 font-bold uppercase tracking-widest" data-i18n="per_package">/pako</span>
                     </div>
                     
-                    <div class="p-6 md:p-8 flex-grow bg-white border-t border-gray-100">
-                        <h4 class="text-sm font-black text-lika-red mb-3 flex items-center gap-2 uppercase tracking-widest">
-                            <i data-lucide="info" class="w-4 h-4"></i>
-                            <span data-i18n="modal_desc_title">Rreth Pakos</span>
-                        </h4>
-                        <div id="modal-detailed-desc" class="text-sm md:text-base text-gray-600 font-medium leading-relaxed">
-                            <!-- Injected JS -->
-                        </div>
+                    <!-- Detailed Description (Always Visible) -->
+                    <div id="modal-detailed-desc" class="text-sm md:text-base text-gray-600 font-medium leading-relaxed mb-6">
+                        <!-- Injected JS -->
+                    </div>
 
-                        <!-- Mobile Jump Button with Professional Animation -->
-                        <button onclick="document.getElementById('modal-contents-section').scrollIntoView({behavior: 'smooth'})" class="md:hidden mt-8 w-full flex items-center justify-center gap-2.5 py-3.5 bg-red-50 text-lika-red font-black text-sm uppercase tracking-wider rounded-xl border border-red-100 active:scale-95 transition-transform animate-pulse shadow-sm">
-                            <i data-lucide="arrow-down-circle" class="w-5 h-5"></i>
-                            <span data-i18n="btn_view_contents">Shiko përmbajtjen e pakos</span>
-                        </button>
+                    <!-- Show More Button -->
+                    <button id="show-more-btn" onclick="toggleExtraDetails()" class="w-full py-3 md:py-4 bg-gray-50 border border-gray-200 text-gray-800 font-bold rounded-xl flex justify-center items-center gap-2 hover:bg-gray-100 hover:border-lika-red/30 transition-all text-xs md:text-sm uppercase tracking-wider mb-2 active:scale-95 shadow-sm">
+                        <span id="show-more-text" data-i18n="btn_show_more">Shiko më shumë</span>
+                        <i data-lucide="chevron-down" id="show-more-icon" class="w-4 h-4 transition-transform duration-300"></i>
+                    </button>
+
+                    <!-- Hidden Collapsible Section -->
+                    <div id="modal-extra-details-wrapper" class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-in-out">
+                        <div class="overflow-hidden">
+                            <div id="modal-extra-details" class="pt-6 mt-4 border-t border-gray-100 opacity-0 transition-opacity duration-500 delay-100">
+                                <h4 class="text-xs font-black text-lika-red mb-4 flex items-center gap-2 uppercase tracking-widest">
+                                    <i data-lucide="package-search" class="w-4 h-4"></i>
+                                    <span data-i18n="modal_includes">Përmbajtja e Pakos</span>
+                                </h4>
+                                <ul id="modal-desc" class="space-y-2.5 md:space-y-3"></ul>
+
+                                <div id="modal-quick-icons" class="flex flex-wrap items-center gap-2 mt-6"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Right Column (Contents & Features) -->
-                <div id="modal-contents-section" class="w-full md:w-1/2 p-6 sm:p-8 md:p-12 flex flex-col md:overflow-y-auto custom-scrollbar bg-white shrink-0">
-                    <div class="mb-auto">
-                        <div class="uppercase tracking-[0.2em] text-[10px] md:text-xs font-black text-lika-red mb-2 mt-4 md:mt-0" id="modal-category">Kategori</div>
-                        <h3 class="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 mb-3 leading-tight tracking-tight" id="modal-title">Titulli</h3>
-                        
-                        <div class="flex items-baseline gap-2 mb-6 md:mb-8 border-b border-gray-100 pb-5 md:pb-8">
-                            <span class="text-4xl sm:text-5xl md:text-6xl font-black text-gray-900 tracking-tighter" id="modal-price">€0</span>
-                            <span class="text-xs sm:text-sm text-gray-400 font-bold uppercase tracking-widest" data-i18n="per_package">/pako</span>
-                        </div>
-                        
-                        <h4 class="text-sm md:text-base font-black text-gray-900 mb-4 flex items-center gap-2">
-                            <i data-lucide="package-check" class="w-5 h-5 text-lika-red"></i>
-                            <span data-i18n="modal_includes">Përmbajtja e Pakos:</span>
-                        </h4>
-                        
-                        <!-- List has tighter spacing on mobile via JS classes -->
-                        <ul id="modal-desc" class="space-y-2 md:space-y-3 mb-8"></ul>
-                    </div>
-
-                    <a href="tel:+38349585195" onclick="closeModal()" class="w-full mt-4 text-center px-6 py-4 md:py-5 btn-shimmer text-white rounded-2xl text-base md:text-lg font-black transition-all duration-300 shadow-[0_10px_25px_-5px_rgba(220,38,38,0.4)] hover:shadow-[0_15px_30px_-5px_rgba(220,38,38,0.5)] hover:-translate-y-1 flex justify-center items-center gap-3 uppercase tracking-wider group">
-                        <i data-lucide="phone-call" class="w-5 h-5 md:w-6 md:h-6 animate-pulse group-hover:rotate-12 transition-transform"></i> 
+                <!-- Sticky Order Button Bottom -->
+                <div class="absolute bottom-0 left-0 w-full p-4 md:p-6 bg-white/90 backdrop-blur-md border-t border-gray-100 z-10 shadow-[0_-10px_20px_rgba(0,0,0,0.02)]">
+                    <button onclick="openOrderModal()" class="w-full text-center px-6 py-4 btn-shimmer text-white rounded-2xl text-base md:text-lg font-black transition-all duration-300 shadow-[0_10px_25px_-5px_rgba(220,38,38,0.4)] hover:shadow-[0_15px_30px_-5px_rgba(220,38,38,0.5)] hover:-translate-y-1 flex justify-center items-center gap-3 uppercase tracking-wider group">
+                        <i data-lucide="phone-call" class="w-5 h-5 md:w-6 md:h-6 animate-ring"></i> 
                         <span data-i18n="btn_order_now">Porosit Tani</span>
-                    </a>
+                    </button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Contact Method Modal -->
+    <div id="order-modal" class="modal-overlay fixed inset-0 z-[120] hidden flex items-center justify-center p-4 sm:p-6 bg-gray-900/60 backdrop-blur-sm">
+        <div class="absolute inset-0 transition-opacity" onclick="closeOrderModal()"></div>
+        <div class="relative w-full max-w-md bg-white rounded-3xl shadow-2xl p-6 sm:p-8 transform transition-all animate-slide-down text-center">
+            <button onclick="closeOrderModal()" class="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 text-gray-600 p-2 rounded-full transition-all duration-300">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="mb-4 flex justify-center">
+                <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center">
+                    <i data-lucide="shopping-cart" class="w-8 h-8 text-lika-red"></i>
+                </div>
+            </div>
+            <h3 class="text-2xl font-black text-gray-900 mb-2" data-i18n="order_method_title">Zgjidhni Metodën</h3>
+            <p class="text-sm text-gray-500 mb-8 font-medium px-2" data-i18n="order_method_sub">Si dëshironi të na kontaktoni për të porositur këtë pako?</p>
+
+            <div class="flex flex-col gap-3">
+                <button onclick="sendOrderMessage('whatsapp')" class="w-full flex items-center justify-center gap-3 px-4 py-4 bg-[#25D366] text-white font-bold rounded-xl hover:bg-[#20bd5a] transition-all shadow-md hover:shadow-lg active:scale-95">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.441-1.273.606-1.446c.163-.171.352-.214.47-.214.118 0 .237.004.341.009.111.005.26-.041.406.313.146.353.499 1.218.544 1.311.045.093.076.202.018.318-.058.115-.088.186-.176.287-.088.101-.186.223-.263.313-.087.101-.177.212-.077.385.101.173.449.74.966 1.198.667.592 1.221.776 1.393.856.173.08.275.068.377-.048.102-.116.441-.512.559-.688.118-.176.236-.147.394-.088.158.06.999.472 1.17.558.172.086.286.128.328.2.042.072.042.418-.102.823z"/></svg>
+                    WhatsApp
+                </button>
+                <button onclick="sendOrderMessage('viber')" class="w-full flex items-center justify-center gap-3 px-4 py-4 bg-[#7360F2] text-white font-bold rounded-xl hover:bg-[#6654d8] transition-all shadow-md hover:shadow-lg active:scale-95">
+                    <i data-lucide="phone" class="w-5 h-5"></i>
+                    Viber
+                </button>
+                <button onclick="sendOrderMessage('call')" class="w-full flex items-center justify-center gap-3 px-4 py-4 bg-gray-100 text-gray-800 font-bold rounded-xl hover:bg-gray-200 transition-all shadow-sm hover:shadow-md active:scale-95 border border-gray-200">
+                    <i data-lucide="phone-call" class="w-5 h-5 animate-ring"></i>
+                    <span data-i18n="btn_direct_call">Thirrje Direkte</span>
+                </button>
             </div>
         </div>
     </div>
@@ -529,7 +643,7 @@
                     <span data-i18n="btn_visit_site">Faqja Zyrtare</span>
                     <i data-lucide="external-link" class="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform"></i>
                 </a>
-                <button onclick="closeBrandModal()" class="w-full sm:w-auto px-8 py-3.5 bg-gray-100 text-gray-900 font-bold rounded-xl hover:bg-gray-200 transition-colors" data-i18n="btn_close">Mbylle Pop-up</button>
+                <button onclick="closeBrandModal()" class="w-full sm:w-auto px-8 py-3.5 bg-gray-100 text-gray-900 font-bold rounded-xl hover:bg-gray-200 transition-colors" data-i18n="btn_close">Mbylle</button>
             </div>
         </div>
     </div>
@@ -550,8 +664,9 @@
                 <div class="reveal reveal-delay-1">
                     <h4 class="text-white font-black text-lg md:text-xl mb-6" data-i18n="footer_links">Linqe të Shpejta</h4>
                     <ul class="space-y-4">
-                        <li><a href="#" class="text-sm md:text-base text-gray-400 font-medium hover:text-white transition-colors flex items-center gap-3 group"><i data-lucide="arrow-right" class="w-4 h-4 text-lika-red group-hover:translate-x-1 transition-transform"></i> <span data-i18n="nav_home">Kryefaqja</span></a></li>
-                        <li><a href="#offers" class="text-sm md:text-base text-gray-400 font-medium hover:text-white transition-colors flex items-center gap-3 group"><i data-lucide="arrow-right" class="w-4 h-4 text-lika-red group-hover:translate-x-1 transition-transform"></i> <span data-i18n="nav_offers">Ofertat</span></a></li>
+                        <li><a href="index.html" class="text-sm md:text-base text-gray-400 font-medium hover:text-white transition-colors flex items-center gap-3 group"><i data-lucide="arrow-right" class="w-4 h-4 text-lika-red group-hover:translate-x-1 transition-transform"></i> <span data-i18n="nav_home">Kryefaqja</span></a></li>
+                        <li><a href="index.html#offers" class="text-sm md:text-base text-gray-400 font-medium hover:text-white transition-colors flex items-center gap-3 group"><i data-lucide="arrow-right" class="w-4 h-4 text-lika-red group-hover:translate-x-1 transition-transform"></i> <span data-i18n="nav_offers">Ofertat</span></a></li>
+                        <li><a href="cmimet.html" class="text-sm md:text-base text-gray-400 font-medium hover:text-white transition-colors flex items-center gap-3 group"><i data-lucide="arrow-right" class="w-4 h-4 text-lika-red group-hover:translate-x-1 transition-transform"></i> <span data-i18n="nav_pricing">Çmimet e Shërbimeve</span></a></li>
                         <li><a href="https://service.likaapps.com/" target="_blank" class="text-sm md:text-base text-gray-400 font-medium hover:text-white transition-colors flex items-center gap-3 group"><i data-lucide="arrow-right" class="w-4 h-4 text-lika-red group-hover:translate-x-1 transition-transform"></i> <span data-i18n="nav_service">Servisim Pajisjesh</span></a></li>
                     </ul>
                 </div>
@@ -579,6 +694,22 @@
                                 <a href="mailto:lika.tech@proton.me" class="pt-1 hover:text-white transition-colors font-medium break-all">lika.tech@proton.me</a>
                             </li>
                         </ul>
+
+                        <!-- Social Media Section -->
+                        <div class="mt-10">
+                            <h5 class="text-white font-bold text-xs md:text-sm mb-4 uppercase tracking-wider" data-i18n="footer_social">Na Ndiqni</h5>
+                            <div class="flex items-center gap-4">
+                                <a href="https://www.facebook.com/lika.techh" target="_blank" class="p-2.5 bg-gray-800 rounded-xl hover:bg-[#1877F2] transition-all text-white hover:scale-110 shadow-lg" title="Facebook">
+                                    <svg fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" /></svg>
+                                </a>
+                                <a href="https://www.instagram.com/lika.tech" target="_blank" class="p-2.5 bg-gray-800 rounded-xl hover:bg-[#E4405F] transition-all text-white hover:scale-110 shadow-lg" title="Instagram">
+                                    <svg fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                                </a>
+                                <a href="https://www.tiktok.com/@lika.tech" target="_blank" class="p-2.5 bg-gray-800 rounded-xl hover:bg-white hover:text-black transition-all text-white hover:scale-110 shadow-lg" title="TikTok">
+                                    <svg fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="h-48 sm:h-full min-h-[160px] rounded-2xl overflow-hidden border border-gray-800 relative group shadow-2xl">
@@ -593,7 +724,7 @@
             <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 reveal reveal-delay-3">
                 <p class="text-gray-500 font-medium text-xs md:text-sm text-center md:text-left">&copy; <span id="year"></span> LIKA TECH. <span data-i18n="footer_rights">Të gjitha të drejtat e rezervuara.</span></p>
                 <div class="flex items-center gap-2 text-xs md:text-sm font-medium text-gray-500">
-                    Designed with <i data-lucide="heart" class="w-4 h-4 text-lika-red fill-lika-red animate-pulse"></i> in Kosovo
+                    Designed with <i data-lucide="heart" class="w-4 h-4 text-lika-red fill-lika-red animate-pulse"></i> in Kosovo from <a href="https://www.likaapps.com" target="_blank" class="text-lika-red font-black hover:underline transition-all hover:scale-105">LIKA</a>
                 </div>
             </div>
         </div>
@@ -611,8 +742,18 @@
             }
         }
 
-        // Të dhënat profesionale për Brand-et (Updated me INGCO, Synology, Cudy, TP-Link)
+        // Të dhënat profesionale për Brand-et
         const brandsInfo = {
+            'professional_alarm': {
+                logo: 'https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/Brands/ProfessionalAlarm_Logo_Variations-03-scaled_LnWHtdjRw.png?updatedAt=null&ik-s=64bb31b2117e7a992c10d4e46a727ad91d049670',
+                title: 'Professional Alarm',
+                link: 'https://www.professionalalarm.eu',
+                subtitle: { sq: 'Distributor Gjithëpërfshirës i Sigurisë', en: 'Comprehensive Security Distributor' },
+                desc: { 
+                    sq: 'Si partner i yni i besuar, Professional Alarm na furnizon me pajisje dhe teknologji të fjalës së fundit në fushën e sigurisë. Ky bashkëpunim strategjik na mundëson të sjellim produkte të certifikuara evropiane, garanci maksimale dhe materiale tejet cilësore për çdo instalim që realizojmë për klientët tanë.', 
+                    en: 'As our trusted partner, Professional Alarm supplies us with cutting-edge equipment and technology in the security sector. This strategic collaboration enables us to deliver European-certified products, maximum reliability, and top-quality materials for every installation we perform for our clients.' 
+                }
+            },
             'hikvision': {
                 logo: 'https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/Brands/Hikvision@3x_7t75oY_3F.png?updatedAt=null&ik-s=e0c0bde328bb86f8b811eed956f9ebc6a2db8c88',
                 title: 'Hikvision',
@@ -682,12 +823,76 @@
                     sq: 'Si një nga ofruesit më të mëdhenj të produkteve të rrjetit, TP-Link siguron infrastrukturën e nevojshme për një rrjet të pandërprerë. Me switch-e të besueshëm dhe zgjidhje profesionale për biznese, ne garantojmë që kamerat tuaja të mos humbasin asnjëherë lidhjen.', 
                     en: 'As one of the largest providers of networking products, TP-Link provides the necessary infrastructure for a seamless network. With reliable switches and professional business solutions, we guarantee your cameras will never lose connection.' 
                 }
+            },
+            'tenda': {
+                logo: 'https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/Brands/Tenda_LOGO_ryAi73BQP.png?updatedAt=null&ik-s=dc4287adc12524515d3de7f46e9a72cd6e295343',
+                title: 'Tenda',
+                link: 'https://www.tendacn.com/',
+                subtitle: { sq: 'Zgjidhje Rrjeti të Besueshme', en: 'Reliable Networking Solutions' },
+                desc: {
+                    sq: 'Tenda është një ofrues kryesor i pajisjeve të rrjetit, i njohur për routerët, switch-et dhe zgjidhjet e saj me kosto efektive dhe performancë të lartë. Të përkryera për shtëpi dhe biznese, produktet e Tenda garantojnë lidhje të qartë dhe të pandërprerë për të gjitha sistemet tuaja të sigurisë.',
+                    en: 'Tenda is a leading provider of networking devices, known for its cost-effective and high-performance routers, switches, and networking solutions. Perfect for homes and businesses, Tenda products guarantee clear and uninterrupted connectivity for all your security systems.'
+                }
             }
         };
 
         const offersData = [
+            {
+                id: 0, category: 'camera', brand: 'Ezviz',
+                brandLogo: 'https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/Brands/Ezviz@3x_lojxnOkr7.png?updatedAt=null&ik-s=c6090d324b7f2bd08cf52a432664e96ef72d5ff1',
+                title: { sq: 'Kamera WiFi 2K', en: '2K WiFi Camera' },
+                price: '119.99',
+                img: 'https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/OFERTA/Ezviz/Ezviz%20149.99@3x_aCOarX_2A.jpg?updatedAt=null&ik-s=7250b9b4162ee489a21642d3cdfede532a6d7358',
+                qtyBadge: { sq: '1 Kamerë PTZ', en: '1 PTZ Camera' }, qtyIcon: 'cctv',
+                specBadge: { text: '2K + 32GB SD', icon: 'hard-drive' },
+                idealFor: { sq: 'Shtëpi / Biznes', en: 'Home / Business' }, idealIcon: 'home',
+                quickFeatures: [
+                    { icon: 'refresh-cw', label: '360°' },
+                    { icon: 'mic', label: 'Audio' },
+                    { icon: 'moon', label: 'Natën' },
+                    { icon: 'wrench', label: 'Montim' }
+                ],
+                features: [
+                    { sq: 'Rrotullim 360° & Pamje Natën', en: '360° Pan/Tilt & Night Vision', icon: 'refresh-cw' },
+                    { sq: 'Audio Dy-drejtimësh (2-Way Talk)', en: 'Two-way Audio (2-Way Talk)', icon: 'mic' },
+                    { sq: 'Kartelë SD 32GB + Adapter', en: '32GB SD Card + Adapter Included', icon: 'hard-drive' },
+                    { sq: 'Montim Falas (PR, F.Kosovë, Obiliq)', en: 'Free Installation (PR, FK, OB)', icon: 'wrench' }
+                ],
+                detailedDesc: {
+                    sq: 'Kamerë sigurie inteligjente 2K me aftësi rrotullimi 360° për të eliminuar plotësisht pikat e verbëra. Ofron komunikim të dyanshëm (2-Way Talk) për të dëgjuar dhe folur direkt nga telefoni juaj, si dhe teknologji të avancuar për pamje me ngjyra gjatë natës dhe detektim inteligjent të njerëzve. Kjo paketë vjen e gatshme me adapter dhe kartelë SD 32GB. Përfitoni edhe Montimin Falas (në Prishtinë, F.Kosovë, Obiliq) për një përvojë pa asnjë stres.',
+                    en: 'A 2K smart security camera with 360° pan/tilt capabilities to completely eliminate blind spots. It offers Two-Way Talk to listen and speak directly from your phone, along with advanced color night vision and AI human detection. This package comes ready to use with a power adapter and a 32GB SD card. Benefit from Free Installation (in Prishtina, F.Kosovë, Obiliq) for a stress-free experience.'
+                },
+                desc: ['1x Kamerë Rrotulluese CS-H8c (4MP/2K)', '1x Adapter për Energji', '1x Kartelë SD 32GB', '1x Montim Falas (Prishtinë, Fushë Kosovë, Obiliq.)']
+            },
+            {
+                id: 1, category: 'camera', brand: 'Ezviz',
+                brandLogo: 'https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/Brands/Ezviz@3x_lojxnOkr7.png?updatedAt=null&ik-s=c6090d324b7f2bd08cf52a432664e96ef72d5ff1',
+                title: { sq: 'Kamera WiFi 4K', en: '4K WiFi Camera' },
+                price: '149.99',
+                img: 'https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/OFERTA/Ezviz/Ezviz%20119.99@3x_bveQfe7Sx.jpg?updatedAt=null&ik-s=433885fdf7cc00215a768608bd17065c94d1379b',
+                qtyBadge: { sq: '1 Kamerë PTZ', en: '1 PTZ Camera' }, qtyIcon: 'cctv',
+                specBadge: { text: '4K Ultra + 128GB', icon: 'scan-eye' },
+                idealFor: { sq: 'Kërkesa të Larta', en: 'High Demands' }, idealIcon: 'maximize',
+                quickFeatures: [
+                    { icon: 'refresh-cw', label: '360°' },
+                    { icon: 'mic', label: 'Audio' },
+                    { icon: 'scan-eye', label: '4K Ultra' },
+                    { icon: 'shield-alert', label: 'Alarm' }
+                ],
+                features: [
+                    { sq: 'Mbulim 360° & Rezolucion 4K', en: '360° Coverage & 4K Resolution', icon: 'scan-eye' },
+                    { sq: 'Audio Dy-drejtimësh (2-Way Talk)', en: 'Two-way Audio (2-Way Talk)', icon: 'mic' },
+                    { sq: 'Mbrojtje Aktive me Alarm & SD 128GB', en: 'Active Defense & 128GB SD Card', icon: 'shield-alert' },
+                    { sq: 'Kujdes: Montimi nuk përfshihet', en: 'Note: Installation not included', icon: 'info' }
+                ],
+                detailedDesc: {
+                    sq: 'Niveli premium i sigurisë me rezolucion ultra të lartë 4K dhe lente me mbulim të plotë 360°. Kjo pajisje ofron zë dy-drejtimësh (2-Way Talk) për biseda në kohë reale dhe mbrojtje aktive me dritë e sirenë për të trembur ndërhyrësit. Përfshin adapter dhe kartelë të madhe SD 128GB për ruajtje maksimale të detajeve kristal të qarta. (Shënim: Montimi nuk është i përfshirë në këtë pako, duke ju lënë fleksibilitet).',
+                    en: 'Premium level security with ultra-high 4K resolution and a 360° full-coverage lens. This device offers Two-Way Talk for real-time conversations and active defense with a strobe light and siren to deter intruders. Includes an adapter and a large 128GB SD card for maximum storage of crystal-clear details. (Note: Installation is not included in this package, giving you flexibility).'
+                },
+                desc: ['1x Kamerë Rrotulluese CS-H8c (8MP/4K)', '1x Adapter për Energji', '1x Kartelë SD 128GB', '* Montimi NUK është i përfshirë']
+            },
             { 
-                id: 0, category: 'camera', brand: 'Hikvision',
+                id: 2, category: 'camera', brand: 'Hikvision',
                 brandLogo: 'https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/Brands/Hikvision@3x_7t75oY_3F.png?updatedAt=null&ik-s=e0c0bde328bb86f8b811eed956f9ebc6a2db8c88',
                 title: { sq: 'Premium Pro', en: 'Premium Pro' }, 
                 price: '1,400', 
@@ -695,20 +900,26 @@
                 qtyBadge: { sq: '8 Kamera', en: '8 Cameras' }, qtyIcon: 'cctv',
                 specBadge: { text: '6MP High-Res', icon: 'scan-eye' },
                 idealFor: { sq: 'Biznes i Madh', en: 'Large Enterprise' }, idealIcon: 'building-2',
+                quickFeatures: [
+                    { icon: 'palette', label: 'ColorVu' },
+                    { icon: 'hard-drive', label: '4TB HDD' },
+                    { icon: 'smartphone', label: 'App' },
+                    { icon: 'droplets', label: 'IP67 Ujë' }
+                ],
                 features: [
-                    { sq: 'Pamje me ngjyra 24/7 (ColorVu)', en: '24/7 Color Vision (ColorVu)' },
-                    { sq: 'Detektim Inteligjent Lëvizje 2.0', en: 'Smart Motion Detection 2.0' },
-                    { sq: 'Rezistente ndaj ujit (IP67)', en: 'Water and Dust Resistant (IP67)' },
-                    { sq: 'Monitorim HD nga Smartfoni', en: 'HD Monitoring via Smartphone' }
+                    { sq: 'Pamje me ngjyra 24/7 (ColorVu)', en: '24/7 Color Vision (ColorVu)', icon: 'palette' },
+                    { sq: 'Detektim Inteligjent Lëvizje 2.0', en: 'Smart Motion Detection 2.0', icon: 'scan-eye' },
+                    { sq: 'Rezistente ndaj ujit (IP67)', en: 'Water and Dust Resistant (IP67)', icon: 'droplets' },
+                    { sq: 'Monitorim HD nga Smartfoni', en: 'HD Monitoring via Smartphone', icon: 'smartphone' }
                 ],
                 detailedDesc: {
-                    sq: 'Kjo pako ofron sigurinë absolute që meriton biznesi juaj. Përmes teknologjisë inovative ColorVu, ju do të keni pamje me ngjyra dhe kristal të qarta edhe gjatë natës në errësirë totale. Rezolucioni 6MP i kamerave kap çdo detaj me precizion maksimal, ndërsa Disku (HDD) prej 4TB siguron hapësirë të mjaftueshme për të ruajtur regjistrimet për afërsisht 30 deri në 40 ditë. Një investim dhe profesionalizëm thelbësor për paqe mendore dhe kontroll të plotë mbi pronën tuaj.',
+                    sq: 'Kjo pako ofron sigurinë absolute që meriton biznesi juaj. Përmes teknologjisë inovative ColorVu, ju do të keni pamje me ngjyra dhe kristal të qarta edhe gjatë natës në errësirë totale. Rezolucioni 6MP i kamerave kap çdo detaj me precizion maksimal, ndërsa Disku (HDD) prej 4TB siguron hapësirë të mjaftueshme për të ruajtur regjistrimet për afërsisht 30 deri në 40 ditë. Një investim dhe profesionalizëm dhe paqe mendore dhe kontroll të plotë mbi pronën tuaj.',
                     en: 'This package provides the absolute security your business deserves. Through innovative ColorVu technology, you will have crystal clear, full-color footage even at night in total darkness. The 6MP resolution captures every detail, while the 4TB HDD ensures enough space to store recordings for approximately 30 to 40 days. An essential investment for total control over your property.'
                 },
                 desc: ['1x NVR DS-7608NXI-K1 (8 Ch)', '4x Kamera DS-2CD1067G2H-LIU', '4x Kamera DS-2CD1367G2H-LIU', '1x Switch PoE DS-3E0109P-E/M', '1x HDD Seagate SkyHawk 4TB', '180m Kabllo UTP CAT6 FALAS', '8x Kuti Montimi PS-2030 OG'] 
             },
             { 
-                id: 1, category: 'camera', brand: 'HiLook by Hikvision',
+                id: 3, category: 'camera', brand: 'HiLook by Hikvision',
                 brandLogo: 'https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/Brands/Hilook@3x_wb03226v7.png?updatedAt=null&ik-s=27b5da15cd172fc4ccda587165a641d6fdcf6449',
                 title: { sq: 'HiLook Standard', en: 'HiLook Standard' }, 
                 price: '450', 
@@ -716,11 +927,17 @@
                 qtyBadge: { sq: '4 Kamera', en: '4 Cameras' }, qtyIcon: 'cctv',
                 specBadge: { text: '1080P FHD', icon: 'video' },
                 idealFor: { sq: 'Shtëpi / Banesë', en: 'Home / Apartment' }, idealIcon: 'home',
+                quickFeatures: [
+                    { icon: 'video', label: '1080p FHD' },
+                    { icon: 'moon', label: '20m Natën' },
+                    { icon: 'hard-drive', label: '1TB HDD' },
+                    { icon: 'smartphone', label: 'App' }
+                ],
                 features: [
-                    { sq: 'Pamje e Qartë FHD 1080P', en: 'Clear FHD 1080P Vision' },
-                    { sq: 'Shikim Natën deri në 20m (IR)', en: 'Night Vision up to 20m (IR)' },
-                    { sq: 'Dizajn Rezistent ndaj Motit', en: 'Weatherproof Design' },
-                    { sq: 'Qasje nga Aplikacioni Mobil', en: 'Mobile App Access' }
+                    { sq: 'Pamje e Qartë FHD 1080P', en: 'Clear FHD 1080P Vision', icon: 'video' },
+                    { sq: 'Shikim Natën deri në 20m (IR)', en: 'Night Vision up to 20m (IR)', icon: 'moon' },
+                    { sq: 'Dizajn Rezistent ndaj Motit', en: 'Weatherproof Design', icon: 'droplets' },
+                    { sq: 'Qasje nga Aplikacioni Mobil', en: 'Mobile App Access', icon: 'smartphone' }
                 ],
                 detailedDesc: {
                     sq: 'Zgjidhja më e mirë dhe më ekonomike për shtëpinë tuaj. Me 4 kamera të rezolucionit Full HD (1080p), ju do të keni pamje të qartë të çdo lëvizjeje, mjaftueshëm për t\'i dalluar fytyrat dhe detajet rreth objektit tuaj. Sistemi vjen i kompletuar me një Disk (HDD) 1TB që u mundëson të rishikoni ngjarjet e incizuara për rreth 15 deri në 20 ditë. Një sistem tejet i besueshëm nga HiLook, me qasje direkte në telefonin tuaj.',
@@ -729,7 +946,7 @@
                 desc: ['1x NVR-104MH-C (4 Ch)', '4x Kamera IPC-B121H-C(2.8mm)', '1x Switch NS-0505P-35', '1x HDD 1TB Për Siguri', '305m Kabllo UTP CAT6'] 
             },
             { 
-                id: 2, category: 'camera', brand: 'Hikvision',
+                id: 4, category: 'camera', brand: 'Hikvision',
                 brandLogo: 'https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/Brands/Hikvision@3x_7t75oY_3F.png?updatedAt=null&ik-s=e0c0bde328bb86f8b811eed956f9ebc6a2db8c88',
                 title: { sq: 'Biznes Standard', en: 'Business Standard' }, 
                 price: '800', 
@@ -737,11 +954,17 @@
                 qtyBadge: { sq: '4 Kamera', en: '4 Cameras' }, qtyIcon: 'cctv',
                 specBadge: { text: '6MP High-Res', icon: 'scan-eye' },
                 idealFor: { sq: 'Biznes i Vogël', en: 'Small Business' }, idealIcon: 'store',
+                quickFeatures: [
+                    { icon: 'scan-eye', label: '6MP Lartë' },
+                    { icon: 'sun-moon', label: 'Hybrid' },
+                    { icon: 'hard-drive', label: '1TB HDD' },
+                    { icon: 'bell-ring', label: 'Alarme' }
+                ],
                 features: [
-                    { sq: 'Teknologji Hybrid Light (Ngjyra)', en: 'Hybrid Light Technology (Color)' },
-                    { sq: 'Alarme të Saktë për Lëvizje', en: 'Accurate Motion Alerts' },
-                    { sq: 'Performancë e Lartë në Errësirë', en: 'High Performance in Darkness' },
-                    { sq: 'Sistem Sigurie i Shkallëzueshëm', en: 'Scalable Security System' }
+                    { sq: 'Teknologji Hybrid Light (Ngjyra)', en: 'Hybrid Light Technology (Color)', icon: 'sun-moon' },
+                    { sq: 'Alarme të Saktë për Lëvizje', en: 'Accurate Motion Alerts', icon: 'bell-ring' },
+                    { sq: 'Performancë e Lartë në Errësirë', en: 'High Performance in Darkness', icon: 'moon' },
+                    { sq: 'Sistem Sigurie i Shkallëzueshëm', en: 'Scalable Security System', icon: 'shield-check' }
                 ],
                 detailedDesc: {
                     sq: 'E dizajnuar specifikisht për biznese të vogla dhe të mesme. Kjo pako sjell performancë të nivelit të lartë (6MP) dhe teknologjinë inovative Hybrid Light. Përfshin detektimin inteligjent që dallon saktë njerëzit dhe automjetet, duke shmangur alarmet e rreme. Disku 1TB siguron që ju të ruani të dhënat vitale të biznesit për rreth 12 deri në 15 ditë të plota.',
@@ -750,7 +973,7 @@
                 desc: ['1x NVR DS-7604NXI-K1 (4 Ch)', '2x Kamera DS-2CD1067G2H-LIU', '2x Kamera DS-2CD1367G2H-LIU', '1x Switch PoE DS-3E0105P-E/M', '1x HDD Seagate SkyHawk 1TB', '90m Kabllo UTP CAT6'] 
             },
             { 
-                id: 3, category: 'camera', brand: 'HiLook by Hikvision',
+                id: 5, category: 'camera', brand: 'HiLook by Hikvision',
                 brandLogo: 'https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/Brands/Hilook@3x_wb03226v7.png?updatedAt=null&ik-s=27b5da15cd172fc4ccda587165a641d6fdcf6449',
                 title: { sq: 'HiLook Plus 8Ch', en: 'HiLook Plus 8Ch' }, 
                 price: '600', 
@@ -758,11 +981,17 @@
                 qtyBadge: { sq: '8 Kamera', en: '8 Cameras' }, qtyIcon: 'cctv',
                 specBadge: { text: '1080P FHD', icon: 'video' },
                 idealFor: { sq: 'Shtëpi e Madhe / Vilë', en: 'Large Home / Villa' }, idealIcon: 'home',
+                quickFeatures: [
+                    { icon: 'video', label: '1080p FHD' },
+                    { icon: 'moon', label: 'IR Natën' },
+                    { icon: 'hard-drive', label: '1TB HDD' },
+                    { icon: 'smartphone', label: 'App' }
+                ],
                 features: [
-                    { sq: 'Mbulim i Gjerë me 8 Kamera', en: 'Wide Coverage 8 Cameras' },
-                    { sq: 'Cilësi Video FHD Pa Ndërprerje', en: 'Seamless FHD Video Quality' },
-                    { sq: 'Monitorim i Sigurt në Rrjet', en: 'Secure Network Monitoring' },
-                    { sq: 'Dizajn Kompakt dhe Diskret', en: 'Compact and Discreet Design' }
+                    { sq: 'Mbulim i Gjerë me 8 Kamera', en: 'Wide Coverage 8 Cameras', icon: 'cctv' },
+                    { sq: 'Cilësi Video FHD Pa Ndërprerje', en: 'Seamless FHD Video Quality', icon: 'video' },
+                    { sq: 'Monitorim i Sigurt në Rrjet', en: 'Secure Network Monitoring', icon: 'shield-check' },
+                    { sq: 'Dizajn Kompakt dhe Diskret', en: 'Compact and Discreet Design', icon: 'box' }
                 ],
                 detailedDesc: {
                     sq: 'Pakoja e përkryer për mbulim të gjerë të pronës. Me 8 kamera Full HD, asnjë kënd i shtëpisë ose vilës suaj nuk do të mbetet pa u monitoruar. Ofron kualitet shumë të mirë pamjeje gjatë ditës dhe përmes rrezeve infra të kuqe edhe natën. Disku i integruar prej 1TB siguron ruajtjen e të gjitha ngjarjeve për rreth 10 deri në 14 ditë. Mbrojtje e plotë me një çmim fantastik.',
@@ -771,7 +1000,7 @@
                 desc: ['1x NVR-108MH-C (8 Ch)', '8x Kamera IPC-B121H C(2.8mm)', '1x Switch NS-0109P-60(B)', '1x HDD 1TB Surveillance', '305m Kabllo UTP CAT6', '8x Kuti Montimi PS-2030'] 
             },
             { 
-                id: 4, category: 'alarm', brand: 'Hikvision AX PRO',
+                id: 6, category: 'alarm', brand: 'Hikvision AX PRO',
                 brandLogo: 'https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/Brands/Hikvision@3x_7t75oY_3F.png?updatedAt=null&ik-s=e0c0bde328bb86f8b811eed956f9ebc6a2db8c88',
                 title: { sq: 'Sistem Baza WiFi', en: 'Base WiFi System' }, 
                 price: '500', 
@@ -779,11 +1008,17 @@
                 qtyBadge: { sq: '2 Sensorë', en: '2 Sensors' }, qtyIcon: 'radar',
                 specBadge: { text: 'Wireless', icon: 'wifi' },
                 idealFor: { sq: 'Banesë / Zyrë', en: 'Apartment / Office' }, idealIcon: 'building',
+                quickFeatures: [
+                    { icon: 'wifi', label: 'Wireless' },
+                    { icon: 'battery-charging', label: 'Bateria' },
+                    { icon: 'smartphone', label: 'App' },
+                    { icon: 'bell-ring', label: 'Sirenë' }
+                ],
                 features: [
-                    { sq: 'Lidhje Wireless Pa Kabllo', en: 'Wire-Free Wireless Connection' },
-                    { sq: 'Bateri me Jetëgjatësi Shumëvjeçare', en: 'Multi-Year Battery Life' },
-                    { sq: 'Njoftime Direkte në Smartfon', en: 'Direct Alerts on Smartphone' },
-                    { sq: 'Mbrojtje Profesionale e Ambientit', en: 'Professional Perimeter Defense' }
+                    { sq: 'Lidhje Wireless Pa Kabllo', en: 'Wire-Free Wireless Connection', icon: 'wifi' },
+                    { sq: 'Bateri me Jetëgjatësi Shumëvjeçare', en: 'Multi-Year Battery Life', icon: 'battery-charging' },
+                    { sq: 'Njoftime Direkte në Smartfon', en: 'Direct Alerts on Smartphone', icon: 'smartphone' },
+                    { sq: 'Mbrojtje Profesionale e Ambientit', en: 'Professional Perimeter Defense', icon: 'shield-check' }
                 ],
                 detailedDesc: {
                     sq: 'Sistem alarmi tërësisht profesional dhe pa kabllo (Wireless), i dizajnuar për të ruajtur estetikën e ambientit tuaj. Instalimi i shpejtë, i pastër dhe lidhja direkte me smartfon ju japin kontroll të plotë. Bateritë afatgjata dhe sensorët me saktësi absolute e bëjnë këtë zgjedhjen numër një për banesa moderne dhe zyra elegante.',
@@ -792,7 +1027,7 @@
                 desc: ['1x Qendër Alarmi DS-PWA64-L WE', '1x Sensor Lëvizje DS-PDCL12-EG2-WE', '1x Kontakt Dere DS-PDMC-EG2 W', '1x Sirenë e Jashtme DS-PS1-E-WE', '1x Telekomandë DS-PKF1-WE', '4x Bateri DS-PDP-IN CR123A'] 
             },
             { 
-                id: 5, category: 'alarm', brand: 'Hikvision AX PRO',
+                id: 7, category: 'alarm', brand: 'Hikvision AX PRO',
                 brandLogo: 'https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/Brands/Hikvision@3x_7t75oY_3F.png?updatedAt=null&ik-s=e0c0bde328bb86f8b811eed956f9ebc6a2db8c88',
                 title: { sq: 'Premium Mbrojtje', en: 'Premium Defense' }, 
                 price: '750', 
@@ -800,72 +1035,216 @@
                 qtyBadge: { sq: '10 Sensorë', en: '10 Sensors' }, qtyIcon: 'radar',
                 specBadge: { text: 'Wireless Pro', icon: 'shield-alert' },
                 idealFor: { sq: 'Shtëpi / Biznes', en: 'House / Business' }, idealIcon: 'shield-check',
+                quickFeatures: [
+                    { icon: 'shield-check', label: '10 Sensorë' },
+                    { icon: 'wifi', label: 'Wireless' },
+                    { icon: 'volume-2', label: 'Sirenë' },
+                    { icon: 'smartphone', label: 'App' }
+                ],
                 features: [
-                    { sq: 'Mbrojtje e Plotë me Shumë Sensorë', en: 'Full Protection Multi-Sensor' },
-                    { sq: 'Sensor Lëvizje me Saktësi të Lartë', en: 'High Precision Motion Sensors' },
-                    { sq: 'Aktivizim i Lehtë me Tastierë', en: 'Easy Keypad Activation' },
-                    { sq: 'Sistem Alertimi me Tingull të Lartë', en: 'Loud Sound Alerting System' }
+                    { sq: 'Mbrojtje e Plotë me Shumë Sensorë', en: 'Full Protection Multi-Sensor', icon: 'shield-alert' },
+                    { sq: 'Sensor Lëvizje me Saktësi të Lartë', en: 'High Precision Motion Sensors', icon: 'radar' },
+                    { sq: 'Aktivizim i Lehtë me Tastierë', en: 'Easy Keypad Activation', icon: 'hash' },
+                    { sq: 'Sistem Alertimi me Tingull të Lartë', en: 'Loud Sound Alerting System', icon: 'volume-2' }
                 ],
                 detailedDesc: {
                     sq: 'Niveli më i lartë i mbrojtjes nga ndërhyrjet, i krijuar për shtëpi të mëdha dhe biznese. Me 10 sensorë të ndryshëm të gjeneratës së fundit, ky sistem mbulon çdo dritare, derë dhe dhomë në pronën tuaj. Përfshin sirenë të fuqishme, tastierë për qasje të shpejtë dhe alarmim të menjëhershëm në telefon për të garantuar sigurinë tuaj në çdo sekondë.',
                     en: 'The highest level of intrusion protection, designed for large homes and businesses. With 10 different next-generation sensors, this system covers every window, door, and room in your property. It includes a loud siren, keypad for quick access, and instant mobile alerts to ensure your safety every second.'
                 },
                 desc: ['1x Qendër Alarmi DS-PWA64-L WE', '4x Sensorë Lëvizje DS-PDP15P-EG2', '2x Sensorë Tavani DS-PDCL12-EG2', '2x Kontakt Dere DS-PDMC-EG2 W', '2x Sensorë Dridhje DS-PDMCS-EG2', '1x Sirenë + Tastierë DS-PK1-E-WE', '1x Telekomandë DS-PKF1-WE'] 
+            },
+            {
+                id: 8, category: 'intercom', brand: 'Hikvision',
+                brandLogo: 'https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/Brands/Hikvision@3x_7t75oY_3F.png?updatedAt=null&ik-s=e0c0bde328bb86f8b811eed956f9ebc6a2db8c88',
+                title: { sq: 'Video Interfon 1 Monitor', en: 'Video Intercom 1 Monitor' },
+                price: '299.99',
+                img: 'https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/OFERTA/intercom%20video/Zile_@3x_gqGPXu2ky.jpg?updatedAt=null&ik-s=dee6b4d2407e5fde7609532819d0280cd64e6677',
+                qtyBadge: { sq: '1 Monitor', en: '1 Monitor' }, qtyIcon: 'monitor',
+                specBadge: { text: 'Video HD & WiFi', icon: 'wifi' },
+                idealFor: { sq: 'Shtëpi / Biznes', en: 'Home / Business' }, idealIcon: 'home',
+                quickFeatures: [
+                    { icon: 'video', label: 'HD Video' },
+                    { icon: 'mic', label: '2-Way' },
+                    { icon: 'wifi', label: 'WiFi/LAN' },
+                    { icon: 'smartphone', label: 'App' }
+                ],
+                features: [
+                    { sq: 'Video HD & Audio Dy-drejtimësh', en: 'HD Video & Two-way Audio', icon: 'video' },
+                    { sq: 'Kontroll nga Monitori & Smartfoni', en: 'Monitor & Smartphone Control', icon: 'smartphone' },
+                    { sq: 'Lidhje Wireless ose LAN', en: 'Wireless or LAN Connection', icon: 'wifi' },
+                    { sq: 'Dizajn Modern dhe Intuitiv', en: 'Modern & Intuitive Design', icon: 'layout' }
+                ],
+                detailedDesc: {
+                    sq: 'Komplet modern për kontroll të hyrjes në shtëpi apo biznes, me video dhe komunikim të drejtpërdrejtë. Përfshin një njësi të jashtme me kamerë dhe një monitor të brendshëm për menaxhim të hyrjes në mënyrë të sigurt dhe praktike. Gjithashtu përfshihet 100 metra kabllo falas për instalim.',
+                    en: 'Modern kit for home or business entry control, featuring video and direct communication. Includes an outdoor camera unit and an indoor monitor for secure and practical entry management. Also includes 100 meters of free cable.'
+                },
+                desc: ['1x Njësi e jashtme DS-KV8113-WME1', '1x Monitor i brendshëm DS-KH6350-WTE1', '100m Kabllo UTP CAT6 FALAS']
+            },
+            {
+                id: 9, category: 'intercom', brand: 'Hikvision',
+                brandLogo: 'https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/Brands/Hikvision@3x_7t75oY_3F.png?updatedAt=null&ik-s=e0c0bde328bb86f8b811eed956f9ebc6a2db8c88',
+                title: { sq: 'Video Interfon 2 Monitorë', en: 'Video Intercom 2 Monitors' },
+                price: '399.99',
+                img: 'https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/OFERTA/intercom%20video/Zile%20%20copy@3x_1q778sg8n.jpg?updatedAt=null&ik-s=883185155a7f8a97b12eebf1276183c4bceb7b91',
+                qtyBadge: { sq: '2 Monitorë', en: '2 Monitors' }, qtyIcon: 'monitor-speaker',
+                specBadge: { text: 'Multi-room', icon: 'layers' },
+                idealFor: { sq: 'Shtëpi e Madhe', en: 'Large Home' }, idealIcon: 'building',
+                quickFeatures: [
+                    { icon: 'monitor-speaker', label: '2 Ekrane' },
+                    { icon: 'mic', label: '2-Way' },
+                    { icon: 'wifi', label: 'WiFi/LAN' },
+                    { icon: 'smartphone', label: 'App' }
+                ],
+                features: [
+                    { sq: 'Menaxhim nga 2 Dhoma/Kate', en: 'Management from 2 Rooms/Floors', icon: 'layers' },
+                    { sq: 'Video HD & Audio Dy-drejtimësh', en: 'HD Video & Two-way Audio', icon: 'mic' },
+                    { sq: 'Kontroll i Derës nga dy Monitorët', en: 'Door Control from both Monitors', icon: 'monitor-speaker' },
+                    { sq: 'Njoftime Direkte në Smartfon', en: 'Direct Smartphone Notifications', icon: 'smartphone' }
+                ],
+                detailedDesc: {
+                    sq: 'Komplet i avancuar video interfon për shtëpi apo biznes, i dizajnuar për komoditet dhe kontroll më të madh të hyrjes. Ky set përfshin një njësi të jashtme me kamerë dhe dy monitorë të brendshëm, duke mundësuar përdorim nga dy dhoma ose kate të ndryshme njëkohësisht. Zgjidhje ideale për familje më të mëdha apo ambiente ku kërkohet akses nga më shumë se një pikë brenda objektit. Përfshin 100 metra kabllo falas për instalim të lehtë.',
+                    en: 'Advanced video intercom kit for home or business, designed for convenience and greater entry control. This set includes an outdoor camera unit and two indoor monitors, allowing usage from two different rooms or floors simultaneously. Ideal solution for larger families or environments requiring access from more than one point within the building. Includes 100 meters of free cable for easy installation.'
+                },
+                desc: ['1x Njësi e jashtme DS-KV8113-WME1', '2x Monitorë të brendshëm DS-KH6350-WTE1', '100m Kabllo UTP CAT6 FALAS']
             }
         ];
 
         const i18n = {
             sq: {
                 nav_home: "Kryefaqja", nav_about: "Rreth Nesh", nav_service: "Servisim", nav_offers: "Ofertat", nav_contact: "Kontakt",
+                nav_pricing: "Çmimet",
                 btn_device_service: "Servisimi", btn_close: "Mbylle",
                 btn_call_now: "Thirr Tani", btn_visit_site: "Faqja Zyrtare",
                 hero_title1: "Siguria Juaj,", hero_title2: "Prioriteti Ynë.",
-                hero_subtitle: "Zgjidhje teknologjike premium për kamera sigurie, sisteme alarmi dhe servisim profesional. Besueshmëri që vlen.",
+                hero_subtitle: "Zgjidhje teknologjike premium për kamera sigurie, sisteme alarmi, video interfon dhe servisim profesional. Besueshmëri që vlen.",
                 btn_view_offers: "Shiko Ofertat",
+                filter_all: "Të Gjitha",
                 trusted_brands: "Partnerët & Teknologjia",
                 click_brand_hint: "Klikoni mbi logot për të mësuar më shumë rreth tyre.",
                 section_offers_title: "Ofertat Ekskluzive", section_offers_sub: "Pako të kompletuara për sigurinë maksimale. Modele të dizajnuara për t'iu përshtatur çdo buxheti dhe nevoje.",
-                title_cameras: "Kamera Sigurie", title_alarms: "Sisteme Alarmi WiFi",
+                title_cameras: "Kamera Sigurie", title_alarms: "Sisteme Alarmi WiFi", title_intercoms: "Video Interfon",
                 btn_details: "Detajet e Pakos",
-                modal_includes: "Përmbajtja e Pakos:", btn_order_now: "Porosit Tani", modal_desc_title: "Rreth Pakos",
+                modal_includes: "Përmbajtja e Pakos", btn_order_now: "Porosit Tani", modal_desc_title: "Rreth Pakos",
                 footer_desc: "Lider në ofrimin e shërbimeve të sigurisë. Ne ofrojmë cilësi, garanci dhe profesionalizëm absolut për shtëpinë dhe biznesin tuaj.",
                 footer_links: "Linqe të Shpejta", footer_contact: "Kontakti", btn_directions: "Hap Maps",
+                footer_social: "Na Ndiqni",
                 footer_rights: "Të gjitha të drejtat e rezervuara.",
-                cat_camera: "Kamera Sigurie", cat_alarm: "Sistem Alarmi",
+                cat_camera: "Kamera Sigurie", cat_alarm: "Sistem Alarmi", cat_intercom: "Video Interfon",
                 per_package: "/pako",
                 ideal_for: "Ideale për",
                 badge_bestseller: "Më e Shituria", badge_budget: "Zgjedhje Buxhetore", badge_pro: "Zgjedhje Pro", 
                 badge_premium: "Premium",
                 swipe_more: "Shfleto me prekje",
-                btn_view_contents: "Shiko përmbajtjen e pakos"
+                btn_view_contents: "Shiko përmbajtjen",
+                btn_show_more: "Shiko më shumë", btn_show_less: "Shiko më pak",
+                hint_double_tap: "Prek 2 herë për zmadhim",
+                btn_download: "Shkarko",
+                order_method_title: "Zgjidhni Metodën", order_method_sub: "Si dëshironi të na kontaktoni për të porositur këtë pako?",
+                btn_direct_call: "Thirrje Direkte",
+                // Cmime / Service Translations
+                pricing_title: "Çmimet e Shërbimeve",
+                pricing_subtitle: "Lista e servisimit & montimeve",
+                pricing_intro1: "Në rast të dëmtimit ose mosfunksionimit të pajisjeve, tarifa për vizitën është",
+                pricing_intro2: "* Çmimet për pjesët shtesë janë të ndara dhe komunikohen veçmas, bazuar në nevojat specifike të riparimit.",
+                pricing_cat_servicing: "Diagnostikimi & Servisimi",
+                pricing_cat_mounting: "Montimi & Çmontimi",
+                btn_call_for_service: "Kërko Asistencë",
+                price_visit: "Vizita",
+                price_visit_desc: "Fushë Kosovë deri tek pika B (100km)",
+                price_diagnostics: "Kontrollimi i pajisjeve",
+                price_diagnostics_desc: "Testimi dhe diagnostikimi i defekteve",
+                price_lan: "Riparimi i konektorit LAN",
+                price_lan_desc: "Maksimal 4 copë",
+                price_dc: "Riparimi i kabllos DC",
+                price_dc_desc: "Maksimal 4 copë",
+                price_bnc: "Riparimi i konektorit BNC",
+                price_bnc_desc: "Maksimal 4 copë",
+                price_ip_reset: "Resetimi i kamerës IP",
+                price_ip_reset_desc: "Rikthimi i fjalëkalimit",
+                price_nvr_reset: "Resetimi i NVR-it",
+                price_nvr_reset_desc: "Rikthimi i fjalëkalimit",
+                price_dvr_reset: "Resetimi i DVR-it",
+                price_dvr_reset_desc: "Rikthimi i fjalëkalimit",
+                price_mount_cam: "Montimi i kamerave",
+                price_mount_cam_desc: "Instalim profesional",
+                price_mount_sensor: "Montimi i sensorëve të alarmit",
+                price_mount_sensor_desc: "Vendosje & testim",
+                price_unmount: "Çmontimi i pajisjeve",
+                price_unmount_desc: "Heqja e sigurt e pajisjeve",
+                price_config: "Konfigurimi i sistemit",
+                price_config_desc: "Optimizimi i parametrave"
             },
             en: {
                 nav_home: "Home", nav_about: "About Us", nav_service: "Services", nav_offers: "Offers", nav_contact: "Contact",
+                nav_pricing: "Prices",
                 btn_device_service: "Services", btn_close: "Close Pop-up",
                 btn_call_now: "Call Now", btn_visit_site: "Official Website",
                 hero_title1: "Your Security,", hero_title2: "Our Priority.",
-                hero_subtitle: "Premium technological solutions for security cameras, alarm systems, and professional servicing. Reliability that matters.",
+                hero_subtitle: "Premium technological solutions for security cameras, alarm systems, video intercoms, and professional servicing. Reliability that matters.",
                 btn_view_offers: "View Offers",
+                filter_all: "All Packages",
                 trusted_brands: "Partners & Technology",
                 click_brand_hint: "Click on the logos to learn more about them.",
                 section_offers_title: "Exclusive Offers", section_offers_sub: "Complete packages for maximum security. Designed models to fit every budget and need.",
-                title_cameras: "Security Cameras", title_alarms: "WiFi Alarm Systems",
+                title_cameras: "Security Cameras", title_alarms: "WiFi Alarm Systems", title_intercoms: "Video Intercoms",
                 btn_details: "Package Details",
-                modal_includes: "Package Includes:", btn_order_now: "Order Now", modal_desc_title: "About Package",
+                modal_includes: "Package Includes", btn_order_now: "Order Now", modal_desc_title: "About Package",
                 footer_desc: "Leader in providing security services. We offer absolute quality, guarantee, and professionalism for your home and business.",
                 footer_links: "Quick Links", footer_contact: "Contact", btn_directions: "Open Maps",
+                footer_social: "Follow Us",
                 footer_rights: "All rights reserved.",
-                cat_camera: "Security Camera", cat_alarm: "Alarm System",
+                cat_camera: "Security Camera", cat_alarm: "Alarm System", cat_intercom: "Video Intercom",
                 per_package: "/pkg",
                 ideal_for: "Ideal for",
                 badge_bestseller: "Best Seller", badge_budget: "Budget Choice", badge_pro: "Pro Choice", 
                 badge_premium: "Premium",
                 swipe_more: "Tap to view more",
-                btn_view_contents: "View package contents"
+                btn_view_contents: "View contents",
+                btn_show_more: "Show more", btn_show_less: "Show less",
+                hint_double_tap: "Double tap to zoom",
+                btn_download: "Download",
+                order_method_title: "Choose Method", order_method_sub: "How would you like to contact us to order this package?",
+                btn_direct_call: "Direct Call",
+                // Pricing / Service Translations
+                pricing_title: "Service Prices",
+                pricing_subtitle: "Servicing & Installation list",
+                pricing_intro1: "In case of equipment damage or malfunction, our visit fee is",
+                pricing_intro2: "* Prices for additional parts are separate and communicated individually, based on specific repair needs.",
+                pricing_cat_servicing: "Diagnostics & Servicing",
+                pricing_cat_mounting: "Mounting & Unmounting",
+                btn_call_for_service: "Request Assistance",
+                price_visit: "Visit",
+                price_visit_desc: "Fushe Kosove to Point B (100km)",
+                price_diagnostics: "Equipment Check",
+                price_diagnostics_desc: "Testing & Diagnostics",
+                price_lan: "LAN Connector Repair",
+                price_lan_desc: "Max 4 pieces",
+                price_dc: "DC Cable Repair",
+                price_dc_desc: "Max 4 pieces",
+                price_bnc: "BNC Connector Repair",
+                price_bnc_desc: "Max 4 pieces",
+                price_ip_reset: "IP Camera Reset",
+                price_ip_reset_desc: "Password Recovery",
+                price_nvr_reset: "NVR Reset",
+                price_nvr_reset_desc: "Password Recovery",
+                price_dvr_reset: "DVR Reset",
+                price_dvr_reset_desc: "Password Recovery",
+                price_mount_cam: "Camera Installation",
+                price_mount_cam_desc: "Professional install",
+                price_mount_sensor: "Alarm Sensor Install",
+                price_mount_sensor_desc: "Mounting & testing",
+                price_unmount: "Equipment Unmounting",
+                price_unmount_desc: "Safe removal",
+                price_config: "System Configuration",
+                price_config_desc: "Parameters optimization"
             }
         };
 
         let currentLang = 'sq';
+        let currentOfferIndex = 0; 
+        let currentCategory = 'all'; 
+        let isZoomed = false; 
+        let extraDetailsOpen = false;
 
         window.scrollSlider = function(btn, direction) {
             const container = btn.closest('.slider-wrapper').querySelector('.offers-scroll-container');
@@ -888,7 +1267,6 @@
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         }
 
-        // --- Brand Modal Logic ---
         function openBrandModal(brandId) {
             const data = brandsInfo[brandId];
             if(!data) return;
@@ -910,27 +1288,99 @@
             document.body.style.overflow = 'auto';
         }
 
+        window.setFilter = function(category) {
+            currentCategory = category;
+            
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.dataset.filter === category) {
+                    btn.className = 'filter-btn active px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-xs sm:text-sm font-black transition-all shadow-sm flex items-center gap-2 bg-lika-red text-white border border-transparent hover:-translate-y-0.5 active:scale-95';
+                } else {
+                    btn.className = 'filter-btn px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-xs sm:text-sm font-bold text-gray-600 bg-white border border-gray-200 hover:border-lika-red/50 hover:text-lika-red transition-all shadow-sm flex items-center gap-2 hover:-translate-y-0.5 active:scale-95';
+                }
+            });
+            
+            renderOffers();
+        };
+
+        // Funksioni per hapur/mbyllur "Shiko me shume"
+        function toggleExtraDetails() {
+            const wrapper = document.getElementById('modal-extra-details-wrapper');
+            const content = document.getElementById('modal-extra-details');
+            const icon = document.getElementById('show-more-icon');
+            const text = document.getElementById('show-more-text');
+
+            extraDetailsOpen = !extraDetailsOpen;
+            
+            if (extraDetailsOpen) {
+                wrapper.classList.remove('grid-rows-[0fr]');
+                wrapper.classList.add('grid-rows-[1fr]');
+                content.classList.remove('opacity-0');
+                content.classList.add('opacity-100');
+                icon.classList.add('rotate-180');
+                text.setAttribute('data-i18n', 'btn_show_less');
+                text.textContent = i18n[currentLang]['btn_show_less'];
+                
+                // Beje scroll te lehte poshte
+                setTimeout(() => {
+                    const scrollArea = document.getElementById('modal-scroll-area');
+                    scrollArea.scrollBy({ top: 150, behavior: 'smooth' });
+                }, 300);
+            } else {
+                wrapper.classList.remove('grid-rows-[1fr]');
+                wrapper.classList.add('grid-rows-[0fr]');
+                content.classList.remove('opacity-100');
+                content.classList.add('opacity-0');
+                icon.classList.remove('rotate-180');
+                text.setAttribute('data-i18n', 'btn_show_more');
+                text.textContent = i18n[currentLang]['btn_show_more'];
+            }
+        }
+
+        // Funksioni per te mbyllur extra details kur nderrojme pako
+        function resetExtraDetails() {
+            extraDetailsOpen = false;
+            const wrapper = document.getElementById('modal-extra-details-wrapper');
+            const content = document.getElementById('modal-extra-details');
+            const icon = document.getElementById('show-more-icon');
+            const text = document.getElementById('show-more-text');
+            
+            wrapper.classList.remove('grid-rows-[1fr]');
+            wrapper.classList.add('grid-rows-[0fr]');
+            content.classList.remove('opacity-100');
+            content.classList.add('opacity-0');
+            icon.classList.remove('rotate-180');
+            text.setAttribute('data-i18n', 'btn_show_more');
+            text.textContent = i18n[currentLang]['btn_show_more'];
+        }
+
         function renderOffers() {
             const container = document.getElementById('dynamic-offers-container');
             container.innerHTML = '';
 
             const badgesConfig = {
-                0: { key: 'badge_premium', color: 'bg-lika-red/10 border border-lika-red/20 text-lika-red shadow-sm', isPremium: true },
-                1: { key: 'badge_budget', color: 'bg-white border border-gray-200 text-gray-700 shadow-sm', isPremium: false },
-                2: { key: 'badge_pro', color: 'bg-blue-50 border border-blue-100 text-blue-700 shadow-sm', isPremium: false },
-                3: { key: 'badge_bestseller', color: 'bg-emerald-50 border border-emerald-100 text-emerald-700 shadow-sm', isPremium: true },
-                4: { key: 'badge_budget', color: 'bg-white border border-gray-200 text-gray-700 shadow-sm', isPremium: false },
-                5: { key: 'badge_premium', color: 'bg-gradient-to-r from-red-600 to-orange-500 text-white shadow-md shadow-red-500/20 border border-red-500/50 animate-pulse', isPremium: true }
+                0: { key: 'badge_bestseller', color: 'bg-emerald-50 border border-emerald-100 text-emerald-700 shadow-sm', isPremium: true },
+                1: { key: 'badge_pro', color: 'bg-blue-50 border border-blue-100 text-blue-700 shadow-sm', isPremium: false },
+                2: { key: 'badge_premium', color: 'bg-lika-red/10 border border-lika-red/20 text-lika-red shadow-sm', isPremium: true },
+                3: { key: 'badge_budget', color: 'bg-white border border-gray-200 text-gray-700 shadow-sm', isPremium: false },
+                4: { key: 'badge_pro', color: 'bg-blue-50 border border-blue-100 text-blue-700 shadow-sm', isPremium: false },
+                5: { key: 'badge_bestseller', color: 'bg-emerald-50 border border-emerald-100 text-emerald-700 shadow-sm', isPremium: true },
+                6: { key: 'badge_budget', color: 'bg-white border border-gray-200 text-gray-700 shadow-sm', isPremium: false },
+                7: { key: 'badge_premium', color: 'bg-gradient-to-r from-red-600 to-orange-500 text-white shadow-md shadow-red-500/20 border border-red-500/50 animate-pulse', isPremium: true },
+                8: { key: 'badge_pro', color: 'bg-blue-50 border border-blue-100 text-blue-700 shadow-sm', isPremium: false },
+                9: { key: 'badge_premium', color: 'bg-gradient-to-r from-red-600 to-orange-500 text-white shadow-md shadow-red-500/20 border border-red-500/50 animate-pulse', isPremium: true }
             };
 
             const categories = [
                 { id: 'camera', icon: 'cctv', titleKey: 'title_cameras' },
-                { id: 'alarm', icon: 'bell-ring', titleKey: 'title_alarms' }
+                { id: 'alarm', icon: 'bell-ring', titleKey: 'title_alarms' },
+                { id: 'intercom', icon: 'monitor-smartphone', titleKey: 'title_intercoms' }
             ];
 
             let htmlString = '';
 
             categories.forEach(cat => {
+                if (currentCategory !== 'all' && currentCategory !== cat.id) return;
+
                 const catOffers = offersData.filter(o => o.category === cat.id);
                 if(catOffers.length === 0) return;
 
@@ -986,14 +1436,17 @@
                         const borderClass = isPremium ? 'border-lika-red/30 shadow-[0_15px_40px_-15px_rgba(220,38,38,0.2)]' : 'border-gray-200 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.1)]';
                         const delayClass = `reveal-delay-${(idx % 3) + 1}`;
                         
-                        const cardFeaturesHTML = offer.features.map(feat => `
+                        const cardFeaturesHTML = offer.features.map(feat => {
+                            const featIcon = feat.icon || 'check';
+                            return `
                             <li class="flex items-start gap-3.5 text-xs md:text-sm text-gray-600 font-medium group/list">
                                 <div class="mt-0.5 flex-shrink-0 w-5 h-5 md:w-6 md:h-6 rounded-full bg-red-50 border border-red-100 flex items-center justify-center group-hover/list:scale-110 group-hover/list:bg-lika-red transition-all">
-                                    <i data-lucide="check" class="w-3 h-3 md:w-3.5 md:h-3.5 text-lika-red group-hover/list:text-white transition-colors"></i>
+                                    <i data-lucide="${featIcon}" class="w-3 h-3 md:w-3.5 md:h-3.5 text-lika-red group-hover/list:text-white transition-colors"></i>
                                 </div>
                                 <span class="leading-relaxed pt-0.5">${feat[currentLang]}</span>
                             </li>
-                        `).join('');
+                            `;
+                        }).join('');
 
                         const specBadgeHTML = offer.specBadge ? `
                             <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-50 border border-gray-200 text-[10px] md:text-xs font-black text-gray-700 w-fit hover:bg-gray-100 transition-colors">
@@ -1013,6 +1466,19 @@
                             </span>
                         ` : '';
 
+                        const quickIconsHTML = offer.quickFeatures ? `
+                            <div class="flex items-center gap-3 md:gap-4 border-b border-gray-100 pb-5 mb-6 overflow-x-auto hide-scroll pt-1">
+                                ${offer.quickFeatures.map(qf => `
+                                    <div class="flex flex-col items-center gap-1.5 group/qf cursor-default shrink-0">
+                                        <div class="w-9 h-9 md:w-10 md:h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center group-hover/qf:bg-red-50 group-hover/qf:border-lika-red/30 transition-all shadow-sm group-hover/qf:shadow-md group-hover/qf:-translate-y-0.5">
+                                            <i data-lucide="${qf.icon}" class="w-4 h-4 md:w-4.5 md:h-4.5 text-gray-500 group-hover/qf:text-lika-red transition-colors"></i>
+                                        </div>
+                                        <span class="text-[9px] md:text-[10px] font-black text-gray-500 uppercase tracking-wider group-hover/qf:text-lika-red transition-colors">${qf.label}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        ` : '';
+
                         const btnStyle = isPremium ? 'bg-lika-red text-white shadow-[0_8px_20px_-6px_rgba(220,38,38,0.4)] group-hover/card:bg-red-700 group-hover/card:shadow-[0_15px_30px_-8px_rgba(220,38,38,0.6)] border border-transparent' : 'bg-gray-50 border border-gray-200 text-gray-900 group-hover/card:bg-gray-100 group-hover/card:border-gray-300';
 
                         htmlString += `
@@ -1028,10 +1494,12 @@
                                             ${idealBadgeHTML}
                                         </div>
                                     </div>
-                                    <div class="mb-8 flex items-baseline gap-1.5 border-b border-gray-100 pb-6">
-                                        <span class="text-4xl md:text-5xl font-black text-gray-900 tracking-tighter">€${offer.price}</span>
+                                    <div class="mb-4 flex items-baseline gap-1.5">
+                                        <span class="text-4xl md:text-5xl font-black text-gray-900 tracking-tighter">${offer.price}<sup class="text-xl md:text-2xl text-gray-500 font-bold ml-1 relative top-[-0.4em]">€</sup></span>
                                         <span class="text-xs md:text-sm font-black text-gray-400 uppercase tracking-widest" data-i18n="per_package">${i18n[currentLang].per_package}</span>
                                     </div>
+
+                                    ${quickIconsHTML}
 
                                     <div class="w-full aspect-square bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl mb-8 flex justify-center items-center group-hover/card:scale-[1.03] transition-transform duration-500 border border-gray-100 overflow-hidden relative shadow-inner">
                                         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.8)_0%,transparent_70%)] opacity-0 group-hover/card:opacity-100 transition-opacity duration-500"></div>
@@ -1057,21 +1525,131 @@
             initObserver(); 
         }
 
+        function navigateModal(e, direction) {
+            if (e) {
+                e.stopPropagation();
+                e.preventDefault();
+            }
+            let newIndex = currentOfferIndex + direction;
+            if (newIndex < 0) newIndex = offersData.length - 1;
+            if (newIndex >= offersData.length) newIndex = 0;
+            
+            openModal(newIndex);
+        }
+
+        // Funksioni Zmadhimit per Click/Touch
+        const modalImg = document.getElementById('modal-img');
+        let lastTap = 0;
+
+        function resetZoom() {
+            isZoomed = false;
+            modalImg.style.transform = 'scale(1)';
+            modalImg.style.cursor = 'zoom-in';
+            setTimeout(() => {
+                if(!isZoomed) modalImg.classList.add('group-hover:scale-105', 'md:group-hover:scale-110');
+            }, 500);
+        }
+
+        function handleZoom(clientX, clientY) {
+            isZoomed = !isZoomed;
+            if (isZoomed) {
+                const rect = modalImg.getBoundingClientRect();
+                const x = clientX - rect.left;
+                const y = clientY - rect.top;
+
+                const xPercent = (x / rect.width) * 100;
+                const yPercent = (y / rect.height) * 100;
+
+                modalImg.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+                modalImg.style.transform = window.innerWidth < 768 ? 'scale(2)' : 'scale(2.5)';
+                modalImg.style.cursor = 'zoom-out';
+                
+                modalImg.classList.remove('group-hover:scale-105', 'md:group-hover:scale-110');
+            } else {
+                resetZoom();
+            }
+        }
+
+        // Mobile Double Tap Zmadhim
+        modalImg.addEventListener('touchend', function(e) {
+            const currentTime = new Date().getTime();
+            const tapLength = currentTime - lastTap;
+            if (tapLength < 350 && tapLength > 0) {
+                const touch = e.changedTouches[0];
+                handleZoom(touch.clientX, touch.clientY);
+                e.preventDefault(); 
+            }
+            lastTap = currentTime;
+        });
+
+        // PC Double Click Zmadhim
+        modalImg.addEventListener('dblclick', function(e) {
+            handleZoom(e.clientX, e.clientY);
+        });
+
+        // Funksioni shkarkimit te fotos me Fetch blob API
+        async function triggerDownload(e, imgUrl, title) {
+            e.preventDefault();
+            e.stopPropagation(); 
+            try {
+                const response = await fetch(imgUrl);
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = `LikaTech_${title.replace(/\s+/g, '_')}.jpg`;
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+            } catch (err) {
+                console.error('Error downloading image:', err);
+                window.open(imgUrl, '_blank');
+            }
+        }
+
         function openModal(index) {
+            resetZoom(); 
+            resetExtraDetails(); // Fshih detajet cdo here qe nderron pako
+            
+            currentOfferIndex = index;
             const offer = offersData[index];
             document.getElementById('modal-img').src = offer.img;
             document.getElementById('modal-title').textContent = offer.title[currentLang];
-            document.getElementById('modal-price').textContent = `€${offer.price}`;
+            document.getElementById('modal-price').innerHTML = `${offer.price}<sup class="text-2xl sm:text-3xl font-bold text-gray-400 ml-1">€</sup>`;
             
+            const modalQuickIcons = document.getElementById('modal-quick-icons');
+            if (offer.quickFeatures && offer.quickFeatures.length > 0) {
+                modalQuickIcons.innerHTML = offer.quickFeatures.map(qf => `
+                    <div class="flex items-center gap-1.5 bg-red-50/50 border border-red-100 px-3 py-1.5 rounded-lg shadow-sm shrink-0">
+                        <i data-lucide="${qf.icon}" class="w-3.5 h-3.5 text-lika-red"></i>
+                        <span class="text-[10px] md:text-xs font-black text-gray-700 uppercase tracking-wider">${qf.label}</span>
+                    </div>
+                `).join('');
+                modalQuickIcons.classList.remove('hidden');
+            } else {
+                modalQuickIcons.innerHTML = '';
+                modalQuickIcons.classList.add('hidden');
+            }
+
+            const downloadBtn = document.getElementById('modal-download-btn');
+            downloadBtn.onclick = (e) => triggerDownload(e, offer.img, offer.title[currentLang]);
+
             const detailedDescDiv = document.getElementById('modal-detailed-desc');
             if (offer.detailedDesc) {
                 detailedDescDiv.innerHTML = `<p>${offer.detailedDesc[currentLang]}</p>`;
-                detailedDescDiv.parentElement.classList.remove('hidden');
+                detailedDescDiv.classList.remove('hidden');
             } else {
-                detailedDescDiv.parentElement.classList.add('hidden');
+                detailedDescDiv.classList.add('hidden');
             }
 
-            const catKey = offer.category === 'camera' ? 'cat_camera' : 'cat_alarm';
+            let catKey = 'cat_camera';
+            if (offer.category === 'alarm') {
+                catKey = 'cat_alarm';
+            } else if (offer.category === 'intercom') {
+                catKey = 'cat_intercom';
+            }
             document.getElementById('modal-category').textContent = i18n[currentLang][catKey];
             
             const descList = document.getElementById('modal-desc');
@@ -1089,28 +1667,34 @@
                 if (t.includes('kamera')) { icon = 'cctv'; iconColor = 'text-blue-600'; }
                 else if (t.includes('nvr') || t.includes('qendër')) { icon = 'server'; iconColor = 'text-purple-600'; }
                 else if (t.includes('switch')) { icon = 'network'; iconColor = 'text-orange-600'; }
-                else if (t.includes('hdd') || t.includes('hard')) { icon = 'hard-drive'; iconColor = 'text-emerald-600'; }
+                else if (t.includes('hdd') || t.includes('hard') || t.includes('kartelë')) { icon = 'hard-drive'; iconColor = 'text-emerald-600'; }
                 else if (t.includes('kabllo')) { icon = 'cable'; iconColor = 'text-gray-600'; }
-                else if (t.includes('kuti')) { icon = 'box'; iconColor = 'text-amber-600'; }
+                else if (t.includes('kuti') || t.includes('adapter')) { icon = 'box'; iconColor = 'text-amber-600'; }
                 else if (t.includes('sensor') || t.includes('kontakt')) { icon = 'radar'; iconColor = 'text-teal-600'; }
                 else if (t.includes('sirenë')) { icon = 'bell-ring'; iconColor = 'text-red-600'; }
                 else if (t.includes('telekomandë')) { icon = 'nfc'; iconColor = 'text-indigo-600'; }
                 else if (t.includes('bateri')) { icon = 'battery-full'; iconColor = 'text-green-600'; }
+                else if (t.includes('monitor')) { icon = 'monitor'; iconColor = 'text-blue-500'; }
+                else if (t.includes('njësi')) { icon = 'webcam'; iconColor = 'text-gray-800'; }
+                else if (t.includes('montim') || t.includes('montimi')) { icon = 'wrench'; iconColor = 'text-orange-500'; }
 
-                // Përshtatur madhësia për Mobile vs Desktop (p-2.5 për mobile, p-4 për desktop)
                 descList.innerHTML += `
-                    <li class="flex items-center gap-3 md:gap-4 p-2.5 md:p-4 rounded-xl md:rounded-2xl bg-gray-50 border border-gray-100 hover:border-lika-red/30 transition-all group cursor-default shadow-sm hover:-translate-y-0.5">
-                        <div class="w-9 h-9 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-white shadow-sm shrink-0 flex items-center justify-center border border-gray-100 group-hover:scale-110 transition-transform duration-300 group-hover:border-lika-red/20">
-                            <i data-lucide="${icon}" class="w-4 h-4 md:w-6 md:h-6 ${iconColor} group-hover:text-lika-red transition-colors"></i>
+                    <li class="flex items-center gap-3 md:gap-4 p-2.5 md:p-4 rounded-xl bg-gray-50 border border-gray-100 hover:border-lika-red/30 transition-all group cursor-default shadow-sm hover:-translate-y-0.5">
+                        <div class="w-9 h-9 md:w-10 md:h-10 rounded-lg bg-white shadow-sm shrink-0 flex items-center justify-center border border-gray-100 group-hover:scale-110 transition-transform duration-300 group-hover:border-lika-red/20">
+                            <i data-lucide="${icon}" class="w-4 h-4 md:w-5 md:h-5 ${iconColor} group-hover:text-lika-red transition-colors"></i>
                         </div>
                         <div class="flex items-center gap-2 md:gap-3 flex-wrap flex-grow">
-                            ${qty ? `<span class="font-black text-lika-red bg-red-50 px-2 py-0.5 md:px-3 md:py-1 rounded-md md:rounded-lg text-[10px] md:text-xs border border-red-100 shadow-sm">${qty}</span>` : ''}
+                            ${qty ? `<span class="font-black text-lika-red bg-red-50 px-2 py-0.5 md:px-3 md:py-1 rounded-md text-[10px] md:text-xs border border-red-100 shadow-sm">${qty}</span>` : ''}
                             <span class="text-xs sm:text-sm font-bold text-gray-800 pt-0.5">${text}</span>
                         </div>
                     </li>
                 `;
             });
-            
+
+            // Reseto Scroll-in ne fillim
+            const scrollArea = document.getElementById('modal-scroll-area');
+            if(scrollArea) scrollArea.scrollTop = 0;
+
             lucide.createIcons();
             const lightbox = document.getElementById('lightbox');
             lightbox.classList.remove('hidden');
@@ -1118,9 +1702,45 @@
         }
 
         function closeModal() {
+            resetZoom();
             const lightbox = document.getElementById('lightbox');
             lightbox.classList.add('hidden');
             document.body.style.overflow = 'auto';
+        }
+
+        function openOrderModal() {
+            const modal = document.getElementById('order-modal');
+            modal.classList.remove('hidden');
+        }
+
+        function closeOrderModal() {
+            const modal = document.getElementById('order-modal');
+            modal.classList.add('hidden');
+        }
+
+        function sendOrderMessage(app) {
+            const offer = offersData[currentOfferIndex];
+            const title = offer.title[currentLang];
+            const contents = offer.desc.join(', ');
+
+            let message = '';
+            if (currentLang === 'sq') {
+                message = `Përshëndetje, jam i interesuar për Pakon '${title}'.\n\nPërmbajtja në pako që dua:\n${contents}`;
+            } else {
+                message = `Hello, I am interested in the '${title}' Package.\n\nPackage contents I want:\n${contents}`;
+            }
+
+            const encodedMessage = encodeURIComponent(message);
+            const phone = "38349585195";
+
+            if (app === 'whatsapp') {
+                window.open(`https://wa.me/${phone}?text=${encodedMessage}`, '_blank');
+            } else if (app === 'viber') {
+                window.open(`viber://chat?number=%2B${phone}&draft=${encodedMessage}`, '_blank');
+            } else if (app === 'call') {
+                window.location.href = `tel:+${phone}`;
+            }
+            closeOrderModal();
         }
 
         function toggleLanguage() {
@@ -1132,14 +1752,22 @@
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (i18n[currentLang][key]) {
-                    if(el.querySelector('i[data-lucide]')) {
-                         const iconHTML = el.querySelector('i[data-lucide]').outerHTML;
+                    if(el.querySelector('i[data-lucide]') || el.querySelector('svg')) {
+                         const iconHTML = el.querySelector('i[data-lucide]') ? el.querySelector('i[data-lucide]').outerHTML : el.querySelector('svg').outerHTML;
                          el.innerHTML = `${iconHTML} <span data-i18n="${key}">${i18n[currentLang][key]}</span>`;
                     } else {
                         el.textContent = i18n[currentLang][key];
                     }
                 }
             });
+
+            // Reseto tekstin e butonit toggle
+            const showMoreBtnText = document.getElementById('show-more-text');
+            if (showMoreBtnText) {
+                const key = extraDetailsOpen ? 'btn_show_less' : 'btn_show_more';
+                showMoreBtnText.setAttribute('data-i18n', key);
+                showMoreBtnText.textContent = i18n[currentLang][key];
+            }
 
             const activeBrandTitle = document.getElementById('brand-modal-title').textContent;
             if(activeBrandTitle) {
@@ -1161,7 +1789,6 @@
             menu.classList.toggle('hidden');
         }
 
-        // Efekti super i pastër i zëvendësimit të Logove
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             const logoWhite = document.getElementById('logo-white');
@@ -1183,9 +1810,18 @@
         });
 
         document.addEventListener('keydown', (e) => { 
-            if (e.key === 'Escape') {
-                closeModal();
-                closeBrandModal();
+            const lightbox = document.getElementById('lightbox');
+            const brandModal = document.getElementById('brand-modal');
+            const orderModal = document.getElementById('order-modal');
+            
+            if (!orderModal.classList.contains('hidden')) {
+                if (e.key === 'Escape') closeOrderModal();
+            } else if (!lightbox.classList.contains('hidden')) {
+                if (e.key === 'Escape') closeModal();
+                if (e.key === 'ArrowLeft') navigateModal(e, -1);
+                if (e.key === 'ArrowRight') navigateModal(e, 1);
+            } else if (!brandModal.classList.contains('hidden')) {
+                if (e.key === 'Escape') closeBrandModal();
             }
         });
 
