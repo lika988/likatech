@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="sq" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>LIKA TECH | Çmimet e Shërbimeve</title>
+    
+    <link rel="preload" href="https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/LOGO/LOGO%20White+RED?updatedAt=1776285031190" as="image">
+    <link rel="preload" href="https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/LOGO/Logo%20BLACK+RED?updatedAt=1776285015068" as="image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    colors: {
+                        lika: { red: '#dc2626', darkred: '#991b1b', black: '#050505', gray: '#1e1e1e', light: '#f8fafc' }
+                    },
+                    animation: {
+                        'slide-down': 'slideDown 0.4s ease-out forwards',
+                        'pulse-soft': 'pulseSoft 3s ease-in-out infinite',
+                        'float': 'float 5s ease-in-out infinite',
+                        'ring': 'ring 2s ease-in-out infinite',
+                        'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        slideDown: { '0%': { opacity: '0', transform: 'translateY(-15px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        float: { '0%, 100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-12px)' } },
+                        ring: { '0%': { transform: 'rotate(0)' }, '10%': { transform: 'rotate(20deg)' }, '20%': { transform: 'rotate(-15deg)' }, '30%': { transform: 'rotate(20deg)' }, '40%': { transform: 'rotate(-15deg)' }, '50%': { transform: 'rotate(0)' }, '100%': { transform: 'rotate(0)' } }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { overflow-x: hidden; -webkit-tap-highlight-color: transparent; background-color: #f8fafc; color: #0f172a; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #dc2626; }
+        img { user-select: none; pointer-events: auto; }
+        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03); }
+        .btn-shimmer { background: linear-gradient(90deg, #dc2626 0%, #ef4444 50%, #dc2626 100%); background-size: 200% auto; transition: 0.5s; }
+        .btn-shimmer:hover { background-position: right center; box-shadow: 0 15px 30px -5px rgba(220, 38, 38, 0.4); transform: translateY(-2px); }
+        ::selection { background-color: #dc2626; color: white; }
+        /* Siguron animacionin smooth për dropdown */
+        .accordion-content { grid-template-rows: 0fr; }
+        .accordion-content.open { grid-template-rows: 1fr; }
+    </style>
+</head>
+<body class="antialiased selection:bg-lika-red selection:text-white" oncontextmenu="return false;">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-500 bg-transparent" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24 sm:h-28 md:h-32">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="cursor-pointer block relative group h-20 sm:h-24 md:h-28 lg:h-32 w-32 sm:w-40 md:w-48 transform scale-110 sm:scale-125 origin-left transition-transform duration-500 hover:scale-[1.3] hover:drop-shadow-xl mt-4 md:mt-0">
+                        <img id="logo-white" src="https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/LOGO/LOGO%20White+RED?updatedAt=1776285031190" alt="LIKA TECH" class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-full object-contain object-left transition-opacity duration-500 opacity-100">
+                        <img id="logo-black" src="https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/LOGO/Logo%20BLACK+RED?updatedAt=1776285015068" alt="LIKA TECH" class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-full object-contain object-left transition-opacity duration-500 opacity-0 pointer-events-none">
+                    </a>
+                </div>
+
+                <div class="hidden lg:flex items-center space-x-6 xl:space-x-8 animate-fade-in-up">
+                    <div class="flex space-x-1 xl:space-x-2 items-center bg-white/80 backdrop-blur-xl px-2 py-2 rounded-full border border-gray-200/50 shadow-lg shadow-gray-200/20">
+                        <a href="index.html" class="px-4 xl:px-5 py-2 text-sm font-bold text-gray-600 hover:text-lika-red hover:bg-red-50 rounded-full transition-all duration-300" data-i18n="nav_home">Kryefaqja</a>
+                        <a href="index.html#offers" class="px-4 xl:px-5 py-2 text-sm font-bold text-gray-600 hover:text-lika-red hover:bg-red-50 rounded-full transition-all duration-300" data-i18n="nav_offers">Ofertat</a>
+                        <a href="cmimet.html" class="px-4 xl:px-5 py-2 text-sm font-bold text-lika-red bg-red-50/80 hover:bg-red-100 rounded-full transition-all duration-300 flex items-center gap-1.5 shadow-sm border border-red-100/50">
+                            <i data-lucide="badge-euro" class="w-4 h-4"></i>
+                            <span data-i18n="nav_pricing">Çmimet</span>
+                        </a>
+                        <a href="https://service.likaapps.com/" target="_blank" class="px-4 xl:px-5 py-2 text-sm font-bold text-gray-600 hover:text-lika-red hover:bg-red-50 rounded-full transition-all duration-300" data-i18n="nav_service">Servisim</a>
+                        <a href="#contact" class="px-4 xl:px-5 py-2 text-sm font-bold text-gray-600 hover:text-lika-red hover:bg-red-50 rounded-full transition-all duration-300" data-i18n="nav_contact">Kontakt</a>
+                    </div>
+                </div>
+
+                <div class="hidden md:flex items-center space-x-3 xl:space-x-4 animate-fade-in-up">
+                    <button onclick="toggleLanguage()" class="w-11 h-11 flex items-center justify-center rounded-full bg-white hover:bg-gray-50 transition-all duration-300 border border-gray-200 font-black text-xs text-gray-800 shadow-sm hover:-translate-y-0.5" id="lang-toggle">EN</button>
+                    <a href="tel:+38349585195" class="px-5 xl:px-6 py-2.5 btn-shimmer text-white rounded-full flex items-center gap-3 transition-all shadow-lg hover:-translate-y-1 group">
+                        <div class="p-2 bg-white/20 rounded-full"><i data-lucide="phone-call" class="w-4 h-4 animate-ring"></i></div>
+                        <div class="flex flex-col text-left">
+                            <span class="text-[10px] uppercase tracking-wider opacity-90 font-bold" data-i18n="btn_call_now">Thirr Tani</span>
+                            <span class="text-xs xl:text-sm font-black leading-none">+383 49 585 195</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="lg:hidden flex items-center space-x-3">
+                    <button onclick="toggleLanguage()" class="w-9 h-9 flex items-center justify-center rounded-full bg-white/90 backdrop-blur border border-gray-200 font-black text-[10px] shadow-sm" id="lang-toggle-mob">EN</button>
+                    <button onclick="toggleMobileMenu()" class="p-2 text-gray-900 bg-white/90 backdrop-blur rounded-xl border border-gray-200 shadow-sm flex items-center justify-center">
+                        <i data-lucide="menu" class="h-5 w-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="lg:hidden hidden absolute w-full bg-white/95 backdrop-blur-2xl border-b border-gray-100 shadow-2xl">
+            <div class="px-6 pt-4 pb-8 space-y-2">
+                <a href="index.html" class="flex items-center justify-between px-4 py-4 rounded-2xl text-base font-bold text-gray-800 hover:bg-red-50 hover:text-lika-red transition-all" data-i18n="nav_home"><span>Kryefaqja</span> <i data-lucide="chevron-right" class="w-4 h-4 opacity-50"></i></a>
+                <a href="index.html#offers" class="flex items-center justify-between px-4 py-4 rounded-2xl text-base font-bold text-gray-800 hover:bg-red-50 hover:text-lika-red transition-all" data-i18n="nav_offers"><span>Ofertat</span> <i data-lucide="chevron-right" class="w-4 h-4 opacity-50"></i></a>
+                <a href="cmimet.html" class="flex items-center justify-between px-4 py-4 rounded-2xl text-base font-black text-lika-red bg-red-50/50 hover:bg-red-50 transition-all border border-red-100/50">
+                    <div class="flex items-center gap-2"><i data-lucide="badge-euro" class="w-5 h-5"></i> <span data-i18n="nav_pricing">Çmimet e Shërbimeve</span></div> <i data-lucide="chevron-right" class="w-4 h-4 opacity-50"></i>
+                </a>
+                <a href="https://service.likaapps.com/" target="_blank" class="flex items-center justify-between px-4 py-4 rounded-2xl text-base font-bold text-gray-800 hover:bg-red-50 hover:text-lika-red transition-all" data-i18n="nav_service"><span>Servisim</span> <i data-lucide="chevron-right" class="w-4 h-4 opacity-50"></i></a>
+                <a href="#contact" onclick="toggleMobileMenu()" class="flex items-center justify-between px-4 py-4 rounded-2xl text-base font-bold text-gray-800 hover:bg-red-50 hover:text-lika-red transition-all" data-i18n="nav_contact"><span>Kontakt</span> <i data-lucide="chevron-right" class="w-4 h-4 opacity-50"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="relative pt-32 pb-16 md:pt-48 md:pb-24 bg-gray-900 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-800 via-gray-900 to-black"></div>
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-lika-red/10 rounded-full blur-[100px] animate-float"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-red-600/10 rounded-full blur-[100px] animate-float" style="animation-delay: 2s;"></div>
+            <div class="absolute bottom-0 w-full h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center animate-fade-in-up">
+            <div class="inline-flex items-center justify-center p-3.5 bg-white/5 border border-white/10 rounded-2xl shadow-lg backdrop-blur-md mb-6 transform rotate-3">
+                <i data-lucide="badge-euro" class="w-8 h-8 md:w-10 md:h-10 text-red-400 drop-shadow-lg"></i>
+            </div>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight mb-4" data-i18n="pricing_title">Çmimet e Shërbimeve</h1>
+            <p class="text-lg md:text-xl text-gray-400 font-medium max-w-2xl mx-auto tracking-wide" data-i18n="pricing_subtitle">Lista e servisimit & montimeve. Klikoni për detaje.</p>
+        </div>
+    </section>
+
+    <!-- Main Pricing Content -->
+    <section class="py-16 md:py-24 bg-gray-50 relative z-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Info Alert -->
+            <div class="bg-gradient-to-r from-red-50 to-white border border-red-100/60 rounded-3xl p-6 md:p-8 mb-12 flex flex-col md:flex-row gap-5 items-center md:items-start shadow-sm relative overflow-hidden animate-fade-in-up" style="animation-delay: 0.2s;">
+                <div class="absolute right-0 top-0 w-48 h-48 bg-red-100/40 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+                <div class="bg-white p-3 rounded-2xl shadow-sm border border-red-50 shrink-0 relative z-10">
+                    <i data-lucide="info" class="w-6 h-6 md:w-8 md:h-8 text-lika-red"></i>
+                </div>
+                <div class="relative z-10 text-center md:text-left">
+                    <p class="text-base md:text-lg text-gray-800 font-medium leading-relaxed">
+                        <span data-i18n="pricing_intro1">Në rast të dëmtimit ose mosfunksionimit të pajisjeve, tarifa për vizitën është</span> <strong class="text-lika-red text-xl md:text-2xl font-black mx-1 tracking-tight">50€</strong>.
+                    </p>
+                    <p class="text-xs md:text-sm text-gray-500 mt-2 font-medium bg-white/60 inline-block px-3 py-1 rounded-lg" data-i18n="pricing_intro2">* Çmimet për pjesët shtesë janë të ndara dhe komunikohen veçmas, bazuar në nevojat specifike të riparimit.</p>
+                </div>
+            </div>
+
+            <!-- Two Columns Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-14 animate-fade-in-up" style="animation-delay: 0.4s;">
+                
+                <!-- Column 1: Servicing -->
+                <div class="flex flex-col h-full">
+                    <div class="flex items-center gap-3.5 mb-6 border-b-2 border-gray-200/50 pb-4 pl-2">
+                        <div class="bg-gray-200/50 p-2 rounded-lg text-gray-600"><i data-lucide="tool" class="w-5 h-5"></i></div>
+                        <h2 class="text-xl md:text-2xl font-black text-gray-900 uppercase tracking-tight" data-i18n="pricing_cat_servicing">Diagnostikimi & Servisimi</h2>
+                    </div>
+                    
+                    <div class="space-y-4 flex-grow">
+                        <!-- Accordion Item 1 -->
+                        <div class="bg-white rounded-2xl border border-gray-200/60 shadow-sm overflow-hidden group hover:border-lika-red/40 transition-all duration-300 faq-item cursor-pointer" onclick="toggleAccordion(this)">
+                            <div class="p-4 md:p-5 flex justify-between items-center select-none">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-red-50 group-hover:border-red-100 transition-colors"><i data-lucide="truck" class="w-5 h-5 text-gray-500 group-hover:text-lika-red transition-colors"></i></div>
+                                    <div>
+                                        <h5 class="text-sm md:text-base font-black text-gray-800" data-i18n="price_visit">Vizita</h5>
+                                        <p class="text-xs text-gray-500 mt-1 font-medium" data-i18n="price_visit_desc">Fushë Kosovë deri tek pika B (100km)</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3 md:gap-5 pl-2">
+                                    <span class="text-lg md:text-xl font-black text-lika-red">50€</span>
+                                    <div class="p-1 rounded-full bg-gray-50 group-hover:bg-red-50 transition-colors"><i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 group-hover:text-lika-red transition-transform duration-300 chevron-icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="grid transition-[grid-template-rows] duration-300 ease-in-out accordion-content">
+                                <div class="overflow-hidden">
+                                    <div class="p-4 md:p-5 pt-0 border-t border-gray-50 text-sm text-gray-600 font-medium leading-relaxed bg-gray-50/50">
+                                        <div class="flex items-start gap-2">
+                                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 shrink-0 mt-0.5"></i>
+                                            <p data-i18n="detail_visit">Përfshin ardhjen e teknikut në lokacionin tuaj brenda rrezes nga Fushë Kosova deri në 100km. Diagnostikimi vizual dhe testimi fillestar në momentin e arritjes është i përfshirë në këtë çmim.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 2 -->
+                        <div class="bg-white rounded-2xl border border-gray-200/60 shadow-sm overflow-hidden group hover:border-lika-red/40 transition-all duration-300 faq-item cursor-pointer" onclick="toggleAccordion(this)">
+                            <div class="p-4 md:p-5 flex justify-between items-center select-none">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-red-50 group-hover:border-red-100 transition-colors"><i data-lucide="search" class="w-5 h-5 text-gray-500 group-hover:text-lika-red transition-colors"></i></div>
+                                    <div>
+                                        <h5 class="text-sm md:text-base font-black text-gray-800" data-i18n="price_diagnostics">Kontrollimi i pajisjeve</h5>
+                                        <p class="text-xs text-gray-500 mt-1 font-medium" data-i18n="price_diagnostics_desc">Testimi dhe diagnostikimi i defekteve</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3 md:gap-5 pl-2">
+                                    <span class="text-lg md:text-xl font-black text-lika-red">25€</span>
+                                    <div class="p-1 rounded-full bg-gray-50 group-hover:bg-red-50 transition-colors"><i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 group-hover:text-lika-red transition-transform duration-300 chevron-icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="grid transition-[grid-template-rows] duration-300 ease-in-out accordion-content">
+                                <div class="overflow-hidden">
+                                    <div class="p-4 md:p-5 pt-0 border-t border-gray-50 text-sm text-gray-600 font-medium leading-relaxed bg-gray-50/50">
+                                        <div class="flex items-start gap-2">
+                                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 shrink-0 mt-0.5"></i>
+                                            <p data-i18n="detail_diagnostics">Analizë e thellë e sistemit tuaj ekzistues. Përfshin testimin e qarkut të kamerave, lidhjeve të rrjetit dhe hard diskut për të gjetur saktësisht burimin e problemit para fillimit të riparimeve.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 3 -->
+                        <div class="bg-white rounded-2xl border border-gray-200/60 shadow-sm overflow-hidden group hover:border-lika-red/40 transition-all duration-300 faq-item cursor-pointer" onclick="toggleAccordion(this)">
+                            <div class="p-4 md:p-5 flex justify-between items-center select-none">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-red-50 group-hover:border-red-100 transition-colors"><i data-lucide="network" class="w-5 h-5 text-gray-500 group-hover:text-lika-red transition-colors"></i></div>
+                                    <div>
+                                        <h5 class="text-sm md:text-base font-black text-gray-800" data-i18n="price_lan">Riparimi i konektorit LAN</h5>
+                                        <p class="text-xs text-gray-500 mt-1 font-medium" data-i18n="price_lan_desc">Maksimal 4 copë</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3 md:gap-5 pl-2">
+                                    <span class="text-lg md:text-xl font-black text-lika-red">10€</span>
+                                    <div class="p-1 rounded-full bg-gray-50 group-hover:bg-red-50 transition-colors"><i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 group-hover:text-lika-red transition-transform duration-300 chevron-icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="grid transition-[grid-template-rows] duration-300 ease-in-out accordion-content">
+                                <div class="overflow-hidden">
+                                    <div class="p-4 md:p-5 pt-0 border-t border-gray-50 text-sm text-gray-600 font-medium leading-relaxed bg-gray-50/50">
+                                        <div class="flex items-start gap-2">
+                                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 shrink-0 mt-0.5"></i>
+                                            <p data-i18n="detail_lan">Ndërrimi dhe presimi profesional i kokave RJ45 në kabllot ekzistuese të rrjetit. Testimi i linjës për të siguruar transmetim të dhënash pa ndërprerje. Çmimi mbulon deri në 4 konektorë.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 4 -->
+                        <div class="bg-white rounded-2xl border border-gray-200/60 shadow-sm overflow-hidden group hover:border-lika-red/40 transition-all duration-300 faq-item cursor-pointer" onclick="toggleAccordion(this)">
+                            <div class="p-4 md:p-5 flex justify-between items-center select-none">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-red-50 group-hover:border-red-100 transition-colors"><i data-lucide="plug" class="w-5 h-5 text-gray-500 group-hover:text-lika-red transition-colors"></i></div>
+                                    <div>
+                                        <h5 class="text-sm md:text-base font-black text-gray-800" data-i18n="price_dc">Riparimi i kabllos DC</h5>
+                                        <p class="text-xs text-gray-500 mt-1 font-medium" data-i18n="price_dc_desc">Maksimal 4 copë</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3 md:gap-5 pl-2">
+                                    <span class="text-lg md:text-xl font-black text-lika-red">5€</span>
+                                    <div class="p-1 rounded-full bg-gray-50 group-hover:bg-red-50 transition-colors"><i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 group-hover:text-lika-red transition-transform duration-300 chevron-icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="grid transition-[grid-template-rows] duration-300 ease-in-out accordion-content">
+                                <div class="overflow-hidden">
+                                    <div class="p-4 md:p-5 pt-0 border-t border-gray-50 text-sm text-gray-600 font-medium leading-relaxed bg-gray-50/50">
+                                        <div class="flex items-start gap-2">
+                                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 shrink-0 mt-0.5"></i>
+                                            <p data-i18n="detail_dc">Rregullimi i problemeve me furnizimin me energji. Prerja, bashkimi dhe izolimi i sigurt i kabllove ose konektorëve DC (Rryma) për kamerat, duke eliminuar shkyçjet. Mbulon deri në 4 ndërhyrje.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 5 -->
+                        <div class="bg-white rounded-2xl border border-gray-200/60 shadow-sm overflow-hidden group hover:border-lika-red/40 transition-all duration-300 faq-item cursor-pointer" onclick="toggleAccordion(this)">
+                            <div class="p-4 md:p-5 flex justify-between items-center select-none">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-red-50 group-hover:border-red-100 transition-colors"><i data-lucide="cable" class="w-5 h-5 text-gray-500 group-hover:text-lika-red transition-colors"></i></div>
+                                    <div>
+                                        <h5 class="text-sm md:text-base font-black text-gray-800" data-i18n="price_bnc">Riparimi i konektorit BNC</h5>
+                                        <p class="text-xs text-gray-500 mt-1 font-medium" data-i18n="price_bnc_desc">Maksimal 4 copë</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3 md:gap-5 pl-2">
+                                    <span class="text-lg md:text-xl font-black text-lika-red">10€</span>
+                                    <div class="p-1 rounded-full bg-gray-50 group-hover:bg-red-50 transition-colors"><i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 group-hover:text-lika-red transition-transform duration-300 chevron-icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="grid transition-[grid-template-rows] duration-300 ease-in-out accordion-content">
+                                <div class="overflow-hidden">
+                                    <div class="p-4 md:p-5 pt-0 border-t border-gray-50 text-sm text-gray-600 font-medium leading-relaxed bg-gray-50/50">
+                                        <div class="flex items-start gap-2">
+                                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 shrink-0 mt-0.5"></i>
+                                            <p data-i18n="detail_bnc">Zëvendësimi i konektorëve të vjetër ose të ndryshkur BNC në sistemet e kamerave analoge. Kjo siguron kualitet të pastër të figurës pa dridhje ose ndërprerje. Përfshin deri në 4 konektorë.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 6 -->
+                        <div class="bg-white rounded-2xl border border-gray-200/60 shadow-sm overflow-hidden group hover:border-lika-red/40 transition-all duration-300 faq-item cursor-pointer" onclick="toggleAccordion(this)">
+                            <div class="p-4 md:p-5 flex justify-between items-center select-none">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-red-50 group-hover:border-red-100 transition-colors"><i data-lucide="refresh-cw" class="w-5 h-5 text-gray-500 group-hover:text-lika-red transition-colors"></i></div>
+                                    <div>
+                                        <h5 class="text-sm md:text-base font-black text-gray-800" data-i18n="price_ip_reset">Resetimi i kamerës IP</h5>
+                                        <p class="text-xs text-gray-500 mt-1 font-medium" data-i18n="price_ip_reset_desc">Rikthimi i fjalëkalimit</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3 md:gap-5 pl-2">
+                                    <div class="flex flex-col items-end">
+                                        <span class="text-lg md:text-xl font-black text-lika-red">25€</span>
+                                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-[-2px]">/copë</span>
+                                    </div>
+                                    <div class="p-1 rounded-full bg-gray-50 group-hover:bg-red-50 transition-colors"><i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 group-hover:text-lika-red transition-transform duration-300 chevron-icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="grid transition-[grid-template-rows] duration-300 ease-in-out accordion-content">
+                                <div class="overflow-hidden">
+                                    <div class="p-4 md:p-5 pt-0 border-t border-gray-50 text-sm text-gray-600 font-medium leading-relaxed bg-gray-50/50">
+                                        <div class="flex items-start gap-2">
+                                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 shrink-0 mt-0.5"></i>
+                                            <p data-i18n="detail_mount_cam">Përfshin vlerësimin e këndit të shikimit, shpimin profesional të mureve, izolimin e kabllove në kuti mbrojtëse, pozicionimin fizik të kamerës dhe fokusimin final të pamjes për shikueshmëri maksimale.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 10 -->
+                        <div class="bg-white rounded-2xl border border-gray-200/60 shadow-sm overflow-hidden group hover:border-lika-red/40 transition-all duration-300 faq-item cursor-pointer" onclick="toggleAccordion(this)">
+                            <div class="p-4 md:p-5 flex justify-between items-center select-none">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-red-50 group-hover:border-red-100 transition-colors"><i data-lucide="radar" class="w-5 h-5 text-gray-500 group-hover:text-lika-red transition-colors"></i></div>
+                                    <div>
+                                        <h5 class="text-sm md:text-base font-black text-gray-800" data-i18n="price_mount_sensor">Montimi i sensorëve</h5>
+                                        <p class="text-xs text-gray-500 mt-1 font-medium" data-i18n="price_mount_sensor_desc">Vendosje & testim</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3 md:gap-5 pl-2">
+                                    <div class="flex flex-col items-end">
+                                        <span class="text-lg md:text-xl font-black text-lika-red">25€</span>
+                                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-[-2px]">/copë</span>
+                                    </div>
+                                    <div class="p-1 rounded-full bg-gray-50 group-hover:bg-red-50 transition-colors"><i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 group-hover:text-lika-red transition-transform duration-300 chevron-icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="grid transition-[grid-template-rows] duration-300 ease-in-out accordion-content">
+                                <div class="overflow-hidden">
+                                    <div class="p-4 md:p-5 pt-0 border-t border-gray-50 text-sm text-gray-600 font-medium leading-relaxed bg-gray-50/50">
+                                        <div class="flex items-start gap-2">
+                                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 shrink-0 mt-0.5"></i>
+                                            <p data-i18n="detail_mount_sensor">Vendosja strategjike e sensorëve të lëvizjes (PIR), sensorëve të dyerve/dritareve apo detektorëve të tymit. Integrimi me panelin qendror të alarmit dhe kalibrimi i ndjeshmërisë për të shmangur alarmet false.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 11 -->
+                        <div class="bg-white rounded-2xl border border-gray-200/60 shadow-sm overflow-hidden group hover:border-lika-red/40 transition-all duration-300 faq-item cursor-pointer" onclick="toggleAccordion(this)">
+                            <div class="p-4 md:p-5 flex justify-between items-center select-none">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-red-50 group-hover:border-red-100 transition-colors"><i data-lucide="minus-circle" class="w-5 h-5 text-gray-500 group-hover:text-lika-red transition-colors"></i></div>
+                                    <div>
+                                        <h5 class="text-sm md:text-base font-black text-gray-800" data-i18n="price_unmount">Çmontimi i pajisjeve</h5>
+                                        <p class="text-xs text-gray-500 mt-1 font-medium" data-i18n="price_unmount_desc">Heqja e sigurt e pajisjeve</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3 md:gap-5 pl-2">
+                                    <div class="flex flex-col items-end">
+                                        <span class="text-lg md:text-xl font-black text-lika-red">10€</span>
+                                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-[-2px]">/copë</span>
+                                    </div>
+                                    <div class="p-1 rounded-full bg-gray-50 group-hover:bg-red-50 transition-colors"><i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 group-hover:text-lika-red transition-transform duration-300 chevron-icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="grid transition-[grid-template-rows] duration-300 ease-in-out accordion-content">
+                                <div class="overflow-hidden">
+                                    <div class="p-4 md:p-5 pt-0 border-t border-gray-50 text-sm text-gray-600 font-medium leading-relaxed bg-gray-50/50">
+                                        <div class="flex items-start gap-2">
+                                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 shrink-0 mt-0.5"></i>
+                                            <p data-i18n="detail_unmount">Heqja profesionale e kamerave, bazave, sensorëve apo kabllove të vjetruara duke siguruar që muret apo sipërfaqet e objektit tuaj të mos pësojnë dëmtime apo plasaritje të panevojshme.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 12 -->
+                        <div class="bg-white rounded-2xl border border-gray-200/60 shadow-sm overflow-hidden group hover:border-lika-red/40 transition-all duration-300 faq-item cursor-pointer" onclick="toggleAccordion(this)">
+                            <div class="p-4 md:p-5 flex justify-between items-center select-none">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-red-50 group-hover:border-red-100 transition-colors"><i data-lucide="settings" class="w-5 h-5 text-gray-500 group-hover:text-lika-red transition-colors"></i></div>
+                                    <div>
+                                        <h5 class="text-sm md:text-base font-black text-gray-800" data-i18n="price_config">Konfigurimi i sistemit</h5>
+                                        <p class="text-xs text-gray-500 mt-1 font-medium" data-i18n="price_config_desc">Optimizimi i parametrave</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3 md:gap-5 pl-2">
+                                    <span class="text-lg md:text-xl font-black text-lika-red">20€</span>
+                                    <div class="p-1 rounded-full bg-gray-50 group-hover:bg-red-50 transition-colors"><i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 group-hover:text-lika-red transition-transform duration-300 chevron-icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="grid transition-[grid-template-rows] duration-300 ease-in-out accordion-content">
+                                <div class="overflow-hidden">
+                                    <div class="p-4 md:p-5 pt-0 border-t border-gray-50 text-sm text-gray-600 font-medium leading-relaxed bg-gray-50/50">
+                                        <div class="flex items-start gap-2">
+                                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 shrink-0 mt-0.5"></i>
+                                            <p data-i18n="detail_config">Lidhja e pajisjes DVR/NVR me rrjetin e internetit lokal. Konfigurimi i P2P (Port Forwarding), krijimi i rregullave të regjistrimit, dhe lidhja e sistemit me aplikacionin në smartphone (deri në 3 telefona).</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 13 -->
+                        <div class="bg-white rounded-2xl border border-gray-200/60 shadow-sm overflow-hidden group hover:border-lika-red/40 transition-all duration-300 faq-item cursor-pointer" onclick="toggleAccordion(this)">
+                            <div class="p-4 md:p-5 flex justify-between items-center select-none">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-red-50 group-hover:border-red-100 transition-colors"><i data-lucide="unlink" class="w-5 h-5 text-gray-500 group-hover:text-lika-red transition-colors"></i></div>
+                                    <div>
+                                        <h5 class="text-sm md:text-base font-black text-gray-800" data-i18n="price_unbind">Shkyçja (Unbind)</h5>
+                                        <p class="text-xs text-gray-500 mt-1 font-medium" data-i18n="price_unbind_desc">Email i ri & Konfigurim</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3 md:gap-5 pl-2">
+                                    <span class="text-lg md:text-xl font-black text-lika-red">20€</span>
+                                    <div class="p-1 rounded-full bg-gray-50 group-hover:bg-red-50 transition-colors"><i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 group-hover:text-lika-red transition-transform duration-300 chevron-icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="grid transition-[grid-template-rows] duration-300 ease-in-out accordion-content">
+                                <div class="overflow-hidden">
+                                    <div class="p-4 md:p-5 pt-0 border-t border-gray-50 text-sm text-gray-600 font-medium leading-relaxed bg-gray-50/50">
+                                        <div class="flex items-start gap-2">
+                                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 shrink-0 mt-0.5"></i>
+                                            <p data-i18n="detail_unbind">Në rastet kur keni harruar email-in ose fjalëkalimin dhe pajisja është e bllokuar në një llogari tjetër (p.sh. Hik-Connect). Përfshin shkyçjen (Unbind), krijimin e një emaili të ri dhe konfigurimin e plotë në aplikacion.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer CTA -->
+            <div class="mt-20 border-t border-gray-200 pt-10 text-center animate-fade-in-up" style="animation-delay: 0.6s;">
+                <p class="text-gray-500 font-medium mb-6" data-i18n="contact_prompt">Keni nevojë për diçka tjetër? Na kontaktoni direkt.</p>
+                <a href="tel:+38349585195" class="inline-flex px-8 py-4 bg-gray-900 text-white font-black rounded-2xl hover:bg-lika-red transition-all duration-300 shadow-xl hover:-translate-y-1 items-center gap-3 group active:scale-95 text-sm md:text-base">
+                    <i data-lucide="phone-call" class="w-5 h-5 animate-ring"></i> 
+                    <span data-i18n="btn_call_for_service">Kërko Asistencë</span>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <footer id="contact" class="bg-gray-900 border-t border-gray-800 pt-16 md:pt-24 pb-10 relative overflow-hidden">
+        <!-- Footer remains the same as your original file -->
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-lika-red/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 mb-16 md:mb-20">
+                <div class="col-span-1 lg:col-span-1">
+                    <img src="https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/LOGO/LOGO%20White+RED?updatedAt=1776285031190" alt="LIKA TECH" class="h-24 md:h-32 object-contain mb-8 transform scale-110 sm:scale-125 origin-left">
+                    <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-6 font-medium mt-4" data-i18n="footer_desc">
+                        Lider në ofrimin e shërbimeve të sigurisë. Ne ofrojmë cilësi, garanci dhe profesionalizëm absolut për shtëpinë dhe biznesin tuaj.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-black text-lg md:text-xl mb-6" data-i18n="footer_links">Linqe të Shpejta</h4>
+                    <ul class="space-y-4">
+                        <li><a href="index.html" class="text-sm md:text-base text-gray-400 font-medium hover:text-white transition-colors flex items-center gap-3 group"><i data-lucide="arrow-right" class="w-4 h-4 text-lika-red group-hover:translate-x-1 transition-transform"></i> <span data-i18n="nav_home">Kryefaqja</span></a></li>
+                        <li><a href="index.html#offers" class="text-sm md:text-base text-gray-400 font-medium hover:text-white transition-colors flex items-center gap-3 group"><i data-lucide="arrow-right" class="w-4 h-4 text-lika-red group-hover:translate-x-1 transition-transform"></i> <span data-i18n="nav_offers">Ofertat</span></a></li>
+                        <li><a href="cmimet.html" class="text-sm md:text-base text-gray-400 font-medium hover:text-white transition-colors flex items-center gap-3 group"><i data-lucide="arrow-right" class="w-4 h-4 text-lika-red group-hover:translate-x-1 transition-transform"></i> <span data-i18n="nav_pricing">Çmimet e Shërbimeve</span></a></li>
+                        <li><a href="https://service.likaapps.com/" target="_blank" class="text-sm md:text-base text-gray-400 font-medium hover:text-white transition-colors flex items-center gap-3 group"><i data-lucide="arrow-right" class="w-4 h-4 text-lika-red group-hover:translate-x-1 transition-transform"></i> <span data-i18n="nav_service">Servisim Pajisjesh</span></a></li>
+                    </ul>
+                </div>
+
+                <div class="col-span-1 lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-10">
+                    <div>
+                        <h4 class="text-white font-black text-lg md:text-xl mb-6" data-i18n="footer_contact">Kontakti</h4>
+                        <ul class="space-y-5">
+                            <li class="flex items-start gap-4 text-sm md:text-base text-gray-400 group">
+                                <div class="p-2.5 bg-gray-800 rounded-xl group-hover:bg-lika-red transition-colors shrink-0"><i data-lucide="map-pin" class="w-4 h-4 text-white"></i></div>
+                                <span class="pt-1">Fushë Kosovë, Kosovë</span>
+                            </li>
+                            <li class="flex items-start gap-4 text-sm md:text-base text-gray-400 group">
+                                <div class="p-2.5 bg-gray-800 rounded-xl group-hover:bg-lika-red transition-colors shrink-0"><i data-lucide="phone" class="w-4 h-4 text-white"></i></div>
+                                <a href="tel:+38349585195" class="pt-1 hover:text-white transition-colors font-medium">+383 49 585 195</a>
+                            </li>
+                            <li class="flex items-start gap-4 text-sm md:text-base text-gray-400 group">
+                                <div class="p-2.5 bg-gray-800 rounded-xl group-hover:bg-lika-red transition-colors shrink-0"><i data-lucide="mail" class="w-4 h-4 text-white"></i></div>
+                                <a href="mailto:lika.tech@proton.me" class="pt-1 hover:text-white transition-colors font-medium break-all">lika.tech@proton.me</a>
+                            </li>
+                        </ul>
+
+                        <div class="mt-10">
+                            <h5 class="text-white font-bold text-xs md:text-sm mb-4 uppercase tracking-wider" data-i18n="footer_social">Na Ndiqni</h5>
+                            <div class="flex items-center gap-4">
+                                <a href="https://www.facebook.com/lika.techh" target="_blank" class="p-2.5 bg-gray-800 rounded-xl hover:bg-[#1877F2] transition-all text-white hover:scale-110 shadow-lg" title="Facebook">
+                                    <svg fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" /></svg>
+                                </a>
+                                <a href="https://www.instagram.com/lika.tech" target="_blank" class="p-2.5 bg-gray-800 rounded-xl hover:bg-[#E4405F] transition-all text-white hover:scale-110 shadow-lg" title="Instagram">
+                                    <svg fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                                </a>
+                                <a href="https://www.tiktok.com/@lika.tech" target="_blank" class="p-2.5 bg-gray-800 rounded-xl hover:bg-white hover:text-black transition-all text-white hover:scale-110 shadow-lg" title="TikTok">
+                                    <svg fill="currentColor" viewBox="0 0 24 24" class="w-5 h-5"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="h-48 sm:h-full min-h-[160px] rounded-2xl overflow-hidden border border-gray-800 relative group shadow-2xl">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2934.61860010901!2d21.0827103!3d42.6373722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135352c3c6f0c6c5%3A0x6e788647a1662fb5!2sFush%C3%AB%20Kosov%C3%AB!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="filter grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 object-cover"></iframe>
+                        <a href="https://maps.app.goo.gl/YaNityrrY9hwSGRH7" target="_blank" class="absolute bottom-3 right-3 z-20 bg-white text-gray-900 font-bold text-xs px-4 py-2 rounded-xl shadow-xl hover:bg-lika-red hover:text-white transition-all flex items-center gap-2 hover:scale-105">
+                            <i data-lucide="navigation" class="w-3.5 h-3.5"></i> <span data-i18n="btn_directions">Hap Maps</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 font-medium text-xs md:text-sm text-center md:text-left">&copy; <span id="year"></span> LIKA TECH. <span data-i18n="footer_rights">Të gjitha të drejtat e rezervuara.</span></p>
+                <div class="flex items-center gap-2 text-xs md:text-sm font-medium text-gray-500">
+                    Designed with <i data-lucide="heart" class="w-4 h-4 text-lika-red fill-lika-red animate-pulse"></i> in Kosovo from <a href="https://www.likaapps.com" target="_blank" class="text-lika-red font-black hover:underline transition-all hover:scale-105">LIKA</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Funksioni per Accordion Dropdown
+        function toggleAccordion(element) {
+            const content = element.querySelector('.accordion-content');
+            const icon = element.querySelector('.chevron-icon');
+            const allItems = document.querySelectorAll('.faq-item');
+            
+            // Opcionale: Mbyll te gjitha te tjerat kur hapet nje
+            /*
+            allItems.forEach(item => {
+                if(item !== element) {
+                    item.querySelector('.accordion-content').classList.remove('open');
+                    item.querySelector('.chevron-icon').classList.remove('rotate-180');
+                    item.classList.remove('border-lika-red/40', 'shadow-md');
+                }
+            });
+            */
+
+            const isOpen = content.classList.contains('open');
+            
+            if (!isOpen) {
+                content.classList.add('open');
+                icon.classList.add('rotate-180');
+                element.classList.add('border-lika-red/40', 'shadow-md');
+            } else {
+                content.classList.remove('open');
+                icon.classList.remove('rotate-180');
+                element.classList.remove('border-lika-red/40', 'shadow-md');
+            }
+        }
+
+        const i18n = {
+            sq: {
+                nav_home: "Kryefaqja", nav_offers: "Ofertat", nav_contact: "Kontakt", nav_pricing: "Çmimet e Shërbimeve", nav_service: "Servisim",
+                btn_call_now: "Thirr Tani", btn_call_for_service: "Kërko Asistencë",
+                footer_desc: "Lider në ofrimin e shërbimeve të sigurisë. Ne ofrojmë cilësi, garanci dhe profesionalizëm absolut për shtëpinë dhe biznesin tuaj.",
+                footer_links: "Linqe të Shpejta", footer_contact: "Kontakti", btn_directions: "Hap Maps",
+                footer_social: "Na Ndiqni", footer_rights: "Të gjitha të drejtat e rezervuara.", contact_prompt: "Keni nevojë për diçka tjetër? Na kontaktoni direkt.",
+                pricing_title: "Çmimet e Shërbimeve", pricing_subtitle: "Lista e servisimit & montimeve. Klikoni për detaje.",
+                pricing_intro1: "Në rast të dëmtimit ose mosfunksionimit të pajisjeve, tarifa për vizitën është",
+                pricing_intro2: "* Çmimet për pjesët shtesë janë të ndara dhe komunikohen veçmas, bazuar në nevojat specifike të riparimit.",
+                pricing_cat_servicing: "Diagnostikimi & Servisimi", pricing_cat_mounting: "Montimi & Çmontimi",
+                
+                // Titles & Subtitles
+                price_visit: "Vizita", price_visit_desc: "Fushë Kosovë deri tek pika B (100km)",
+                price_diagnostics: "Kontrollimi i pajisjeve", price_diagnostics_desc: "Testimi dhe diagnostikimi i defekteve",
+                price_lan: "Riparimi i konektorit LAN", price_lan_desc: "Maksimal 4 copë",
+                price_dc: "Riparimi i kabllos DC", price_dc_desc: "Maksimal 4 copë",
+                price_bnc: "Riparimi i konektorit BNC", price_bnc_desc: "Maksimal 4 copë",
+                price_ip_reset: "Resetimi i kamerës IP", price_ip_reset_desc: "Rikthimi i fjalëkalimit",
+                price_nvr_reset: "Resetimi i NVR-it", price_nvr_reset_desc: "Rikthimi i fjalëkalimit",
+                price_dvr_reset: "Resetimi i DVR-it", price_dvr_reset_desc: "Rikthimi i fjalëkalimit",
+                price_mount_cam: "Montimi i kamerave", price_mount_cam_desc: "Instalim profesional",
+                price_mount_sensor: "Montimi i sensorëve", price_mount_sensor_desc: "Vendosje & testim",
+                price_unmount: "Çmontimi i pajisjeve", price_unmount_desc: "Heqja e sigurt e pajisjeve",
+                price_config: "Konfigurimi i sistemit", price_config_desc: "Optimizimi i parametrave",
+                price_unbind: "Shkyçja (Unbind)", price_unbind_desc: "Email i ri & Konfigurim",
+
+                // Detailed Descriptions
+                detail_visit: "Përfshin ardhjen e teknikut në lokacionin tuaj brenda rrezes nga Fushë Kosova deri në 100km. Diagnostikimi vizual dhe testimi fillestar në momentin e arritjes është i përfshirë në këtë çmim.",
+                detail_diagnostics: "Analizë e thellë e sistemit tuaj ekzistues. Përfshin testimin e qarkut të kamerave, lidhjeve të rrjetit dhe hard diskut për të gjetur saktësisht burimin e problemit para fillimit të riparimeve.",
+                detail_lan: "Ndërrimi dhe presimi profesional i kokave RJ45 në kabllot ekzistuese të rrjetit. Testimi i linjës për të siguruar transmetim të dhënash pa ndërprerje. Çmimi mbulon deri në 4 konektorë.",
+                detail_dc: "Rregullimi i problemeve me furnizimin me energji. Prerja, bashkimi dhe izolimi i sigurt i kabllove ose konektorëve DC (Rryma) për kamerat, duke eliminuar shkyçjet. Mbulon deri në 4 ndërhyrje.",
+                detail_bnc: "Zëvendësimi i konektorëve të vjetër ose të ndryshkur BNC në sistemet e kamerave analoge. Kjo siguron kualitet të pastër të figurës pa dridhje ose ndërprerje. Përfshin deri në 4 konektorë.",
+                detail_ip_reset: "Zhbllokimi i kamerës IP në rast të humbjes së fjalëkalimit. Kryhet procedurë Hard/Soft reset. Për 1 deri në 8 pajisje çmimi është 25€/copë. Për sasi mbi 8 pajisje, çmimi zbret në 20€/copë.",
+                detail_nvr_reset: "Heqja e bllokimit të pajisjes qendrore të rrjetit (NVR). Teknikët tanë përdorin metoda të autorizuara për të rikthyer aksesin tek pajisja pa humbur incizimet (në shumicën e rasteve) dhe vendosin kode të reja sigurie.",
+                detail_dvr_reset: "Procedurë teknike për rikthimin e aksesit në sistemet analoge ose hibride DVR kur fjalëkalimi humbet. Rikthehet kontrolli i plotë i pajisjes për monitorim dhe konfigurim nga e para.",
+                detail_mount_cam: "Përfshin vlerësimin e këndit të shikimit, shpimin profesional të mureve, izolimin e kabllove në kuti mbrojtëse, pozicionimin fizik të kamerës dhe fokusimin final të pamjes për shikueshmëri maksimale.",
+                detail_mount_sensor: "Vendosja strategjike e sensorëve të lëvizjes (PIR), sensorëve të dyerve/dritareve apo detektorëve të tymit. Integrimi me panelin qendror të alarmit dhe kalibrimi i ndjeshmërisë për të shmangur alarmet false.",
+                detail_unmount: "Heqja profesionale e kamerave, bazave, sensorëve apo kabllove të vjetruara duke siguruar që muret apo sipërfaqet e objektit tuaj të mos pësojnë dëmtime apo plasaritje të panevojshme.",
+                detail_config: "Lidhja e pajisjes DVR/NVR me rrjetin e internetit lokal. Konfigurimi i P2P (Port Forwarding), krijimi i rregullave të regjistrimit, dhe lidhja e sistemit me aplikacionin në smartphone (deri në 3 telefona).",
+                detail_unbind: "Në rastet kur keni harruar email-in ose fjalëkalimin dhe pajisja është e bllokuar në një llogari tjetër (p.sh. Hik-Connect). Përfshin shkyçjen (Unbind), krijimin e një emaili të ri dhe konfigurimin e plotë në aplikacion."
+            },
+            en: {
+                nav_home: "Home", nav_offers: "Offers", nav_contact: "Contact", nav_pricing: "Service Prices", nav_service: "Services",
+                btn_call_now: "Call Now", btn_call_for_service: "Request Assistance",
+                footer_desc: "Leader in providing security services. We offer absolute quality, guarantee, and professionalism for your home and business.",
+                footer_links: "Quick Links", footer_contact: "Contact", btn_directions: "Open Maps",
+                footer_social: "Follow Us", footer_rights: "All rights reserved.", contact_prompt: "Need something else? Contact us directly.",
+                pricing_title: "Service Prices", pricing_subtitle: "Servicing & Installation list. Click for details.",
+                pricing_intro1: "In case of equipment damage or malfunction, our visit fee is",
+                pricing_intro2: "* Prices for additional parts are separate and communicated individually, based on specific repair needs.",
+                pricing_cat_servicing: "Diagnostics & Servicing", pricing_cat_mounting: "Mounting & Unmounting",
+                
+                // Titles & Subtitles
+                price_visit: "Visit", price_visit_desc: "Fushe Kosove to Point B (100km)",
+                price_diagnostics: "Equipment Check", price_diagnostics_desc: "Testing & Diagnostics",
+                price_lan: "LAN Connector Repair", price_lan_desc: "Max 4 pieces",
+                price_dc: "DC Cable Repair", price_dc_desc: "Max 4 pieces",
+                price_bnc: "BNC Connector Repair", price_bnc_desc: "Max 4 pieces",
+                price_ip_reset: "IP Camera Reset", price_ip_reset_desc: "Password Recovery",
+                price_nvr_reset: "NVR Reset", price_nvr_reset_desc: "Password Recovery",
+                price_dvr_reset: "DVR Reset", price_dvr_reset_desc: "Password Recovery",
+                price_mount_cam: "Camera Installation", price_mount_cam_desc: "Professional install",
+                price_mount_sensor: "Alarm Sensor Install", price_mount_sensor_desc: "Mounting & testing",
+                price_unmount: "Equipment Unmounting", price_unmount_desc: "Safe removal",
+                price_config: "System Configuration", price_config_desc: "Parameters optimization",
+                price_unbind: "Device Unbind", price_unbind_desc: "Email Creation & Setup",
+
+                // Detailed Descriptions
+                detail_visit: "Includes technician arrival at your location within a 100km radius from Fushe Kosove. Visual diagnosis and initial testing upon arrival are included in this price.",
+                detail_diagnostics: "In-depth analysis of your existing system. Includes testing the camera circuits, network connections, and hard drive to pinpoint the exact source of the problem before repairs begin.",
+                detail_lan: "Professional replacement and crimping of RJ45 heads on existing network cables. Line testing to ensure uninterrupted data transmission. Price covers up to 4 connectors.",
+                detail_dc: "Fixing power supply issues. Cutting, splicing, and safely insulating DC cables or connectors for cameras, eliminating disconnects. Covers up to 4 interventions.",
+                detail_bnc: "Replacing old or rusted BNC connectors on analog camera systems. This ensures clear picture quality without flickering or interruptions. Includes up to 4 connectors.",
+                detail_ip_reset: "Unlocking the IP camera in case of lost password (Hard/Soft reset). Price is 25€/piece for up to 8 devices. For over 8 devices, the price drops to 20€/piece.",
+                detail_nvr_reset: "Removing the lock on the central network device (NVR). Our technicians use authorized methods to regain access without losing recordings (in most cases) and set new security codes.",
+                detail_dvr_reset: "Technical procedure for restoring access to analog or hybrid DVR systems when the password is lost. Full device control is restored for monitoring and setup from scratch.",
+                detail_mount_cam: "Includes assessing the viewing angle, professional wall drilling, insulating cables in protective boxes, physical positioning of the camera, and final focus for maximum visibility.",
+                detail_mount_sensor: "Strategic placement of motion sensors (PIR), door/window sensors, or smoke detectors. Integration with the central alarm panel and sensitivity calibration to avoid false alarms.",
+                detail_unmount: "Professional removal of outdated cameras, bases, sensors, or cables, ensuring that your building's walls or surfaces do not suffer unnecessary damage or cracking.",
+                detail_config: "Connecting the DVR/NVR device to the local internet network. P2P configuration (Port Forwarding), creating recording rules, and linking the system to the smartphone app (up to 3 phones).",
+                detail_unbind: "In cases where you forgot your email or password and the device is locked to another account (e.g., Hik-Connect). Includes unbinding the device, creating a new email, and full app configuration."
+            }
+        };
+
+        let currentLang = 'sq';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'sq' ? 'en' : 'sq';
+            document.getElementById('lang-toggle').textContent = currentLang === 'sq' ? 'EN' : 'AL';
+            document.getElementById('lang-toggle-mob').textContent = currentLang === 'sq' ? 'EN' : 'AL';
+            document.documentElement.lang = currentLang;
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[currentLang][key]) {
+                    if(el.querySelector('i[data-lucide]') || el.querySelector('svg')) {
+                         const iconHTML = el.querySelector('i[data-lucide]') ? el.querySelector('i[data-lucide]').outerHTML : el.querySelector('svg').outerHTML;
+                         el.innerHTML = `${iconHTML} <span data-i18n="${key}">${i18n[currentLang][key]}</span>`;
+                    } else {
+                        el.textContent = i18n[currentLang][key];
+                    }
+                }
+            });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            const logoWhite = document.getElementById('logo-white');
+            const logoBlack = document.getElementById('logo-black');
+            
+            if (window.scrollY > 20) { 
+                nav.classList.add('glass', 'py-1'); 
+                logoWhite.classList.add('opacity-0'); logoWhite.classList.remove('opacity-100');
+                logoBlack.classList.add('opacity-100'); logoBlack.classList.remove('opacity-0');
+            } else { 
+                nav.classList.remove('glass', 'py-1'); 
+                logoWhite.classList.remove('opacity-0'); logoWhite.classList.add('opacity-100');
+                logoBlack.classList.remove('opacity-100'); logoBlack.classList.add('opacity-0');
+            }
+        });
+    </script>
+</body>
+</html>
