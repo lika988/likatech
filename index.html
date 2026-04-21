@@ -41,18 +41,18 @@
                         'brand-glow': '0 0 30px rgba(220, 38, 38, 0.4)',
                     },
                     animation: {
-                        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
-                        'slide-down': 'slideDown 0.4s ease-out forwards',
+                        'fade-in-up': 'fadeInUp 0.2s ease-out forwards',
+                        'slide-down': 'slideDown 0.2s ease-out forwards',
                         'swipe-x': 'swipeX 1.5s ease-in-out infinite',
                         'ring': 'ring 2s ease-in-out infinite',
                     },
                     keyframes: {
                         fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
                         },
                         slideDown: {
-                            '0%': { opacity: '0', transform: 'translateY(-15px)' },
+                            '0%': { opacity: '0', transform: 'translateY(-10px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
                         },
                         swipeX: {
@@ -107,35 +107,19 @@
             pointer-events: auto;
         }
 
-        /* Nav Glassmorphism - Optimizuar */
+        /* Nav Glassmorphism - Optimizuar per shpejtesi */
         .glass {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-            /* U hoq backdrop-filter per rritje drastike te performances ne scroll */
         }
 
-        .modal-overlay { transition: opacity 0.3s ease, visibility 0.3s ease; }
+        .modal-overlay { transition: opacity 0.2s ease, visibility 0.2s ease; }
         .modal-overlay.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
         .modal-overlay:not(.hidden) { opacity: 1; visibility: visible; pointer-events: auto; }
         
-        /* Reveal Animations Optimizuar - Harduer Accel */
-        .reveal { 
-            opacity: 0; 
-            transform: translateY(30px); 
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out; 
-            will-change: opacity, transform;
-        }
-        .reveal.active { 
-            opacity: 1; 
-            transform: translateY(0); 
-        }
-        .reveal-delay-1 { transition-delay: 100ms; }
-        .reveal-delay-2 { transition-delay: 200ms; }
-        .reveal-delay-3 { transition-delay: 300ms; }
-        
         .brand-item {
-            transition: transform 0.3s ease;
+            transition: transform 0.2s ease;
             position: relative;
             will-change: transform;
         }
@@ -147,7 +131,7 @@
         .btn-shimmer {
             background: linear-gradient(90deg, #dc2626 0%, #ef4444 50%, #dc2626 100%);
             background-size: 200% auto;
-            transition: 0.3s ease;
+            transition: 0.2s ease;
         }
         .btn-shimmer:hover {
             background-position: right center;
@@ -161,11 +145,11 @@
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
         
         .offer-card {
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
             will-change: transform;
         }
         .offer-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-6px);
         }
 
         /* Marquee Animation - Optimizuar */
@@ -193,33 +177,33 @@
 <body class="antialiased selection:bg-lika-red selection:text-white relative" oncontextmenu="preventImageContext(event)">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 transition-all duration-300 bg-transparent" id="navbar">
+    <nav class="fixed w-full z-50 transition-all duration-200 bg-transparent" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20 sm:h-24 md:h-28">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="#" class="cursor-pointer block relative group h-16 sm:h-20 md:h-24 lg:h-28 w-32 sm:w-40 md:w-48 transform scale-110 sm:scale-125 origin-left transition-transform duration-300 mt-2 md:mt-0">
-                        <img id="logo-white" src="https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/LOGO/LOGO%20White+RED?updatedAt=1776285031190" alt="LIKA TECH" class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-full object-contain object-left transition-opacity duration-300 opacity-100">
-                        <img id="logo-black" src="https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/LOGO/Logo%20BLACK+RED?updatedAt=1776285015068" alt="LIKA TECH" class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-full object-contain object-left transition-opacity duration-300 opacity-0 pointer-events-none">
+                    <a href="#" class="cursor-pointer block relative group h-16 sm:h-20 md:h-24 lg:h-28 w-32 sm:w-40 md:w-48 transform scale-110 sm:scale-125 origin-left transition-transform duration-200 mt-2 md:mt-0">
+                        <img id="logo-white" src="https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/LOGO/LOGO%20White+RED?updatedAt=1776285031190" alt="LIKA TECH" class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-full object-contain object-left transition-opacity duration-200 opacity-100">
+                        <img id="logo-black" src="https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/LOGO/Logo%20BLACK+RED?updatedAt=1776285015068" alt="LIKA TECH" class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-full object-contain object-left transition-opacity duration-200 opacity-0 pointer-events-none">
                     </a>
                 </div>
 
                 <!-- Desktop Menu -->
-                <div class="hidden lg:flex items-center space-x-6 xl:space-x-8 animate-fade-in-up">
+                <div class="hidden lg:flex items-center space-x-6 xl:space-x-8">
                     <div class="flex space-x-1 xl:space-x-2 items-center bg-white/90 px-2 py-2 rounded-full border border-gray-200/50 shadow-sm">
-                        <a href="index.html" class="px-4 xl:px-5 py-2 text-sm font-bold text-gray-600 hover:text-lika-red hover:bg-red-50 rounded-full transition-all duration-300" data-i18n="nav_home">Kryefaqja</a>
-                        <a href="index.html#offers" class="px-4 xl:px-5 py-2 text-sm font-bold text-gray-600 hover:text-lika-red hover:bg-red-50 rounded-full transition-all duration-300" data-i18n="nav_offers">Ofertat</a>
-                        <a href="cmimet.html" class="px-4 xl:px-5 py-2 text-sm font-bold text-lika-red bg-red-50/80 hover:bg-red-100 rounded-full transition-all duration-300 flex items-center gap-1.5 border border-red-100/50">
+                        <a href="index.html" class="px-4 xl:px-5 py-2 text-sm font-bold text-gray-600 hover:text-lika-red hover:bg-red-50 rounded-full transition-all duration-200" data-i18n="nav_home">Kryefaqja</a>
+                        <a href="index.html#offers" class="px-4 xl:px-5 py-2 text-sm font-bold text-gray-600 hover:text-lika-red hover:bg-red-50 rounded-full transition-all duration-200" data-i18n="nav_offers">Ofertat</a>
+                        <a href="cmimet.html" class="px-4 xl:px-5 py-2 text-sm font-bold text-lika-red bg-red-50/80 hover:bg-red-100 rounded-full transition-all duration-200 flex items-center gap-1.5 border border-red-100/50">
                             <i data-lucide="badge-euro" class="w-4 h-4"></i>
                             <span data-i18n="nav_pricing">Çmimet</span>
                         </a>
-                        <a href="https://service.likaapps.com/" target="_blank" class="px-4 xl:px-5 py-2 text-sm font-bold text-gray-600 hover:text-lika-red hover:bg-red-50 rounded-full transition-all duration-300" data-i18n="nav_service">Servisim</a>
-                        <a href="#contact" class="px-4 xl:px-5 py-2 text-sm font-bold text-gray-600 hover:text-lika-red hover:bg-red-50 rounded-full transition-all duration-300" data-i18n="nav_contact">Kontakt</a>
+                        <a href="https://service.likaapps.com/" target="_blank" class="px-4 xl:px-5 py-2 text-sm font-bold text-gray-600 hover:text-lika-red hover:bg-red-50 rounded-full transition-all duration-200" data-i18n="nav_service">Servisim</a>
+                        <a href="#contact" class="px-4 xl:px-5 py-2 text-sm font-bold text-gray-600 hover:text-lika-red hover:bg-red-50 rounded-full transition-all duration-200" data-i18n="nav_contact">Kontakt</a>
                     </div>
                 </div>
 
                 <!-- Actions -->
-                <div class="hidden md:flex items-center space-x-3 xl:space-x-4 animate-fade-in-up">
+                <div class="hidden md:flex items-center space-x-3 xl:space-x-4">
                     <button onclick="toggleLanguage()" class="w-11 h-11 flex items-center justify-center rounded-full bg-white hover:bg-gray-50 transition-all border border-gray-200 font-black text-xs text-gray-800 shadow-sm" id="lang-toggle">
                         EN
                     </button>
@@ -279,7 +263,7 @@
 
     <!-- Hero Section -->
     <section class="relative min-h-[100svh] flex items-center pt-28 pb-12 overflow-hidden bg-gray-900">
-        <!-- Static Background Images (Removed zoom animation for performance) -->
+        <!-- Static Background Images (Fast Load) -->
         <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-gray-900">
             <img src="https://images.pexels.com/photos/18435554/pexels-photo-18435554.jpeg" alt="Background Mobile" class="w-full h-full object-cover md:hidden opacity-50">
             <img src="https://images.pexels.com/photos/4059469/pexels-photo-4059469.jpeg" alt="Background Desktop" class="w-full h-full object-cover hidden md:block opacity-40">
@@ -322,7 +306,7 @@
 
     <!-- Brands Section -->
     <section class="py-10 md:py-14 bg-gray-50 relative z-20 border-y border-gray-100 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 reveal">
+        <div class="max-w-7xl mx-auto px-4">
             <div class="flex items-center justify-center gap-4 mb-6">
                 <div class="h-px w-10 sm:w-16 bg-gray-300"></div>
                 <p class="text-center text-[10px] md:text-xs font-black text-gray-400 tracking-[0.25em] uppercase" data-i18n="trusted_brands">Partnerët & Teknologjia</p>
@@ -401,9 +385,8 @@
 
     <!-- Pricing Cards Section -->
     <section id="offers" class="py-16 md:py-20 relative bg-gray-50">
-        <!-- U hoqen background div-at me blur te madh qe shkaktonin lag gjate scrollit -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-12 md:mb-16 reveal">
+            <div class="text-center mb-12 md:mb-16">
                 <div class="inline-flex items-center justify-center p-3 bg-white rounded-xl shadow-sm border border-gray-200 mb-4">
                     <i data-lucide="shopping-bag" class="w-6 h-6 text-lika-red"></i>
                 </div>
@@ -413,7 +396,7 @@
             </div>
 
             <!-- Category Filters -->
-            <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10 md:mb-14 reveal" id="category-filters">
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10 md:mb-14" id="category-filters">
                 <button onclick="setFilter('all')" class="filter-btn active px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-black transition-colors shadow-sm flex items-center gap-2 bg-lika-red text-white" data-filter="all">
                     <i data-lucide="layers" class="w-4 h-4"></i> <span data-i18n="filter_all">Të Gjitha</span>
                 </button>
@@ -434,7 +417,7 @@
         </div>
     </section>
 
-    <!-- Product Modal (Flexbox Fix per Butonin Poshte) -->
+    <!-- Product Modal (Flexbox Fix per Butonin Poshte - Ruajtur) -->
     <div id="lightbox" class="modal-overlay fixed inset-0 z-[100] hidden flex items-center justify-center p-0 sm:p-6 md:p-12 bg-gray-900/80">
         <div class="absolute inset-0" onclick="closeModal()"></div>
         
@@ -447,7 +430,7 @@
         </button>
 
         <!-- Modal Box -->
-        <div class="relative w-full sm:max-w-5xl bg-white sm:rounded-3xl shadow-2xl overflow-hidden transform transition-all h-[100dvh] md:h-[90vh] md:max-h-[850px] animate-slide-down flex flex-col md:flex-row z-50">
+        <div class="relative w-full sm:max-w-5xl bg-white sm:rounded-3xl shadow-2xl overflow-hidden transform transition-all h-[100dvh] md:h-[90vh] md:max-h-[850px] flex flex-col md:flex-row z-50">
             
             <!-- Close Button -->
             <button onclick="closeModal()" class="absolute top-4 right-4 z-[60] bg-gray-100 hover:bg-lika-red hover:text-white text-gray-800 p-2.5 rounded-full transition-colors shadow-sm">
@@ -464,7 +447,7 @@
 
                 <!-- Image Wrapper -->
                 <div class="w-full h-full flex items-center justify-center p-6 overflow-hidden relative">
-                    <img id="modal-img" src="" alt="Product" class="w-full h-full object-contain transition-transform duration-300 relative z-10 cursor-zoom-in select-none">
+                    <img id="modal-img" src="" alt="Product" class="w-full h-full object-contain transition-transform duration-200 relative z-10 cursor-zoom-in select-none">
                 </div>
                 
                 <!-- Download Image Button -->
@@ -494,13 +477,13 @@
                     <!-- Show More Button -->
                     <button id="show-more-btn" onclick="toggleExtraDetails()" class="w-full py-3 bg-gray-50 border border-gray-200 text-gray-800 font-bold rounded-xl flex justify-center items-center gap-2 hover:bg-gray-100 transition-colors text-xs uppercase tracking-wider mb-2">
                         <span id="show-more-text" data-i18n="btn_show_more">Shiko më shumë</span>
-                        <i data-lucide="chevron-down" id="show-more-icon" class="w-4 h-4 transition-transform duration-300"></i>
+                        <i data-lucide="chevron-down" id="show-more-icon" class="w-4 h-4 transition-transform duration-200"></i>
                     </button>
 
                     <!-- Hidden Collapsible Section -->
-                    <div id="modal-extra-details-wrapper" class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-in-out">
+                    <div id="modal-extra-details-wrapper" class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-200 ease-in-out">
                         <div class="overflow-hidden">
-                            <div id="modal-extra-details" class="pt-5 mt-3 border-t border-gray-100 opacity-0 transition-opacity duration-300">
+                            <div id="modal-extra-details" class="pt-5 mt-3 border-t border-gray-100 opacity-0 transition-opacity duration-200">
                                 <h4 class="text-xs font-black text-gray-800 mb-3 flex items-center gap-2 uppercase tracking-widest">
                                     <i data-lucide="package-search" class="w-4 h-4 text-lika-red"></i>
                                     <span data-i18n="modal_includes">Përmbajtja e Pakos</span>
@@ -527,7 +510,7 @@
     <!-- Order Contact Method Modal -->
     <div id="order-modal" class="modal-overlay fixed inset-0 z-[120] hidden flex items-center justify-center p-4 sm:p-6 bg-gray-900/60">
         <div class="absolute inset-0" onclick="closeOrderModal()"></div>
-        <div class="relative w-full max-w-sm bg-white rounded-2xl shadow-2xl p-6 text-center animate-slide-down">
+        <div class="relative w-full max-w-sm bg-white rounded-2xl shadow-2xl p-6 text-center">
             <button onclick="closeOrderModal()" class="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 text-gray-600 p-2 rounded-full transition-colors">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
@@ -559,7 +542,7 @@
     <!-- Brand Pop-Up Modal -->
     <div id="brand-modal" class="modal-overlay fixed inset-0 z-[110] hidden flex items-center justify-center p-4 sm:p-6 bg-gray-900/60">
         <div class="absolute inset-0" onclick="closeBrandModal()"></div>
-        <div class="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl p-8 transform transition-all animate-slide-down text-center">
+        <div class="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl p-8 text-center">
             <button onclick="closeBrandModal()" class="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 text-gray-600 p-2.5 rounded-full transition-colors">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
@@ -593,14 +576,14 @@
     <footer id="contact" class="bg-gray-900 pt-16 md:pt-20 pb-8 relative border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 mb-12">
-                <div class="col-span-1 lg:col-span-1 reveal">
+                <div class="col-span-1 lg:col-span-1">
                     <img src="https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/LOGO/LOGO%20White+RED?updatedAt=1776285031190" alt="LIKA TECH" class="h-20 object-contain mb-6 transform origin-left">
                     <p class="text-gray-400 text-sm leading-relaxed mb-6 font-medium" data-i18n="footer_desc">
                         Lider në ofrimin e shërbimeve të sigurisë. Ne ofrojmë cilësi, garanci dhe profesionalizëm absolut për shtëpinë dhe biznesin tuaj.
                     </p>
                 </div>
 
-                <div class="reveal reveal-delay-1">
+                <div>
                     <h4 class="text-white font-black text-lg mb-5" data-i18n="footer_links">Linqe të Shpejta</h4>
                     <ul class="space-y-3">
                         <li><a href="index.html" class="text-sm text-gray-400 hover:text-white transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-lika-red"></i> <span data-i18n="nav_home">Kryefaqja</span></a></li>
@@ -610,7 +593,7 @@
                     </ul>
                 </div>
 
-                <div class="col-span-1 lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8 reveal reveal-delay-2">
+                <div class="col-span-1 lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8">
                     <div>
                         <h4 class="text-white font-black text-lg mb-5" data-i18n="footer_contact">Kontakti</h4>
                         <ul class="space-y-4">
@@ -1123,18 +1106,6 @@
             if(hint) hint.style.opacity = '0';
         }
 
-        function initObserver() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-        }
-
         function openBrandModal(brandId) {
             const data = brandsInfo[brandId];
             if(!data) return;
@@ -1190,7 +1161,7 @@
                 setTimeout(() => {
                     const scrollArea = document.getElementById('modal-scroll-area');
                     scrollArea.scrollBy({ top: 150, behavior: 'smooth' });
-                }, 300);
+                }, 200);
             } else {
                 wrapper.classList.remove('grid-rows-[1fr]');
                 wrapper.classList.add('grid-rows-[0fr]');
@@ -1250,7 +1221,7 @@
                 if(catOffers.length === 0) return;
 
                 htmlString += `
-                    <div class="reveal flex items-center gap-4 mb-8 border-b border-gray-200 pb-4">
+                    <div class="flex items-center gap-4 mb-8 border-b border-gray-200 pb-4">
                         <div class="p-3 bg-white rounded-xl text-lika-red shadow-sm border border-gray-200"><i data-lucide="${cat.icon}" class="w-6 h-6"></i></div>
                         <h3 class="text-3xl md:text-4xl font-black text-gray-900 tracking-tight" data-i18n="${cat.titleKey}">${i18n[currentLang][cat.titleKey]}</h3>
                     </div>
@@ -1264,7 +1235,7 @@
 
                     htmlString += `
                         <div class="slider-wrapper relative w-full mb-12">
-                            <div class="mb-6 flex flex-col gap-3 reveal">
+                            <div class="mb-6 flex flex-col gap-3">
                                 <div class="flex flex-row items-center justify-between pl-2 relative">
                                     <div class="flex items-center gap-4">
                                         ${brandLogo ? `<img src="${brandLogo}" alt="${brand}" loading="lazy" class="h-8 md:h-9 w-auto object-contain">` : ''}
@@ -1272,7 +1243,7 @@
                                     </div>
                                     <div class="hidden md:block flex-grow h-px bg-gray-200 ml-6"></div>
                                     
-                                    <button onclick="scrollSlider(this, 'right')" class="swipe-hint md:hidden flex items-center pr-2 opacity-100 transition-opacity duration-300">
+                                    <button onclick="scrollSlider(this, 'right')" class="swipe-hint md:hidden flex items-center pr-2 opacity-100 transition-opacity duration-200">
                                         <div class="flex items-center gap-2 bg-red-50 px-3 py-1.5 rounded-full shadow-sm border border-red-100">
                                             <i data-lucide="hand" class="w-3 h-3 text-lika-red"></i>
                                             <span class="text-[10px] font-bold text-lika-red uppercase tracking-widest" data-i18n="swipe_more">${i18n[currentLang].swipe_more}</span>
@@ -1291,7 +1262,6 @@
                         const isPremium = bConf && bConf.isPremium;
                         const badgeHTML = bConf ? `<span class="${bConf.color} text-[10px] md:text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest">${i18n[currentLang][bConf.key]}</span>` : '';
                         const borderClass = isPremium ? 'border-lika-red/30 shadow-md' : 'border-gray-200 shadow-sm';
-                        const delayClass = `reveal-delay-${(idx % 3) + 1}`;
                         
                         const cardFeaturesHTML = offer.features.map(feat => {
                             const featIcon = feat.icon || 'check';
@@ -1326,7 +1296,7 @@
                         const btnStyle = isPremium ? 'bg-lika-red text-white hover:bg-red-700' : 'bg-gray-100 border border-gray-200 text-gray-900 hover:bg-gray-200';
 
                         htmlString += `
-                            <div onclick="openModal(${originalIndex})" class="reveal ${delayClass} w-[85vw] md:w-auto flex-none snap-center cursor-pointer relative bg-white rounded-3xl border ${borderClass} flex flex-col h-full offer-card group/card overflow-hidden">
+                            <div onclick="openModal(${originalIndex})" class="w-[85vw] md:w-auto flex-none snap-center cursor-pointer relative bg-white rounded-3xl border ${borderClass} flex flex-col h-full offer-card group/card overflow-hidden">
                                 ${isPremium ? `<div class="absolute top-0 left-0 w-full h-[3px] bg-lika-red"></div>` : ''}
                                 <div class="p-5 md:p-6 flex flex-col flex-grow relative z-10">
                                     <div class="mb-4 flex flex-col">
@@ -1344,7 +1314,7 @@
                                     </div>
 
                                     <div class="w-full aspect-square bg-gray-50 rounded-xl mb-6 flex justify-center items-center border border-gray-100 overflow-hidden relative">
-                                        <img src="${offer.img}" alt="${offer.title[currentLang]}" loading="lazy" class="w-full h-full object-cover transform group-hover/card:scale-105 transition-transform duration-500 relative z-10" />
+                                        <img src="${offer.img}" alt="${offer.title[currentLang]}" loading="lazy" class="w-full h-full object-cover transform group-hover/card:scale-105 transition-transform duration-200 relative z-10" />
                                     </div>
 
                                     <ul class="space-y-3 mb-6 flex-grow">
@@ -1363,7 +1333,6 @@
             });
             container.innerHTML = htmlString;
             lucide.createIcons();
-            initObserver(); 
         }
 
         function navigateModal(e, direction) {
@@ -1656,7 +1625,6 @@
         });
 
         renderOffers();
-        setTimeout(initObserver, 150); 
     </script>
 </body>
 </html>
