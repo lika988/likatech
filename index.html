@@ -1588,12 +1588,17 @@
             menu.classList.toggle('hidden');
         }
 
+        // Variabli për të ruajtur pozicionin e fundit të scroll-it
+        let lastScrollTop = 0;
+        
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             const logoWhite = document.getElementById('logo-white');
             const logoBlack = document.getElementById('logo-black');
+            const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
-            if (window.scrollY > 20) { 
+            // Efekti Glass dhe ndërrimi i logos kur zbresim më shumë se 20px
+            if (currentScrollTop > 20) { 
                 nav.classList.add('glass', 'py-1'); 
                 logoWhite.classList.add('opacity-0');
                 logoWhite.classList.remove('opacity-100');
@@ -1606,6 +1611,18 @@
                 logoBlack.classList.remove('opacity-100');
                 logoBlack.classList.add('opacity-0');
             }
+
+            // Logjika e fshehjes / shfaqjes së Header-it
+            if (currentScrollTop > lastScrollTop && currentScrollTop > 100) {
+                // Nëse po bëjmë scroll poshtë dhe jemi më poshtë se 100px, fshihe menunë
+                nav.classList.add('-translate-y-full');
+            } else {
+                // Nëse po bëjmë scroll lart, shfaqe menunë
+                nav.classList.remove('-translate-y-full');
+            }
+            
+            // Përditësojmë pozicionin e fundit (eviton numrat negativë në mobile)
+            lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
         });
 
         document.addEventListener('keydown', (e) => { 
