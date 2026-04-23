@@ -38,22 +38,22 @@
                     boxShadow: {
                         'premium': '0 0 40px -10px rgba(227, 6, 19, 0.3)',
                         'premium-hover': '0 25px 50px -12px rgba(227, 6, 19, 0.25)',
-                        'card': '0 10px 30px -10px rgba(51, 51, 51, 0.08)',
+                        'card': '0 8px 30px rgba(0, 0, 0, 0.04)',
                         'brand-glow': '0 0 30px rgba(227, 6, 19, 0.4)',
                     },
                     animation: {
-                        'fade-in-up': 'fadeInUp 0.2s ease-out forwards',
-                        'slide-down': 'slideDown 0.2s ease-out forwards',
+                        'fade-in-up': 'fadeInUp 0.3s ease-out forwards',
+                        'slide-down': 'slideDown 0.3s ease-out forwards',
                         'swipe-x': 'swipeX 1.5s ease-in-out infinite',
                         'ring': 'ring 2s ease-in-out infinite',
                     },
                     keyframes: {
                         fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '0%': { opacity: '0', transform: 'translateY(15px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
                         },
                         slideDown: {
-                            '0%': { opacity: '0', transform: 'translateY(-10px)' },
+                            '0%': { opacity: '0', transform: 'translateY(-15px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
                         },
                         swipeX: {
@@ -101,7 +101,7 @@
         }
         
         /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #f1f5f9; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #e30613; }
@@ -122,24 +122,25 @@
             pointer-events: auto;
         }
 
-        /* Nav Glassmorphism & Header Styles */
+        /* Premium Glassmorphism Header Styles */
         .glass {
-            background: rgba(255, 255, 255, 0.95) !important;
-            backdrop-filter: blur(12px) !important;
-            -webkit-backdrop-filter: blur(12px) !important;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.04) !important;
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08) !important;
+            background: rgba(255, 255, 255, 0.85) !important;
+            backdrop-filter: blur(16px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03) !important;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04) !important;
         }
 
         .nav-container {
-            height: 5rem;
+            height: 4.5rem;
             transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        @media (min-width: 640px) { .nav-container { height: 6rem; } }
-        @media (min-width: 768px) { .nav-container { height: 7rem; } }
+        @media (min-width: 640px) { .nav-container { height: 5.5rem; } }
+        @media (min-width: 768px) { .nav-container { height: 6.5rem; } }
 
         .scrolled .nav-container { height: 4rem !important; }
-        @media (min-width: 640px) { .scrolled .nav-container { height: 5rem !important; } }
+        @media (min-width: 640px) { .scrolled .nav-container { height: 4.5rem !important; } }
+        @media (min-width: 1024px) { .scrolled .nav-container { height: 5rem !important; } }
 
         /* Desktop Nav Items */
         .nav-item {
@@ -150,6 +151,7 @@
         }
         .scrolled .nav-item {
             color: #333333;
+            font-weight: 700;
         }
         .nav-item::after {
             content: '';
@@ -188,35 +190,35 @@
         }
 
         .nav-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             color: #ffffff;
-            backdrop-filter: blur(4px);
-            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+        .nav-btn:active { transform: scale(0.95); }
         .nav-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.15);
         }
         .scrolled .nav-btn {
             background: #ffffff;
-            border-color: #e5e7eb;
+            border-color: #f1f5f9;
             color: #333333;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
         }
         .scrolled .nav-btn:hover {
             background: #f8fafc;
             color: #e30613;
-            border-color: rgba(227, 6, 19, 0.3);
+            border-color: rgba(227, 6, 19, 0.2);
         }
 
-        /* Mobile Drawer Custom Styles */
+        /* Premium Mobile Drawer */
         .mobile-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             z-index: 100;
             opacity: 0;
             pointer-events: none;
@@ -231,14 +233,16 @@
             top: 0;
             right: -100%;
             width: 85vw;
-            max-width: 340px;
+            max-width: 360px;
             height: 100dvh;
             background: #ffffff;
             z-index: 101;
             transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
+            box-shadow: -20px 0 50px rgba(0, 0, 0, 0.15);
             display: flex;
             flex-direction: column;
+            border-top-left-radius: 24px;
+            border-bottom-left-radius: 24px;
         }
         .mobile-drawer.open { right: 0; }
 
@@ -261,6 +265,7 @@
             background-size: 200% auto;
             transition: 0.2s ease;
         }
+        .btn-shimmer:active { transform: scale(0.97); }
         .btn-shimmer:hover {
             background-position: right center;
             box-shadow: 0 10px 25px -5px rgba(227, 6, 19, 0.3);
@@ -268,15 +273,15 @@
         }
         
         ::selection { background-color: #e30613; color: white; }
-
-        .custom-scrollbar::-webkit-scrollbar { width: 5px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
         
         .offer-card {
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform;
         }
-        .offer-card:hover { transform: translateY(-6px); }
+        .offer-card:hover { 
+            transform: translateY(-6px); 
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+        }
 
         /* Marquee Animation */
         .marquee-container {
@@ -300,13 +305,13 @@
 </head>
 <body class="antialiased selection:bg-lika-red selection:text-white relative" oncontextmenu="preventImageContext(event)">
 
-    <!-- Navigation -->
+    <!-- Navigation Header -->
     <nav class="fixed w-full z-50 transition-all duration-300 bg-transparent" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="nav-container flex justify-between items-center w-full">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="#" class="cursor-pointer block relative h-8 sm:h-10 md:h-12 w-[160px] sm:w-[200px] md:w-[240px] transition-transform duration-200 mt-2 md:mt-0">
+                    <a href="#" class="cursor-pointer block relative h-7 sm:h-9 md:h-11 w-[140px] sm:w-[180px] md:w-[220px] transition-transform duration-200 mt-1 md:mt-0">
                         <img id="logo-white" src="https://ik.imagekit.io/p78ewpzv2/LIKA%20Security/LOGO/For%20website/Horziontal%20TEXT%20ONLY%20(for%20DARK%20Background)_SC7NxhJ_0.png?updatedAt=null&ik-s=d789fa2488cf1a37127e4b3f1968868e9a801444" alt="LIKAsecurity" class="absolute left-0 top-0 w-full h-full object-contain object-left transition-opacity duration-300 opacity-100">
                         <img id="logo-black" src="https://ik.imagekit.io/p78ewpzv2/LIKA%20Security/LOGO/For%20website/Horziontal%20TEXT%20ONLY%20(for%20LIGHT%20Background)_JfyjkpHwA.png?updatedAt=null&ik-s=845ed1fc7745a77049906aa9dca569b49f3c59a8" alt="LIKAsecurity" class="absolute left-0 top-0 w-full h-full object-contain object-left transition-opacity duration-300 opacity-0 pointer-events-none">
                     </a>
@@ -315,18 +320,18 @@
                 <!-- Desktop Menu -->
                 <div class="hidden lg:flex items-center space-x-7 xl:space-x-10">
                     <a href="index.html" class="nav-item text-sm font-bold tracking-wide" data-i18n="nav_home">Kryefaqja</a>
-                    <a href="index.html#offers" class="nav-item text-sm font-bold tracking-wide" data-i18n="nav_offers">Ofertat</a>
+                    <a href="index.html#oferta" class="nav-item text-sm font-bold tracking-wide" data-i18n="nav_offers">Ofertat</a>
                     <a href="cmimet.html" class="nav-pricing-badge px-5 py-2.5 rounded-full text-sm font-bold flex items-center gap-2">
                         <i data-lucide="badge-euro" class="w-4 h-4"></i>
                         <span data-i18n="nav_pricing">Çmimet</span>
                     </a>
-                    <a href="https://service.likaapps.com/" target="_blank" class="nav-item text-sm font-bold tracking-wide" data-i18n="nav_service">Servisim</a>
+                    <a href="service.html" class="nav-item text-sm font-bold tracking-wide" data-i18n="nav_service">Servisim</a>
                     <a href="#contact" class="nav-item text-sm font-bold tracking-wide" data-i18n="nav_contact">Kontakt</a>
                 </div>
 
                 <!-- Actions -->
                 <div class="hidden md:flex items-center space-x-3 xl:space-x-4">
-                    <button onclick="toggleLanguage()" class="nav-btn w-11 h-11 flex items-center justify-center rounded-full font-bold text-xs" id="lang-toggle">
+                    <button onclick="toggleLanguage()" class="nav-btn w-11 h-11 flex items-center justify-center rounded-full font-bold text-xs shadow-sm hover:shadow-md" id="lang-toggle">
                         EN
                     </button>
                     <a href="tel:+38349585195" class="px-6 py-2.5 btn-shimmer text-white rounded-full flex items-center gap-3 transition-all shadow-lg hover:shadow-red-500/30 group border border-white/10">
@@ -342,6 +347,9 @@
 
                 <!-- Mobile menu button -->
                 <div class="lg:hidden flex items-center space-x-3">
+                    <button onclick="toggleLanguage()" class="nav-btn w-10 h-10 flex items-center justify-center rounded-full font-bold text-xs" id="lang-toggle-mob">
+                        EN
+                    </button>
                     <button onclick="toggleMobileMenu()" class="nav-btn p-2.5 rounded-xl flex items-center justify-center">
                         <i data-lucide="menu" class="h-5 w-5"></i>
                     </button>
@@ -354,105 +362,100 @@
     <div id="mobile-overlay" class="mobile-overlay" onclick="toggleMobileMenu()"></div>
 
     <!-- Mobile Drawer -->
-    <div id="mobile-drawer" class="mobile-drawer">
-        <div class="flex items-center justify-between p-5 border-b border-gray-100 bg-white">
-            <img src="https://ik.imagekit.io/p78ewpzv2/LIKA%20Security/LOGO/For%20website/Horziontal%20TEXT%20ONLY%20(for%20LIGHT%20Background)_JfyjkpHwA.png?updatedAt=null&ik-s=845ed1fc7745a77049906aa9dca569b49f3c59a8" alt="LIKAsecurity" class="h-8 w-auto object-contain">
-            <button onclick="toggleMobileMenu()" class="p-2.5 bg-gray-50 rounded-full text-gray-500 hover:text-lika-red hover:bg-red-50 transition-colors">
+    <div id="mobile-drawer" class="mobile-drawer flex flex-col">
+        <div class="flex items-center justify-between p-6 border-b border-gray-100 bg-white rounded-tl-3xl">
+            <img src="https://ik.imagekit.io/p78ewpzv2/LIKA%20Security/LOGO/For%20website/Horziontal%20TEXT%20ONLY%20(for%20LIGHT%20Background)_JfyjkpHwA.png?updatedAt=null&ik-s=845ed1fc7745a77049906aa9dca569b49f3c59a8" alt="LIKAsecurity" class="h-7 w-auto object-contain">
+            <button onclick="toggleMobileMenu()" class="p-2.5 bg-gray-50 rounded-full text-gray-500 hover:text-lika-red hover:bg-red-50 transition-colors active:scale-95">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
         </div>
         
-        <div class="flex-grow overflow-y-auto custom-scrollbar px-5 py-6 space-y-2">
-            <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 px-2" data-i18n="footer_links">Linqe të Shpejta</div>
+        <div class="flex-grow overflow-y-auto custom-scrollbar px-6 py-8 space-y-3 bg-white">
+            <div class="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-5 px-1" data-i18n="footer_links">Linqe të Shpejta</div>
             
-            <a href="index.html" onclick="toggleMobileMenu()" class="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors group">
-                <div class="p-2 bg-gray-50 rounded-lg group-hover:bg-white group-hover:text-lika-red transition-colors group-hover:shadow-sm">
+            <a href="index.html" onclick="toggleMobileMenu()" class="flex items-center gap-4 p-3.5 rounded-2xl hover:bg-gray-50 active:bg-gray-100 transition-colors group">
+                <div class="p-2.5 bg-gray-50 rounded-xl group-hover:bg-white group-hover:text-lika-red transition-colors group-hover:shadow-sm">
                     <i data-lucide="home" class="w-5 h-5 text-gray-500 group-hover:text-lika-red"></i>
                 </div>
-                <span class="font-bold text-[15px] text-lighttext group-hover:text-lika-red transition-colors" data-i18n="nav_home">Kryefaqja</span>
+                <span class="font-bold text-[16px] text-lighttext group-hover:text-lika-red transition-colors" data-i18n="nav_home">Kryefaqja</span>
             </a>
             
-            <a href="index.html#offers" onclick="toggleMobileMenu()" class="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors group">
-                <div class="p-2 bg-gray-50 rounded-lg group-hover:bg-white group-hover:text-lika-red transition-colors group-hover:shadow-sm">
+            <a href="index.html#oferta" onclick="toggleMobileMenu()" class="flex items-center gap-4 p-3.5 rounded-2xl hover:bg-gray-50 active:bg-gray-100 transition-colors group">
+                <div class="p-2.5 bg-gray-50 rounded-xl group-hover:bg-white group-hover:text-lika-red transition-colors group-hover:shadow-sm">
                     <i data-lucide="shopping-bag" class="w-5 h-5 text-gray-500 group-hover:text-lika-red"></i>
                 </div>
-                <span class="font-bold text-[15px] text-lighttext group-hover:text-lika-red transition-colors" data-i18n="nav_offers">Ofertat</span>
+                <span class="font-bold text-[16px] text-lighttext group-hover:text-lika-red transition-colors" data-i18n="nav_offers">Ofertat</span>
             </a>
             
-            <a href="cmimet.html" onclick="toggleMobileMenu()" class="flex items-center gap-4 p-3 rounded-xl bg-red-50 border border-red-100/50 group">
-                <div class="p-2 bg-white rounded-lg text-lika-red shadow-sm border border-red-100">
+            <a href="cmimet.html" onclick="toggleMobileMenu()" class="flex items-center gap-4 p-3.5 rounded-2xl bg-red-50 border border-red-100/50 group active:scale-[0.98] transition-transform">
+                <div class="p-2.5 bg-white rounded-xl text-lika-red shadow-sm border border-red-100">
                     <i data-lucide="badge-euro" class="w-5 h-5"></i>
                 </div>
-                <span class="font-bold text-[15px] text-lika-red" data-i18n="nav_pricing">Çmimet e Shërbimeve</span>
+                <span class="font-bold text-[16px] text-lika-red" data-i18n="nav_pricing">Çmimet e Shërbimeve</span>
             </a>
             
-            <a href="https://service.likaapps.com/" target="_blank" onclick="toggleMobileMenu()" class="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors group">
-                <div class="p-2 bg-gray-50 rounded-lg group-hover:bg-white group-hover:text-lika-red transition-colors group-hover:shadow-sm">
+            <a href="service.html" onclick="toggleMobileMenu()" class="flex items-center gap-4 p-3.5 rounded-2xl hover:bg-gray-50 active:bg-gray-100 transition-colors group">
+                <div class="p-2.5 bg-gray-50 rounded-xl group-hover:bg-white group-hover:text-lika-red transition-colors group-hover:shadow-sm">
                     <i data-lucide="wrench" class="w-5 h-5 text-gray-500 group-hover:text-lika-red"></i>
                 </div>
-                <span class="font-bold text-[15px] text-lighttext group-hover:text-lika-red transition-colors" data-i18n="nav_service">Servisim</span>
+                <span class="font-bold text-[16px] text-lighttext group-hover:text-lika-red transition-colors" data-i18n="nav_service">Servisim</span>
             </a>
             
-            <a href="#contact" onclick="toggleMobileMenu()" class="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors group">
-                <div class="p-2 bg-gray-50 rounded-lg group-hover:bg-white group-hover:text-lika-red transition-colors group-hover:shadow-sm">
+            <a href="#contact" onclick="toggleMobileMenu()" class="flex items-center gap-4 p-3.5 rounded-2xl hover:bg-gray-50 active:bg-gray-100 transition-colors group">
+                <div class="p-2.5 bg-gray-50 rounded-xl group-hover:bg-white group-hover:text-lika-red transition-colors group-hover:shadow-sm">
                     <i data-lucide="phone-call" class="w-5 h-5 text-gray-500 group-hover:text-lika-red"></i>
                 </div>
-                <span class="font-bold text-[15px] text-lighttext group-hover:text-lika-red transition-colors" data-i18n="nav_contact">Kontakt</span>
+                <span class="font-bold text-[16px] text-lighttext group-hover:text-lika-red transition-colors" data-i18n="nav_contact">Kontakt</span>
             </a>
         </div>
         
-        <div class="p-5 border-t border-gray-100 bg-gray-50/50">
-            <a href="tel:+38349585195" class="w-full flex items-center justify-center gap-3 px-4 py-4 rounded-xl text-white btn-shimmer shadow-lg shadow-red-500/20 mb-3 hover:-translate-y-1 transition-transform">
+        <div class="p-6 border-t border-gray-100 bg-gray-50/80 rounded-bl-3xl">
+            <a href="tel:+38349585195" class="w-full flex items-center justify-center gap-3 px-4 py-4 rounded-2xl text-white btn-shimmer shadow-lg shadow-red-500/20 active:scale-95 transition-transform">
                 <i data-lucide="phone-call" class="w-5 h-5 animate-ring"></i>
                 <div class="flex flex-col text-left">
                     <span class="text-[10px] uppercase tracking-wider opacity-90 font-bold" data-i18n="btn_call_now">Thirr Tani</span>
                     <span class="text-[15px] font-bold leading-none tracking-wide">+383 49 585 195</span>
                 </div>
             </a>
-            
-            <button onclick="toggleLanguage(); toggleMobileMenu();" class="w-full flex items-center justify-center gap-2 px-4 py-3.5 bg-white hover:bg-gray-50 border border-gray-200 rounded-xl text-sm font-bold text-lighttext transition-colors shadow-sm">
-                <i data-lucide="globe" class="w-4 h-4 text-gray-400"></i>
-                <span id="lang-toggle-mob-text">Ndrysho Gjuhën (EN)</span>
-            </button>
         </div>
     </div>
 
     <!-- Hero Section -->
-    <section class="relative min-h-[100svh] flex items-center pt-28 pb-12 overflow-hidden bg-[#1a1a1a]">
-        <!-- Static Background Images (Fast Load) -->
+    <section class="relative min-h-[100svh] flex items-center pt-24 md:pt-28 pb-12 overflow-hidden bg-[#1a1a1a]">
+        <!-- Static Background Images -->
         <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-[#1a1a1a]">
             <img src="https://images.pexels.com/photos/18435554/pexels-photo-18435554.jpeg" alt="Background Mobile" class="w-full h-full object-cover md:hidden opacity-40">
             <img src="https://images.pexels.com/photos/4059469/pexels-photo-4059469.jpeg" alt="Background Desktop" class="w-full h-full object-cover hidden md:block opacity-30">
             <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/90 via-[#1a1a1a]/60 to-gray-50"></div>
         </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center w-full">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white font-bold text-[10px] md:text-xs mb-8 animate-fade-in-up uppercase tracking-widest">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center w-full mt-8 md:mt-0">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white font-bold text-[10px] md:text-xs mb-6 md:mb-8 animate-fade-in-up uppercase tracking-widest backdrop-blur-sm">
                 <i data-lucide="shield-check" class="w-3.5 h-3.5 text-lika-red"></i> 
                 Mjeshtri i sigurisë
             </div>
 
-            <h1 class="text-[3rem] leading-[1.05] sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 animate-fade-in-up">
+            <h1 class="text-5xl leading-[1.1] sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-5 md:mb-6 animate-fade-in-up">
                 <span class="block text-white drop-shadow-md" data-i18n="hero_title1">Siguria Juaj</span>
                 <span class="block text-transparent bg-clip-text bg-gradient-to-r from-lika-red via-red-500 to-orange-400 pb-2" data-i18n="hero_title2">Prioriteti Ynë.</span>
             </h1>
             
-            <p class="mt-4 max-w-2xl text-sm md:text-lg text-darktext mx-auto animate-fade-in-up font-medium leading-relaxed px-4" data-i18n="hero_subtitle">
+            <p class="mt-4 max-w-2xl text-sm md:text-lg text-darktext mx-auto animate-fade-in-up font-medium leading-relaxed px-2 md:px-4" data-i18n="hero_subtitle">
                 Zgjidhje teknologjike premium për kamera sigurie, sisteme alarmi, video interfon dhe servisim profesional. Besueshmëri që vlen.
             </p>
             
-            <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4 animate-fade-in-up w-full max-w-[300px] sm:max-w-none mx-auto px-4 sm:px-0 flex-wrap">
-                <a href="#offers" class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-3.5 text-sm md:text-base font-bold rounded-xl text-white btn-shimmer group flex-1 sm:flex-none">
+            <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4 animate-fade-in-up w-full max-w-[320px] sm:max-w-none mx-auto px-2 sm:px-0 flex-wrap">
+                <a href="#oferta" class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 md:py-3.5 text-sm md:text-base font-bold rounded-2xl md:rounded-xl text-white btn-shimmer group flex-1 sm:flex-none shadow-xl shadow-red-500/20 active:scale-95">
                     <span data-i18n="btn_view_offers">Shiko Ofertat</span>
                     <i data-lucide="arrow-right" class="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform"></i>
                 </a>
                 
-                <a href="cmimet.html" class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-3.5 text-sm md:text-base font-bold rounded-xl text-white bg-white/10 hover:bg-white/20 border border-white/20 transition-colors flex-1 sm:flex-none">
+                <a href="cmimet.html" class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 md:py-3.5 text-sm md:text-base font-bold rounded-2xl md:rounded-xl text-white bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md transition-colors flex-1 sm:flex-none active:scale-95">
                     <i data-lucide="badge-euro" class="w-4 h-4 md:w-5 md:h-5 text-red-400"></i>
                     <span data-i18n="pricing_title">Çmimet e Shërbimeve</span>
                 </a>
 
-                <a href="tel:+38349585195" class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-3.5 text-sm md:text-base font-bold rounded-xl text-lighttext bg-white hover:bg-gray-100 transition-colors flex-1 sm:flex-none">
+                <a href="tel:+38349585195" class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 md:py-3.5 text-sm md:text-base font-bold rounded-2xl md:rounded-xl text-lighttext bg-white hover:bg-gray-100 transition-colors flex-1 sm:flex-none active:scale-95 shadow-lg">
                     <i data-lucide="phone-call" class="w-4 h-4 md:w-5 md:h-5 text-lika-red animate-ring"></i>
                     <span data-i18n="btn_call_now">Thirr Tani</span>
                 </a>
@@ -464,9 +467,9 @@
     <section class="py-10 md:py-14 bg-gray-50 relative z-20 border-y border-gray-100 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex items-center justify-center gap-4 mb-6">
-                <div class="h-px w-10 sm:w-16 bg-gray-300"></div>
-                <p class="text-center text-[10px] md:text-xs font-bold text-darktext tracking-[0.25em] uppercase" data-i18n="trusted_brands">Partnerët & Teknologjia</p>
-                <div class="h-px w-10 sm:w-16 bg-gray-300"></div>
+                <div class="h-px w-8 sm:w-16 bg-gray-300"></div>
+                <p class="text-center text-[10px] md:text-xs font-bold text-darktext tracking-[0.2em] uppercase" data-i18n="trusted_brands">Partnerët & Teknologjia</p>
+                <div class="h-px w-8 sm:w-16 bg-gray-300"></div>
             </div>
             
             <div class="marquee-container w-full relative py-4">
@@ -540,29 +543,29 @@
     </section>
 
     <!-- Pricing Cards Section -->
-    <section id="offers" class="py-16 md:py-20 relative bg-gray-50">
+    <section id="oferta" class="py-16 md:py-20 relative bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-12 md:mb-16">
+            <div class="text-center mb-10 md:mb-16">
                 <div class="inline-flex items-center justify-center p-3 bg-white rounded-xl shadow-sm border border-gray-200 mb-4">
                     <i data-lucide="shopping-bag" class="w-6 h-6 text-lika-red"></i>
                 </div>
                 <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-lighttext mb-4 tracking-tight" data-i18n="section_offers_title">Ofertat Ekskluzive</h2>
-                <div class="w-20 md:w-24 h-1.5 bg-lika-red mx-auto rounded-full mb-4"></div>
-                <p class="text-base md:text-lg text-lighttext/80 max-w-2xl mx-auto font-medium px-2" data-i18n="section_offers_sub">Pako të kompletuara për sigurinë maksimale. Modele të dizajnuara për t'iu përshtatur çdo buxheti dhe nevoje.</p>
+                <div class="w-16 md:w-24 h-1.5 bg-lika-red mx-auto rounded-full mb-4"></div>
+                <p class="text-[15px] md:text-lg text-lighttext/80 max-w-2xl mx-auto font-medium px-2" data-i18n="section_offers_sub">Pako të kompletuara për sigurinë maksimale. Modele të dizajnuara për t'iu përshtatur çdo buxheti dhe nevoje.</p>
             </div>
 
-            <!-- Category Filters -->
-            <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10 md:mb-14" id="category-filters">
-                <button onclick="setFilter('all')" class="filter-btn active px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold transition-colors shadow-sm flex items-center gap-2 bg-lika-red text-white" data-filter="all">
+            <!-- Professional Mobile-Friendly Category Filters -->
+            <div class="flex sm:flex-wrap overflow-x-auto hide-scroll snap-x justify-start sm:justify-center gap-2 sm:gap-3 mb-10 md:mb-14 pb-2 w-full" id="category-filters">
+                <button onclick="setFilter('all')" class="filter-btn active shrink-0 snap-start px-5 py-3 sm:px-6 sm:py-3 rounded-full text-sm font-bold transition-all shadow-sm flex items-center gap-2 bg-lika-red text-white active:scale-95" data-filter="all">
                     <i data-lucide="layers" class="w-4 h-4"></i> <span data-i18n="filter_all">Të Gjitha</span>
                 </button>
-                <button onclick="setFilter('camera')" class="filter-btn px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold text-lighttext/90 bg-white border border-gray-200 hover:border-lika-red hover:text-lika-red transition-colors shadow-sm flex items-center gap-2" data-filter="camera">
+                <button onclick="setFilter('camera')" class="filter-btn shrink-0 snap-start px-5 py-3 sm:px-6 sm:py-3 rounded-full text-sm font-bold text-lighttext/90 bg-white border border-gray-200 hover:border-lika-red hover:text-lika-red transition-all shadow-sm flex items-center gap-2 active:scale-95" data-filter="camera">
                     <i data-lucide="cctv" class="w-4 h-4"></i> <span data-i18n="cat_camera">Kamera Sigurie</span>
                 </button>
-                <button onclick="setFilter('alarm')" class="filter-btn px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold text-lighttext/90 bg-white border border-gray-200 hover:border-lika-red hover:text-lika-red transition-colors shadow-sm flex items-center gap-2" data-filter="alarm">
+                <button onclick="setFilter('alarm')" class="filter-btn shrink-0 snap-start px-5 py-3 sm:px-6 sm:py-3 rounded-full text-sm font-bold text-lighttext/90 bg-white border border-gray-200 hover:border-lika-red hover:text-lika-red transition-all shadow-sm flex items-center gap-2 active:scale-95" data-filter="alarm">
                     <i data-lucide="bell-ring" class="w-4 h-4"></i> <span data-i18n="cat_alarm">Sistem Alarmi</span>
                 </button>
-                <button onclick="setFilter('intercom')" class="filter-btn px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold text-lighttext/90 bg-white border border-gray-200 hover:border-lika-red hover:text-lika-red transition-colors shadow-sm flex items-center gap-2" data-filter="intercom">
+                <button onclick="setFilter('intercom')" class="filter-btn shrink-0 snap-start px-5 py-3 sm:px-6 sm:py-3 rounded-full text-sm font-bold text-lighttext/90 bg-white border border-gray-200 hover:border-lika-red hover:text-lika-red transition-all shadow-sm flex items-center gap-2 active:scale-95" data-filter="intercom">
                     <i data-lucide="monitor-smartphone" class="w-4 h-4"></i> <span data-i18n="cat_intercom">Video Interfon</span>
                 </button>
             </div>
@@ -574,14 +577,14 @@
     </section>
 
     <!-- Product Modal -->
-    <div id="lightbox" class="modal-overlay fixed inset-0 z-[100] hidden flex items-center justify-center p-0 sm:p-6 md:p-12 bg-[#1a1a1a]/80 backdrop-blur-sm">
+    <div id="lightbox" class="modal-overlay fixed inset-0 z-[100] hidden flex items-center justify-center p-0 sm:p-6 md:p-12 bg-[#0f172a]/80 backdrop-blur-md">
         <div class="absolute inset-0" onclick="closeModal()"></div>
         
         <!-- Desktop Navigation Arrows -->
-        <button onclick="navigateModal(event, -1)" class="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-[110] bg-white text-lighttext hover:text-lika-red w-12 h-12 lg:w-16 lg:h-16 rounded-full items-center justify-center shadow-lg transition-transform hover:scale-105 border border-gray-200">
+        <button onclick="navigateModal(event, -1)" class="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-[110] bg-white text-lighttext hover:text-lika-red w-12 h-12 lg:w-16 lg:h-16 rounded-full items-center justify-center shadow-xl transition-transform hover:scale-105 border border-gray-200">
             <i data-lucide="chevron-left" class="w-6 h-6 lg:w-8 lg:h-8"></i>
         </button>
-        <button onclick="navigateModal(event, 1)" class="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-[110] bg-white text-lighttext hover:text-lika-red w-12 h-12 lg:w-16 lg:h-16 rounded-full items-center justify-center shadow-lg transition-transform hover:scale-105 border border-gray-200">
+        <button onclick="navigateModal(event, 1)" class="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-[110] bg-white text-lighttext hover:text-lika-red w-12 h-12 lg:w-16 lg:h-16 rounded-full items-center justify-center shadow-xl transition-transform hover:scale-105 border border-gray-200">
             <i data-lucide="chevron-right" class="w-6 h-6 lg:w-8 lg:h-8"></i>
         </button>
 
@@ -589,46 +592,42 @@
         <div class="relative w-full sm:max-w-5xl bg-white sm:rounded-3xl shadow-2xl overflow-hidden transform transition-all h-[100dvh] md:h-[90vh] md:max-h-[850px] flex flex-col md:flex-row z-50">
             
             <!-- Close Button -->
-            <button onclick="closeModal()" class="absolute top-4 right-4 z-[60] bg-gray-100 hover:bg-lika-red hover:text-white text-lighttext p-2.5 rounded-full transition-colors shadow-sm">
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-[60] bg-white/80 backdrop-blur hover:bg-lika-red hover:text-white text-lighttext p-2.5 rounded-full transition-colors shadow-md border border-gray-200 active:scale-95">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
 
             <!-- Left / Top Column (Image) -->
-            <div class="w-full md:w-1/2 bg-gray-50 flex flex-col relative h-[40vh] md:h-full shrink-0 border-b md:border-b-0 md:border-r border-gray-200 touch-pan-x touch-pan-y">
+            <div class="w-full md:w-1/2 bg-gray-50 flex flex-col relative h-[38vh] md:h-full shrink-0 border-b md:border-b-0 md:border-r border-gray-200 touch-pan-x touch-pan-y">
                 
                 <!-- Double Tap Hint Indicator -->
-                <div class="absolute top-4 left-4 z-20 bg-[#1a1a1a] text-white text-[10px] md:text-xs px-3 py-1.5 rounded-full flex items-center gap-1.5 pointer-events-none shadow-sm">
+                <div class="absolute top-4 left-4 z-20 bg-gray-900/80 backdrop-blur text-white text-[10px] md:text-xs px-3 py-1.5 rounded-full flex items-center gap-1.5 pointer-events-none shadow-sm">
                     <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i> <span data-i18n="hint_double_tap">Prek 2 herë për zmadhim</span>
                 </div>
 
-                <!-- Image Wrapper with Glow elements for interactive products -->
+                <!-- Image Wrapper -->
                 <div class="w-full h-full flex items-center justify-center p-6 overflow-hidden relative group/modallight bg-[#f8fafc]">
-                    
-                    <!-- Zoom wrapper -->
                     <div id="modal-img-zoom-wrapper" class="w-full h-full relative cursor-zoom-in select-none transition-transform duration-300 origin-center flex items-center justify-center">
-                        <!-- Smoother transition applied to both images -->
                         <img id="modal-img-off" src="" alt="Product" class="absolute w-full h-full object-contain transition-opacity duration-700 ease-in-out z-10 select-none pointer-events-none">
                         <img id="modal-img-on" src="" alt="Product On" class="absolute w-full h-full object-contain z-20 opacity-0 transition-opacity duration-700 ease-in-out select-none pointer-events-none">
                     </div>
             
-                    <!-- Dynamic Toggle Button (hidden by default) -->
                     <div id="modal-light-toggle-container" class="hidden absolute bottom-6 left-1/2 -translate-x-1/2 z-30 w-auto whitespace-nowrap">
                         <!-- Injected by JS -->
                     </div>
                 </div>
                 
                 <!-- Download Image Button -->
-                <button id="modal-download-btn" class="absolute bottom-4 right-4 z-20 bg-white hover:bg-gray-100 text-lighttext/90 p-2.5 rounded-full shadow-md border border-gray-200 transition-colors flex items-center justify-center cursor-pointer" title="Shkarko Foton">
+                <button id="modal-download-btn" class="absolute bottom-4 right-4 z-20 bg-white/90 backdrop-blur hover:bg-gray-100 text-lighttext/90 p-2.5 rounded-full shadow-md border border-gray-200 transition-colors flex items-center justify-center cursor-pointer active:scale-95" title="Shkarko Foton">
                     <i data-lucide="download" class="w-5 h-5"></i>
                 </button>
             </div>
 
             <!-- Right / Bottom Column (Details) -->
-            <div class="w-full md:w-1/2 flex flex-col h-[60vh] md:h-full bg-white relative">
+            <div class="w-full md:w-1/2 flex flex-col h-[62vh] md:h-full bg-white relative">
                 
                 <!-- Scrollable Contents -->
-                <div id="modal-scroll-area" class="flex-1 overflow-y-auto custom-scrollbar p-6 md:p-8 relative">
-                    <div class="uppercase tracking-widest text-[10px] md:text-xs font-bold text-lika-red mb-2" id="modal-category">Kategori</div>
+                <div id="modal-scroll-area" class="flex-1 overflow-y-auto custom-scrollbar p-5 md:p-8 relative">
+                    <div class="uppercase tracking-widest text-[11px] md:text-xs font-bold text-lika-red mb-2" id="modal-category">Kategori</div>
                     <h3 class="text-2xl md:text-3xl font-bold text-lighttext mb-2 leading-tight" id="modal-title">Titulli</h3>
                     
                     <div class="flex items-baseline gap-2 mb-5 border-b border-gray-100 pb-4">
@@ -637,12 +636,12 @@
                     </div>
                     
                     <!-- Detailed Description -->
-                    <div id="modal-detailed-desc" class="text-sm text-lighttext/80 font-medium leading-relaxed mb-5">
+                    <div id="modal-detailed-desc" class="text-[14px] md:text-sm text-lighttext/80 font-medium leading-relaxed mb-5">
                         <!-- Injected JS -->
                     </div>
 
                     <!-- Show More Button -->
-                    <button id="show-more-btn" onclick="toggleExtraDetails()" class="w-full py-3 bg-gray-50 border border-gray-200 text-lighttext font-bold rounded-xl flex justify-center items-center gap-2 hover:bg-gray-100 transition-colors text-xs uppercase tracking-wider mb-2">
+                    <button id="show-more-btn" onclick="toggleExtraDetails()" class="w-full py-3.5 bg-gray-50 border border-gray-200 text-lighttext font-bold rounded-2xl md:rounded-xl flex justify-center items-center gap-2 hover:bg-gray-100 transition-colors text-[13px] uppercase tracking-wider mb-2 active:scale-[0.98]">
                         <span id="show-more-text" data-i18n="btn_show_more">Shiko më shumë</span>
                         <i data-lucide="chevron-down" id="show-more-icon" class="w-4 h-4 transition-transform duration-200"></i>
                     </button>
@@ -651,7 +650,7 @@
                     <div id="modal-extra-details-wrapper" class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-200 ease-in-out">
                         <div class="overflow-hidden">
                             <div id="modal-extra-details" class="pt-5 mt-3 border-t border-gray-100 opacity-0 transition-opacity duration-200">
-                                <h4 class="text-xs font-bold text-lighttext mb-3 flex items-center gap-2 uppercase tracking-widest">
+                                <h4 class="text-[13px] font-bold text-lighttext mb-3 flex items-center gap-2 uppercase tracking-widest">
                                     <i data-lucide="package-search" class="w-4 h-4 text-lika-red"></i>
                                     <span data-i18n="modal_includes">Përmbajtja e Pakos</span>
                                 </h4>
@@ -664,8 +663,8 @@
                 </div>
 
                 <!-- Static Order Button Bottom -->
-                <div class="w-full p-4 md:p-6 bg-white border-t border-gray-100 shrink-0 mt-auto">
-                    <button onclick="openOrderModal()" class="w-full text-center px-6 py-3.5 btn-shimmer text-white rounded-xl text-base md:text-lg font-bold transition-transform active:scale-95 shadow-md flex justify-center items-center gap-2 uppercase tracking-wider">
+                <div class="w-full p-4 md:p-6 bg-white border-t border-gray-100 shrink-0 mt-auto pb-6 md:pb-6">
+                    <button onclick="openOrderModal()" class="w-full text-center px-6 py-4 md:py-3.5 btn-shimmer text-white rounded-2xl md:rounded-xl text-base md:text-lg font-bold transition-transform active:scale-95 shadow-lg shadow-red-500/20 flex justify-center items-center gap-2 uppercase tracking-wider">
                         <i data-lucide="shopping-cart" class="w-5 h-5"></i> 
                         <span data-i18n="btn_order_now">Porosit Tani</span>
                     </button>
@@ -675,30 +674,30 @@
     </div>
 
     <!-- Order Contact Method Modal -->
-    <div id="order-modal" class="modal-overlay fixed inset-0 z-[120] hidden flex items-center justify-center p-4 sm:p-6 bg-[#1a1a1a]/60 backdrop-blur-sm">
+    <div id="order-modal" class="modal-overlay fixed inset-0 z-[120] hidden flex items-center justify-center p-4 sm:p-6 bg-[#0f172a]/70 backdrop-blur-md">
         <div class="absolute inset-0" onclick="closeOrderModal()"></div>
-        <div class="relative w-full max-w-sm bg-white rounded-2xl shadow-2xl p-6 text-center">
-            <button onclick="closeOrderModal()" class="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 text-lighttext/80 p-2 rounded-full transition-colors">
+        <div class="relative w-full max-w-sm bg-white rounded-3xl shadow-2xl p-6 text-center">
+            <button onclick="closeOrderModal()" class="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 text-lighttext/80 p-2.5 rounded-full transition-colors active:scale-95">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
             <div class="mb-4 flex justify-center">
-                <div class="w-14 h-14 bg-red-50 rounded-full flex items-center justify-center">
-                    <i data-lucide="shopping-cart" class="w-7 h-7 text-lika-red"></i>
+                <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center">
+                    <i data-lucide="shopping-cart" class="w-8 h-8 text-lika-red"></i>
                 </div>
             </div>
-            <h3 class="text-xl font-bold text-lighttext mb-2" data-i18n="order_method_title">Zgjidhni Metodën</h3>
-            <p class="text-sm text-darktext mb-6 font-medium" data-i18n="order_method_sub">Si dëshironi të na kontaktoni për të porositur këtë pako?</p>
+            <h3 class="text-2xl font-bold text-lighttext mb-2" data-i18n="order_method_title">Zgjidhni Metodën</h3>
+            <p class="text-[15px] text-darktext mb-6 font-medium" data-i18n="order_method_sub">Si dëshironi të na kontaktoni për të porositur këtë pako?</p>
 
             <div class="flex flex-col gap-3">
-                <button onclick="sendOrderMessage('whatsapp')" class="w-full flex items-center justify-center gap-3 px-4 py-3 bg-[#25D366] text-white font-bold rounded-xl hover:bg-[#20bd5a] transition-colors shadow-sm">
+                <button onclick="sendOrderMessage('whatsapp')" class="w-full flex items-center justify-center gap-3 px-4 py-4 bg-[#25D366] text-white text-[15px] font-bold rounded-2xl hover:bg-[#20bd5a] transition-colors shadow-sm active:scale-95">
                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.441-1.273.606-1.446c.163-.171.352-.214.47-.214.118 0 .237.004.341.009.111.005.26-.041.406.313.146.353.499 1.218.544 1.311.045.093.076.202.018.318-.058.115-.088.186-.176.287-.088.101-.186.223-.263.313-.087.101-.177.212-.077.385.101.173.449.74.966 1.198.667.592 1.221.776 1.393.856.173.08.275.068.377-.048.102-.116.441-.512.559-.688.118-.176.236-.147.394-.088.158.06.999.472 1.17.558.172.086.286.128.328.2.042.072.042.418-.102.823z"/></svg>
                     WhatsApp
                 </button>
-                <button onclick="sendOrderMessage('viber')" class="w-full flex items-center justify-center gap-3 px-4 py-3 bg-[#7360F2] text-white font-bold rounded-xl hover:bg-[#6654d8] transition-colors shadow-sm">
+                <button onclick="sendOrderMessage('viber')" class="w-full flex items-center justify-center gap-3 px-4 py-4 bg-[#7360F2] text-white text-[15px] font-bold rounded-2xl hover:bg-[#6654d8] transition-colors shadow-sm active:scale-95">
                     <i data-lucide="phone" class="w-5 h-5"></i>
                     Viber
                 </button>
-                <button onclick="sendOrderMessage('call')" class="w-full flex items-center justify-center gap-3 px-4 py-3 bg-gray-100 text-lighttext font-bold rounded-xl hover:bg-gray-200 transition-colors shadow-sm border border-gray-200">
+                <button onclick="sendOrderMessage('call')" class="w-full flex items-center justify-center gap-3 px-4 py-4 bg-gray-100 text-lighttext text-[15px] font-bold rounded-2xl hover:bg-gray-200 transition-colors shadow-sm border border-gray-200 active:scale-95">
                     <i data-lucide="phone-call" class="w-5 h-5 text-lika-red"></i>
                     <span data-i18n="btn_direct_call">Thirrje Direkte</span>
                 </button>
@@ -707,14 +706,14 @@
     </div>
 
     <!-- Brand Pop-Up Modal -->
-    <div id="brand-modal" class="modal-overlay fixed inset-0 z-[110] hidden flex items-center justify-center p-4 sm:p-6 bg-[#1a1a1a]/60 backdrop-blur-sm">
+    <div id="brand-modal" class="modal-overlay fixed inset-0 z-[110] hidden flex items-center justify-center p-4 sm:p-6 bg-[#0f172a]/70 backdrop-blur-md">
         <div class="absolute inset-0" onclick="closeBrandModal()"></div>
-        <div class="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl p-8 text-center">
-            <button onclick="closeBrandModal()" class="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 text-lighttext/80 p-2.5 rounded-full transition-colors">
+        <div class="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl p-8 text-center">
+            <button onclick="closeBrandModal()" class="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 text-lighttext/80 p-2.5 rounded-full transition-colors active:scale-95">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
             
-            <div class="flex justify-center mb-5">
+            <div class="flex justify-center mb-5 mt-2">
                 <div class="h-14 w-auto flex items-center justify-center relative">
                     <img id="brand-modal-logo" src="" alt="Brand Logo" class="max-h-full max-w-full object-contain relative z-10">
                 </div>
@@ -725,16 +724,16 @@
             
             <div class="w-12 h-1 bg-gray-200 mx-auto rounded-full mb-4"></div>
             
-            <p id="brand-modal-desc" class="text-sm text-lighttext/80 font-medium leading-relaxed mb-6">
+            <p id="brand-modal-desc" class="text-[15px] text-lighttext/80 font-medium leading-relaxed mb-8">
                 Description goes here.
             </p>
             
             <div class="flex flex-col sm:flex-row justify-center items-center gap-3">
-                <a id="brand-modal-link" href="#" target="_blank" class="w-full sm:w-auto px-6 py-3 bg-lika-red text-white font-bold rounded-xl hover:bg-red-700 transition-colors shadow-sm flex justify-center items-center gap-2">
+                <a id="brand-modal-link" href="#" target="_blank" class="w-full sm:w-auto px-6 py-4 md:py-3 bg-lika-red text-white text-[15px] font-bold rounded-2xl md:rounded-xl hover:bg-red-700 transition-colors shadow-sm flex justify-center items-center gap-2 active:scale-95">
                     <span data-i18n="btn_visit_site">Faqja Zyrtare</span>
                     <i data-lucide="external-link" class="w-4 h-4"></i>
                 </a>
-                <button onclick="closeBrandModal()" class="w-full sm:w-auto px-6 py-3 bg-gray-100 text-lighttext font-bold rounded-xl hover:bg-gray-200 transition-colors" data-i18n="btn_close">Mbylle</button>
+                <button onclick="closeBrandModal()" class="w-full sm:w-auto px-6 py-4 md:py-3 bg-gray-100 text-lighttext text-[15px] font-bold rounded-2xl md:rounded-xl hover:bg-gray-200 transition-colors active:scale-95" data-i18n="btn_close">Mbylle</button>
             </div>
         </div>
     </div>
@@ -747,7 +746,7 @@
                     <div class="block h-10 md:h-12 w-[160px] sm:w-[200px] mb-6">
                         <img src="https://ik.imagekit.io/p78ewpzv2/LIKA%20Security/LOGO/For%20website/Horziontal%20TEXT%20ONLY%20(for%20DARK%20Background)_SC7NxhJ_0.png?updatedAt=null&ik-s=d789fa2488cf1a37127e4b3f1968868e9a801444" alt="LIKAsecurity" class="w-full h-full object-contain object-left">
                     </div>
-                    <p class="text-darktext text-sm leading-relaxed mb-6 font-medium" data-i18n="footer_desc">
+                    <p class="text-darktext text-[14px] md:text-sm leading-relaxed mb-6 font-medium" data-i18n="footer_desc">
                         Lider në ofrimin e shërbimeve të sigurisë. Ne ofrojmë cilësi, garanci dhe profesionalizëm absolut për shtëpinë dhe biznesin tuaj.
                     </p>
                 </div>
@@ -755,10 +754,10 @@
                 <div>
                     <h4 class="text-white font-bold text-lg mb-5" data-i18n="footer_links">Linqe të Shpejta</h4>
                     <ul class="space-y-3">
-                        <li><a href="index.html" class="text-sm text-darktext hover:text-white transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-lika-red"></i> <span data-i18n="nav_home">Kryefaqja</span></a></li>
-                        <li><a href="index.html#offers" class="text-sm text-darktext hover:text-white transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-lika-red"></i> <span data-i18n="nav_offers">Ofertat</span></a></li>
-                        <li><a href="cmimet.html" class="text-sm text-darktext hover:text-white transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-lika-red"></i> <span data-i18n="nav_pricing">Çmimet e Shërbimeve</span></a></li>
-                        <li><a href="https://service.likaapps.com/" target="_blank" class="text-sm text-darktext hover:text-white transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-lika-red"></i> <span data-i18n="nav_service">Servisim Pajisjesh</span></a></li>
+                        <li><a href="index.html" class="text-[15px] md:text-sm text-darktext hover:text-white transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-lika-red"></i> <span data-i18n="nav_home">Kryefaqja</span></a></li>
+                        <li><a href="index.html#oferta" class="text-[15px] md:text-sm text-darktext hover:text-white transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-lika-red"></i> <span data-i18n="nav_offers">Ofertat</span></a></li>
+                        <li><a href="cmimet.html" class="text-[15px] md:text-sm text-darktext hover:text-white transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-lika-red"></i> <span data-i18n="nav_pricing">Çmimet e Shërbimeve</span></a></li>
+                        <li><a href="service.html" class="text-[15px] md:text-sm text-darktext hover:text-white transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-lika-red"></i> <span data-i18n="nav_service">Servisim Pajisjesh</span></a></li>
                     </ul>
                 </div>
 
@@ -766,48 +765,48 @@
                     <div>
                         <h4 class="text-white font-bold text-lg mb-5" data-i18n="footer_contact">Kontakti</h4>
                         <ul class="space-y-4">
-                            <li class="flex items-center gap-3 text-sm text-darktext">
+                            <li class="flex items-center gap-3 text-[15px] md:text-sm text-darktext">
                                 <i data-lucide="map-pin" class="w-5 h-5 text-darktext/80"></i>
                                 <span>Fushë Kosovë, Kosovë</span>
                             </li>
-                            <li class="flex items-center gap-3 text-sm text-darktext">
+                            <li class="flex items-center gap-3 text-[15px] md:text-sm text-darktext">
                                 <i data-lucide="phone" class="w-5 h-5 text-darktext/80"></i>
                                 <a href="tel:+38349585195" class="hover:text-white transition-colors">+383 49 585 195</a>
                             </li>
-                            <li class="flex items-center gap-3 text-sm text-darktext">
+                            <li class="flex items-center gap-3 text-[15px] md:text-sm text-darktext">
                                 <i data-lucide="mail" class="w-5 h-5 text-darktext/80"></i>
                                 <a href="mailto:lika.security@proton.me" class="hover:text-white transition-colors">lika.security@proton.me</a>
                             </li>
                         </ul>
 
                         <div class="mt-8">
-                            <h5 class="text-darktext/80 font-bold text-xs mb-3 uppercase tracking-wider" data-i18n="footer_social">Na Ndiqni</h5>
+                            <h5 class="text-darktext/80 font-bold text-[11px] mb-3 uppercase tracking-wider" data-i18n="footer_social">Na Ndiqni</h5>
                             <div class="flex items-center gap-3">
-                                <a href="https://www.facebook.com/lika.security" target="_blank" class="p-2 bg-[#2a2a2a] rounded-lg hover:bg-[#1877F2] transition-colors text-white" title="Facebook">
+                                <a href="https://www.facebook.com/lika.security" target="_blank" class="p-2.5 bg-[#2a2a2a] rounded-xl hover:bg-[#1877F2] transition-colors text-white active:scale-95" title="Facebook">
                                     <svg fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" /></svg>
                                 </a>
-                                <a href="https://www.instagram.com/lika.security" target="_blank" class="p-2 bg-[#2a2a2a] rounded-lg hover:bg-[#E4405F] transition-colors text-white" title="Instagram">
+                                <a href="https://www.instagram.com/lika.security" target="_blank" class="p-2.5 bg-[#2a2a2a] rounded-xl hover:bg-[#E4405F] transition-colors text-white active:scale-95" title="Instagram">
                                     <svg fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                                 </a>
-                                <a href="https://www.tiktok.com/@lika.security" target="_blank" class="p-2 bg-[#2a2a2a] rounded-lg hover:bg-white hover:text-black transition-colors text-white" title="TikTok">
+                                <a href="https://www.tiktok.com/@lika.security" target="_blank" class="p-2.5 bg-[#2a2a2a] rounded-xl hover:bg-white hover:text-black transition-colors text-white active:scale-95" title="TikTok">
                                     <svg fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1-2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
                                 </a>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="h-40 sm:h-full min-h-[140px] rounded-xl overflow-hidden border border-[#2a2a2a] relative group">
+                    <div class="h-48 sm:h-full min-h-[160px] rounded-2xl overflow-hidden border border-[#2a2a2a] relative group">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2934.61860010901!2d21.0827103!3d42.6373722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135352c3c6f0c6c5%3A0x6e788647a1662fb5!2sFush%C3%AB%20Kosov%C3%AB!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 object-cover"></iframe>
-                        <a href="https://maps.app.goo.gl/YaNityrrY9hwSGRH7" target="_blank" class="absolute bottom-2 right-2 z-20 bg-white text-lighttext font-bold text-[10px] px-3 py-1.5 rounded-lg shadow-md hover:bg-lika-red hover:text-white transition-colors flex items-center gap-1.5">
-                            <i data-lucide="navigation" class="w-3 h-3"></i> <span data-i18n="btn_directions">Hap Maps</span>
+                        <a href="https://maps.app.goo.gl/YaNityrrY9hwSGRH7" target="_blank" class="absolute bottom-3 right-3 z-20 bg-white text-lighttext font-bold text-[11px] px-3 py-2 rounded-xl shadow-md hover:bg-lika-red hover:text-white transition-colors flex items-center gap-1.5 active:scale-95">
+                            <i data-lucide="navigation" class="w-3.5 h-3.5"></i> <span data-i18n="btn_directions">Hap Maps</span>
                         </a>
                     </div>
                 </div>
             </div>
             
-            <div class="border-t border-[#2a2a2a] pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
-                <p class="text-darktext font-medium text-[11px] md:text-xs text-center md:text-left">&copy; <span id="year"></span> LIKAsecurity. <span data-i18n="footer_rights">Të gjitha të drejtat e rezervuara.</span></p>
-                <div class="flex items-center gap-1.5 text-[11px] md:text-xs font-medium text-darktext">
+            <div class="border-t border-[#2a2a2a] pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-darktext font-medium text-[12px] md:text-xs text-center md:text-left">&copy; <span id="year"></span> LIKAsecurity. <span data-i18n="footer_rights">Të gjitha të drejtat e rezervuara.</span></p>
+                <div class="flex items-center gap-1.5 text-[12px] md:text-xs font-medium text-darktext">
                     Designed with <i data-lucide="heart" class="w-3.5 h-3.5 text-lika-red fill-lika-red animate-pulse"></i> in Kosovo from <a href="https://www.likaapps.com" target="_blank" class="text-lika-red font-bold hover:underline">LIKA</a>
                 </div>
             </div>
@@ -1332,9 +1331,9 @@
             
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 if (btn.dataset.filter === category) {
-                    btn.className = 'filter-btn active px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold transition-colors shadow-sm flex items-center gap-2 bg-lika-red text-white';
+                    btn.className = 'filter-btn active shrink-0 snap-start px-5 py-3 sm:px-6 sm:py-3 rounded-full text-sm font-bold transition-all shadow-sm flex items-center gap-2 bg-lika-red text-white active:scale-95';
                 } else {
-                    btn.className = 'filter-btn px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold text-lighttext/90 bg-white border border-gray-200 hover:border-lika-red hover:text-lika-red transition-colors shadow-sm flex items-center gap-2';
+                    btn.className = 'filter-btn shrink-0 snap-start px-5 py-3 sm:px-6 sm:py-3 rounded-full text-sm font-bold text-lighttext/90 bg-white border border-gray-200 hover:border-lika-red hover:text-lika-red transition-all shadow-sm flex items-center gap-2 active:scale-95';
                 }
             });
             
@@ -1511,7 +1510,7 @@
                                     </div>
                                     <div class="hidden md:block flex-grow h-px bg-gray-200 ml-6"></div>
                                     
-                                    <button onclick="scrollSlider(this, 'right')" class="swipe-hint md:hidden flex items-center pr-2 opacity-100 transition-opacity duration-200">
+                                    <button onclick="scrollSlider(this, 'right')" class="swipe-hint md:hidden flex items-center pr-2 opacity-100 transition-opacity duration-200 active:scale-95">
                                         <div class="flex items-center gap-2 bg-red-50 px-3 py-1.5 rounded-full shadow-sm border border-red-100">
                                             <i data-lucide="hand" class="w-3 h-3 text-lika-red"></i>
                                             <span class="text-[10px] font-bold text-lika-red uppercase tracking-widest" data-i18n="swipe_more">${i18n[currentLang].swipe_more}</span>
@@ -1521,7 +1520,7 @@
                                 </div>
                             </div>
 
-                            <div onscroll="const hint = this.parentElement.querySelector('.swipe-hint'); if(hint) hint.style.opacity = '0';" class="offers-scroll-container flex overflow-x-auto hide-scroll snap-x snap-mandatory gap-5 md:gap-6 pb-8 pt-2 px-4 -mx-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-3 scroll-smooth">
+                            <div onscroll="const hint = this.parentElement.querySelector('.swipe-hint'); if(hint) hint.style.opacity = '0';" class="offers-scroll-container flex overflow-x-auto hide-scroll snap-x snap-mandatory gap-4 md:gap-6 pb-8 pt-2 px-4 -mx-4 md:mx-0 md:px-0 md:grid md:grid-cols-2 lg:grid-cols-3 scroll-smooth">
                     `;
 
                     brandOffers.forEach((offer, idx) => {
@@ -1544,19 +1543,19 @@
                         }).join('');
 
                         const specBadgeHTML = offer.specBadge ? `
-                            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-gray-50 border border-gray-200 text-[10px] md:text-xs font-bold text-lighttext/90 w-fit">
+                            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-gray-50 border border-gray-200 text-[10px] md:text-xs font-bold text-lighttext/90 w-fit">
                                 <i data-lucide="${offer.specBadge.icon}" class="w-3 h-3 text-lika-red"></i> ${offer.specBadge.text}
                             </span>
                         ` : '';
 
                         const qtyBadgeHTML = offer.qtyBadge ? `
-                            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-red-50 border border-red-100 text-[10px] md:text-xs font-bold text-lika-red w-fit">
+                            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-red-50 border border-red-100 text-[10px] md:text-xs font-bold text-lika-red w-fit">
                                 <i data-lucide="${offer.qtyIcon}" class="w-3 h-3"></i> ${offer.qtyBadge[currentLang]}
                             </span>
                         ` : '';
 
                         const idealBadgeHTML = offer.idealFor ? `
-                            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-blue-50 border border-blue-100 text-[10px] md:text-xs font-bold text-blue-700 w-fit">
+                            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-blue-50 border border-blue-100 text-[10px] md:text-xs font-bold text-blue-700 w-fit">
                                 <i data-lucide="${offer.idealIcon}" class="w-3 h-3 text-blue-600"></i> <span class="hidden sm:inline">${i18n[currentLang].ideal_for}:</span> ${offer.idealFor[currentLang]}
                             </span>
                         ` : '';
@@ -1569,7 +1568,7 @@
                         
                         if (offer.isInteractiveLight) {
                             imageHTML = `
-                                <div class="w-full aspect-square bg-[#f8fafc] rounded-xl mb-6 flex justify-center items-center border border-gray-100 overflow-hidden relative group/light" onclick="event.stopPropagation()">
+                                <div class="w-full aspect-square bg-[#f8fafc] rounded-2xl mb-6 flex justify-center items-center border border-gray-100 overflow-hidden relative group/light" onclick="event.stopPropagation()">
                                     
                                     <!-- Base 'Off' Image -->
                                     <img id="card-img-off-${originalIndex}" src="${imgSrcOff}" alt="${offer.title[currentLang]}" loading="lazy" class="w-full h-full object-cover relative z-10 select-none pointer-events-none" />
@@ -1578,7 +1577,7 @@
                                     <img id="card-img-on-${originalIndex}" src="${imgSrcOn}" alt="${offer.title[currentLang]} On" loading="lazy" class="w-full h-full object-cover absolute inset-0 z-20 opacity-0 transition-opacity duration-700 ease-in-out select-none pointer-events-none" />
 
                                     <!-- Interactive Toggle Button -->
-                                    <button id="card-btn-${originalIndex}" onclick="toggleCardLight(event, ${originalIndex})" class="absolute bottom-3 right-3 z-30 bg-white/95 backdrop-blur-md p-3 rounded-full shadow-[0_5px_15px_rgba(0,0,0,0.1)] border border-gray-200 text-lighttext transition-all duration-300 hover:scale-110 flex items-center gap-2 group-hover/light:scale-110">
+                                    <button id="card-btn-${originalIndex}" onclick="toggleCardLight(event, ${originalIndex})" class="absolute bottom-3 right-3 z-30 bg-white/95 backdrop-blur-md p-3 rounded-full shadow-[0_5px_15px_rgba(0,0,0,0.1)] border border-gray-200 text-lighttext transition-all duration-300 hover:scale-110 flex items-center gap-2 group-hover/light:scale-110 active:scale-95">
                                         <span class="flex h-3 w-3 relative">
                                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
                                             <span class="relative inline-flex rounded-full h-3 w-3 bg-yellow-500"></span>
@@ -1594,19 +1593,20 @@
                             `;
                         } else {
                             imageHTML = `
-                                <div class="w-full aspect-square bg-gray-50 rounded-xl mb-6 flex justify-center items-center border border-gray-100 overflow-hidden relative">
+                                <div class="w-full aspect-square bg-gray-50 rounded-2xl mb-6 flex justify-center items-center border border-gray-100 overflow-hidden relative">
                                     <img src="${imgSrcOff}" alt="${offer.title[currentLang]}" loading="lazy" class="w-full h-full object-cover transform group-hover/card:scale-105 transition-transform duration-200 relative z-10 pointer-events-none select-none" />
                                 </div>
                             `;
                         }
 
+                        // w-[80vw] on mobile to show hint of next card
                         htmlString += `
-                            <div onclick="openModal(${originalIndex})" class="w-[85vw] md:w-auto flex-none snap-center cursor-pointer relative bg-white rounded-3xl border ${borderClass} flex flex-col h-full offer-card group/card overflow-hidden">
+                            <div onclick="openModal(${originalIndex})" class="w-[80vw] sm:w-[60vw] md:w-auto flex-none snap-center cursor-pointer relative bg-white rounded-[2rem] border ${borderClass} flex flex-col h-full offer-card group/card overflow-hidden">
                                 ${isPremium ? `<div class="absolute top-0 left-0 w-full h-[3px] bg-lika-red"></div>` : ''}
                                 <div class="p-5 md:p-6 flex flex-col flex-grow relative z-10">
                                     <div class="mb-4 flex flex-col">
                                         <div class="flex items-center justify-between mb-3">${badgeHTML}</div>
-                                        <h4 class="text-xl md:text-2xl font-bold text-lighttext tracking-tight leading-tight mb-3 group-hover/card:text-lika-red transition-colors">${offer.title[currentLang]}</h4>
+                                        <h4 class="text-[22px] md:text-2xl font-bold text-lighttext tracking-tight leading-tight mb-3 group-hover/card:text-lika-red transition-colors">${offer.title[currentLang]}</h4>
                                         <div class="flex flex-wrap gap-2">
                                             ${qtyBadgeHTML}
                                             ${specBadgeHTML}
@@ -1614,7 +1614,7 @@
                                         </div>
                                     </div>
                                     <div class="mb-4 flex items-baseline gap-1">
-                                        <span class="text-3xl md:text-4xl font-bold text-lighttext tracking-tighter">${offer.price}<sup class="text-lg md:text-xl text-darktext font-bold relative top-[-0.3em]">€</sup></span>
+                                        <span class="text-4xl md:text-4xl font-bold text-lighttext tracking-tighter">${offer.price}<sup class="text-lg md:text-xl text-darktext font-bold relative top-[-0.3em]">€</sup></span>
                                         <span class="text-[10px] md:text-xs font-bold text-darktext uppercase tracking-widest ml-1" data-i18n="per_package">${i18n[currentLang].per_package}</span>
                                     </div>
 
@@ -1623,7 +1623,7 @@
                                     <ul class="space-y-3 mb-6 flex-grow">
                                         ${cardFeaturesHTML}
                                     </ul>
-                                    <button class="w-full py-3 rounded-xl font-bold text-xs md:text-sm transition-colors flex items-center justify-center gap-2 ${btnStyle} mt-auto pointer-events-none uppercase tracking-widest">
+                                    <button class="w-full py-4 md:py-3 rounded-2xl md:rounded-xl font-bold text-[13px] md:text-sm transition-colors flex items-center justify-center gap-2 ${btnStyle} mt-auto pointer-events-none uppercase tracking-widest shadow-sm">
                                         <span data-i18n="btn_details">${i18n[currentLang].btn_details}</span>
                                         <i data-lucide="arrow-right" class="w-4 h-4"></i>
                                     </button>
@@ -1731,7 +1731,6 @@
             document.getElementById('modal-price').innerHTML = `${offer.price}<sup class="text-2xl font-bold text-darktext ml-1">€</sup>`;
             
             if (offer.isInteractiveLight) {
-                // Gjithmone sigurohemi te jete e fikur (opacity-0) kur sapo hapet modali
                 imgOnEl.classList.remove('opacity-100'); 
                 imgOnEl.classList.add('opacity-0');
                 
@@ -1755,7 +1754,7 @@
             const modalQuickIcons = document.getElementById('modal-quick-icons');
             if (offer.quickFeatures && offer.quickFeatures.length > 0) {
                 modalQuickIcons.innerHTML = offer.quickFeatures.map(qf => `
-                    <div class="flex items-center gap-1.5 bg-red-50 border border-red-100 px-3 py-1.5 rounded-lg">
+                    <div class="flex items-center gap-1.5 bg-red-50 border border-red-100 px-3 py-1.5 rounded-xl">
                         <i data-lucide="${qf.icon}" class="w-3 h-3 text-lika-red"></i>
                         <span class="text-[10px] font-bold text-lighttext/90 uppercase tracking-wider">${qf.label}</span>
                     </div>
@@ -1812,13 +1811,13 @@
                 else if (t.includes('montim') || t.includes('montimi')) { icon = 'wrench'; iconColor = 'text-orange-500'; }
 
                 descList.innerHTML += `
-                    <li class="flex items-center gap-3 p-2 rounded-xl bg-gray-50 border border-gray-100 shadow-sm">
-                        <div class="w-8 h-8 rounded-lg bg-white flex items-center justify-center border border-gray-100 shrink-0">
+                    <li class="flex items-center gap-3 p-2.5 rounded-2xl bg-gray-50 border border-gray-100 shadow-sm">
+                        <div class="w-8 h-8 rounded-xl bg-white flex items-center justify-center border border-gray-100 shrink-0">
                             <i data-lucide="${icon}" class="w-4 h-4 ${iconColor}"></i>
                         </div>
                         <div class="flex items-center gap-2 flex-wrap flex-grow">
                             ${qty ? `<span class="font-bold text-lika-red bg-red-50 px-2 py-0.5 rounded-md text-[10px] border border-red-100">${qty}</span>` : ''}
-                            <span class="text-xs sm:text-sm font-bold text-lighttext/90 pt-0.5">${text}</span>
+                            <span class="text-[13px] sm:text-sm font-bold text-lighttext/90 pt-0.5">${text}</span>
                         </div>
                     </li>
                 `;
@@ -1839,7 +1838,6 @@
             lightbox.classList.add('hidden');
             document.body.style.overflow = 'auto';
             
-            // Rikthe dritën në OFF kur mbyllet dritarja (reset visual)
             const imgOnEl = document.getElementById('modal-img-on');
             if(imgOnEl) {
                 imgOnEl.classList.remove('opacity-100');
@@ -1884,12 +1882,11 @@
 
         function toggleLanguage() {
             currentLang = currentLang === 'sq' ? 'en' : 'sq';
-            document.getElementById('lang-toggle').textContent = currentLang === 'sq' ? 'EN' : 'AL';
+            const textToSet = currentLang === 'sq' ? 'EN' : 'AL';
             
-            const mobLangBtn = document.getElementById('lang-toggle-mob-text');
-            if(mobLangBtn) {
-                mobLangBtn.textContent = currentLang === 'sq' ? 'Ndrysho Gjuhën (EN)' : 'Change Language (AL)';
-            }
+            document.getElementById('lang-toggle').textContent = textToSet;
+            const mobToggle = document.getElementById('lang-toggle-mob');
+            if(mobToggle) mobToggle.textContent = textToSet;
             
             document.documentElement.lang = currentLang;
             
