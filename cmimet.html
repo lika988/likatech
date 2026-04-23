@@ -264,7 +264,7 @@
 </head>
 <body class="antialiased selection:bg-lika-red selection:text-white relative" oncontextmenu="preventImageContext(event)">
 
-    <!-- Navigation (From index.html) -->
+    <!-- Navigation -->
     <nav class="fixed w-full z-50 transition-all duration-300 bg-transparent" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="nav-container flex justify-between items-center w-full">
@@ -381,7 +381,7 @@
         </div>
     </div>
 
-    <!-- Page Header (Matched style with index.html) -->
+    <!-- Page Header -->
     <section class="relative pt-32 pb-16 md:pt-48 md:pb-24 bg-[#1a1a1a] overflow-hidden">
         <div class="absolute inset-0 z-0 pointer-events-none">
             <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a]/90 via-[#1a1a1a] to-[#1a1a1a]"></div>
@@ -402,7 +402,7 @@
     <section class="py-16 md:py-24 bg-gray-50 relative z-20">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <!-- Info Alert -->
+            <!-- Info Alert (Updated based on requirements) -->
             <div class="bg-gradient-to-r from-red-50 to-white border border-red-100/60 rounded-3xl p-6 md:p-8 mb-12 flex flex-col md:flex-row gap-5 items-center md:items-start shadow-sm relative overflow-hidden animate-fade-in-up" style="animation-delay: 0.2s;">
                 <div class="absolute right-0 top-0 w-48 h-48 bg-red-100/40 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
                 <div class="bg-white p-3 rounded-2xl shadow-sm border border-red-50 shrink-0 relative z-10">
@@ -410,9 +410,9 @@
                 </div>
                 <div class="relative z-10 text-center md:text-left">
                     <p class="text-base md:text-lg text-lighttext font-medium leading-relaxed">
-                        <span data-i18n="pricing_intro1">Në rast të dëmtimit ose mosfunksionimit të pajisjeve, tarifa për vizitën është</span> <strong class="text-lika-red text-xl md:text-2xl font-bold mx-1 tracking-tight">50€</strong>.
+                        <span data-i18n="pricing_intro1">Tarifa e daljes në terren (vizita) është</span> <strong class="text-lika-red text-xl md:text-2xl font-bold mx-1 tracking-tight">50€</strong>.
                     </p>
-                    <p class="text-xs md:text-sm text-darktext mt-2 font-medium bg-white/60 inline-block px-3 py-1 rounded-lg" data-i18n="pricing_intro2">* Çmimet për pjesët shtesë janë të ndara dhe komunikohen veçmas, bazuar në nevojat specifike të riparimit.</p>
+                    <p class="text-xs md:text-sm text-darktext mt-2 font-medium bg-white/60 inline-block px-3 py-1 rounded-lg border border-gray-100 shadow-sm" data-i18n="pricing_intro2">* Me rëndësi: Kjo shumë mbulon vetëm ardhjen. Çdo shërbim, ndërhyrje apo pjesë e ndërruar paguhet ndaras, jashtë çmimit të udhëtimit.</p>
                 </div>
             </div>
 
@@ -433,7 +433,7 @@
                                 <div class="flex items-center gap-4">
                                     <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-red-50 group-hover:border-red-100 transition-colors"><i data-lucide="truck" class="w-5 h-5 text-darktext group-hover:text-lika-red transition-colors"></i></div>
                                     <div>
-                                        <h5 class="text-sm md:text-base font-bold text-lighttext" data-i18n="price_visit">Vizita</h5>
+                                        <h5 class="text-sm md:text-base font-bold text-lighttext" data-i18n="price_visit">Vizita në terren</h5>
                                         <p class="text-xs text-darktext mt-1 font-medium" data-i18n="price_visit_desc">Fushë Kosovë deri tek pika B (100km)</p>
                                     </div>
                                 </div>
@@ -447,7 +447,7 @@
                                     <div class="p-4 md:p-5 pt-0 border-t border-gray-50 text-sm text-lighttext/80 font-medium leading-relaxed bg-gray-50/50">
                                         <div class="flex items-start gap-2">
                                             <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 shrink-0 mt-0.5"></i>
-                                            <p data-i18n="detail_visit">Përfshin ardhjen e teknikut në lokacionin tuaj brenda rrezes nga Fushë Kosova deri në 100km. Diagnostikimi vizual dhe testimi fillestar në momentin e arritjes është i përfshirë në këtë çmim.</p>
+                                            <p data-i18n="detail_visit">Kjo tarifë mbulon ardhjen e teknikut në lokacionin tuaj (deri në 100km nga Fushë Kosova). Shuma prej 50€ paguhet vetëm për vizitën (udhëtimin), ndërsa çdo shërbim tjetër apo pjesë shtesë tarifohet ndaras sipas çmimores.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -603,6 +603,37 @@
                     </div>
 
                     <div class="space-y-4 flex-grow">
+                        
+                        <!-- Accordion Item: Camera Mounting (NEW) -->
+                        <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden group hover:border-lika-red/40 transition-all duration-300 faq-item cursor-pointer" onclick="toggleAccordion(this)">
+                            <div class="p-4 md:p-5 flex justify-between items-center select-none">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-red-50 group-hover:border-red-100 transition-colors"><i data-lucide="video" class="w-5 h-5 text-darktext group-hover:text-lika-red transition-colors"></i></div>
+                                    <div>
+                                        <h5 class="text-sm md:text-base font-bold text-lighttext" data-i18n="price_mount_cam">Montimi i kamerave</h5>
+                                        <p class="text-xs text-darktext mt-1 font-medium" data-i18n="price_mount_cam_desc">Instalim profesional</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-3 md:gap-5 pl-2">
+                                    <div class="flex flex-col items-end">
+                                        <span class="text-lg md:text-xl font-bold text-lika-red">25€</span>
+                                        <span class="text-[10px] text-darktext font-bold uppercase tracking-widest mt-[-2px]">/copë</span>
+                                    </div>
+                                    <div class="p-1 rounded-full bg-gray-50 group-hover:bg-red-50 transition-colors"><i data-lucide="chevron-down" class="w-4 h-4 text-darktext group-hover:text-lika-red transition-transform duration-300 chevron-icon"></i></div>
+                                </div>
+                            </div>
+                            <div class="grid transition-[grid-template-rows] duration-300 ease-in-out accordion-content">
+                                <div class="overflow-hidden">
+                                    <div class="p-4 md:p-5 pt-0 border-t border-gray-50 text-sm text-lighttext/80 font-medium leading-relaxed bg-gray-50/50">
+                                        <div class="flex items-start gap-2">
+                                            <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500 shrink-0 mt-0.5"></i>
+                                            <p data-i18n="detail_mount_cam">Përfshin vlerësimin e këndit të shikimit, shpimin profesional të mureve, izolimin e kabllove në kuti mbrojtëse, pozicionimin fizik të kamerës dhe fokusimin final të pamjes për shikueshmëri maksimale.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                          <!-- Accordion Item 10 -->
                          <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden group hover:border-lika-red/40 transition-all duration-300 faq-item cursor-pointer" onclick="toggleAccordion(this)">
                             <div class="p-4 md:p-5 flex justify-between items-center select-none">
@@ -633,14 +664,14 @@
                             </div>
                         </div>
 
-                        <!-- Accordion Item 11 -->
+                        <!-- Accordion Item 11 (Çmontimi i pajisjeve) -->
                         <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden group hover:border-lika-red/40 transition-all duration-300 faq-item cursor-pointer" onclick="toggleAccordion(this)">
                             <div class="p-4 md:p-5 flex justify-between items-center select-none">
                                 <div class="flex items-center gap-4">
                                     <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center shrink-0 group-hover:bg-red-50 group-hover:border-red-100 transition-colors"><i data-lucide="minus-circle" class="w-5 h-5 text-darktext group-hover:text-lika-red transition-colors"></i></div>
                                     <div>
                                         <h5 class="text-sm md:text-base font-bold text-lighttext" data-i18n="price_unmount">Çmontimi i pajisjeve</h5>
-                                        <p class="text-xs text-darktext mt-1 font-medium" data-i18n="price_unmount_desc">Heqja e sigurt e pajisjeve</p>
+                                        <p class="text-xs text-darktext mt-1 font-medium" data-i18n="price_unmount_desc">Kamera, sensorë & pajisje tjera</p>
                                     </div>
                                 </div>
                                 <div class="flex items-center gap-3 md:gap-5 pl-2">
@@ -732,7 +763,7 @@
         </div>
     </section>
 
-    <!-- Contact & Footer (From index.html) -->
+    <!-- Contact & Footer -->
     <footer id="contact" class="bg-[#1a1a1a] pt-16 md:pt-20 pb-8 relative border-t border-[#2a2a2a]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 mb-12">
@@ -844,11 +875,11 @@
                 footer_links: "Linqe të Shpejta", footer_contact: "Kontakti", btn_directions: "Hap Maps",
                 footer_social: "Na Ndiqni", footer_rights: "Të gjitha të drejtat e rezervuara.", contact_prompt: "Keni nevojë për diçka tjetër? Na kontaktoni direkt.",
                 pricing_title: "Çmimet e Shërbimeve", pricing_subtitle: "Lista e servisimit & montimeve. Klikoni për detaje.",
-                pricing_intro1: "Në rast të dëmtimit ose mosfunksionimit të pajisjeve, tarifa për vizitën është",
-                pricing_intro2: "* Çmimet për pjesët shtesë janë të ndara dhe komunikohen veçmas, bazuar në nevojat specifike të riparimit.",
+                pricing_intro1: "Tarifa e daljes në terren (vizita) është",
+                pricing_intro2: "* Me rëndësi: Kjo shumë mbulon vetëm ardhjen. Çdo shërbim, ndërhyrje apo pjesë e ndërruar paguhet ndaras, jashtë çmimit të udhëtimit.",
                 pricing_cat_servicing: "Diagnostikimi & Servisimi", pricing_cat_mounting: "Montimi & Çmontimi",
                 
-                price_visit: "Vizita", price_visit_desc: "Fushë Kosovë deri tek pika B (100km)",
+                price_visit: "Vizita në terren", price_visit_desc: "Fushë Kosovë deri tek pika B (100km)",
                 price_diagnostics: "Kontrollimi i pajisjeve", price_diagnostics_desc: "Testimi dhe diagnostikimi i defekteve",
                 price_lan: "Riparimi i konektorit LAN", price_lan_desc: "Maksimal 4 copë",
                 price_dc: "Riparimi i kabllos DC", price_dc_desc: "Maksimal 4 copë",
@@ -856,11 +887,11 @@
                 price_ip_reset: "Resetimi i kamerës IP", price_ip_reset_desc: "Rikthimi i fjalëkalimit",
                 price_mount_cam: "Montimi i kamerave", price_mount_cam_desc: "Instalim profesional",
                 price_mount_sensor: "Montimi i sensorëve", price_mount_sensor_desc: "Vendosje & testim",
-                price_unmount: "Çmontimi i pajisjeve", price_unmount_desc: "Heqja e sigurt e pajisjeve",
+                price_unmount: "Çmontimi i pajisjeve", price_unmount_desc: "Kamera, sensorë & pajisje tjera",
                 price_config: "Konfigurimi i sistemit", price_config_desc: "Optimizimi i parametrave",
                 price_unbind: "Shkyçja (Unbind)", price_unbind_desc: "Email i ri & Konfigurim",
 
-                detail_visit: "Përfshin ardhjen e teknikut në lokacionin tuaj brenda rrezes nga Fushë Kosova deri në 100km. Diagnostikimi vizual dhe testimi fillestar në momentin e arritjes është i përfshirë në këtë çmim.",
+                detail_visit: "Kjo tarifë mbulon ardhjen e teknikut në lokacionin tuaj (deri në 100km nga Fushë Kosova). Shuma prej 50€ paguhet vetëm për vizitën (udhëtimin), ndërsa çdo shërbim tjetër apo pjesë shtesë tarifohet ndaras sipas çmimores.",
                 detail_diagnostics: "Analizë e thellë e sistemit tuaj ekzistues. Përfshin testimin e qarkut të kamerave, lidhjeve të rrjetit dhe hard diskut për të gjetur saktësisht burimin e problemit para fillimit të riparimeve.",
                 detail_lan: "Ndërrimi dhe presimi profesional i kokave RJ45 në kabllot ekzistuese të rrjetit. Testimi i linjës për të siguruar transmetim të dhënash pa ndërprerje. Çmimi mbulon deri në 4 konektorë.",
                 detail_dc: "Rregullimi i problemeve me furnizimin me energji. Prerja, bashkimi dhe izolimi i sigurt i kabllove ose konektorëve DC (Rryma) për kamerat, duke eliminuar shkyçjet. Mbulon deri në 4 ndërhyrje.",
@@ -879,11 +910,11 @@
                 footer_links: "Quick Links", footer_contact: "Contact", btn_directions: "Open Maps",
                 footer_social: "Follow Us", footer_rights: "All rights reserved.", contact_prompt: "Need something else? Contact us directly.",
                 pricing_title: "Service Prices", pricing_subtitle: "Servicing & Installation list. Click for details.",
-                pricing_intro1: "In case of equipment damage or malfunction, our visit fee is",
-                pricing_intro2: "* Prices for additional parts are separate and communicated individually, based on specific repair needs.",
+                pricing_intro1: "The site visit fee (call-out charge) is",
+                pricing_intro2: "* Important: This fee covers only the travel and visit. Any service, repair, or extra parts are billed separately.",
                 pricing_cat_servicing: "Diagnostics & Servicing", pricing_cat_mounting: "Mounting & Unmounting",
                 
-                price_visit: "Visit", price_visit_desc: "Fushe Kosove to Point B (100km)",
+                price_visit: "Site Visit", price_visit_desc: "Fushe Kosove to Point B (100km)",
                 price_diagnostics: "Equipment Check", price_diagnostics_desc: "Testing & Diagnostics",
                 price_lan: "LAN Connector Repair", price_lan_desc: "Max 4 pieces",
                 price_dc: "DC Cable Repair", price_dc_desc: "Max 4 pieces",
@@ -891,11 +922,11 @@
                 price_ip_reset: "IP Camera Reset", price_ip_reset_desc: "Password Recovery",
                 price_mount_cam: "Camera Installation", price_mount_cam_desc: "Professional install",
                 price_mount_sensor: "Alarm Sensor Install", price_mount_sensor_desc: "Mounting & testing",
-                price_unmount: "Equipment Unmounting", price_unmount_desc: "Safe removal",
+                price_unmount: "Equipment Unmounting", price_unmount_desc: "Cameras, sensors & other devices",
                 price_config: "System Configuration", price_config_desc: "Parameters optimization",
                 price_unbind: "Device Unbind", price_unbind_desc: "Email Creation & Setup",
 
-                detail_visit: "Includes technician arrival at your location within a 100km radius from Fushe Kosove. Visual diagnosis and initial testing upon arrival are included in this price.",
+                detail_visit: "Includes technician arrival at your location within a 100km radius from Fushe Kosove. The 50€ fee applies only to the travel/visit. All other services or extra parts are charged separately according to the price list.",
                 detail_diagnostics: "In-depth analysis of your existing system. Includes testing the camera circuits, network connections, and hard drive to pinpoint the exact source of the problem before repairs begin.",
                 detail_lan: "Professional replacement and crimping of RJ45 heads on existing network cables. Line testing to ensure uninterrupted data transmission. Price covers up to 4 connectors.",
                 detail_dc: "Fixing power supply issues. Cutting, splicing, and safely insulating DC cables or connectors for cameras, eliminating disconnects. Covers up to 4 interventions.",
