@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIKAservice | Servis Profesional & Specialist i Elektronikës</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fbfbfd;
+            color: #1d1d1f;
+            scroll-behavior: smooth;
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #000000, #ff0000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+        }
+        .accordion-content.active {
+            max-height: 4000px;
+            opacity: 1;
+            padding-bottom: 2rem;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .btn-primary {
+            background-color: #ff0000;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #cc0000;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.15);
+        }
+        .highlight-box {
+            background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%);
+            border-left: 4px solid #ff0000;
+        }
+        
+        /* Scrollbar styles */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #d1d1d1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #ff0000; }
+
+        /* Chat Widget Specific */
+        .chat-open { transform: scale(1) translateY(0); opacity: 1; pointer-events: auto; }
+        .chat-closed { transform: scale(0.95) translateY(20px); opacity: 0; pointer-events: none; }
+        .dot-flashing {
+            position: relative;
+            width: 6px;
+            height: 6px;
+            border-radius: 5px;
+            background-color: #ff0000;
+            animation: dot-flashing 1s infinite linear alternate;
+            animation-delay: 0.5s;
+        }
+        .dot-flashing::before, .dot-flashing::after {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            top: 0;
+        }
+        .dot-flashing::before {
+            left: -10px;
+            width: 6px;
+            height: 6px;
+            border-radius: 5px;
+            background-color: #ff0000;
+            animation: dot-flashing 1s infinite alternate;
+            animation-delay: 0s;
+        }
+        .dot-flashing::after {
+            left: 10px;
+            width: 6px;
+            height: 6px;
+            border-radius: 5px;
+            background-color: #ff0000;
+            animation: dot-flashing 1s infinite alternate;
+            animation-delay: 1s;
+        }
+        @keyframes dot-flashing {
+            0% { background-color: #ff0000; }
+            50%, 100% { background-color: rgba(255, 0, 0, 0.2); }
+        }
+    </style>
+</head>
+<body class="selection:bg-[#ff0000]/10 selection:text-[#ff0000]">
+
+    <!-- NAVBAR -->
+    <nav class="fixed w-full z-50 top-0 glass border-b border-black/5">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#" class="flex items-center text-xl tracking-tighter">
+                <span class="font-extrabold text-[#ff0000]">LIKA</span>
+                <span class="font-light text-black">service</span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#services" class="text-sm font-medium text-black/70 hover:text-black transition-colors" data-key="nav.services">Shërbimet</a>
+                <a href="#pricing" class="text-sm font-medium text-black/70 hover:text-black transition-colors" data-key="nav.pricing">Çmimet</a>
+                <a href="#contact" class="text-sm font-medium text-black/70 hover:text-black transition-colors" data-key="nav.contact">Kontakt</a>
+                <div class="h-4 w-px bg-black/10 mx-2"></div>
+                <button onclick="toggleLanguage()" id="lang-toggle" class="text-xs font-bold text-black/50 hover:text-black">EN</button>
+                <a href="tel:+38349585195" class="btn-primary px-5 py-2 rounded-full text-sm font-semibold">
+                    <span data-key="hero.cta">Na Kontakto</span>
+                </a>
+            </div>
+
+            <button onclick="toggleMobileMenu()" class="md:hidden text-black p-2">
+                <svg id="menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 w-full bg-white border-b border-black/5 px-6 py-8 flex flex-col gap-6 shadow-xl">
+            <a href="#services" onclick="toggleMobileMenu()" class="text-lg font-medium">Shërbimet</a>
+            <a href="#pricing" onclick="toggleMobileMenu()" class="text-lg font-medium">Çmimet</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="text-lg font-medium">Kontakt</a>
+            <a href="tel:+38349585195" class="btn-primary text-white px-5 py-4 rounded-xl text-center font-semibold">Thirr Tani</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="services" class="relative pt-40 pb-20 px-6 flex flex-col items-center justify-center text-center">
+        <div class="fade-in inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 text-black/60 text-xs font-bold mb-6 tracking-widest uppercase">
+            <span>Specialist i Riparimeve të Avancuara</span>
+        </div>
+        <h1 class="fade-in text-5xl md:text-7xl font-extrabold text-black tracking-tight leading-[1.05] mb-8 max-w-4xl" data-key="hero.headline_html">
+            Zgjidhje <span class="text-gradient">Profesionale</span><br>për pajisjet tuaja.
+        </h1>
+        <p class="fade-in text-lg md:text-xl text-black/50 mb-10 leading-relaxed max-w-2xl">
+            Nga mikrosoldering te serverat DIY NAS – shërbime të specializuara me pajisje profesionale dhe saktësi maksimale.
+        </p>
+        <div class="fade-in flex flex-col sm:flex-row gap-4">
+            <a href="tel:+38349585195" class="btn-primary px-10 py-4 rounded-full font-bold flex items-center justify-center gap-2">
+                <span>Rezervo Shërbimin</span>
+            </a>
+            <a href="#pricing" class="px-10 py-4 bg-black/5 text-black rounded-full font-bold hover:bg-black/10 transition-colors text-center">Lista e Çmimeve</a>
+        </div>
+    </section>
+
+    <!-- MAIN POLICY -->
+    <section class="px-6 py-10">
+        <div class="fade-in max-w-5xl mx-auto">
+            <div class="rounded-3xl bg-white border border-black/5 p-8 flex flex-col md:flex-row items-center gap-6 shadow-sm">
+                <div class="w-14 h-14 rounded-2xl bg-[#ff0000]/10 flex items-center justify-center flex-shrink-0">
+                    <svg class="text-[#ff0000]" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-black mb-1">Diagnostikimi & Pagesa</h3>
+                    <p class="text-black/50"><strong>25€ Tarifa fillestare</strong> (e pakthyeshme) për çdo diagnostikim profesional. Pagesa e plotë e servisit kryhet vetëm pas përfundimit të riparimit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING ACCORDION -->
+    <section id="pricing" class="py-24 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="fade-in text-center mb-16">
+                <h2 class="text-4xl font-bold text-black mb-4" data-key="pricingHeading">Katalogu i Shërbimeve</h2>
+                <p class="text-black/50">I rregulluar sipas kategorive kryesore për lehtësi kërkimi.</p>
+            </div>
+            <div id="pricing-accordion" class="space-y-4">
+                <!-- Data will be injected here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-24 px-6 bg-white border-t border-black/5">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div class="fade-in">
+                <h2 class="text-3xl font-bold text-black mb-10">Na Kontaktoni</h2>
+                <div class="space-y-8">
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-black/5 flex items-center justify-center flex-shrink-0 text-[#ff0000]">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-black/40 uppercase tracking-widest mb-1">WhatsApp / Call</p>
+                            <a href="tel:+38349585195" class="text-xl font-semibold text-black hover:text-[#ff0000] transition-colors">+383 49 585 195</a>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-black/5 flex items-center justify-center flex-shrink-0 text-[#ff0000]">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-black/40 uppercase tracking-widest mb-1">Orari</p>
+                            <p class="text-xl font-semibold text-black">Hënë - Premte: 08:00 - 16:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="fade-in bg-[#f5f5f7] rounded-[2rem] p-10 text-center border border-black/5">
+                <h3 class="text-2xl font-bold mb-4">Nevojë për ndihmë?</h3>
+                <p class="text-black/50 mb-8">Për çdo pyetje rreth çmimeve apo shërbimeve specifike, na shkruani në WhatsApp ose pyesni asistentin tonë virtual.</p>
+                <a href="https://wa.me/38349585195" class="btn-primary block py-4 rounded-xl font-bold text-lg">Dërgo Mesazh n'WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 text-center text-black/40 text-xs border-t border-black/5">
+        <p>&copy; <span id="year"></span> LIKAservice. Të gjitha të drejtat të rezervuara.</p>
+    </footer>
+
+    <!-- AI CHATBOT WIDGET -->
+    <div id="ai-chat-container" class="fixed bottom-6 right-6 z-[9999] flex flex-col items-end">
+        
+        <!-- Chat Window -->
+        <div id="ai-chat-window" class="chat-closed w-[340px] sm:w-[380px] bg-white rounded-2xl shadow-2xl border border-black/10 overflow-hidden mb-4 flex-col transition-all duration-300 absolute bottom-16 right-0 h-[480px] flex">
+            <!-- Header -->
+            <div class="bg-black p-4 flex justify-between items-center text-white">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-[#ff0000] flex items-center justify-center font-bold text-white shadow-lg">L</div>
+                    <div>
+                        <h4 class="font-bold text-sm leading-tight">AI Asistenti LIKA</h4>
+                        <p class="text-[10px] text-white/70 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> Online
+                        </p>
+                    </div>
+                </div>
+                <button onclick="toggleAIChat()" class="text-white/70 hover:text-white transition-colors p-1">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                </button>
+            </div>
+            
+            <!-- Messages Area -->
+            <div id="ai-chat-messages" class="flex-1 p-4 overflow-y-auto bg-gray-50 flex flex-col gap-4 text-sm scroll-smooth">
+                <!-- Bot Welcome Message -->
+                <div class="self-start bg-white border border-black/5 text-black p-3 rounded-2xl rounded-tl-sm max-w-[85%] shadow-sm">
+                    Tungjatjeta! 👋 Jam asistenti virtual i LIKAservice.<br><br>Qysh mundem me ju ndihmu sot rreth çmimeve apo riparimeve tona?
+                </div>
+            </div>
+            
+            <!-- Input Area -->
+            <div class="p-3 bg-white border-t border-black/5 flex gap-2">
+                <input type="text" id="ai-chat-input" placeholder="Shkruaj pyetjen tënde..." class="flex-1 px-4 py-2.5 bg-gray-100 border border-transparent focus:bg-white focus:border-[#ff0000] rounded-xl outline-none transition-all text-sm" onkeypress="if(event.key === 'Enter') sendAIMessage()">
+                <button onclick="sendAIMessage()" class="bg-[#ff0000] hover:bg-[#cc0000] text-white p-2.5 rounded-xl transition-all flex items-center justify-center shadow-md active:scale-95">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Toggle Button -->
+        <button onclick="toggleAIChat()" id="ai-chat-toggle-btn" class="bg-[#ff0000] hover:bg-[#cc0000] text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition-all hover:scale-105 active:scale-95 border-2 border-white">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        </button>
+
+    </div>
+
+    <script>
+        // --- EXISTING WEBSITE LOGIC ---
+        const translations = {
+            al: {
+                "nav.services": "Shërbimet", "nav.pricing": "Çmimet", "nav.contact": "Kontakt",
+                "hero.headline_html": `Zgjidhje <span class="text-gradient">Profesionale</span><br>për pajisjet tuaja.`,
+                "pricingHeading": "Katalogu i Shërbimeve", "hero.cta": "Na Kontakto"
+            },
+            en: {
+                "nav.services": "Services", "nav.pricing": "Pricing", "nav.contact": "Contact",
+                "hero.headline_html": `Professional <span class="text-gradient">Solutions</span><br>for your devices.`,
+                "pricingHeading": "Service Catalog", "hero.cta": "Contact Us"
+            }
+        };
+
+        const pricingData = [
+            {
+                id: 'apple', icon: '🍎', title: { al: 'Apple Devices (iPhone, Mac, iPad)', en: 'Apple Devices' },
+                items: [
+                    { n: { al: 'Screen / Display Replacement', en: 'Screen Replacement' }, p: '100–300€' },
+                    { n: { al: 'Battery Replacement', en: 'Battery Replacement' }, p: '80–150€' },
+                    { n: { al: 'Logic Board Repair (Micro-soldering)', en: 'Logic Board Repair' }, p: '150–300€' },
+                    { n: { al: 'macOS Software Repair', en: 'macOS Software Repair' }, p: '50–150€' },
+                    { n: { al: 'iPhone/Mac Data Recovery', en: 'Data Recovery' }, p: '100–300€' }
+                ]
+            },
+            {
+                id: 'phone', icon: '📱', title: { al: 'Smartphones & Tablets', en: 'Smartphones & Tablets' },
+                items: [
+                    { n: { al: 'Ekrani (LCD/OLED)', en: 'Screen (LCD/OLED)' }, p: '50–250€' },
+                    { n: { al: 'Ndërrim Baterie', en: 'Battery Replacement' }, p: '50–120€' },
+                    { n: { al: 'Porti i Mbushjes (Charging Port)', en: 'Charging Port' }, p: '50–100€' },
+                    { n: { al: 'Motherboard Repair', en: 'Motherboard Repair' }, p: '100–300€' },
+                    { n: { al: 'Riparim nga Uji (Water Damage)', en: 'Water Damage' }, p: '80–250€' },
+                    { n: { al: 'Software / Unlocking', en: 'Software / Unlocking' }, p: '50€' },
+                    { n: { al: 'Data Recovery', en: 'Data Recovery' }, p: '50–200€' }
+                ]
+            },
+            {
+                id: 'watch', icon: '⌚', title: { al: 'Smartwatch Repair', en: 'Smartwatch Repair' },
+                highlight: { al: 'Specialist në riparime smartwatch me pajisje profesionale dhe diagnostikim preciz', en: 'Smartwatch specialist with professional tools and precise diagnostics' },
+                items: [
+                    { n: { al: 'Screen / Display Replacement', en: 'Screen / Display' }, p: '50–150€' },
+                    { n: { al: 'Battery Replacement', en: 'Battery' }, p: '50–100€' },
+                    { n: { al: 'Charging Issues / Port', en: 'Charging Issues' }, p: '50–80€' },
+                    { n: { al: 'Water Damage Cleaning', en: 'Water Damage' }, p: '50–150€' },
+                    { n: { al: 'Software / Firmware Update', en: 'Software Update' }, p: '30–80€' },
+                    { n: { al: 'Diagnostics', en: 'Diagnostics' }, p: '25–50€' }
+                ]
+            },
+            {
+                id: 'comp', icon: '💻', title: { al: 'Laptops & Computers', en: 'Laptops & Computers' },
+                items: [
+                    { n: { al: 'Formatizim Windows XP – 8.1', en: 'Format Windows XP – 8.1' }, p: '30€' },
+                    { n: { al: 'Formatizim Windows 10', en: 'Format Windows 10' }, p: '45€' },
+                    { n: { al: 'Formatizim Windows 11', en: 'Format Windows 11' }, p: '50€' },
+                    { n: { al: 'macOS Older / Latest Versions', en: 'macOS Software' }, p: '30–100€' },
+                    { n: { al: 'Diagnostikim i Avancuar', en: 'Advanced Diagnostics' }, p: '25€' },
+                    { n: { al: 'Hardware Repair', en: 'Hardware Repair' }, p: '50–300€' },
+                    { n: { al: 'Deep Cleaning (Pastrim i thellë)', en: 'Deep Cleaning' }, p: '50€' },
+                    { n: { al: 'Thermal Paste Application', en: 'Thermal Paste' }, p: '30€' },
+                    { n: { al: 'Upgrade SSD / RAM', en: 'Upgrade SSD / RAM' }, p: '50–150€' },
+                    { n: { al: 'Backup & Disk Cloning', en: 'Backup & Cloning' }, p: '25–80€' },
+                    { n: { al: 'Advanced Data Recovery', en: 'Data Recovery' }, p: '50–250€' }
+                ]
+            },
+            {
+                id: 'storage', icon: '💾', title: { al: 'Storage Specialist (SSD / HDD / NVMe)', en: 'Storage Specialist' },
+                highlight: { al: 'Ekspert në riparime të mediave të ruajtjes me pajisje profesionale laboratorike', en: 'Expert in storage media repair using professional laboratory tools' },
+                items: [
+                    { n: { al: 'Diagnostikim Harduerik', en: 'Hardware Diagnostics' }, p: '25€' },
+                    { n: { al: 'SSD / NVMe Repair', en: 'SSD / NVMe Repair' }, p: '80–250€' },
+                    { n: { al: 'HDD Physical Repair', en: 'HDD Repair' }, p: '50–200€' },
+                    { n: { al: 'Data Recovery (Professional)', en: 'Data Recovery' }, p: '80–300€' },
+                    { n: { al: 'OS Migration (Transfer)', en: 'OS Migration' }, p: '50€' }
+                ]
+            },
+            {
+                id: 'server', icon: '🖥️', title: { al: 'Server & NAS Solutions', en: 'Server & NAS Solutions' },
+                highlight: { al: 'DIY NAS: Zgjidhje të personalizuara (TrueNAS / Unraid) për performancë maksimale', en: 'DIY NAS: Custom solutions (TrueNAS / Unraid) for maximum performance' },
+                items: [
+                    { n: { al: 'NAS Setup (Synology / QNAP)', en: 'NAS Setup' }, p: '100–300€' },
+                    { n: { al: 'DIY NAS Custom Build', en: 'DIY NAS' }, p: '150–500€' },
+                    { n: { al: 'Custom PC Server Build', en: 'Custom Server' }, p: '150–400€' },
+                    { n: { al: 'RAID Configuration & Storage', en: 'RAID Configuration' }, p: '100–250€' },
+                    { n: { al: 'Network Storage Setup', en: 'Network Storage' }, p: '80–200€' },
+                    { n: { al: 'User Permissions & Security', en: 'Security & Permissions' }, p: '50–150€' },
+                    { n: { al: 'Server Troubleshooting', en: 'Troubleshooting' }, p: '80–250€' },
+                    { n: { al: 'NAS/RAID Data Recovery', en: 'RAID Data Recovery' }, p: '150–500€' }
+                ]
+            },
+            {
+                id: 'cctv', icon: '👁️', title: { al: 'CCTV & Security Systems', en: 'CCTV & Security' },
+                items: [
+                    { n: { al: 'DVR/NVR Installation', en: 'DVR/NVR Installation' }, p: '50–150€' },
+                    { n: { al: 'IP/Analog Camera Configuration', en: 'Camera Configuration' }, p: '50€' },
+                    { n: { al: 'Security System Repair', en: 'System Repair' }, p: '50–200€' },
+                    { n: { al: 'Cabling & Signal Fix', en: 'Cabling & Signal' }, p: '50€' },
+                    { n: { al: 'Remote Access (Phone/PC)', en: 'Remote Access' }, p: '50€' }
+                ]
+            },
+            {
+                id: 'tvbox', icon: '📺', title: { al: 'Android Box & Apple TV', en: 'Android Box & Apple TV' },
+                highlight: { al: 'Riparim dhe konfigurim i avancuar për pajisje transmetuese dhe media players', en: 'Advanced repair and configuration for streaming and media players' },
+                items: [
+                    { n: { al: 'Diagnostikim i Pajisjes', en: 'Device Diagnostics' }, p: '15–25€' },
+                    { n: { al: 'Instalim Softueri / Firmware Flash', en: 'Software Update / Firmware Flash' }, p: '20–40€' },
+                    { n: { al: 'Apple TV Software Restore / Fix', en: 'Apple TV Software Restore' }, p: '25–50€' },
+                    { n: { al: 'Konfigurim Aplikacionesh (Kodi, IPTV, etj.)', en: 'App Configuration (Kodi, IPTV)' }, p: '15–30€' },
+                    { n: { al: 'Riparim i Portave (HDMI, Power, LAN)', en: 'Port Repair (HDMI, Power, LAN)' }, p: '30–70€' },
+                    { n: { al: 'Riparim Harduerik (Në Pllakë / Motherboard)', en: 'Motherboard Hardware Repair' }, p: '40–100€' },
+                    { n: { al: 'Pastrim i thellë dhe Ndërrim i Pastës Termike', en: 'Deep Clean & Thermal Paste' }, p: '20–35€' }
+                ]
+            },
+            {
+                id: 'backup', icon: '🔄', title: { al: 'Automation & Backup', en: 'Automation & Backup' },
+                items: [
+                    { n: { al: 'Automatic Backup Systems', en: 'Auto Backup' }, p: '80–200€' },
+                    { n: { al: 'Cloud Sync & Configuration', en: 'Cloud Sync' }, p: '50–150€' },
+                    { n: { al: 'Remote Access VPN Setup', en: 'VPN Setup' }, p: '80–200€' }
+                ]
+            }
+        ];
+
+        let currentLang = 'al';
+
+        function updateUI() {
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[currentLang][key]) {
+                    if (key.includes('_html')) el.innerHTML = translations[currentLang][key];
+                    else el.textContent = translations[currentLang][key];
+                }
+            });
+
+            const accordion = document.getElementById('pricing-accordion');
+            accordion.innerHTML = '';
+            
+            pricingData.forEach(cat => {
+                const div = document.createElement('div');
+                div.className = 'fade-in rounded-3xl border border-black/5 bg-white overflow-hidden shadow-sm';
+                div.innerHTML = `
+                    <button onclick="toggleAccordion('${cat.id}')" class="w-full px-8 py-6 flex items-center justify-between text-left hover:bg-black/[0.01]">
+                        <div class="flex items-center gap-4">
+                            <span class="text-2xl">${cat.icon}</span>
+                            <h3 class="text-lg font-bold text-black">${cat.title[currentLang]}</h3>
+                        </div>
+                        <svg class="text-black/20 transform transition-transform duration-300 arrow-${cat.id}" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div id="content-${cat.id}" class="accordion-content px-8">
+                        ${cat.highlight ? `<div class="mb-4 p-4 rounded-2xl highlight-box text-sm font-medium text-black/70">${cat.highlight[currentLang]}</div>` : ''}
+                        <ul class="space-y-1">
+                            ${cat.items.map(item => `
+                                <li class="flex justify-between items-center py-4 border-b border-black/5 last:border-0">
+                                    <span class="text-black/60 text-sm md:text-base">${item.n[currentLang]}</span>
+                                    <span class="font-bold text-black whitespace-nowrap ml-4">${item.p}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `;
+                accordion.appendChild(div);
+            });
+            handleScroll();
+        }
+
+        function toggleAccordion(id) {
+            const content = document.getElementById(`content-${id}`);
+            const arrow = document.querySelector(`.arrow-${id}`);
+            const isActive = content.classList.contains('active');
+            
+            if (!isActive) {
+                content.classList.add('active');
+                arrow.classList.add('rotate-180');
+            } else {
+                content.classList.remove('active');
+                arrow.classList.remove('rotate-180');
+            }
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'al' ? 'en' : 'al';
+            document.getElementById('lang-toggle').textContent = currentLang === 'al' ? 'EN' : 'AL';
+            updateUI();
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        function handleScroll() {
+            document.querySelectorAll('.fade-in').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight * 0.95) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        window.onload = () => {
+            document.getElementById('year').textContent = new Date().getFullYear();
+            updateUI();
+        };
+
+        // --- AI CHATBOT LOGIC ---
+        
+        let isAIChatOpen = false;
+        let aiChatHistory = []; // Keeps track of conversation context
+        const apiKey = ""; // API key is handled automatically by the environment
+
+        // Strict system prompt enforcing Kosovar Geg dialect and service details
+        const systemPrompt = `
+Ti je asistenti virtual zyrtar i 'LIKAservice', një servis profesional i elektronikës në Kosovë (Prishtinë/Kosovë).
+Detyra jote asht me ju ndihmu klientëve me informata rreth shërbimeve dhe çmimeve tona.
+
+RREGULLI ABSOLUT: Fol GJITHMONË në dialektin e Kosovës (Gegnisht), me një ton profesional dhe mikpritës.
+Përdor shprehje origjinale si: "Tungjatjeta", "Qysh mundem me ju ndihmu?", "Çmimi asht", "Mundeni me e pru pajisjen n'servis", "Ju mirëpresim", "Faleminderit".
+Mos e përdor gjuhën standarte artificiale, por fol si një profesionist kosovar i vërtetë!
+
+TË DHËNAT E SERVISIT:
+- Tarifa e Diagnostikimit: 25€ (e pakthyeshme). Paguhet vetëm si fillim, dhe nëse bahet riparimi, ajo perfshihet ose rregullohet n'baze te marreveshjes se bashku.
+- Orari i punës: Hënë - Premte, 08:00 - 16:00.
+- Numri i Kontaktit / WhatsApp: +383 49 585 195.
+
+ÇMIMET E RIPARIMEVE (Kur jep çmim me interval, trego që mundet me ndryshu pak varësisht prej modelit të saktë dhe dëmtimit):
+- Pajisjet Apple (iPhone, Mac, iPad): Ekrani 100-300€, Bateria 80-150€, Pllaka Amë (Micro-soldering) 150-300€, Rikthim i të dhënave 100-300€.
+- Telefona dhe Tableta (Android): Ekrani 50-250€, Bateria 50-120€, Porti mbushjes 50-100€, Riparim nga uji 80-250€.
+- Llaptoppa & Kompjutera: Formatizim (Windows 10/11) 45-50€, Pastrim i thellë me pastë termike rreth 50€, Riparime harduerike 50-300€, Ndërrim SSD/RAM 50-150€.
+- Smartwatch (Orë të mençura): Ekrani 50-150€, Bateria 50-100€, Pastrim nga uji 50-150€.
+- Servera & NAS: Instalimi fillestar i NAS 100-300€, Custom NAS DIY 150-500€, Rikthim i të dhënave (Data Recovery Server/RAID) 150-500€.
+- Ruajtja e të dhënave (SSD/HDD): Riparim SSD/HDD fizik 50-250€, Data Recovery profesionale 80-300€.
+- Tjera (CCTV, TV Box): Instalimi i kamerave CCTV 50-150€, Riparim Android Box / Apple TV 15-100€.
+
+Nëse klienti pyet për diçka shumë specifike ose që s'e din, thuaj: "Për këtë rast asht ma mirë me kontaktu teknikun tonë kryesor në WhatsApp (+383 49 585 195) ose me e pru pajisjen n'servis për ni diagnostikim të saktë."
+Përgjigju shkurt, mos u zgjat shumë në tekst. Ji shumë i sjellshëm dhe gjithmonë fol gegnisht.
+        `;
+
+        function toggleAIChat() {
+            const windowEl = document.getElementById('ai-chat-window');
+            isAIChatOpen = !isAIChatOpen;
+            
+            if (isAIChatOpen) {
+                windowEl.classList.remove('chat-closed');
+                windowEl.classList.add('chat-open');
+                document.getElementById('ai-chat-input').focus();
+            } else {
+                windowEl.classList.remove('chat-open');
+                windowEl.classList.add('chat-closed');
+            }
+        }
+
+        function appendMessage(role, text) {
+            const chatMessages = document.getElementById('ai-chat-messages');
+            const msgDiv = document.createElement('div');
+            
+            if (role === 'user') {
+                msgDiv.className = 'self-end bg-black text-white p-3 rounded-2xl rounded-tr-sm max-w-[85%] shadow-sm';
+                msgDiv.textContent = text;
+            } else {
+                msgDiv.className = 'self-start bg-white border border-black/5 text-black p-3 rounded-2xl rounded-tl-sm max-w-[85%] shadow-sm';
+                msgDiv.innerHTML = text.replace(/\n/g, '<br>');
+            }
+            
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function addTypingIndicator() {
+            const chatMessages = document.getElementById('ai-chat-messages');
+            const typingDiv = document.createElement('div');
+            typingDiv.id = 'ai-typing-indicator';
+            typingDiv.className = 'self-start bg-white border border-black/5 p-4 rounded-2xl rounded-tl-sm shadow-sm flex items-center h-10 w-16';
+            typingDiv.innerHTML = '<div class="dot-flashing ml-3"></div>';
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('ai-typing-indicator');
+            if (indicator) indicator.remove();
+        }
+
+        async function fetchGeminiAPI(retries = 5) {
+            const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            
+            const payload = {
+                contents: aiChatHistory,
+                systemInstruction: { parts: [{ text: systemPrompt }] }
+            };
+
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(endpoint, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+                    
+                    const data = await response.json();
+                    return data.candidates?.[0]?.content?.parts?.[0]?.text;
+                } catch (error) {
+                    if (i === retries - 1) return "Kërkoj ndjesë, për momentin kam nji problem teknik. Ju lutem na shkruani direkt n'WhatsApp (+383 49 585 195).";
+                    await new Promise(res => setTimeout(res, Math.pow(2, i) * 1000));
+                }
+            }
+        }
+
+        async function sendAIMessage() {
+            const inputEl = document.getElementById('ai-chat-input');
+            const message = inputEl.value.trim();
+            if (!message) return;
+
+            // Clear input and show user message
+            inputEl.value = '';
+            appendMessage('user', message);
+            
+            // Add user message to history
+            aiChatHistory.push({ role: "user", parts: [{ text: message }] });
+            
+            // Show typing animation
+            addTypingIndicator();
+
+            // Fetch AI Response
+            const botReply = await fetchGeminiAPI();
+            
+            // Hide typing animation
+            removeTypingIndicator();
+            
+            if(botReply) {
+                // Add bot message to UI and history
+                appendMessage('bot', botReply);
+                aiChatHistory.push({ role: "model", parts: [{ text: botReply }] });
+            }
+        }
+    </script>
+</body>
+</html>
