@@ -18,6 +18,7 @@
     <!-- Tailwind Configuration -->
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
@@ -600,9 +601,20 @@
                     <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i> <span data-i18n="hint_double_tap">Prek 2 herë për zmadhim</span>
                 </div>
 
-                <!-- Image Wrapper -->
-                <div class="w-full h-full flex items-center justify-center p-6 overflow-hidden relative">
-                    <img id="modal-img" src="" alt="Product" class="w-full h-full object-contain transition-transform duration-200 relative z-10 cursor-zoom-in select-none">
+                <!-- Image Wrapper with Glow elements for interactive products -->
+                <div class="w-full h-full flex items-center justify-center p-6 overflow-hidden relative group/modallight bg-[#f8fafc]">
+                    
+                    <!-- Zoom wrapper -->
+                    <div id="modal-img-zoom-wrapper" class="w-full h-full relative cursor-zoom-in select-none transition-transform duration-300 origin-center flex items-center justify-center">
+                        <!-- Smoother transition applied to both images -->
+                        <img id="modal-img-off" src="" alt="Product" class="absolute w-full h-full object-contain transition-opacity duration-700 ease-in-out z-10 select-none pointer-events-none">
+                        <img id="modal-img-on" src="" alt="Product On" class="absolute w-full h-full object-contain z-20 opacity-0 transition-opacity duration-700 ease-in-out select-none pointer-events-none">
+                    </div>
+            
+                    <!-- Dynamic Toggle Button (hidden by default) -->
+                    <div id="modal-light-toggle-container" class="hidden absolute bottom-6 left-1/2 -translate-x-1/2 z-30 w-auto whitespace-nowrap">
+                        <!-- Injected by JS -->
+                    </div>
                 </div>
                 
                 <!-- Download Image Button -->
@@ -929,8 +941,8 @@
                     { sq: 'Montim Falas (PR, F.Kosovë, Obiliq)', en: 'Free Installation (PR, FK, OB)', icon: 'wrench' }
                 ],
                 detailedDesc: {
-                    sq: 'Kamerë sigurie inteligjente 2K me aftësi rrotullimi 360° për të eliminuar plotësisht pikat e verbëra. Ofron komunikim të dyanshëm (2-Way Talk) për të dëgjuar dhe folur direkt nga telefoni juaj, si dhe teknologji të avancuar për pamje me ngjyra gjatë natës dhe detektim inteligjent të njerëzve. Kjo paketë vjen e gatshme me adapter dhe kartelë SD 32GB. Përfitoni edhe Montimin Falas (në Prishtinë, F.Kosovë, Obiliq) për një përvojë pa asnjë stres.',
-                    en: 'A 2K smart security camera with 360° pan/tilt capabilities to completely eliminate blind spots. It offers Two-Way Talk to listen and speak directly from your phone, along with advanced color night vision and AI human detection. This package comes ready to use with a power adapter and a 32GB SD card. Benefit from Free Installation (in Prishtina, F.Kosovë, Obiliq) for a stress-free experience.'
+                    sq: 'Ngrini nivelin e sigurisë së shtëpisë tuaj me EZVIZ H8c 2K. Kjo kamerë inteligjente ofron një mbulim panoramik 360° duke eliminuar plotësisht çdo kënd të verbër në pronën tuaj. Përmes <b>Inteligjencës Artificiale (AI)</b> të integruar, ajo identifikon automatikisht format njerëzore dhe ndjek lëvizjet e tyre në kohë reale (Auto-Tracking). Ofron tre mënyra të avancuara të pamjes së natës, përfshirë <b>pamjen me ngjyra të plota</b> deri në 20 metra. Me funksionin e mbrojtjes aktive, ajo ndez dritat e forta dhe lëshon sirenën akustike për të larguar vizitorët e padëshiruar para se të ndodhë ndonjë incident. Gjithashtu, mundëson bisedë të pastër dy-drejtimëshe direkt nga smartfoni juaj. Një paketë e kompletuar që vjen me kartelë SD 32GB dhe <b>Montim Falas</b>.',
+                    en: 'Elevate your home security with the EZVIZ H8c 2K. This smart camera provides 360° panoramic coverage, completely eliminating blind spots on your property. Through built-in <b>Artificial Intelligence (AI)</b>, it automatically identifies human shapes and tracks their movements in real-time (Auto-Tracking). It offers three advanced night vision modes, including <b>full-color imaging</b> up to 20 meters. With its active defense function, it triggers bright spotlights and a loud siren to deter unwanted visitors before an incident occurs. Furthermore, it enables clear two-way communication directly from your smartphone. A complete package that comes with a 32GB SD card and <b>Free Installation</b>.'
                 },
                 desc: ['1x Kamerë Rrotulluese CS-H8c (4MP/2K)', '1x Adapter për Energji', '1x Kartelë SD 32GB', '1x Montim Falas (Prishtinë, Fushë Kosovë, Obiliq.)']
             },
@@ -956,10 +968,39 @@
                     { sq: 'Kujdes: Montimi nuk përfshihet', en: 'Note: Installation not included', icon: 'info' }
                 ],
                 detailedDesc: {
-                    sq: 'Niveli premium i sigurisë me rezolucion ultra të lartë 4K dhe lente me mbulim të plotë 360°. Kjo pajisje ofron zë dy-drejtimësh (2-Way Talk) për biseda në kohë reale dhe mbrojtje aktive me dritë e sirenë për të trembur ndërhyrësit. Përfshin adapter dhe kartelë të madhe SD 128GB për ruajtje maksimale të detajeve kristal të qarta. (Shënim: Montimi nuk është i përfshirë në këtë pako, duke ju lënë fleksibilitet).',
-                    en: 'Premium level security with ultra-high 4K resolution and a 360° full-coverage lens. This device offers Two-Way Talk for real-time conversations and active defense with a strobe light and siren to deter intruders. Includes an adapter and a large 128GB SD card for maximum storage of crystal-clear details. (Note: Installation is not included in this package, giving you flexibility).'
+                    sq: 'Eksperienca supreme e mbikëqyrjes me rezolucion të jashtëzakonshëm <b>4K Ultra HD (8MP)</b>. Kjo pajisje premium kap dhe regjistron çdo detaj delikat (si targat e makinave apo tiparet e fytyrës) me saktësi absolute. E pajisur me teknologjinë e fundit të <b>Detektimit AI</b> për njerëz dhe automjete, ajo filtron alarmet e rreme nga gjethet apo kafshët dhe fokusohet vetëm tek rreziqet reale. Në errësirë, teknologjia e avancuar ofron <b>Pamje me Ngjyra</b> të qarta si në dritën e ditës. Sistemi i saj i parandalimit <b>Active Defense</b> me sirenë të fuqishme dhe dritë vezulluese parandalon incidentet në moment. Vjen me një kartelë masive SD prej 128GB për të ruajtur video në rezolucion maksimal për një kohë të gjatë. (Shënim: Montimi nuk është i përfshirë).',
+                    en: 'The supreme surveillance experience with exceptional <b>4K Ultra HD (8MP)</b> resolution. This premium device captures and records every delicate detail (like license plates or facial features) with absolute precision. Equipped with the latest <b>AI Detection</b> technology for humans and vehicles, it filters out false alarms from leaves or animals and focuses only on real threats. In darkness, advanced technology offers vivid <b>Color Night Vision</b> just like daylight. Its <b>Active Defense</b> deterrence system with a powerful siren and flashing light prevents incidents on the spot. It comes with a massive 128GB SD card to store maximum resolution videos for a long time. (Note: Installation is not included).'
                 },
                 desc: ['1x Kamerë Rrotulluese CS-H8c (8MP/4K)', '1x Adapter për Energji', '1x Kartelë SD 128GB', '* Montimi NUK është i përfshirë']
+            },
+            {
+                id: 10, category: 'camera', brand: 'Ezviz',
+                brandLogo: 'https://ik.imagekit.io/p78ewpzv2/LIKA%20TECH/Brands/Ezviz@3x_lojxnOkr7.png?updatedAt=null&ik-s=c6090d324b7f2bd08cf52a432664e96ef72d5ff1',
+                title: { sq: 'Kamera me Dritë + WiFi', en: 'Wall-Light Camera + WiFi' },
+                price: '199.99',
+                isInteractiveLight: true,
+                imgOff: 'https://ik.imagekit.io/p78ewpzv2/LIKA%20Security/OFERTA/Ezviz/Ezviz%20light%20off%20199.99_xLGMkzvQw.jpg?updatedAt=null&ik-s=f12bb3739e639a7d158d43171fdaa543a38ee449',
+                imgOn: 'https://ik.imagekit.io/p78ewpzv2/LIKA%20Security/OFERTA/Ezviz/Ezviz%20light%20on%20199.99_cJGu9vthX.jpg?updatedAt=null&ik-s=51a9dcf47d84d371be4f863b144aa1c01ace1705',
+                qtyBadge: { sq: '1 Kamerë & Dritë', en: '1 Light Camera' }, qtyIcon: 'lightbulb',
+                specBadge: { text: '2K & 800 Lumens', icon: 'sun' },
+                idealFor: { sq: 'Oborr / Hyrje', en: 'Yard / Entrance' }, idealIcon: 'home',
+                quickFeatures: [
+                    { icon: 'sun', label: '800 LM' },
+                    { icon: 'video', label: '2K Video' },
+                    { icon: 'brain', label: 'AI Smart' },
+                    { icon: 'shield-alert', label: 'Alarm' }
+                ],
+                features: [
+                    { sq: 'Dritë LED e Rregullueshme (800 Lumen)', en: 'Adjustable 800-Lumen LED Light', icon: 'sun' },
+                    { sq: 'Rezolucion 2K & Pamje me Ngjyra Natën', en: '2K Resolution & Color Night Vision', icon: 'video' },
+                    { sq: 'AI për Detektim Njerëzish/Automjetesh', en: 'AI Human/Vehicle Detection', icon: 'brain' },
+                    { sq: 'Kartelë SD 32GB & Montim Falas', en: '32GB SD Card & Free Installation', icon: 'hard-drive' }
+                ],
+                detailedDesc: {
+                    sq: 'Inovacion që ndërthur arkitekturën moderne me sigurinë maksimale. EZVIZ EL3 është një kamerë e avancuar 2K e kamufluar mjeshtërisht si një dritë muri elegante (Wall-Light). Ofron ndriçim jashtëzakonisht të fuqishëm dhe të rregullueshëm prej <b>800 lumen</b> që përshtatet plotësisht me ambientin tuaj, duke ndriçuar rrugën për ju dhe të ftuarit tuaj. Inteligjenca e integruar <b>AI</b> dallon në mënyrë precize njerëzit dhe automjetet, ndërsa antena e fuqishme <b>Wi-Fi 6</b> garanton një lidhje të pandërprerë video. Në raste të një ndërhyrjeje, drita reagon menjëherë duke u kthyer në një mjet <b>Active Defense</b> me ndriçim agresiv dhe sirenë shurdhuese. Zgjedhja numër një për të ruajtur estetikën e shtëpisë ndërsa blindoni sigurinë periferike.',
+                    en: 'Innovation that merges modern architecture with maximum security. The EZVIZ EL3 is an advanced 2K camera masterfully disguised as an elegant wall light. It offers extremely powerful and adjustable lighting of <b>800 lumens</b> that perfectly adapts to your environment, lighting the way for you and your guests. The built-in <b>AI intelligence</b> accurately distinguishes humans and vehicles, while the powerful <b>Wi-Fi 6</b> antenna guarantees an uninterrupted video connection. In case of an intrusion, the light instantly reacts, turning into an <b>Active Defense</b> tool with aggressive lighting and a deafening siren. The number one choice to maintain home aesthetics while reinforcing perimeter security.'
+                },
+                desc: ['1x Kamerë Inteligjente me Dritë EZVIZ EL3 (2K)', '1x Kartelë SD 32GB', '1x Montim Falas (Prishtinë, F.Kosovë, Obiliq.)']
             },
             { 
                 id: 2, category: 'camera', brand: 'Hikvision',
@@ -983,8 +1024,8 @@
                     { sq: 'Monitorim HD nga Smartfoni', en: 'HD Monitoring via Smartphone', icon: 'smartphone' }
                 ],
                 detailedDesc: {
-                    sq: 'Kjo pako ofron sigurinë absolute që meriton biznesi juaj. Përmes teknologjisë inovative ColorVu, ju do të keni pamje me ngjyra dhe kristal të qarta edhe gjatë natës në errësirë totale. Rezolucioni 6MP i kamerave kap çdo detaj me precizion maksimal, ndërsa Disku (HDD) prej 4TB siguron hapësirë të mjaftueshme për të ruajtur regjistrimet për afërsisht 30 deri në 40 ditë. Një investim dhe profesionalizëm dhe paqe mendore dhe kontroll të plotë mbi pronën tuaj.',
-                    en: 'This package provides the absolute security your business deserves. Through innovative ColorVu technology, you will have crystal clear, full-color footage even at night in total darkness. The 6MP resolution captures every detail, while the 4TB HDD ensures enough space to store recordings for approximately 30 to 40 days. An essential investment for total control over your property.'
+                    sq: 'Kjo pako ofron sigurinë absolute dhe të pakompromis që kërkon biznesi juaj. E pajisur me teknologjinë revolucionare <b>ColorVu</b> nga Hikvision, kjo gjeneratë kamerash garanton pamje me ngjyra të ndezura dhe të qarta 24/7, madje edhe në errësirë totale. I integruar me algoritmin <b>Motion Detection 2.0 (AcuSense)</b>, sistemi filtron automatikisht lëvizjet e parëndësishme (si kafshët, gjethet, ose shiu) dhe ju alarmon në telefon vetëm kur detektohet prani njerëzore apo e një automjeti. Me një rezolucion masiv prej <b>6MP</b> për detaje thelbësore dhe një disk (HDD) industrial prej <b>4TB</b> për regjistrime afatgjata, ky sistem është një investim strategjik për mbrojtjen totale të aseteve tuaja.',
+                    en: 'This package offers the absolute and uncompromising security your business demands. Equipped with revolutionary <b>ColorVu</b> technology from Hikvision, this generation of cameras guarantees vivid and clear full-color imaging 24/7, even in total darkness. Integrated with the <b>Motion Detection 2.0 (AcuSense)</b> algorithm, the system automatically filters out irrelevant movements (like animals, leaves, or rain) and alerts you on your phone only when human or vehicle presence is detected. With a massive <b>6MP</b> resolution for essential details and a <b>4TB</b> industrial HDD for long-term recording, this system is a strategic investment for the total protection of your assets.'
                 },
                 desc: ['1x NVR DS-7608NXI-K1 (8 Ch)', '4x Kamera DS-2CD1067G2H-LIU', '4x Kamera DS-2CD1367G2H-LIU', '1x Switch PoE DS-3E0109P-E/M', '1x HDD Seagate SkyHawk 4TB', '180m Kabllo UTP CAT6 FALAS', '8x Kuti Montimi PS-2030 OG'] 
             },
@@ -1010,8 +1051,8 @@
                     { sq: 'Qasje nga Aplikacioni Mobil', en: 'Mobile App Access', icon: 'smartphone' }
                 ],
                 detailedDesc: {
-                    sq: 'Zgjidhja më e mirë dhe më ekonomike për shtëpinë tuaj. Me 4 kamera të rezolucionit Full HD (1080p), ju do të keni pamje të qartë të çdo lëvizjeje, mjaftueshëm për t\'i dalluar fytyrat dhe detajet rreth objektit tuaj. Sistemi vjen i kompletuar me një Disk (HDD) 1TB që u mundëson të rishikoni ngjarjet e incizuara për rreth 15 deri në 20 ditë. Një sistem tejet i besueshëm nga HiLook, me qasje direkte në telefonin tuaj.',
-                    en: 'The best and most economical solution for your home. With 4 Full HD (1080p) cameras, you will have a clear view of every movement, enough to distinguish faces and details. The system comes complete with a 1TB HDD that allows you to review recorded events for about 15 to 20 days. A highly reliable system from HiLook, with direct access to your phone.'
+                    sq: 'Zgjidhja më e zgjuar dhe me kosto-efektive për sigurinë bazë të shtëpisë apo biznesit tuaj të vogël. Ky sistem nga HiLook (degë e Hikvision) ofron 4 kamera me rezolucion të plotë <b>Full HD 1080p</b>. Përdor teknologjinë e avancuar <b>EXIR 2.0</b> për një ndriçim infra të kuq të barabartë gjatë natës, duke eliminuar njollat e ndriçuara në qendër apo cepat e errët të mbikëqyrjes. Me trup metalik, këto kamera janë tërësisht rezistente ndaj kushteve më të vështira atmosferike (IP66). Sistemi garanton monitorim të pandërprerë dhe regjistrim optimal deri në 20 ditë falë kompresimit inteligjent <b>H.265+</b>. Paqe mendore e garantuar, lehtësisht e qasshme nga celulari juaj në çdo kohë.',
+                    en: 'The smartest and most cost-effective solution for basic home or small business security. This system from HiLook (a Hikvision branch) offers 4 cameras with full <b>Full HD 1080p</b> resolution. It utilizes advanced <b>EXIR 2.0</b> technology for evenly distributed infrared lighting at night, eliminating overexposed centers or dark corners in surveillance. With a metal body, these cameras are completely resistant to harsh weather conditions (IP66). The system guarantees uninterrupted monitoring and optimal recording for up to 20 days thanks to intelligent <b>H.265+</b> compression. Guaranteed peace of mind, easily accessible from your mobile phone at any time.'
                 },
                 desc: ['1x NVR-104MH-C (4 Ch)', '4x Kamera IPC-B121H-C(2.8mm)', '1x Switch NS-0505P-35', '1x HDD 1TB Për Siguri', '305m Kabllo UTP CAT6'] 
             },
@@ -1037,8 +1078,8 @@
                     { sq: 'Sistem Sigurie i Shkallëzueshëm', en: 'Scalable Security System', icon: 'shield-check' }
                 ],
                 detailedDesc: {
-                    sq: 'E dizajnuar specifikisht për biznese të vogla dhe të mesme. Kjo pako sjell performancë të nivelit të lartë (6MP) dhe teknologjinë inovative Hybrid Light. Përfshin detektimin inteligjent që dallon saktë njerëzit dhe automjetet, duke shmangur alarmet e rreme. Disku 1TB siguron që ju të ruani të dhënat vitale të biznesit për rreth 12 deri në 15 ditë të plota.',
-                    en: 'Designed specifically for small and medium businesses. This package brings high-level performance (6MP) and innovative Hybrid Light technology. It includes smart detection that accurately distinguishes people and vehicles. The 1TB disk ensures you store vital business data for about 12 to 15 full days.'
+                    sq: 'E dizajnuar specifikisht për të maksimizuar sigurinë e bizneseve moderne. Kjo pako sjell teknologjinë më inovative në treg: <b>Smart Hybrid Light</b>. Kamerat operojnë normalisht me rreze infra të kuqe për të qenë diskrete dhe për të kursyer energji, por në momentin që <b>Motion Detection 2.0</b> dallon një njeri ose automjet, ato ndezin dritat e bardha duke ofruar menjëherë një pamje fantastike me ngjyra dhe duke vepruar si një mjet aktiv parandalues. Alarmet e rreme nga kushtet e motit eliminohen, duke ju dhënë njoftime vetëm kur vërtet ka rëndësi. Rezolucioni premium <b>6MP</b> siguron qartësi të jashtëzakonshme për identifikimin e fytyrave dhe targave. Zgjedhja ideale balancuese mes teknologjisë pro dhe çmimit.',
+                    en: 'Designed specifically to maximize the security of modern businesses. This package brings the most innovative technology to the market: <b>Smart Hybrid Light</b>. The cameras operate normally with infrared to remain discreet and save energy, but the moment <b>Motion Detection 2.0</b> detects a human or vehicle, they turn on white lights immediately providing a fantastic color image and acting as an active deterrent. False alarms from weather conditions are eliminated, giving you notifications only when it truly matters. The premium <b>6MP</b> resolution ensures exceptional clarity for identifying faces and license plates. The ideal balanced choice between pro technology and price.'
                 },
                 desc: ['1x NVR DS-7604NXI-K1 (4 Ch)', '2x Kamera DS-2CD1067G2H-LIU', '2x Kamera DS-2CD1367G2H-LIU', '1x Switch PoE DS-3E0105P-E/M', '1x HDD Seagate SkyHawk 1TB', '90m Kabllo UTP CAT6'] 
             },
@@ -1064,8 +1105,8 @@
                     { sq: 'Dizajn Kompakt dhe Diskret', en: 'Compact and Discreet Design', icon: 'box' }
                 ],
                 detailedDesc: {
-                    sq: 'Pakoja e përkryer për mbulim të gjerë të pronës. Me 8 kamera Full HD, asnjë kënd i shtëpisë ose vilës suaj nuk do të mbetet pa u monitoruar. Ofron kualitet shumë të mirë pamjeje gjatë ditës dhe përmes rrezeve infra të kuqe edhe natën. Disku i integruar prej 1TB siguron ruajtjen e të gjitha ngjarjeve për rreth 10 deri në 14 ditë. Mbrojtje e plotë me një çmim fantastik.',
-                    en: 'The perfect package for wide property coverage. With 8 Full HD cameras, no corner of your home or villa will go unmonitored. It offers very good image quality during the day and via infrared at night. The integrated 1TB disk ensures the storage of all events for about 10 to 14 days. Full protection at a fantastic price.'
+                    sq: 'Mbulimi total periferik i pronës suaj pa rënduar buxhetin. Pakoja HiLook Plus me 8 kamera IP është inxhinieruar posaçërisht për shtëpi të mëdha, vila, apo magazina që kërkojnë një sy vigjilent në çdo kënd. Kamerat ofrojnë pamje të mprehtë <b>Full HD 1080p</b> dhe një kënd të gjerë shikimi. Të fuqizuara me teknologjinë e kompresimit <b>H.265+</b>, ato ruajnë cilësinë maksimale të videos duke minimizuar përdorimin e memories në diskun e integruar. Rezistente ndaj çdo lloj moti dhe me performancë tejet të lartë natën përmes infra të kuqe (EXIR 2.0). Kjo pako sjell mbrojtje periferike të pandërprerë, me monitorim falas dhe të sigurt nga kudo në botë përmes smartfonit.',
+                    en: 'Total perimeter coverage of your property without breaking the budget. The HiLook Plus package with 8 IP cameras is engineered specifically for large homes, villas, or warehouses requiring a vigilant eye in every corner. The cameras provide crisp <b>Full HD 1080p</b> footage and a wide viewing angle. Powered by <b>H.265+</b> compression technology, they maintain maximum video quality while minimizing memory usage on the built-in disk. Weather-resistant and highly capable at night through infrared (EXIR 2.0). This package brings uninterrupted perimeter protection, with free and secure monitoring from anywhere in the world via smartphone.'
                 },
                 desc: ['1x NVR-108MH-C (8 Ch)', '8x Kamera IPC-B121H C(2.8mm)', '1x Switch NS-0109P-60(B)', '1x HDD 1TB Surveillance', '305m Kabllo UTP CAT6', '8x Kuti Montimi PS-2030'] 
             },
@@ -1091,8 +1132,8 @@
                     { sq: 'Mbrojtje Profesionale e Ambientit', en: 'Professional Perimeter Defense', icon: 'shield-check' }
                 ],
                 detailedDesc: {
-                    sq: 'Sistem alarmi tërësisht profesional dhe pa kabllo (Wireless), i dizajnuar për të ruajtur estetikën e ambientit tuaj. Instalimi i shpejtë, i pastër dhe lidhja direkte me smartfon ju japin kontroll të plotë. Bateritë afatgjata dhe sensorët me saktësi absolute e bëjnë këtë zgjedhjen numër një për banesa moderne dhe zyra elegante.',
-                    en: 'A completely professional and wireless alarm system designed to preserve the aesthetics of your environment. Quick, clean installation and direct smartphone connection give you full control. Long-lasting batteries and high-precision sensors make this the number one choice for modern apartments and elegant offices.'
+                    sq: 'Sistemi profesional Hikvision AX PRO ofron qetësi absolute pa komprometuar aspak estetikën e shtëpisë apo zyrës suaj moderne. Falë teknologjisë ekskluzive <b>Tri-X Wireless</b>, paneli qendror dhe sensorët komunikojnë në mënyrë të kriptuar dhe tejet të sigurt deri në distanca prej 2,000 metrash, pa pasur nevojë për gërmime apo shtrim të asnjë kablloje. Sensori i lëvizjes është i pajisur me <b>Pet Immunity</b> (injoron kafshët shtëpiake deri në 30 kg) për të shmangur njoftimet e gabuara. I menaxhueshëm 100% nga telefoni juaj, ky sistem reagon në një fraksion të sekondës me njoftime "Push" dhe aktivizon sirenën e fuqishme të jashtme.',
+                    en: 'The professional Hikvision AX PRO system offers absolute peace of mind without compromising the aesthetics of your modern home or office. Thanks to exclusive <b>Tri-X Wireless</b> technology, the central panel and sensors communicate in an encrypted and highly secure manner at distances up to 2,000 meters, without the need for any digging or cable laying. The motion sensor is equipped with <b>Pet Immunity</b> (ignores pets up to 30 kg) to avoid false notifications. Manageable 100% from your phone, this system reacts in a fraction of a second with "Push" notifications and activates the powerful outdoor siren.'
                 },
                 desc: ['1x Qendër Alarmi DS-PWA64-L WE', '1x Sensor Lëvizje DS-PDCL12-EG2-WE', '1x Kontakt Dere DS-PDMC-EG2 W', '1x Sirenë e Jashtme DS-PS1-E-WE', '1x Telekomandë DS-PKF1-WE', '4x Bateri DS-PDP-IN CR123A'] 
             },
@@ -1118,8 +1159,8 @@
                     { sq: 'Sistem Alertimi me Tingull të Lartë', en: 'Loud Sound Alerting System', icon: 'volume-2' }
                 ],
                 detailedDesc: {
-                    sq: 'Niveli më i lartë i mbrojtjes nga ndërhyrjet, i krijuar për shtëpi të mëdha dhe biznese. Me 10 sensorë të ndryshëm të gjeneratës së fundit, ky sistem mbulon çdo dritare, derë dhe dhomë në pronën tuaj. Përfshin sirenë të fuqishme, tastierë për qasje të shpejtë dhe alarmim të menjëhershëm në telefon për të garantuar sigurinë tuaj në çdo sekondë.',
-                    en: 'The highest level of intrusion protection, designed for large homes and businesses. With 10 different next-generation sensors, this system covers every window, door, and room in your property. It includes a loud siren, keypad for quick access, and instant mobile alerts to ensure your safety every second.'
+                    sq: 'Mburoja e pathyeshme dhe definitive për rezidencat luksoze, argjendaritë dhe bizneset me rrezikshmëri të lartë. Ky set i avancuar AX PRO krijon një perimetër mbrojtës total të shumëfishtë pa përdorur asnjë kabllo. Ai përfshin sensorë inteligjentë për lëvizje volumetrike, detektorë për hapjen e dyerve dhe dritareve, si dhe sensorë specialë për dridhje dhe thyerje xhami (Shock/Glass Break). I mbështetur nga protokolli bankar i kriptimit dhe teknologjia <b>Anti-Jamming</b>, ai bllokon çdo lloj tentative për t\'i ndërprerë valët. Me sirenë të fuqishme dhe tastierë për armatosje/çarmatosje të shpejtë, ju mbani kontrollin e plotë të një "Fort Knox"-i kudo që të jeni përmes aplikacionit Hik-Connect.',
+                    en: 'The unbreakable and definitive shield for luxury residences, jewelry stores, and high-risk businesses. This advanced AX PRO set creates a total, multi-layered defensive perimeter without using a single cable. It includes intelligent volumetric motion sensors, door and window opening detectors, as well as special shock and glass-break sensors. Supported by a banking-grade encryption protocol and <b>Anti-Jamming</b> technology, it blocks any attempt to disrupt the signals. Featuring a powerful siren and a keypad for quick arming/disarming, you maintain complete control of a "Fort Knox" wherever you are via the Hik-Connect app.'
                 },
                 desc: ['1x Qendër Alarmi DS-PWA64-L WE', '4x Sensorë Lëvizje DS-PDP15P-EG2', '2x Sensorë Tavani DS-PDCL12-EG2', '2x Kontakt Dere DS-PDMC-EG2 W', '2x Sensorë Dridhje DS-PDMCS-EG2', '1x Sirenë + Tastierë DS-PK1-E-WE', '1x Telekomandë DS-PKF1-WE'] 
             },
@@ -1145,8 +1186,8 @@
                     { sq: 'Dizajn Modern dhe Intuitiv', en: 'Modern & Intuitive Design', icon: 'layout' }
                 ],
                 detailedDesc: {
-                    sq: 'Komplet modern për kontroll të hyrjes në shtëpi apo biznes, me video dhe komunikim të drejtpërdrejtë. Përfshin një njësi të jashtme me kamerë dhe një monitor të brendshëm për menaxhim të hyrjes në mënyrë të sigurt dhe praktike. Gjithashtu përfshihet 100 metra kabllo falas për instalim.',
-                    en: 'Modern kit for home or business entry control, featuring video and direct communication. Includes an outdoor camera unit and an indoor monitor for secure and practical entry management. Also includes 100 meters of free cable.'
+                    sq: 'Më shumë se një zile dere e thjeshtë, ky është portieri juaj dixhital i sigurisë. Video Interfoni profesional nga Hikvision ju mundëson të shihni dhe të flisni me vizitorët tuaj me një rezolucion brilant <b>2MP HD</b>, pavarësisht nëse jeni në dhomën e ndenjës apo në një kontinent tjetër. Falë teknologjisë <b>WDR</b> (Wide Dynamic Range), fytyrat mbeten të ndriçuara dhe të qarta edhe kur ka dritë të fortë mbrapa tyre (Backlight). Monitori inteligjent me prekje 7-inç dhe aplikacioni në telefon ofrojnë zhbllokimin e derës me një buton. Teknologjia e avancuar e anulimit të zhurmës dhe jehonës rrethore (Noise & Echo Cancellation) garanton biseda të pastra kristal. Vjen së bashku me 100 metra kabllo origjinale.',
+                    en: 'More than a simple doorbell, this is your digital security concierge. The professional Video Intercom from Hikvision allows you to see and speak with your visitors in brilliant <b>2MP HD</b> resolution, whether you are in your living room or on another continent. Thanks to <b>WDR</b> (Wide Dynamic Range) technology, faces remain well-lit and clear even against strong backlight. The 7-inch smart touch monitor and the smartphone app offer one-button door unlocking. Advanced Noise & Echo Cancellation technology guarantees crystal clear conversations. It comes complete with 100 meters of original cable.'
                 },
                 desc: ['1x Njësi e jashtme DS-KV8113-WME1', '1x Monitor i brendshëm DS-KH6350-WTE1', '100m Kabllo UTP CAT6 FALAS']
             },
@@ -1172,8 +1213,8 @@
                     { sq: 'Njoftime Direkte në Smartfon', en: 'Direct Smartphone Notifications', icon: 'smartphone' }
                 ],
                 detailedDesc: {
-                    sq: 'Komplet i avancuar video interfon për shtëpi apo biznes, i dizajnuar për komoditet dhe kontroll më të madh të hyrjes. Ky set përfshin një njësi të jashtme me kamerë dhe dy monitorë të brendshëm, duke mundësuar përdorim nga dy dhoma ose kate të ndryshme njëkohësisht. Zgjidhje ideale për familje më të mëdha apo ambiente ku kërkohet akses nga më shumë se një pikë brenda objektit. Përfshin 100 metra kabllo falas për instalim të lehtë.',
-                    en: 'Advanced video intercom kit for home or business, designed for convenience and greater entry control. This set includes an outdoor camera unit and two indoor monitors, allowing usage from two different rooms or floors simultaneously. Ideal solution for larger families or environments requiring access from more than one point within the building. Includes 100 meters of free cable for easy installation.'
+                    sq: 'Eksperienca premium e mikpritjes dhe e sigurisë absolute për vila apo shtëpi me shumë kate. Ky set inovativ mbërrin me dy monitorë të pavarur 7-inç me prekje, duke ju lejuar të përgjigjeni, të zhbllokoni derën ose portën elektronike pa qenë nevoja të zbrisni shkallët apo të ndërroni dhomë. Përfshin funksionin ekskluziv <b>Intercom</b> (thirrje e brendshme), që i shndërron monitorët në një mjet komunikimi të shpejtë brenda vetë shtëpisë. Njësia e jashtme metalike rezistente (IP65/IK08) me kamerë super të gjerë HD ofron shikueshmëri 129° dhe rreze IR për natën. Sistemi sinkronizohet plotësisht me aplikacionin Hik-Connect. Zgjidhja supreme për një komoditet të paprecedentë.',
+                    en: 'The premium experience of hospitality and absolute security for villas or multi-story homes. This innovative set comes with two independent 7-inch touch monitors, allowing you to answer, unlock the door or electronic gate without having to go downstairs or switch rooms. It includes the exclusive <b>Intercom</b> function, transforming the monitors into a quick communication tool within the house itself. The rugged metal outdoor unit (IP65/IK08) with a super-wide HD camera offers a 129° field of view and IR night vision. The system fully syncs with the Hik-Connect app. The supreme solution for unprecedented convenience.'
                 },
                 desc: ['1x Njësi e jashtme DS-KV8113-WME1', '2x Monitorë të brendshëm DS-KH6350-WTE1', '100m Kabllo UTP CAT6 FALAS']
             }
@@ -1208,6 +1249,7 @@
                 btn_view_contents: "Shiko përmbajtjen",
                 btn_show_more: "Shiko më shumë", btn_show_less: "Shiko më pak",
                 hint_double_tap: "Prek 2 herë për zmadhim",
+                hint_test_light: "Provo Dritën",
                 btn_download: "Shkarko",
                 order_method_title: "Zgjidhni Metodën", order_method_sub: "Si dëshironi të na kontaktoni për të porositur këtë pako?",
                 btn_direct_call: "Thirrje Direkte",
@@ -1241,6 +1283,7 @@
                 btn_view_contents: "View contents",
                 btn_show_more: "Show more", btn_show_less: "Show less",
                 hint_double_tap: "Double tap to zoom",
+                hint_test_light: "Test Light",
                 btn_download: "Download",
                 order_method_title: "Choose Method", order_method_sub: "How would you like to contact us to order this package?",
                 btn_direct_call: "Direct Call",
@@ -1346,6 +1389,73 @@
             text.textContent = i18n[currentLang]['btn_show_more'];
         }
 
+        // Logic for Interactive Light in Card
+        window.toggleCardLight = function(event, index) {
+            event.stopPropagation();
+            const imgOnEl = document.getElementById(`card-img-on-${index}`);
+            const btnEl = document.getElementById(`card-btn-${index}`);
+            if (!imgOnEl) return;
+            
+            const pingEl = btnEl ? btnEl.querySelector('.animate-ping') : null;
+            
+            const isOff = imgOnEl.classList.contains('opacity-0');
+            
+            if (isOff) {
+                // Turn ON
+                imgOnEl.classList.remove('opacity-0');
+                imgOnEl.classList.add('opacity-100');
+                if(btnEl) {
+                    btnEl.classList.remove('bg-white/95', 'text-lighttext', 'border-gray-200');
+                    btnEl.classList.add('bg-yellow-400', 'text-white', 'border-yellow-400', 'shadow-[0_0_20px_rgba(250,204,21,0.6)]');
+                }
+                if(pingEl) pingEl.classList.add('hidden'); // Hide ping when active
+            } else {
+                // Turn OFF
+                imgOnEl.classList.remove('opacity-100');
+                imgOnEl.classList.add('opacity-0');
+                if(btnEl) {
+                    btnEl.classList.remove('bg-yellow-400', 'text-white', 'border-yellow-400', 'shadow-[0_0_20px_rgba(250,204,21,0.6)]');
+                    btnEl.classList.add('bg-white/95', 'text-lighttext', 'border-gray-200');
+                }
+                if(pingEl) pingEl.classList.remove('hidden');
+            }
+        };
+
+        // Logic for Interactive Light in Modal
+        window.toggleModalLight = function(event) {
+            if(event) event.stopPropagation();
+            const imgOnEl = document.getElementById('modal-img-on');
+            const btnEl = document.getElementById('modal-light-btn');
+            if (!imgOnEl) return;
+
+            const pingEl = btnEl ? btnEl.querySelector('.animate-ping') : null;
+            const textEl = document.getElementById('modal-light-text');
+            
+            const isOff = imgOnEl.classList.contains('opacity-0');
+            
+            if (isOff) {
+                // Turn ON
+                imgOnEl.classList.remove('opacity-0');
+                imgOnEl.classList.add('opacity-100');
+                if(btnEl) {
+                    btnEl.classList.remove('bg-white/95', 'text-lighttext', 'border-gray-200');
+                    btnEl.classList.add('bg-yellow-400', 'text-white', 'border-yellow-400', 'shadow-[0_0_25px_rgba(250,204,21,0.6)]');
+                }
+                if(textEl) textEl.textContent = 'NDAL DRITËN';
+                if(pingEl) pingEl.classList.add('hidden');
+            } else {
+                // Turn OFF
+                imgOnEl.classList.remove('opacity-100');
+                imgOnEl.classList.add('opacity-0');
+                if(btnEl) {
+                    btnEl.classList.remove('bg-yellow-400', 'text-white', 'border-yellow-400', 'shadow-[0_0_25px_rgba(250,204,21,0.6)]');
+                    btnEl.classList.add('bg-white/95', 'text-lighttext', 'border-gray-200');
+                }
+                if(textEl) textEl.textContent = i18n[currentLang].hint_test_light.toUpperCase();
+                if(pingEl) pingEl.classList.remove('hidden');
+            }
+        };
+
         function renderOffers() {
             const container = document.getElementById('dynamic-offers-container');
             container.innerHTML = '';
@@ -1360,7 +1470,8 @@
                 6: { key: 'badge_budget', color: 'bg-white border border-gray-200 text-lighttext/80 shadow-sm', isPremium: false },
                 7: { key: 'badge_premium', color: 'bg-red-50 border border-red-200 text-lika-red shadow-sm', isPremium: true },
                 8: { key: 'badge_pro', color: 'bg-blue-50 border border-blue-100 text-blue-700 shadow-sm', isPremium: false },
-                9: { key: 'badge_premium', color: 'bg-red-50 border border-red-200 text-lika-red shadow-sm', isPremium: true }
+                9: { key: 'badge_premium', color: 'bg-red-50 border border-red-200 text-lika-red shadow-sm', isPremium: true },
+                10: { key: 'badge_premium', color: 'bg-red-50 border border-red-200 text-lika-red shadow-sm', isPremium: true }
             };
 
             const categories = [
@@ -1452,6 +1563,43 @@
 
                         const btnStyle = isPremium ? 'bg-lika-red text-white hover:bg-red-700' : 'bg-gray-100 border border-gray-200 text-lighttext hover:bg-gray-200';
 
+                        let imageHTML = '';
+                        const imgSrcOff = offer.imgOff || offer.img;
+                        const imgSrcOn = offer.imgOn || offer.img;
+                        
+                        if (offer.isInteractiveLight) {
+                            imageHTML = `
+                                <div class="w-full aspect-square bg-[#f8fafc] rounded-xl mb-6 flex justify-center items-center border border-gray-100 overflow-hidden relative group/light" onclick="event.stopPropagation()">
+                                    
+                                    <!-- Base 'Off' Image -->
+                                    <img id="card-img-off-${originalIndex}" src="${imgSrcOff}" alt="${offer.title[currentLang]}" loading="lazy" class="w-full h-full object-cover relative z-10 select-none pointer-events-none" />
+                                    
+                                    <!-- Top 'On' Image (hidden by default using opacity-0). Eased transition applied -->
+                                    <img id="card-img-on-${originalIndex}" src="${imgSrcOn}" alt="${offer.title[currentLang]} On" loading="lazy" class="w-full h-full object-cover absolute inset-0 z-20 opacity-0 transition-opacity duration-700 ease-in-out select-none pointer-events-none" />
+
+                                    <!-- Interactive Toggle Button -->
+                                    <button id="card-btn-${originalIndex}" onclick="toggleCardLight(event, ${originalIndex})" class="absolute bottom-3 right-3 z-30 bg-white/95 backdrop-blur-md p-3 rounded-full shadow-[0_5px_15px_rgba(0,0,0,0.1)] border border-gray-200 text-lighttext transition-all duration-300 hover:scale-110 flex items-center gap-2 group-hover/light:scale-110">
+                                        <span class="flex h-3 w-3 relative">
+                                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                                            <span class="relative inline-flex rounded-full h-3 w-3 bg-yellow-500"></span>
+                                        </span>
+                                        <i data-lucide="power" class="w-5 h-5"></i>
+                                    </button>
+                                    
+                                    <!-- Professional Tooltip Hint (shown on hover over the image area) -->
+                                    <div class="absolute bottom-[4.5rem] right-2 z-30 bg-gray-900 text-white text-[10px] px-3 py-1.5 rounded-lg shadow-lg opacity-0 group-hover/light:opacity-100 transform translate-y-2 group-hover/light:translate-y-0 transition-all duration-300 pointer-events-none font-bold tracking-wide flex items-center gap-1.5">
+                                        <i data-lucide="hand-pointing" class="w-3 h-3"></i> <span data-i18n="hint_test_light">${i18n[currentLang].hint_test_light}</span>
+                                    </div>
+                                </div>
+                            `;
+                        } else {
+                            imageHTML = `
+                                <div class="w-full aspect-square bg-gray-50 rounded-xl mb-6 flex justify-center items-center border border-gray-100 overflow-hidden relative">
+                                    <img src="${imgSrcOff}" alt="${offer.title[currentLang]}" loading="lazy" class="w-full h-full object-cover transform group-hover/card:scale-105 transition-transform duration-200 relative z-10 pointer-events-none select-none" />
+                                </div>
+                            `;
+                        }
+
                         htmlString += `
                             <div onclick="openModal(${originalIndex})" class="w-[85vw] md:w-auto flex-none snap-center cursor-pointer relative bg-white rounded-3xl border ${borderClass} flex flex-col h-full offer-card group/card overflow-hidden">
                                 ${isPremium ? `<div class="absolute top-0 left-0 w-full h-[3px] bg-lika-red"></div>` : ''}
@@ -1470,9 +1618,7 @@
                                         <span class="text-[10px] md:text-xs font-bold text-darktext uppercase tracking-widest ml-1" data-i18n="per_package">${i18n[currentLang].per_package}</span>
                                     </div>
 
-                                    <div class="w-full aspect-square bg-gray-50 rounded-xl mb-6 flex justify-center items-center border border-gray-100 overflow-hidden relative">
-                                        <img src="${offer.img}" alt="${offer.title[currentLang]}" loading="lazy" class="w-full h-full object-cover transform group-hover/card:scale-105 transition-transform duration-200 relative z-10" />
-                                    </div>
+                                    ${imageHTML}
 
                                     <ul class="space-y-3 mb-6 flex-grow">
                                         ${cardFeaturesHTML}
@@ -1504,34 +1650,34 @@
             openModal(newIndex);
         }
 
-        const modalImg = document.getElementById('modal-img');
+        const modalImgWrapper = document.getElementById('modal-img-zoom-wrapper');
         let lastTap = 0;
 
         function resetZoom() {
             isZoomed = false;
-            modalImg.style.transform = 'scale(1)';
-            modalImg.style.cursor = 'zoom-in';
+            modalImgWrapper.style.transform = 'scale(1)';
+            modalImgWrapper.style.cursor = 'zoom-in';
         }
 
         function handleZoom(clientX, clientY) {
             isZoomed = !isZoomed;
             if (isZoomed) {
-                const rect = modalImg.getBoundingClientRect();
+                const rect = modalImgWrapper.getBoundingClientRect();
                 const x = clientX - rect.left;
                 const y = clientY - rect.top;
 
                 const xPercent = (x / rect.width) * 100;
                 const yPercent = (y / rect.height) * 100;
 
-                modalImg.style.transformOrigin = `${xPercent}% ${yPercent}%`;
-                modalImg.style.transform = window.innerWidth < 768 ? 'scale(2)' : 'scale(2.5)';
-                modalImg.style.cursor = 'zoom-out';
+                modalImgWrapper.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+                modalImgWrapper.style.transform = window.innerWidth < 768 ? 'scale(2)' : 'scale(2.5)';
+                modalImgWrapper.style.cursor = 'zoom-out';
             } else {
                 resetZoom();
             }
         }
 
-        modalImg.addEventListener('touchend', function(e) {
+        modalImgWrapper.addEventListener('touchend', function(e) {
             const currentTime = new Date().getTime();
             const tapLength = currentTime - lastTap;
             if (tapLength < 350 && tapLength > 0) {
@@ -1542,7 +1688,7 @@
             lastTap = currentTime;
         });
 
-        modalImg.addEventListener('dblclick', function(e) {
+        modalImgWrapper.addEventListener('dblclick', function(e) {
             handleZoom(e.clientX, e.clientY);
         });
 
@@ -1573,10 +1719,39 @@
             
             currentOfferIndex = index;
             const offer = offersData[index];
-            document.getElementById('modal-img').src = offer.img;
+            const imgSrcOff = offer.imgOff || offer.img;
+            const imgSrcOn = offer.imgOn || offer.img;
+            
+            const modalToggleContainer = document.getElementById('modal-light-toggle-container');
+            const imgOnEl = document.getElementById('modal-img-on');
+            
+            document.getElementById('modal-img-off').src = imgSrcOff;
+            imgOnEl.src = imgSrcOn;
             document.getElementById('modal-title').textContent = offer.title[currentLang];
             document.getElementById('modal-price').innerHTML = `${offer.price}<sup class="text-2xl font-bold text-darktext ml-1">€</sup>`;
             
+            if (offer.isInteractiveLight) {
+                // Gjithmone sigurohemi te jete e fikur (opacity-0) kur sapo hapet modali
+                imgOnEl.classList.remove('opacity-100'); 
+                imgOnEl.classList.add('opacity-0');
+                
+                modalToggleContainer.innerHTML = `
+                    <button id="modal-light-btn" onclick="toggleModalLight(event)" class="bg-white/95 backdrop-blur-md px-6 py-3.5 rounded-full shadow-[0_10px_25px_-5px_rgba(0,0,0,0.1)] border border-gray-200 text-lighttext hover:scale-105 transition-all duration-300 flex items-center gap-3 active:scale-95 group">
+                        <span class="flex h-3 w-3 relative">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-yellow-500"></span>
+                        </span>
+                        <i data-lucide="lightbulb" class="w-5 h-5"></i>
+                        <span id="modal-light-text" class="font-bold text-sm uppercase tracking-widest">${i18n[currentLang].hint_test_light.toUpperCase()}</span>
+                    </button>
+                `;
+                modalToggleContainer.classList.remove('hidden');
+            } else {
+                imgOnEl.classList.replace('opacity-100', 'opacity-0');
+                modalToggleContainer.classList.add('hidden');
+                modalToggleContainer.innerHTML = '';
+            }
+
             const modalQuickIcons = document.getElementById('modal-quick-icons');
             if (offer.quickFeatures && offer.quickFeatures.length > 0) {
                 modalQuickIcons.innerHTML = offer.quickFeatures.map(qf => `
@@ -1592,7 +1767,7 @@
             }
 
             const downloadBtn = document.getElementById('modal-download-btn');
-            downloadBtn.onclick = (e) => triggerDownload(e, offer.img, offer.title[currentLang]);
+            downloadBtn.onclick = (e) => triggerDownload(e, imgSrcOff, offer.title[currentLang]);
 
             const detailedDescDiv = document.getElementById('modal-detailed-desc');
             if (offer.detailedDesc) {
@@ -1629,7 +1804,7 @@
                 else if (t.includes('kabllo')) { icon = 'cable'; iconColor = 'text-darktext'; }
                 else if (t.includes('kuti') || t.includes('adapter')) { icon = 'box'; iconColor = 'text-amber-600'; }
                 else if (t.includes('sensor') || t.includes('kontakt')) { icon = 'radar'; iconColor = 'text-teal-600'; }
-                else if (t.includes('sirenë')) { icon = 'bell-ring'; iconColor = 'text-red-600'; }
+                else if (t.includes('sirenë') || t.includes('dritë ezviz el3')) { icon = 'bell-ring'; iconColor = 'text-red-600'; }
                 else if (t.includes('telekomandë')) { icon = 'nfc'; iconColor = 'text-indigo-600'; }
                 else if (t.includes('bateri')) { icon = 'battery-full'; iconColor = 'text-green-600'; }
                 else if (t.includes('monitor')) { icon = 'monitor'; iconColor = 'text-blue-500'; }
@@ -1663,6 +1838,13 @@
             const lightbox = document.getElementById('lightbox');
             lightbox.classList.add('hidden');
             document.body.style.overflow = 'auto';
+            
+            // Rikthe dritën në OFF kur mbyllet dritarja (reset visual)
+            const imgOnEl = document.getElementById('modal-img-on');
+            if(imgOnEl) {
+                imgOnEl.classList.remove('opacity-100');
+                imgOnEl.classList.add('opacity-0');
+            }
         }
 
         function openOrderModal() {
