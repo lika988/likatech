@@ -296,6 +296,13 @@
             0% { transform: translate3d(0, 0, 0); }
             100% { transform: translate3d(-50%, 0, 0); }
         }
+        
+        /* FAQ Open Style */
+        .faq-item.active {
+            border-color: #e30613;
+            background-color: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-lika-red selection:text-white relative" oncontextmenu="preventImageContext(event)">
@@ -569,6 +576,194 @@
 
             <div id="dynamic-offers-container">
                 <!-- Injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ / Rreth Nesh Section -->
+    <section id="faq" class="py-16 md:py-24 bg-white relative border-t border-gray-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center justify-center p-3 bg-red-50 rounded-xl shadow-sm border border-red-100 mb-4 text-lika-red">
+                    <i data-lucide="info" class="w-6 h-6"></i>
+                </div>
+                <h2 class="text-3xl md:text-5xl font-bold text-lighttext mb-4 tracking-tight" data-i18n="faq_title">Rreth Nesh & Pyetjet e Shpeshta</h2>
+                <div class="w-16 h-1.5 bg-lika-red mx-auto rounded-full mb-4"></div>
+                <p class="text-sm md:text-base text-darktext max-w-2xl mx-auto font-medium" data-i18n="faq_subtitle">Gjithçka që duhet të dini për shërbimet, garancionin, instalimet dhe transparencën tonë të çmimeve.</p>
+            </div>
+
+            <!-- Rreth Nesh Block -->
+            <div class="bg-gray-50 rounded-2xl border border-gray-200 p-6 md:p-8 mb-10 shadow-sm relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-1.5 h-full bg-lika-red"></div>
+                <h3 class="text-xl md:text-2xl font-bold text-lighttext mb-3" data-i18n="about_us_heading">Kush jemi ne?</h3>
+                <p class="text-sm md:text-base text-lighttext/80 font-medium leading-relaxed" data-i18n="about_us_text">
+                    LIKAsecurity operon si një ndër ofruesit më inovativë të sistemeve të sigurisë në Kosovë. Qëllimi ynë nuk është thjesht instalimi i kamerave apo alarmeve, por ndërtimi i një ekosistemi të plotë dhe të sigurt që ju jep paqe mendore. Duke bashkëpunuar ngushtë me brendet kryesore botërore si Hikvision, Ezviz, Professional Alarm etj., si dhe duke përdorur mjete profesionale, ne garantojmë standardet më të larta të montimit, estetikës dhe mirëmbajtjes në treg. Siguria juaj, është vërtet prioriteti ynë.
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="faq-item bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden transition-all duration-300 hover:border-gray-300">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 md:p-6 text-left focus:outline-none">
+                        <span class="font-bold text-lighttext text-sm md:text-base flex items-center gap-3">
+                            <i data-lucide="award" class="w-5 h-5 text-lika-red shrink-0"></i>
+                            <span data-i18n="faq_q1">Çfarë saktësisht mbulon Garancioni 1 Vjeçar?</span>
+                        </span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transform transition-transform duration-300 faq-icon shrink-0"></i>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-5 md:p-6 pt-0 text-sm md:text-base text-lighttext/80 font-medium leading-relaxed border-t border-gray-100/0" data-i18n="faq_a1">
+                            Garancioni ynë zyrtar mbulon çdo defekt fabrikimi dhe problemet e funksionimit normal të pajisjeve. <b class="text-lika-red">Kujdes:</b> Garancioni nuk mbulon dëmtimet e jashtme si rrufetë, luhatjet e rrymës (djegiet elektrike), fatkeqësitë natyrore apo dëmtimet fizike (thyerjet e qëllimshme ose aksidentale). Pajisjet me defekt brenda garancionit zëvendësohen ose riparohen pa asnjë kosto.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq-item bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden transition-all duration-300 hover:border-gray-300">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 md:p-6 text-left focus:outline-none">
+                        <span class="font-bold text-lighttext text-sm md:text-base flex items-center gap-3">
+                            <i data-lucide="wrench" class="w-5 h-5 text-lika-red shrink-0"></i>
+                            <span data-i18n="faq_q2">Si funksionon procesi i instalimit dhe 'Montimi Falas'?</span>
+                        </span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transform transition-transform duration-300 faq-icon shrink-0"></i>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-5 md:p-6 pt-0 text-sm md:text-base text-lighttext/80 font-medium leading-relaxed border-t border-gray-100/0" data-i18n="faq_a2">
+                            Për pakot që përfshijnë 'Montim Falas', instalimi i sistemit ofrohet pa pagesë në regjionet kryesore: <b>Prishtinë, Fushë Kosovë dhe Obiliq</b>. Ekipi ynë përdor mjete profesionale INGCO për të garantuar punë të pastër, estetike dhe precize. Për qytetet e tjera, mund të aplikohet një tarifë minimale për rrugën. Kërkoni një ofertë paraprakisht gjatë porosisë.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-item bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden transition-all duration-300 hover:border-gray-300">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 md:p-6 text-left focus:outline-none">
+                        <span class="font-bold text-lighttext text-sm md:text-base flex items-center gap-3">
+                            <i data-lucide="receipt" class="w-5 h-5 text-lika-red shrink-0"></i>
+                            <span data-i18n="faq_q3">Çfarë ndodh nëse më duhet më shumë kabllo apo pajisje jashtë pakos?</span>
+                        </span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transform transition-transform duration-300 faq-icon shrink-0"></i>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-5 md:p-6 pt-0 text-sm md:text-base text-lighttext/80 font-medium leading-relaxed border-t border-gray-100/0">
+                            <span data-i18n="faq_a3">Pakot tona janë të llogaritura për instalime standarde. Nëse lokacioni juaj kërkon metra shtesë kabllo, kanale plastike mbrojtëse (kanalina), kuti montimi, apo ndonjë kamerë shtesë, ato tarifohen ndaras sipas listës sonë standarde. Ne jemi 100% transparentë me çmimet; listën e plotë të çmimeve të shërbimeve mund ta gjeni në çdo kohë duke vizituar: </span>
+                            <a href="cmimet.html" class="text-lika-red font-bold hover:underline">likasecurity.com/cmimet</a>.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="faq-item bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden transition-all duration-300 hover:border-gray-300">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 md:p-6 text-left focus:outline-none">
+                        <span class="font-bold text-lighttext text-sm md:text-base flex items-center gap-3">
+                            <i data-lucide="smartphone" class="w-5 h-5 text-lika-red shrink-0"></i>
+                            <span data-i18n="faq_q4">A mund t'i shikoj kamerat nga telefoni im dhe a ruhet privatësia?</span>
+                        </span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transform transition-transform duration-300 faq-icon shrink-0"></i>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-5 md:p-6 pt-0 text-sm md:text-base text-lighttext/80 font-medium leading-relaxed border-t border-gray-100/0" data-i18n="faq_a4">
+                            Po, absolutisht. Ne konfigurojmë pa asnjë pagesë shtesë aplikacionet zyrtare (si Hik-Connect ose Ezviz) në telefonat tuaj (iOS dhe Android). Për privatësinë tuaj maksimale, pas përfundimit të instalimit dhe testimit, fjalëkalimet dhe të drejtat e plota ju dorëzohen ekskluzivisht juve. Ekipi ynë <b>nuk</b> mban asnjë qasje në kamerat tuaja!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="faq-item bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden transition-all duration-300 hover:border-gray-300">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 md:p-6 text-left focus:outline-none">
+                        <span class="font-bold text-lighttext text-sm md:text-base flex items-center gap-3">
+                            <i data-lucide="hard-hat" class="w-5 h-5 text-lika-red shrink-0"></i>
+                            <span data-i18n="faq_q5">A ka kosto shtesë për shpime të rënda ose punë me skela?</span>
+                        </span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transform transition-transform duration-300 faq-icon shrink-0"></i>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-5 md:p-6 pt-0 text-sm md:text-base text-lighttext/80 font-medium leading-relaxed border-t border-gray-100/0" data-i18n="faq_a5">
+                            Instalimi standard falas mbulon montimin në lartësi normale (përmes shkallëve standarde) dhe shpime standarde të mureve të shtëpisë/biznesit. Nëse objekti kërkon shpimin e mureve jashtëzakonisht të trasha të betonit të armuar, përdorimin e skelave për lartësi ekstreme, ose hapjen e kanaleve të thella nën tokë (gërmime), këto konsiderohen shërbime të rënda ekstra dhe tarifohen bazuar në Listën e Çmimeve të Shërbimeve.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 6 -->
+                <div class="faq-item bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden transition-all duration-300 hover:border-gray-300">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 md:p-6 text-left focus:outline-none">
+                        <span class="font-bold text-lighttext text-sm md:text-base flex items-center gap-3">
+                            <i data-lucide="life-buoy" class="w-5 h-5 text-lika-red shrink-0"></i>
+                            <span data-i18n="faq_q6">Çfarë ndodh nëse kam nevojë për servis pas skadimit të garancionit?</span>
+                        </span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transform transition-transform duration-300 faq-icon shrink-0"></i>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-5 md:p-6 pt-0 text-sm md:text-base text-lighttext/80 font-medium leading-relaxed border-t border-gray-100/0">
+                            <span data-i18n="faq_a6">Ne qëndrojmë pranë klientëve tanë edhe pasi përfundon periudha e garancionit! Përmes platformës sonë të dedikuar për mbështetje </span>
+                            <a href='https://likasecurity.com/service' target='_blank' class='text-lika-red hover:underline font-bold'>likasecurity.com/service</a><span data-i18n="faq_a6_part2">, ju mund të hapni një tiketë online për çdo problem. Ekipi ynë i servisit do të ofrojë vizitë dhe zgjidhjen më të shpejtë, duke aplikuar çmime jashtëzakonisht të volitshme për mirëmbajtje vetëm për klientët ekzistues.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 7 -->
+                <div class="faq-item bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden transition-all duration-300 hover:border-gray-300">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 md:p-6 text-left focus:outline-none">
+                        <span class="font-bold text-lighttext text-sm md:text-base flex items-center gap-3">
+                            <i data-lucide="clock" class="w-5 h-5 text-lika-red shrink-0"></i>
+                            <span data-i18n="faq_q7">Sa kohë merr një instalim standard i pajisjeve?</span>
+                        </span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transform transition-transform duration-300 faq-icon shrink-0"></i>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-5 md:p-6 pt-0 text-sm md:text-base text-lighttext/80 font-medium leading-relaxed border-t border-gray-100/0" data-i18n="faq_a7">
+                            Shumica e instalimeve për shtëpi apo biznese të vogla (pako me 4 kamera ose alarm) përfundohen brenda një dite pune (4-6 orë). Ne vlerësojmë kohën tuaj, prandaj planifikojmë me saktësi çdo detaj paraprakisht për të mos ndërprerë aktivitetin tuaj ditor.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 8 -->
+                <div class="faq-item bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden transition-all duration-300 hover:border-gray-300">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 md:p-6 text-left focus:outline-none">
+                        <span class="font-bold text-lighttext text-sm md:text-base flex items-center gap-3">
+                            <i data-lucide="credit-card" class="w-5 h-5 text-lika-red shrink-0"></i>
+                            <span data-i18n="faq_q8">Cilat janë metodat e pagesës që pranoni?</span>
+                        </span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transform transition-transform duration-300 faq-icon shrink-0"></i>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-5 md:p-6 pt-0 text-sm md:text-base text-lighttext/80 font-medium leading-relaxed border-t border-gray-100/0" data-i18n="faq_a8">
+                            Ofrojmë fleksibilitet të plotë. Ju mund të paguani me para në dorë (Cash) pas përfundimit dhe testimit të punës, përmes transfertave bankare për biznese, si dhe shumë shpejt edhe me kartelë bankare. Ne lëshojmë faturë të rregullt për çdo shërbim.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 9 -->
+                <div class="faq-item bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden transition-all duration-300 hover:border-gray-300">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 md:p-6 text-left focus:outline-none">
+                        <span class="font-bold text-lighttext text-sm md:text-base flex items-center gap-3">
+                            <i data-lucide="building-2" class="w-5 h-5 text-lika-red shrink-0"></i>
+                            <span data-i18n="faq_q9">A ofroni zgjidhje të personalizuara për korporata dhe magazina të mëdha?</span>
+                        </span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transform transition-transform duration-300 faq-icon shrink-0"></i>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-5 md:p-6 pt-0 text-sm md:text-base text-lighttext/80 font-medium leading-relaxed border-t border-gray-100/0" data-i18n="faq_a9">
+                            Po. Përveç pakove standarde, ne dizajnojmë sisteme komplekse rrjeti, serverë (Synology NAS), kamera me IP dhe Inteligjencë Artificiale për njohje të targave (ANPR) ose numërim të njerëzve. Kontaktoni me ne për një vizitë në terren dhe një ofertë B2B të personalizuar.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 10 -->
+                <div class="faq-item bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden transition-all duration-300 hover:border-gray-300">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between p-5 md:p-6 text-left focus:outline-none">
+                        <span class="font-bold text-lighttext text-sm md:text-base flex items-center gap-3">
+                            <i data-lucide="map" class="w-5 h-5 text-lika-red shrink-0"></i>
+                            <span data-i18n="faq_q10">A i mbuloni të gjitha qytetet e Kosovës me shërbime?</span>
+                        </span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transform transition-transform duration-300 faq-icon shrink-0"></i>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="p-5 md:p-6 pt-0 text-sm md:text-base text-lighttext/80 font-medium leading-relaxed border-t border-gray-100/0" data-i18n="faq_a10">
+                            Po, ne ofrojmë shërbime në të gjithë territorin e Republikës së Kosovës. Për rajonin e Prishtinës (përfshirë Fushë Kosovën dhe Obiliqin) ardhja është tërësisht pa pagesë, ndërsa për qytetet e tjera aplikohet vetëm një tarifë minimale për mbulimin e shpenzimeve të udhëtimit.
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -1102,7 +1297,7 @@
                     { sq: 'Sistem Sigurie i Shkallëzueshëm', en: 'Scalable Security System', icon: 'shield-check' }
                 ],
                 detailedDesc: {
-                    sq: 'E dizajnuar specifikisht për të maksimizuar sigurinë e bizneseve moderne. Kjo pako sjell teknologjinë më inovative në treg: <b>Smart Hybrid Light</b>. Kamerat operojnë normalisht me rreze infra të kuqe për të qenë diskrete dhe për të kursyer energji, por në momentin që <b>Motion Detection 2.0</b> dallon një njeri ose automjet, ato ndezin dritat e bardha duke ofruar menjëherë një pamje fantastike me ngjyra dhe duke vepruar si një mjet aktiv parandalues. Alarmet e rreme nga kushtet e motit eliminohen, duke ju dhënë njoftime vetëm kur vërtet ka rëndësi. Rezolucioni premium <b>6MP</b> siguron qartësi të jashtëzakonshme për identifikimin e fytyrave dhe targave. Zgjedhja ideale balancuese mes teknologjisë pro dhe çmimit.',
+                    sq: 'E dizajnuar specifikisht për të maksimizuar sigurinë e bizneseve moderne. Kjo pako sjell teknologjinë më inovative në treg: <b>Smart Hybrid Light</b>. Kamerat operojnë normalisht me rreze infra të kuqe për të qenë diskrete dhe për të kursyer energji, por në momentin që <b>Motion Detection 2.0</b> dallon një njeri ose automjet, ato ndezin dritat e bardha duke offering menjëherë një pamje fantastike me ngjyra dhe duke vepruar si një mjet aktiv parandalues. Alarmet e rreme nga kushtet e motit eliminohen, duke ju dhënë njoftime vetëm kur vërtet ka rëndësi. Rezolucioni premium <b>6MP</b> siguron qartësi të jashtëzakonshme për identifikimin e fytyrave dhe targave. Zgjedhja ideale balancuese mes teknologjisë pro dhe çmimit.',
                     en: 'Designed specifically to maximize the security of modern businesses. This package brings the most innovative technology to the market: <b>Smart Hybrid Light</b>. The cameras operate normally with infrared to remain discreet and save energy, but the moment <b>Motion Detection 2.0</b> detects a human or vehicle, they turn on white lights immediately providing a fantastic color image and acting as an active deterrent. False alarms from weather conditions are eliminated, giving you notifications only when it truly matters. The premium <b>6MP</b> resolution ensures exceptional clarity for identifying faces and license plates. The ideal balanced choice between pro technology and price.'
                 },
                 desc: ['1x NVR DS-7604NXI-K1 (4 Ch)', '2x Kamera DS-2CD1067G2H-LIU', '2x Kamera DS-2CD1367G2H-LIU', '1x Switch PoE DS-3E0105P-E/M', '1x HDD Seagate SkyHawk 1TB', '90m Kabllo UTP CAT6'] 
@@ -1281,7 +1476,32 @@
                 btn_download: "Shkarko",
                 order_method_title: "Zgjidhni Metodën", order_method_sub: "Si dëshironi të na kontaktoni për të porositur këtë pako?",
                 btn_direct_call: "Thirrje Direkte",
-                pricing_title: "Çmimet e Shërbimeve"
+                pricing_title: "Çmimet e Shërbimeve",
+                faq_title: "Rreth Nesh & Pyetjet e Shpeshta",
+                faq_subtitle: "Gjithçka që duhet të dini për shërbimet, garancionin, instalimet dhe transparencën tonë të çmimeve.",
+                about_us_heading: "Kush jemi ne?",
+                about_us_text: "LIKAsecurity operon si një ndër ofruesit më inovativë të sistemeve të sigurisë në Kosovë. Qëllimi ynë nuk është thjesht instalimi i kamerave apo alarmeve, por ndërtimi i një ekosistemi të plotë dhe të sigurt që ju jep paqe mendore. Duke bashkëpunuar ngushtë me brendet kryesore botërore si Hikvision, Ezviz, Professional Alarm etj., si dhe duke përdorur mjete profesionale, ne garantojmë standardet më të larta të montimit, estetikës dhe mirëmbajtjes në treg. Siguria juaj, është vërtet prioriteti ynë.",
+                faq_q1: "Çfarë saktësisht mbulon Garancioni 1 Vjeçar?",
+                faq_a1: "Garancioni ynë zyrtar mbulon çdo defekt fabrikimi dhe problemet e funksionimit normal të pajisjeve. <b class='text-lika-red'>Kujdes:</b> Garancioni nuk mbulon dëmtimet e jashtme si rrufetë, luhatjet e rrymës (djegiet elektrike), fatkeqësitë natyrore apo dëmtimet fizike (thyerjet e qëllimshme ose aksidentale). Pajisjet me defekt brenda garancionit zëvendësohen ose riparohen pa asnjë kosto.",
+                faq_q2: "Si funksionon procesi i instalimit dhe 'Montimi Falas'?",
+                faq_a2: "Për pakot që përfshijnë 'Montim Falas', instalimi i sistemit ofrohet pa pagesë në regjionet kryesore: <b>Prishtinë, Fushë Kosovë dhe Obiliq</b>. Ekipi ynë përdor mjete profesionale INGCO për të garantuar punë të pastër, estetike dhe precize. Për qytetet e tjera, mund të aplikohet një tarifë minimale për rrugën. Kërkoni një ofertë paraprakisht gjatë porosisë.",
+                faq_q3: "Çfarë ndodh nëse më duhet më shumë kabllo apo pajisje jashtë pakos?",
+                faq_a3: "Pakot tona janë të llogaritura për instalime standarde. Nëse lokacioni juaj kërkon metra shtesë kabllo, kanale plastike mbrojtëse (kanalina), kuti montimi, apo ndonjë kamerë shtesë, ato tarifohen ndaras sipas listës sonë standarde. Ne jemi 100% transparentë me çmimet; listën e plotë të çmimeve të shërbimeve mund ta gjeni në çdo kohë duke vizituar faqen e çmimeve.",
+                faq_q4: "A mund t'i shikoj kamerat nga telefoni im dhe a ruhet privatësia?",
+                faq_a4: "Po, absolutisht. Ne konfigurojmë pa asnjë pagesë shtesë aplikacionet zyrtare (si Hik-Connect ose Ezviz) në telefonat tuaj (iOS dhe Android). Për privatësinë tuaj maksimale, pas përfundimit të instalimit dhe testimit, fjalëkalimet dhe të drejtat e plota ju dorëzohen ekskluzivisht juve. Ekipi ynë <b>nuk</b> mban asnjë qasje në kamerat tuaja!",
+                faq_q5: "A ka kosto shtesë për shpime të rënda ose punë me skela?",
+                faq_a5: "Instalimi standard falas mbulon montimin në lartësi normale (përmes shkallëve standarde) dhe shpime standarde të mureve të shtëpisë/biznesit. Nëse objekti kërkon shpimin e mureve jashtëzakonisht të trasha të betonit të armuar, përdorimin e skelave për lartësi ekstreme, ose hapjen e kanaleve të thella nën tokë (gërmime), këto konsiderohen shërbime të rënda ekstra dhe tarifohen bazuar në Listën e Çmimeve të Shërbimeve.",
+                faq_q6: "Çfarë ndodh nëse kam nevojë për servis pas skadimit të garancionit?",
+                faq_a6: "Ne qëndrojmë pranë klientëve tanë edhe pasi përfundon periudha e garancionit! Përmes platformës sonë të dedikuar për mbështetje ",
+                faq_a6_part2: ", ju mund të hapni një tiketë online për çdo problem. Ekipi ynë i servisit do të ofrojë vizitë dhe zgjidhjen më të shpejtë, duke aplikuar çmime jashtëzakonisht të volitshme për mirëmbajtje vetëm për klientët ekzistues.",
+                faq_q7: "Sa kohë merr një instalim standard i pajisjeve?",
+                faq_a7: "Shumica e instalimeve për shtëpi apo biznese të vogla (pako me 4 kamera ose alarm) përfundohen brenda një dite pune (4-6 orë). Ne vlerësojmë kohën tuaj, prandaj planifikojmë me saktësi çdo detaj paraprakisht për të mos ndërprerë aktivitetin tuaj ditor.",
+                faq_q8: "Cilat janë metodat e pagesës që pranoni?",
+                faq_a8: "Ofrojmë fleksibilitet të plotë. Ju mund të paguani me para në dorë (Cash) pas përfundimit dhe testimit të punës, përmes transfertave bankare për biznese, si dhe shumë shpejt edhe me kartelë bankare. Ne lëshojmë faturë të rregullt për çdo shërbim.",
+                faq_q9: "A ofroni zgjidhje të personalizuara për korporata dhe magazina të mëdha?",
+                faq_a9: "Po. Përveç pakove standarde, ne dizajnojmë sisteme komplekse rrjeti, serverë (Synology NAS), kamera me IP dhe Inteligjencë Artificiale për njohje të targave (ANPR) ose numërim të njerëzve. Kontaktoni me ne për një vizitë në terren dhe një ofertë B2B të personalizuar.",
+                faq_q10: "A i mbuloni të gjitha qytetet e Kosovës me shërbime?",
+                faq_a10: "Po, ne ofrojmë shërbime në të gjithë territorin e Republikës së Kosovës. Për rajonin e Prishtinës (përfshirë Fushë Kosovën dhe Obiliqin) ardhja është tërësisht pa pagesë, ndërsa për qytetet e tjera aplikohet vetëm një tarifë minimale për mbulimin e shpenzimeve të udhëtimit."
             },
             en: {
                 nav_home: "Home", nav_about: "About Us", nav_service: "Services", nav_offers: "Offers", nav_contact: "Contact",
@@ -1319,7 +1539,32 @@
                 btn_download: "Download",
                 order_method_title: "Choose Method", order_method_sub: "How would you like to contact us to order this package?",
                 btn_direct_call: "Direct Call",
-                pricing_title: "Service Prices"
+                pricing_title: "Service Prices",
+                faq_title: "About Us & FAQ",
+                faq_subtitle: "Everything you need to know about our services, warranty, installations, and price transparency.",
+                about_us_heading: "Who are we?",
+                about_us_text: "LIKAsecurity operates as one of the most innovative security system providers in Kosovo. Our goal is not just installing cameras or alarms, but building a complete and secure ecosystem that gives you peace of mind. By collaborating closely with top global brands like Hikvision, Ezviz, and Professional Alarm, and using professional tools, we guarantee the highest standards of installation, aesthetics, and maintenance in the market. Your security is truly our priority.",
+                faq_q1: "What exactly does the 1-Year Warranty cover?",
+                faq_a1: "Our official warranty covers any manufacturing defects and normal operational failures. <b class='text-lika-red'>Note:</b> The warranty does not cover external damage such as lightning, power surges (electrical burnouts), natural disasters, or physical damage (intentional or accidental breakage). Defective devices under warranty are replaced or repaired at no cost.",
+                faq_q2: "How does the installation process and 'Free Installation' work?",
+                faq_a2: "For packages that include 'Free Installation', the system setup is provided free of charge in major regions: <b>Pristina, Fushë Kosovë, and Obiliq</b>. Our team uses professional INGCO tools to guarantee clean, aesthetic, and precise work. For other cities, a minimal travel fee may apply. Request a quote in advance when ordering.",
+                faq_q3: "What happens if I need extra cable or out-of-package equipment?",
+                faq_a3: "Our packages are calculated for standard installations. If your location requires extra meters of cable, protective plastic channels, mounting boxes, or an additional camera, they are charged separately according to our standard list. We are 100% transparent with prices; you can find the complete service price list anytime by visiting our pricing page.",
+                faq_q4: "Can I view cameras from my phone, and is privacy maintained?",
+                faq_a4: "Yes, absolutely. We configure official apps (like Hik-Connect or Ezviz) on your phones (iOS and Android) at no extra charge. For your maximum privacy, after the installation and testing are complete, passwords and full rights are handed over exclusively to you. Our team <b>does not</b> retain any access to your cameras!",
+                faq_q5: "Are there extra costs for heavy drilling or scaffolding work?",
+                faq_a5: "Standard free installation covers normal height mounting (via standard ladders) and standard wall drilling. If the site requires drilling through exceptionally thick reinforced concrete walls, using scaffolding for extreme heights, or digging deep underground trenches, these are considered extra heavy services and are charged based on the Service Price List.",
+                faq_q6: "What if I need service after the warranty expires?",
+                faq_a6: "We stand by our clients even after the warranty period ends! Through our dedicated support platform ",
+                faq_a6_part2: ", you can open an online ticket for any issue. Our service team will provide a visit and the fastest solution, applying highly affordable maintenance prices exclusive to existing clients.",
+                faq_q7: "How long does a standard equipment installation take?",
+                faq_a7: "Most installations for homes or small businesses (4-camera or alarm packages) are completed within one working day (4-6 hours). We value your time, so we meticulously plan every detail in advance to avoid disrupting your daily activities.",
+                faq_q8: "What payment methods do you accept?",
+                faq_a8: "We offer full flexibility. You can pay with Cash after the work is completed and tested, via bank transfers for businesses, and very soon via bank card. We issue a regular invoice for every service.",
+                faq_q9: "Do you offer customized solutions for corporations and large warehouses?",
+                faq_a9: "Yes. Besides standard packages, we design complex network systems, servers (Synology NAS), IP cameras with Artificial Intelligence for license plate recognition (ANPR) or people counting. Contact us for a site visit and a customized B2B quote.",
+                faq_q10: "Do you cover all cities in Kosovo with your services?",
+                faq_a10: "Yes, we provide services throughout the entire territory of the Republic of Kosovo. For the Pristina region (including Fushë Kosovë and Obiliq), travel is completely free, while for other cities, only a minimal fee is applied to cover travel expenses."
             }
         };
 
@@ -1328,6 +1573,36 @@
         let currentCategory = 'all'; 
         let isZoomed = false; 
         let extraDetailsOpen = false;
+
+        // Toggle FAQ Accordion
+        window.toggleFaq = function(button) {
+            const item = button.parentElement;
+            const answer = item.querySelector('.faq-answer');
+            const icon = item.querySelector('.faq-icon');
+            const allAnswers = document.querySelectorAll('.faq-answer');
+            const allIcons = document.querySelectorAll('.faq-icon');
+            const allItems = document.querySelectorAll('.faq-item');
+
+            // Close all others
+            allAnswers.forEach((ans, index) => {
+                if (ans !== answer) {
+                    ans.style.maxHeight = null;
+                    allIcons[index].classList.remove('rotate-180');
+                    allItems[index].classList.remove('active');
+                }
+            });
+
+            // Toggle current
+            if (answer.style.maxHeight) {
+                answer.style.maxHeight = null;
+                icon.classList.remove('rotate-180');
+                item.classList.remove('active');
+            } else {
+                answer.style.maxHeight = answer.scrollHeight + "px";
+                icon.classList.add('rotate-180');
+                item.classList.add('active');
+            }
+        };
 
         window.scrollSlider = function(btn, direction) {
             const container = btn.closest('.slider-wrapper').querySelector('.offers-scroll-container');
@@ -1941,7 +2216,8 @@
                          const iconHTML = el.querySelector('i[data-lucide]') ? el.querySelector('i[data-lucide]').outerHTML : el.querySelector('svg').outerHTML;
                          el.innerHTML = `${iconHTML} <span data-i18n="${key}">${i18n[currentLang][key]}</span>`;
                     } else {
-                        el.textContent = i18n[currentLang][key];
+                        // Trajto tags HTML te ruajtur brenda JSON stringjeve
+                        el.innerHTML = i18n[currentLang][key];
                     }
                 }
             });
